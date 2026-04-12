@@ -29,6 +29,7 @@ backend/data/data/
 
 # PDFs de teste
 *.pdf
+backend/tests/fixtures/pdfs_reais/
 
 # Node
 node_modules/

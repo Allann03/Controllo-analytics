@@ -92,13 +92,14 @@ em 36/36 meses da validacao paralela. Protocolo permite divergencia com justific
 
 ---
 
-## ~~DEBITO-BLOCO2-2~~ -- zxcvbn-python faltando no requirements.txt -- RESOLVIDO
+## DEBITO-BLOCO2-2 -- zxcvbn-python ausente no venv local -- PARCIALMENTE RESOLVIDO
 
 | Campo | Valor |
 |---|---|
-| **Severidade** | CRITICO (backend nao sobe em producao sem a lib) |
+| **Severidade** | BAIXA (producao funciona; afeta apenas ambiente local de dev) |
 | **Descoberto em** | Preparacao de deploy AWS (pos-BLOCO 3C) |
-| **Resolvido em** | Tarefa 0 da preparacao de infraestrutura -- 2026-04-11 |
+| **Parcialmente resolvido em** | Tarefa 0 da preparacao de infraestrutura -- 2026-04-11 |
+| **Confirmado em** | BLOCO 3F.2 -- 2026-04-12 (requirements.txt L25 OK, venv local sem a lib) |
 
 ### Descricao
 
@@ -106,10 +107,70 @@ No BLOCO 2, `zxcvbn-python==4.4.24` foi instalada via `pip install` direto para 
 mas nao foi persistida no `backend/requirements.txt`. Em producao com `CONTROLLO_ENV=production`,
 `auth_utils.py` levanta `RuntimeError` no startup se a lib esta ausente.
 
-### Correcao
+### Correcao parcial
 
-Adicionada linha `zxcvbn-python==4.4.24` ao `backend/requirements.txt` como excecao
+Adicionada linha `zxcvbn-python==4.4.24` ao `backend/requirements.txt` (L25) como excecao
 cirurgica autorizada (manifesto de dependencias, nao codigo de aplicacao).
+
+**Em producao AWS:** funciona corretamente. Container Docker reinstala todas as dependencias
+do `requirements.txt` durante o build, incluindo zxcvbn-python.
+
+**No venv local de desenvolvimento:** a lib ainda nao esta instalada. `auth_utils.py`
+degrada silenciosamente (`_ZXCVBN_DISPONIVEL = False`), e o teste
+`test_t8_senhas_comuns_rejeita_via_zxcvbn` falha porque senhas comuns passam nas 5 regras
+deterministicas sem a validacao de entropia zxcvbn.
+
+### Acao necessaria
+
+Em ambiente local, rodar `pip install zxcvbn-python==4.4.24` antes de rodar pytest
+para que `test_t8_senhas_comuns_rejeita_via_zxcvbn` passe.
+
+---
+
+## DEBITO-TESTE-1 -- test_pagbank.py e script CLI coletado erroneamente por pytest
+
+| Campo | Valor |
+|---|---|
+| **Severidade** | BAIXA (nao afeta producao, apenas polui output do pytest) |
+| **Descoberto em** | BLOCO 3F.2 -- investigacao pre-cutover LP -- 2026-04-12 |
+| **Arquivo** | `backend/tests/test_pagbank.py:38` |
+| **Erro pytest** | `fixture 'path' not found` |
+| **Status** | Registrado. Correcao agendada para sprint de limpeza (BLOCO 7). |
+
+### Descricao
+
+`test_pagbank.py` e um script CLI standalone (`if __name__ == '__main__': main()`)
+projetado para rodar manualmente contra PDFs locais do PagBank. A funcao
+`testar_pdf(path: str, label: str, esperado: dict)` tem prefixo `testar_` que
+pytest coleta automaticamente como teste. Pytest interpreta os parametros como
+nomes de fixtures, que nao existem.
+
+O script nunca foi projetado para rodar via `pytest` — funciona apenas como
+`python tests/test_pagbank.py` com os PDFs presentes no disco local.
+
+### Solucoes possiveis (nao aplicar agora)
+
+1. Renomear funcoes de `testar_*` para `_run_*` (nao coletadas por pytest)
+2. Adicionar `@pytest.mark.skip(reason="Script CLI, nao teste pytest")`
+3. Mover para `scripts/` em vez de `tests/`
+
+---
+
+## DEBITO-TESTE-2 -- test_pagbank_integracao.py mesma causa que DEBITO-TESTE-1
+
+| Campo | Valor |
+|---|---|
+| **Severidade** | BAIXA (nao afeta producao, apenas polui output do pytest) |
+| **Descoberto em** | BLOCO 3F.2 -- investigacao pre-cutover LP -- 2026-04-12 |
+| **Arquivo** | `backend/tests/test_pagbank_integracao.py:24` |
+| **Erro pytest** | `fixture 'pdf_path' not found` |
+| **Status** | Registrado. Tratar junto com DEBITO-TESTE-1 em sprint de limpeza (BLOCO 7). |
+
+### Descricao
+
+Mesma causa que DEBITO-TESTE-1. `testar_integracao(pdf_path: str, label: str)` e funcao
+de script CLI coletada por pytest. Depende de PDFs locais do PagBank. Mesma arquitetura,
+mesmas solucoes, mesma severidade. Tratar junto com DEBITO-TESTE-1.
 
 ---
 
@@ -410,4 +471,4 @@ Saldo agora bate exatamente: entradas=1,057,532.72, saidas=1,033,211.71, SF=-107
 
 ---
 
-*Arquivo criado em: 2026-04-10. Atualizado em: 2026-04-12 (validacao parsers + deploy AWS).*
+*Arquivo criado em: 2026-04-10. Atualizado em: 2026-04-12 (validacao parsers + deploy AWS + registro debitos pre-cutover LP).*
