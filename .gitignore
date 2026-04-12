@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Environment (NUNCA commitar senhas)
+.env
+backend/.env
+frontend/.env
+frontend/.env.local
+
+# Bancos de dados locais
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+*.sqlite3
+
+# Uploads e outputs temporários
+backend/uploads/
+backend/temp/
+backend/outputs/
+backend/data/data/
+
+# PDFs de teste
+*.pdf
+
+# Node
+node_modules/
+.next/
+frontend/.next/
+frontend/node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Coverage
+.coverage
+htmlcov/
+
+# Backup files
+*.bak
+*.bak2
+backups/
+
+# pytest
+.pytest_cache/
+
+# Preserve examples
+!.env.example
+!.env.production.example
+!backend/.env.example
+.claude/
+*.xlsx
+backend/tests_fase2/resultados.json

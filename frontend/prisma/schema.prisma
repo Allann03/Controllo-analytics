@@ -1,0 +1,47 @@
+// 1. Configuração do nosso Banco de Dados
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// 2. Tabela de Usuários (Para o sistema de Login futuro)
+model Usuario {
+  id        String   @id @default(cuid())
+  nome      String
+  email     String   @unique
+  senha     String   
+  criadoEm  DateTime @default(now())
+
+  // Um usuário pode ter vários extratos processados
+  extratos  Extrato[] 
+}
+
+// 3. Tabela de Extratos (O histórico de PDFs que o usuário subiu)
+model Extrato {
+  id          String   @id @default(cuid())
+  nomeArquivo String
+  dataUpload  DateTime @default(now())
+  
+  // Relacionamento: De qual usuário é este extrato?
+  usuarioId   String
+  usuario     Usuario  @relation(fields: [usuarioId], references: [id])
+
+  // Um extrato contém várias transações
+  transacoes  Transacao[]
+}
+
+// 4. Tabela de Transações (Onde o ouro fica guardado para os Dashboards)
+model Transacao {
+  id          String   @id @default(cuid())
+  data        String   // Ex: "01/12/2023"
+  descricao   String
+  valor       Float    // Ex: -1500.00 ou 8000.00
+  
+  // Relacionamento: De qual extrato veio essa transação?
+  extratoId   String
+  extrato     Extrato  @relation(fields: [extratoId], references: [id], onDelete: Cascade)
+}

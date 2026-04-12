@@ -1,0 +1,94 @@
+version: "3.8"
+
+services:
+
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    mem_limit: 1000m
+    mem_reservation: 500m
+    networks:
+      - internal
+
+  backend:
+    # OPCAO A (obrigatoria em producao): imagem pre-buildada via GitHub Actions
+    image: ghcr.io/SEU_USUARIO_GITHUB/controllo-backend:latest
+    # OPCAO B (fallback para dev local — comentar em producao)
+    # build:
+    #   context: ./backend
+    #   dockerfile: Dockerfile.prod
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    volumes:
+      - backend_uploads:/app/uploads
+      - backend_temp:/app/temp
+    expose:
+      - "8000"
+    mem_limit: 3000m
+    mem_reservation: 1000m
+    networks:
+      - internal
+
+  frontend:
+    # Obrigatoriamente pre-buildado via GitHub Actions
+    # com build-arg NEXT_PUBLIC_API_URL=https://SEU_DOMINIO
+    image: ghcr.io/SEU_USUARIO_GITHUB/controllo-frontend:latest
+    restart: unless-stopped
+    depends_on:
+      - backend
+    expose:
+      - "3000"
+    mem_limit: 600m
+    mem_reservation: 250m
+    networks:
+      - internal
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - frontend
+      - backend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+      - caddy_logs:/var/log/caddy
+    environment:
+      DOMAIN: ${DOMAIN}
+    mem_limit: 150m
+    networks:
+      - internal
+
+volumes:
+  postgres_data:
+  backend_uploads:
+  backend_temp:
+  caddy_data:
+  caddy_config:
+  caddy_logs:
+
+networks:
+  internal:
+    driver: bridge

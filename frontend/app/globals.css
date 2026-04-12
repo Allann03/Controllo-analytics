@@ -1,0 +1,905 @@
+@import "tailwindcss";
+
+/* ── Dark-mode variant: active when html does NOT have class="light" ── */
+@custom-variant dark (:is(html:not(.light)) &);
+
+/* ── Design-system color tokens — institutional navy palette ──────────── */
+@theme {
+  /* Navy = escala institucional Controllo BPO (#102a43 como 900) */
+  --color-navy-50:  #f0f4f8;
+  --color-navy-100: #d9e2ec;
+  --color-navy-200: #bcccdc;
+  --color-navy-300: #9fb3c8;
+  --color-navy-400: #829ab1;
+  --color-navy-500: #627d98;
+  --color-navy-600: #486581;
+  --color-navy-700: #334e68;
+  --color-navy-800: #243b53;
+  --color-navy-900: #102a43;
+  --color-navy-950: #0a1f33;
+
+  /* Surface tokens — fundo de página e cards */
+  --color-surface-50:  #f8f9fb;
+  --color-surface-100: #f1f5f9;
+  --color-surface-200: #e2e8f0;
+  --color-surface-300: #cbd5e1;
+}
+
+/* ------------------------------------------------------------------ */
+/*  FONTES PERSONALIZADAS                                              */
+/* ------------------------------------------------------------------ */
+@theme inline {
+  --font-jakarta: var(--font-jakarta);
+  --font-mono: var(--font-mono);
+}
+
+/* ------------------------------------------------------------------ */
+/*  DESIGN SYSTEM — CSS VARIABLES                                     */
+/* ------------------------------------------------------------------ */
+/* ── Paleta de marca Controllo BPO ─────────────────────────────── */
+:root {
+  /* Cor primária — Navy Institucional Controllo BPO */
+  --brand-primary:       #102a43;
+  --brand-primary-hover: #0a1f33;
+  --brand-primary-light: #243b53;
+  --brand-primary-dark:  #0a1f33;
+  --brand-primary-muted: #d9e2ec;
+  --brand-accent:        #486581; /* azul médio para links, foco, ativo */
+
+  /* Fundos — tema escuro (padrão) */
+  --bg-primary:   #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card:      #1e293b;
+  --bg-card-hover:#334155;
+
+  /* Bordas */
+  --border:        #334155;
+  --border-accent: #2D2B4B;
+
+  /* Textos */
+  --text-primary:   #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted:     #64748b;
+
+  /* Acentos funcionais */
+  --accent-indigo:  #4F6AFF;
+  --accent-blue:    #3b82f6;
+  --accent-emerald: #10b981;
+  --accent-rose:    #f43f5e;
+  --accent-amber:   #f59e0b;
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, #2D2B4B, #4F6AFF);
+  --gradient-success: linear-gradient(135deg, #10b981, #06b6d4);
+  --gradient-danger:  linear-gradient(135deg, #f43f5e, #e11d48);
+}
+
+/* Variáveis de opacidade dos elementos geométricos sutis */
+:root {
+  --geo-dots-opacity: 0.14;
+  --geo-ring-opacity: 0.10;
+}
+
+/* Tema claro — elementos geométricos mais visíveis (fundo branco tem mais contraste) */
+html.light {
+  --geo-dots-opacity: 0.28;
+  --geo-ring-opacity: 0.22;
+}
+
+/* ── Sidebar — tema escuro (padrão) ────────────────────────────── */
+:root {
+  --sidebar-bg:              linear-gradient(180deg, #030610 0%, #060a1a 45%, #04070f 100%);
+  --sidebar-border:          rgba(72,101,129,0.15);
+  --sidebar-shadow:          4px 0 32px rgba(0,0,0,0.5), 1px 0 0 rgba(72,101,129,0.08);
+  --nav-text:                #94a3b8;
+  --nav-text-hover:          #f1f5f9;
+  --nav-active-text:         #9fb3c8;
+  --nav-active-bg:           linear-gradient(105deg, rgba(72,101,129,0.25) 0%, rgba(36,59,83,0.14) 100%);
+  --nav-active-border:       rgba(72,101,129,0.40);
+  --nav-active-shadow:       0 0 20px rgba(16,42,67,0.20), inset 0 1px 0 rgba(255,255,255,0.06);
+  --nav-hover-bg:            rgba(255,255,255,0.05);
+  --nav-icon-active-bg:      rgba(72,101,129,0.30);
+  --nav-icon-active-shadow:  0 0 8px rgba(16,42,67,0.25);
+  --sidebar-footer-border:   rgba(72,101,129,0.12);
+  --sidebar-profile-bg:      rgba(255,255,255,0.025);
+  --sidebar-profile-border:  rgba(255,255,255,0.07);
+  --sidebar-profile-shadow:  inset 0 1px 0 rgba(255,255,255,0.05);
+  --nav-indicator:           linear-gradient(180deg, #9fb3c8, #486581);
+  --nav-indicator-glow:      0 0 8px rgba(72,101,129,0.6);
+}
+
+/* ── Sidebar — tema claro ───────────────────────────────────────── */
+html.light {
+  --sidebar-bg:              linear-gradient(180deg, #ffffff 0%, #f0f4f8 45%, #ffffff 100%);
+  --sidebar-border:          rgba(16,42,67,0.10);
+  --sidebar-shadow:          4px 0 24px rgba(16,42,67,0.06);
+  --nav-text:                #627d98;
+  --nav-text-hover:          #102a43;
+  --nav-active-text:         #102a43;
+  --nav-active-bg:           linear-gradient(105deg, rgba(16,42,67,0.08) 0%, rgba(16,42,67,0.03) 100%);
+  --nav-active-border:       rgba(16,42,67,0.20);
+  --nav-active-shadow:       0 0 12px rgba(16,42,67,0.06);
+  --nav-hover-bg:            rgba(16,42,67,0.04);
+  --nav-icon-active-bg:      rgba(16,42,67,0.10);
+  --nav-icon-active-shadow:  0 0 6px rgba(16,42,67,0.10);
+  --sidebar-footer-border:   rgba(16,42,67,0.10);
+  --sidebar-profile-bg:      rgba(16,42,67,0.03);
+  --sidebar-profile-border:  rgba(16,42,67,0.10);
+  --sidebar-profile-shadow:  inset 0 1px 0 rgba(255,255,255,0.8);
+  --nav-indicator:           linear-gradient(180deg, #627d98, #102a43);
+  --nav-indicator-glow:      0 0 8px rgba(16,42,67,0.35);
+}
+
+/* ── Tema claro (aplica quando html tem class="light") ─────────── */
+html.light {
+  --bg-primary:    #f8f9fb;
+  --bg-secondary:  #f1f5f9;
+  --bg-card:       #ffffff;
+  --bg-card-hover: #f0f4f8;
+  --border:        #e2e8f0;
+  --border-accent: #102a43;
+  --text-primary:  #102a43;
+  --text-secondary:#486581;
+  --text-muted:    #829ab1;
+  color-scheme: light;
+}
+
+/* ------------------------------------------------------------------ */
+/*  RESET / BASE                                                       */
+/* ------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Números e dados financeiros usam JetBrains Mono */
+.font-mono,
+.font-data {
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+/* ------------------------------------------------------------------ */
+/*  UTILITÁRIOS GLOBAIS                                               */
+/* ------------------------------------------------------------------ */
+
+/* Scrollbar estilizada */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Gradiente de texto */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card glassmorphism */
+.glass-card {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+}
+
+/* Animação de entrada staggered */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+/* ------------------------------------------------------------------ */
+/*  TEMA CLARO — overrides globais via attribute selectors            */
+/* ------------------------------------------------------------------ */
+
+/* ── Fundos: qualquer classe bg-slate-7/8/9 → tons neutros claros ── */
+html.light [class*="bg-slate-95"],
+html.light [class*="bg-slate-90"],
+html.light [class*="bg-slate-85"],
+html.light [class*="bg-slate-80"],
+html.light [class*="bg-slate-75"],
+html.light [class*="bg-slate-70"] {
+  background-color: #FFFFFF !important;
+}
+
+/* Fundo base da aplicação — apenas no body, não sobrescreve bg explícito dos filhos */
+html.light body {
+  background-color: #f8f9fb;
+}
+
+/* Cards sobre fundo: ficam brancos com borda sutil */
+html.light [class*="bg-slate-8"],
+html.light [class*="bg-slate-7"] {
+  background-color: #FFFFFF !important;
+}
+
+/* Gray / Zinc equivalentes */
+html.light [class*="bg-gray-8"],
+html.light [class*="bg-gray-9"],
+html.light [class*="bg-zinc-8"],
+html.light [class*="bg-zinc-9"] {
+  background-color: #FFFFFF !important;
+}
+html.light [class*="bg-gray-7"],
+html.light [class*="bg-zinc-7"] {
+  background-color: #FFFFFF !important;
+}
+
+/* bg-black e bg-neutral* escuros → branco */
+html.light [class*="bg-neutral-8"],
+html.light [class*="bg-neutral-9"],
+html.light .bg-black {
+  background-color: #FFFFFF !important;
+}
+
+/* ── Texto: garante contraste legível ── */
+/* Texto quase-branco e branco → preto/indigo */
+html.light [class*="text-slate-1"],
+html.light [class*="text-slate-2"],
+html.light [class*="text-slate-3"] {
+  color: #1A1A2E !important;
+}
+
+/* Texto cinza médio → cinza escuro legível */
+html.light [class*="text-slate-4"] {
+  color: #444460 !important;
+}
+
+html.light [class*="text-slate-5"],
+html.light [class*="text-slate-6"] {
+  color: #6B6B80 !important;
+}
+
+/* text-white isolado → texto escuro em qualquer elemento */
+html.light h1[class*="text-white"],
+html.light h2[class*="text-white"],
+html.light h3[class*="text-white"],
+html.light h4[class*="text-white"],
+html.light p[class*="text-white"],
+html.light span[class*="text-white"],
+html.light div[class*="text-white"],
+html.light li[class*="text-white"],
+html.light a[class*="text-white"],
+html.light label[class*="text-white"],
+html.light td[class*="text-white"],
+html.light th[class*="text-white"] {
+  color: #1A1A2E !important;
+}
+
+/* Accent lavender (#7B8FFF, #9BB3FF, #3b6ea5) → navy institucional em modo claro */
+html.light [class*="text-\[#7B8FFF\]"],
+html.light [class*="text-\[#9BB3FF\]"],
+html.light [class*="text-\[#3b6ea5\]"] {
+  color: #102a43 !important;
+}
+
+/* ── Bordas ── */
+html.light [class*="border-slate-6"],
+html.light [class*="border-slate-7"],
+html.light [class*="border-slate-8"] {
+  border-color: #E2E2EA !important;
+}
+
+/* ── Headers e barras de navegação internas ── */
+/* "background" shorthand limpa background-image (gradiente), ao contrário de background-color */
+html.light header {
+  background: #FFFFFF !important;
+  background-image: none !important;
+  border-color: #E2E2EA !important;
+}
+
+/* ── Inputs e selects ── */
+html.light input[class*="bg-slate"],
+html.light select[class*="bg-slate"],
+html.light textarea[class*="bg-slate"] {
+  background-color: #F5F5F7 !important;
+  color: #1A1A2E !important;
+  border-color: #D0D0DC !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #9999B0 !important;
+}
+
+/* ── Scrollbar no tema claro ── */
+html.light ::-webkit-scrollbar-track {
+  background: #F5F5F7;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #D0D0DC;
+}
+
+/* ── Painel de branding (login) — mantém tema escuro independente do modo ── */
+/* O painel esquerdo do login sempre tem fundo escuro; suas cores não devem  */
+/* ser sobrescritas pelos overrides do tema claro.                            */
+html.light [data-notheme] h1[class*="text-white"],
+html.light [data-notheme] h2[class*="text-white"],
+html.light [data-notheme] h3[class*="text-white"],
+html.light [data-notheme] h4[class*="text-white"],
+html.light [data-notheme] p[class*="text-white"],
+html.light [data-notheme] span[class*="text-white"],
+html.light [data-notheme] div[class*="text-white"],
+html.light [data-notheme] li[class*="text-white"],
+html.light [data-notheme] a[class*="text-white"],
+html.light [data-notheme] label[class*="text-white"],
+html.light [data-notheme] td[class*="text-white"],
+html.light [data-notheme] th[class*="text-white"] {
+  color: white !important;
+}
+
+/* bg fundos escuros dentro de [data-notheme] não devem ser clareados */
+html.light [data-notheme] [class*="bg-slate-8"],
+html.light [data-notheme] [class*="bg-slate-7"],
+html.light [data-notheme] [class*="bg-slate-9"],
+html.light [data-notheme] [class*="bg-gray-8"],
+html.light [data-notheme] [class*="bg-zinc-8"] {
+  background-color: unset !important;
+}
+
+html.light [data-notheme] [class*="text-slate-1"],
+html.light [data-notheme] [class*="text-slate-2"],
+html.light [data-notheme] [class*="text-slate-3"] {
+  color: #cbd5e1 !important;
+}
+
+html.light [data-notheme] [class*="text-slate-4"] {
+  color: #94a3b8 !important;
+}
+
+html.light [data-notheme] [class*="text-slate-5"],
+html.light [data-notheme] [class*="text-slate-6"] {
+  color: #64748b !important;
+}
+
+html.light [data-notheme] .min-h-screen,
+html.light [data-notheme] .min-h-full {
+  background-color: inherit !important;
+}
+
+/* Pulse para badges */
+@keyframes pulseSlow {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 2s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/*  SKELETON LOADING                                                   */
+/* ------------------------------------------------------------------ */
+@keyframes shimmer {
+  0%   { background-position: -700px 0; }
+  100% { background-position: 700px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.04) 25%,
+    rgba(255,255,255,0.09) 50%,
+    rgba(255,255,255,0.04) 75%
+  );
+  background-size: 700px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+html.light .skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.05) 25%,
+    rgba(0,0,0,0.10) 50%,
+    rgba(0,0,0,0.05) 75%
+  );
+  background-size: 700px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/*  PAGE TRANSITION                                                    */
+/* ------------------------------------------------------------------ */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter {
+  animation: pageIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ------------------------------------------------------------------ */
+/*  PREMIUM CARD                                                       */
+/* ------------------------------------------------------------------ */
+.card-premium {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.12);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-premium:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25), 0 12px 32px rgba(0,0,0,0.18);
+  border-color: rgba(79,106,255,0.18);
+}
+
+/* KPI card accent borders */
+.kpi-emerald { border-left: 3px solid #10b981; }
+.kpi-blue    { border-left: 3px solid #3b82f6; }
+.kpi-violet  { border-left: 3px solid #8b5cf6; }
+.kpi-rose    { border-left: 3px solid #f43f5e; }
+.kpi-amber   { border-left: 3px solid #f59e0b; }
+.kpi-indigo  { border-left: 3px solid #4F6AFF; }
+
+/* ------------------------------------------------------------------ */
+/*  SECTION TITLE                                                      */
+/* ------------------------------------------------------------------ */
+.section-title {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+}
+
+/* ------------------------------------------------------------------ */
+/*  CHART CONTAINER                                                    */
+/* ------------------------------------------------------------------ */
+.chart-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.chart-header {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* ------------------------------------------------------------------ */
+/*  BADGE VARIANTS                                                     */
+/* ------------------------------------------------------------------ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border: 1px solid transparent;
+}
+.badge-indigo {
+  background: rgba(79,106,255,0.12);
+  border-color: rgba(79,106,255,0.25);
+  color: #7B8FFF;
+}
+.badge-emerald {
+  background: rgba(16,185,129,0.12);
+  border-color: rgba(16,185,129,0.25);
+  color: #34d399;
+}
+.badge-rose {
+  background: rgba(244,63,94,0.12);
+  border-color: rgba(244,63,94,0.25);
+  color: #fb7185;
+}
+.badge-amber {
+  background: rgba(245,158,11,0.12);
+  border-color: rgba(245,158,11,0.25);
+  color: #fbbf24;
+}
+.badge-violet {
+  background: rgba(139,92,246,0.12);
+  border-color: rgba(139,92,246,0.25);
+  color: #a78bfa;
+}
+
+/* Badge variants — Light Mode: escurece as cores para contraste WCAG AA */
+html.light .badge-indigo  { color: #2D3FCC; background: rgba(79,106,255,0.10); border-color: rgba(79,106,255,0.28); }
+html.light .badge-emerald { color: #065f46; background: rgba(16,185,129,0.10); border-color: rgba(16,185,129,0.30); }
+html.light .badge-rose    { color: #9f1239; background: rgba(244,63,94,0.09);  border-color: rgba(244,63,94,0.25);  }
+html.light .badge-amber   { color: #92400e; background: rgba(245,158,11,0.10); border-color: rgba(245,158,11,0.30); }
+html.light .badge-violet  { color: #4c1d95; background: rgba(139,92,246,0.09); border-color: rgba(139,92,246,0.25); }
+
+/* ------------------------------------------------------------------ */
+/*  PREMIUM TABLE                                                      */
+/* ------------------------------------------------------------------ */
+.table-premium thead tr {
+  background: rgba(45,43,75,0.40);
+  border-bottom: 1px solid var(--border);
+}
+.table-premium thead th {
+  padding: 10px 16px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  text-align: left;
+}
+.table-premium tbody tr {
+  border-bottom: 1px solid rgba(51,65,85,0.35);
+  transition: background 0.15s ease;
+}
+.table-premium tbody tr:hover {
+  background: rgba(79,106,255,0.04);
+}
+.table-premium tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* Premium Table — Light Mode */
+html.light .table-premium thead tr {
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e2ea;
+}
+html.light .table-premium tbody tr {
+  border-bottom-color: #f1f5f9;
+}
+html.light .table-premium tbody tr:hover {
+  background: #f0f4ff;
+}
+
+/* ------------------------------------------------------------------ */
+/*  GRADIENT HEADER (página premium)                                  */
+/* ------------------------------------------------------------------ */
+.page-header {
+  background: linear-gradient(135deg, rgba(45,43,75,0.95) 0%, rgba(26,26,46,0.98) 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 32px;
+}
+html.light .page-header {
+  background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+  border-bottom: 1px solid #e2e2ea;
+}
+
+/* ------------------------------------------------------------------ */
+/*  LEITOR DE EXTRATO — classes temáticas                             */
+/* ------------------------------------------------------------------ */
+.pdf-page-bg {
+  background: #0f172a;
+}
+
+.pdf-upload-card {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+}
+
+html.light .pdf-page-bg {
+  background: #F5F5F7;
+}
+
+.pdf-select-btn {
+  background: #2D2B4B;
+}
+.pdf-select-btn:hover {
+  background: #3D3A63;
+}
+
+html.light .pdf-select-btn {
+  background: #4F6AFF;
+}
+html.light .pdf-select-btn:hover {
+  background: #3D5CE0;
+}
+
+html.light .pdf-upload-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 226, 234, 0.8);
+  box-shadow: 0 4px 24px rgba(45, 43, 75, 0.08);
+}
+
+/* Container do gráfico no Leitor de Extrato */
+.pdf-chart-bg {
+  background: rgba(20, 30, 50, 0.7);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+html.light .pdf-chart-bg {
+  background: #FFFFFF;
+  border: 1px solid #E2E2EA;
+  box-shadow: 0 2px 12px rgba(45, 43, 75, 0.06);
+}
+
+/* Cards de resumo no Leitor de Extrato */
+.pdf-resumo-card-green {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+}
+.pdf-resumo-card-red {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+}
+.pdf-resumo-card-indigo {
+  background: rgba(79, 106, 255, 0.08);
+  border: 1px solid rgba(79, 106, 255, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+html.light .pdf-resumo-card-green {
+  background: #F0FDF4;
+  border-color: #86EFAC;
+}
+html.light .pdf-resumo-card-red {
+  background: #FFF1F2;
+  border-color: #FECDD3;
+}
+html.light .pdf-resumo-card-indigo {
+  background: #EEF2FF;
+  border-color: #C7D2FE;
+}
+
+/* ------------------------------------------------------------------ */
+/*  TEMA CLARO — ajustes finos de contraste                           */
+/* ------------------------------------------------------------------ */
+
+/* Texto amber/laranja → versões escuras legíveis no fundo branco */
+html.light [class*="text-amber-1"],
+html.light [class*="text-amber-2"],
+html.light [class*="text-amber-3"] {
+  color: #b45309 !important;   /* amber-700 */
+}
+html.light [class*="text-amber-4"] {
+  color: #92400e !important;   /* amber-800 */
+}
+
+/* Texto emerald claro → versão escura legível */
+html.light [class*="text-emerald-3"],
+html.light [class*="text-emerald-4"] {
+  color: #065f46 !important;   /* emerald-800 */
+}
+
+/* Rose/red claro → versão escura */
+html.light [class*="text-rose-3"],
+html.light [class*="text-red-3"] {
+  color: #9f1239 !important;   /* rose-800 */
+}
+
+/* Backgrounds de alerta (amber/emerald) → tons pastéis no claro */
+html.light [class*="bg-amber-950"] {
+  background-color: #fef3c7 !important;   /* amber-100 */
+}
+html.light [class*="bg-emerald-950"] {
+  background-color: #d1fae5 !important;   /* emerald-100 */
+}
+html.light [class*="bg-rose-950"] {
+  background-color: #ffe4e6 !important;   /* rose-100 */
+}
+
+/* Bordas de alerta → versões visíveis no claro */
+html.light [class*="border-amber-500"] {
+  border-color: #f59e0b !important;
+}
+html.light [class*="border-emerald-500"] {
+  border-color: #10b981 !important;
+}
+
+/* Texto "muted" → escuro legível no tema claro */
+html.light [class*="text-slate-4"],
+html.light [class*="text-gray-4"],
+html.light [class*="text-slate-5"],
+html.light [class*="text-gray-5"],
+html.light [class*="text-slate-6"],
+html.light [class*="text-gray-6"],
+html.light [class*="text-zinc-4"],
+html.light [class*="text-zinc-5"],
+html.light [class*="text-zinc-6"] {
+  color: #374151 !important;   /* gray-700 */
+}
+
+/* Garante que p, span, label, td "soltos" sem classe de cor também fiquem legíveis */
+html.light p,
+html.light span:not([class*="text-"]),
+html.light label:not([class*="text-"]),
+html.light td:not([class*="text-"]),
+html.light th:not([class*="text-"]) {
+  color: #1A1A2E;
+}
+
+/* Alertas (badges, tags) — fonte escura sobre fundo claro */
+html.light [class*="bg-emerald"][class*="text-emerald"],
+html.light [class*="bg-rose"][class*="text-rose"],
+html.light [class*="bg-amber"][class*="text-amber"] {
+  color: inherit;
+}
+
+/* ------------------------------------------------------------------ */
+/*  TEMA ESCURO — fontes escuras → brancas                            */
+/* ------------------------------------------------------------------ */
+
+/* Evita que texto muito escuro seja invisível no tema escuro */
+html:not(.light) [class*="text-gray-7"],
+html:not(.light) [class*="text-gray-8"],
+html:not(.light) [class*="text-gray-9"],
+html:not(.light) [class*="text-zinc-7"],
+html:not(.light) [class*="text-zinc-8"],
+html:not(.light) [class*="text-zinc-9"],
+html:not(.light) [class*="text-slate-7"],
+html:not(.light) [class*="text-stone-7"],
+html:not(.light) [class*="text-stone-8"],
+html:not(.light) [class*="text-stone-9"],
+html:not(.light) .text-black {
+  color: #f1f5f9 !important;   /* slate-100 — quase branco */
+}
+
+/* Texto secundário muted no escuro → cinza claro legível */
+html:not(.light) [class*="text-slate-5"],
+html:not(.light) [class*="text-gray-5"],
+html:not(.light) [class*="text-zinc-5"] {
+  color: #94a3b8 !important;   /* slate-400 */
+}
+
+/* Texto slate-400 já é legível no escuro — não sobrescreve */
+
+/* ------------------------------------------------------------------ */
+/*  ALERTAS — contraste garantido em ambos os temas                   */
+/* ------------------------------------------------------------------ */
+
+/* Alertas vermelhos no claro — texto dark */
+html.light [class*="text-red-4"],
+html.light [class*="text-rose-4"] {
+  color: #991b1b !important;   /* red-800 */
+}
+
+/* Alertas verdes no claro */
+html.light [class*="text-emerald-4"],
+html.light [class*="text-green-4"] {
+  color: #065f46 !important;   /* emerald-800 */
+}
+
+/* Alertas azuis/índigo no claro */
+html.light [class*="text-indigo-4"],
+html.light [class*="text-blue-4"] {
+  color: #1e3a8a !important;   /* blue-900 */
+}
+
+/* ------------------------------------------------------------------ */
+/*  RECHARTS TOOLTIP — Light Mode (WCAG AA ≥ 4.5:1)                  */
+/* ------------------------------------------------------------------ */
+html.light .recharts-default-tooltip {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 16px rgba(15,23,42,0.10) !important;
+}
+html.light .recharts-tooltip-label {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+html.light .recharts-tooltip-item-name,
+html.light .recharts-tooltip-item-value {
+  color: #334155 !important;
+  font-weight: 600 !important;
+}
+html.light .recharts-tooltip-item-separator {
+  color: #94a3b8 !important;
+}
+
+/* ------------------------------------------------------------------ */
+/*  KPI CARD ACCENTS — violet remapeado para indigo institucional     */
+/* ------------------------------------------------------------------ */
+.kpi-violet { border-left: 3px solid #4F6AFF; }
+
+/* ------------------------------------------------------------------ */
+/*  ALERTAS — banners com contraste WCAG AA no Modo Claro             */
+/* ------------------------------------------------------------------ */
+html.light .alerta-warning-banner {
+  background-color: #fffbeb !important;
+  border-color: #fbbf24 !important;
+}
+html.light .alerta-warning-text      { color: #92400e !important; }
+html.light .alerta-warning-text-muted { color: #b45309 !important; }
+html.light .alerta-ok-banner         { background-color: #f0fdf4 !important; border-color: #86efac !important; }
+html.light .alerta-ok-text           { color: #14532d !important; }
+html.light .feedback-msg-ok  { background: #f0fdf4 !important; border-color: #86efac !important; color: #166534 !important; }
+html.light .feedback-msg-erro { background: #fff1f2 !important; border-color: #fecdd3 !important; color: #9f1239 !important; }
+
+/* SectionCard Alertas — fundo branco no modo claro */
+html.light .section-card-alertas {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 2px 12px rgba(15,23,42,0.06) !important;
+}
+
+/* ------------------------------------------------------------------ */
+/*  CONCILIAÇÃO — UploadZone no Modo Claro                            */
+/* ------------------------------------------------------------------ */
+html.light .upload-zone {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+html.light .upload-zone:hover { background-color: #f1f5f9 !important; }
+html.light .upload-zone.drag-active-indigo  { background-color: #eef2ff !important; border-color: rgba(79,106,255,0.6) !important; }
+html.light .upload-zone.drag-active-emerald { background-color: #f0fdf4 !important; border-color: rgba(16,185,129,0.6) !important; }
+
+/* ------------------------------------------------------------------ */
+/*  TOPBAR — Light Mode overrides                                      */
+/* ------------------------------------------------------------------ */
+
+/* Gradiente de saudação: escurece para WCAG AA no fundo branco */
+html.light header .greeting-name {
+  background: linear-gradient(90deg, #2D3FCC, #4F1D96) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Logo box: remove tint escuro no fundo branco */
+html.light header .logo-box {
+  background: rgba(79,106,255,0.10) !important;
+  border-color: rgba(79,106,255,0.20) !important;
+}
+
+/* ------------------------------------------------------------------ */
+/*  GLOBAL SELECT & DATE INPUT — dark mode fixes                      */
+/* ------------------------------------------------------------------ */
+
+/* Select option dropdown — dark mode */
+select option {
+  background: var(--bg-card, #1e293b);
+  color: var(--text-primary, #f8fafc);
+}
+html.light select option {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+/* Date/time picker indicator — visible in dark mode */
+::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+}
+html.light ::-webkit-calendar-picker-indicator {
+  filter: none;
+}

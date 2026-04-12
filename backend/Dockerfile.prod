@@ -1,0 +1,46 @@
+FROM python:3.12-slim
+
+# System dependencies for PDF processing, PostgreSQL, healthcheck
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    tesseract-ocr \
+    tesseract-ocr-por \
+    libgl1 \
+    libglib2.0-0 \
+    libpq-dev \
+    libpoppler-cpp-dev poppler-utils \
+    libmupdf-dev mupdf-tools \
+    libffi-dev \
+    build-essential \
+    gcc \
+    curl \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt && \
+    apt-get update && \
+    apt-get purge -y build-essential gcc && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY . .
+
+# Create runtime directories and non-root user
+RUN mkdir -p uploads outputs temp data/data && \
+    addgroup --system appgroup && \
+    adduser --system --ingroup appgroup --no-create-home appuser && \
+    chown -R appuser:appgroup /app
+
+USER appuser
+
+EXPOSE 8000
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+  CMD curl -f http://localhost:8000/api/health || exit 1
+
+# 4 workers dimensionados para maquina 8GB / 3 usuarios reais:
+# - 1 worker absorve processamento pesado (PDFs ate 190 paginas, ~1.8GB pico)
+# - 3 workers atendem operacoes leves (donos em auditoria/carteiras)
+# Limite mem_limit=3000MB no docker-compose garante ~750MB/worker.
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]

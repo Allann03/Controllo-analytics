@@ -1,0 +1,42 @@
+{$DOMAIN} {
+    # API — todas as rotas /api/* vao para o backend
+    handle /api/* {
+        reverse_proxy backend:8000 {
+            transport http {
+                read_timeout 300s
+                write_timeout 300s
+                dial_timeout 10s
+            }
+        }
+    }
+
+    # Frontend — todo o resto
+    handle {
+        reverse_proxy frontend:3000
+    }
+
+    # Limite de upload: 100MB (comporta PDFs de 190 paginas com folga)
+    request_body {
+        max_size 100MB
+    }
+
+    # Headers de seguranca
+    header {
+        X-Frame-Options "SAMEORIGIN"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        X-XSS-Protection "1; mode=block"
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        -Server
+    }
+
+    encode gzip zstd
+
+    log {
+        output file /var/log/caddy/access.log {
+            roll_size 100MB
+            roll_keep 5
+        }
+        format json
+    }
+}
