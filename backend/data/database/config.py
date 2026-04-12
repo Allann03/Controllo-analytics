@@ -1,23 +1,32 @@
 import os
-from sqlalchemy import create_engine
+import time
+from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-# ── Database URL ─────────────────────────────────────────────────────
-# Em produção: DATABASE_URL=postgresql://user:pass@host:5432/dbname
-# Em desenvolvimento: cai no fallback SQLite
 DATABASE_URL = os.environ.get("DATABASE_URL", "")
 
 if DATABASE_URL:
-    # PostgreSQL (produção)
-    engine = create_engine(
-        DATABASE_URL,
-        pool_size=20,
-        max_overflow=30,
-        pool_pre_ping=True,
-        pool_recycle=300,
-    )
+    engine = None
+    for attempt in range(10):
+        try:
+            engine = create_engine(
+                DATABASE_URL,
+                pool_size=20,
+                max_overflow=30,
+                pool_pre_ping=True,
+                pool_recycle=300,
+            )
+            with engine.connect() as conn:
+                conn.execute(text("SELECT 1"))
+            print(f"[CONTROLLO] PostgreSQL conectado (tentativa {attempt+1})")
+            break
+        except Exception as e:
+            print(f"[CONTROLLO] DB tentativa {attempt+1}/10 falhou: {e}")
+            time.sleep(3)
+            engine = None
+    if engine is None:
+        raise RuntimeError("Nao foi possivel conectar ao PostgreSQL apos 10 tentativas")
 else:
-    # SQLite (desenvolvimento local)
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     DATA_DIR = os.path.join(BASE_DIR, "data")
     os.makedirs(DATA_DIR, exist_ok=True)
@@ -27,10 +36,8 @@ else:
     )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
 Base = declarative_base()
 
-# Dependência que vamos injetar nas rotas
 def get_db():
     db = SessionLocal()
     try:
