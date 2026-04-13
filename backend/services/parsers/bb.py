@@ -360,12 +360,10 @@ class ParserBB(ParserBase):
             return None
 
         desc_lower = desc.lower()
-        # Filtra linhas de saldo, aplicação automática e cabeçalhos
-        if (
-            'saldo' in desc_lower
-            or 'rende' in desc_lower
-            or 'aplic' in desc_lower
-        ):
+        # Filtra linhas de saldo do dia (não são transações reais).
+        # NÃO filtrar 'rende' nem 'aplic' — são movimentações BB Rende Fácil
+        # que afetam o saldo da conta e precisam constar para gap=0.
+        if 'saldo' in desc_lower and ('dia' in desc_lower or 'anterior' in desc_lower):
             return None
 
         valor = self._normalizar_valor(valor_raw)

@@ -1397,6 +1397,10 @@ async def rota_processar_extrato(
         with open(pdf_path, "wb") as f:
             f.write(conteudo)
 
+        # Pipeline de 8 passos (executa validação estruturada)
+        from services.pipeline_extracao import processar_com_pipeline as _pipeline
+        _pipeline_result = _pipeline(pdf_path, banco_id=banco, senha=senha_pdf or None)
+
         # Chama o serviço (alias _processar_extrato_pdf para evitar colisão de nome)
         resultado = _processar_extrato_pdf(pdf_path, banco_id=banco, password=senha_pdf or None)
 
@@ -1506,6 +1510,19 @@ async def rota_processar_extrato(
             "categorias": categorias,
             "numero_conta": numero_conta,
             "verificacao_contabil": _verificacao_resultado.to_dict() if _verificacao_resultado else None,
+            "pipeline": {
+                "confianca": _pipeline_result.confianca,
+                "reconciliacao": _pipeline_result.reconciliacao,
+                "gap": _pipeline_result.gap,
+                "checkpoints_ok": _pipeline_result.checkpoints_ok,
+                "checkpoints_total": _pipeline_result.checkpoints_total,
+                "divergencias": _pipeline_result.divergencias[:5],
+                "warnings": _pipeline_result.warnings[:10],
+                "log": [
+                    {"passo": l.passo, "nome": l.nome, "ok": l.ok, "mensagem": l.mensagem}
+                    for l in _pipeline_result.log
+                ],
+            },
         })
 
     except HTTPException:

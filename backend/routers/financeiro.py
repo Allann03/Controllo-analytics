@@ -219,10 +219,16 @@ def simulacao(
     custo_servicos: Optional[float] = None,
     aliquota_iss: Optional[float] = None,
     rbt12: Optional[float] = None,
+    lp_engine: Optional[str] = None,
     usuario: models.Usuario = Depends(_get_user),
     db: Session = Depends(get_db),
 ):
     resolve_empresa_or_403(db, empresa_id, usuario)
+
+    # Query param lp_engine=novo restrito a master (BLOCO 3F.2)
+    lp_override = None
+    if lp_engine and getattr(usuario, "is_master", False):
+        lp_override = lp_engine
 
     # Se não forneceu na query, usa último lançamento disponível
     if receita_bruta is None or custo_servicos is None:
@@ -239,6 +245,7 @@ def simulacao(
     return sts.simular_reforma(
         db, empresa_id, receita_bruta, custo_servicos,
         aliquota_iss=aliquota_iss, rbt12=rbt12,
+        lp_engine_override=lp_override,
     )
 
 
@@ -249,6 +256,7 @@ def comparar_regimes(
     custo_servicos: Optional[float] = None,
     aliquota_iss: Optional[float] = None,
     rbt12: Optional[float] = None,
+    lp_engine: Optional[str] = None,
     usuario: models.Usuario = Depends(_get_user),
     db: Session = Depends(get_db),
 ):
@@ -257,6 +265,11 @@ def comparar_regimes(
     para a mesma base de cálculo. Útil para planejamento tributário.
     """
     resolve_empresa_or_403(db, empresa_id, usuario)
+
+    # Query param lp_engine=novo restrito a master (BLOCO 3F.2)
+    lp_override = None
+    if lp_engine and getattr(usuario, "is_master", False):
+        lp_override = lp_engine
 
     if receita_bruta is None or custo_servicos is None:
         historico = fs.get_historico(db, empresa_id, limite=1)
@@ -272,6 +285,7 @@ def comparar_regimes(
     return sts.comparar_todos_regimes(
         db, empresa_id, receita_bruta, custo_servicos,
         aliquota_iss=aliquota_iss, rbt12=rbt12,
+        lp_engine_override=lp_override,
     )
 
 

@@ -45,6 +45,8 @@ const BANCOS: { id: string; label: string; group: string }[] = [
   { id: "bradesco_empresas",  label: "Bradesco Net Empresas",   group: "Empresarial PJ" },
   { id: "santander_empresas", label: "Santander Empresas",      group: "Empresarial PJ" },
   // Investimentos & outros
+  { id: "btg",                label: "BTG Pactual",             group: "Outros" },
+  { id: "safra",              label: "Banco Safra",             group: "Outros" },
   { id: "xp_extrato",         label: "XP — Extrato",            group: "Outros" },
   { id: "xp_posicao",         label: "XP — Posição",            group: "Outros" },
   { id: "stone",              label: "Stone",                   group: "Outros" },
@@ -747,26 +749,50 @@ export default function ExtratoLotePage() {
                         </div>
 
                         {/* Dropdown individual para corrigir banco */}
-                        <select
-                          value={item.bancoId}
-                          onChange={e => setBanco(item.id, e.target.value)}
-                          className="w-44 px-2.5 py-1.5 rounded-lg text-xs border transition-all outline-none cursor-pointer flex-shrink-0"
-                          style={{
-                            background: "var(--bg-secondary)",
-                            borderColor: !item.bancoId ? "rgba(245,158,11,0.5)" : "var(--border)",
-                            color: "var(--text-primary)",
-                            colorScheme: isLight ? "light" : "dark",
-                          }}
-                        >
-                          <option value="">— Selecione o banco —</option>
-                          {BANCO_GROUPS.map(group => (
-                            <optgroup key={group} label={group}>
-                              {BANCOS.filter(b => b.group === group).map(b => (
-                                <option key={b.id} value={b.id}>{b.label}</option>
-                              ))}
-                            </optgroup>
-                          ))}
-                        </select>
+                        <div className="relative flex-shrink-0 w-44">
+                          <select
+                            value={item.bancoId}
+                            onChange={e => setBanco(item.id, e.target.value)}
+                            className="w-full pl-2.5 pr-7 py-1.5 rounded-lg text-xs border transition-all outline-none cursor-pointer"
+                            style={{
+                              background: "var(--bg-secondary)",
+                              borderColor: !item.bancoId ? "rgba(245,158,11,0.5)" : "var(--border)",
+                              color: "var(--text-primary)",
+                              colorScheme: isLight ? "light" : "dark",
+                              appearance: item.bancoId ? "none" : undefined,
+                              WebkitAppearance: item.bancoId ? "none" : undefined,
+                            } as React.CSSProperties}
+                          >
+                            <option value="">— Selecione o banco —</option>
+                            {BANCO_GROUPS.map(group => (
+                              <optgroup key={group} label={group}>
+                                {BANCOS.filter(b => b.group === group).map(b => (
+                                  <option key={b.id} value={b.id}>{b.label}</option>
+                                ))}
+                              </optgroup>
+                            ))}
+                          </select>
+                          {/* Seta ▼: visível apenas quando nenhum banco selecionado */}
+                          {!item.bancoId && (
+                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                              <svg className="w-3 h-3 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </div>
+                          )}
+                          {/* X limpar: visível apenas quando banco selecionado */}
+                          {item.bancoId && (
+                            <button
+                              onClick={() => setBanco(item.id, "")}
+                              title="Limpar seleção"
+                              className="absolute inset-y-0 right-0 flex items-center pr-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+                            >
+                              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                              </svg>
+                            </button>
+                          )}
+                        </div>
 
                         {/* Campo de senha (se PDF protegido) */}
                         {item.erroPdf?.toLowerCase().includes("senha") && (
@@ -1081,27 +1107,49 @@ function ArquivoRow({
             </span>
           </div>
         ) : (
-          <select
-            value={item.bancoId}
-            onChange={e => onBanco(e.target.value)}
-            disabled={isProc}
-            className="w-full px-2.5 py-1.5 rounded-lg text-xs border transition-all outline-none disabled:opacity-50 cursor-pointer"
-            style={{
-              background: "var(--bg-secondary)",
-              borderColor: !item.bancoId ? "rgba(245,158,11,0.5)" : "var(--border)",
-              color: "var(--text-primary)",
-              colorScheme: isLight ? "light" : "dark",
-            }}
-          >
-            <option value="">— Selecione o banco —</option>
-            {BANCO_GROUPS.map(group => (
-              <optgroup key={group} label={group}>
-                {BANCOS.filter(b => b.group === group).map(b => (
-                  <option key={b.id} value={b.id}>{b.label}</option>
-                ))}
-              </optgroup>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              value={item.bancoId}
+              onChange={e => onBanco(e.target.value)}
+              disabled={isProc}
+              className="w-full pl-2.5 pr-7 py-1.5 rounded-lg text-xs border transition-all outline-none disabled:opacity-50 cursor-pointer"
+              style={{
+                background: "var(--bg-secondary)",
+                borderColor: !item.bancoId ? "rgba(245,158,11,0.5)" : "var(--border)",
+                color: "var(--text-primary)",
+                colorScheme: isLight ? "light" : "dark",
+                appearance: item.bancoId ? "none" : undefined,
+                WebkitAppearance: item.bancoId ? "none" : undefined,
+              } as React.CSSProperties}
+            >
+              <option value="">— Selecione o banco —</option>
+              {BANCO_GROUPS.map(group => (
+                <optgroup key={group} label={group}>
+                  {BANCOS.filter(b => b.group === group).map(b => (
+                    <option key={b.id} value={b.id}>{b.label}</option>
+                  ))}
+                </optgroup>
+              ))}
+            </select>
+            {!item.bancoId && (
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                <svg className="w-3 h-3 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            )}
+            {item.bancoId && !isProc && (
+              <button
+                onClick={() => onBanco("")}
+                title="Limpar seleção"
+                className="absolute inset-y-0 right-0 flex items-center pr-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+              >
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            )}
+          </div>
         )}
       </div>
 

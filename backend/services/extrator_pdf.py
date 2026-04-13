@@ -281,15 +281,13 @@ def _extrair_saldos_pdf(pdf_path: str, banco_key: str = '', password: str | None
         return ini, fim
 
     # ─── Stone ───────────────────────────────────────────────────────────────
-    # N1: "Entrada|Saída ... R$ saldo" — N2: "Crédito|Débito ... valor saldo"
-    # Último saldo encontrado = saldo_final
+    # Formato Stone: transações com coluna SALDO. Último saldo = SF.
+    # SI não é extraível de forma confiável (saldo na coluna é pós-transação).
     if banco == 'stone':
-        # N1 format: ends with R$ <saldo>
         _re_n1 = re.compile(
             r'^\d{2}/\d{2}/\d{2,4}\s+(?:Entrada|Sa[ií]da).*[Rr]\$\s*([\d.,]+)\s*$',
             re.IGNORECASE
         )
-        # N2 format: ends with <valor>,\d{2} <saldo>,\d{2}
         _re_n2 = re.compile(
             r'^\d{2}/\d{2}/\d{2,4}\s+(?:Cr[eé]dito|D[eé]bito).*\s+([\d.]+,\d{2})\s*$',
             re.IGNORECASE
@@ -389,6 +387,42 @@ def _extrair_saldos_pdf(pdf_path: str, banco_key: str = '', password: str | None
                     fim = v
         return ini, fim
 
+    # ─── BTG Pactual ───────────────────────────────────────────────────────
+    # Layout BTG: "Saldo de abertura em DD/MM/YYYY:Saldo de fechamento em DD/MM/YYYY:"
+    # seguido por: "R$ 32.837,65 R$ 0,00" (ambos valores na MESMA linha seguinte)
+    if banco == 'btg':
+        _re_btg_vals = re.compile(
+            r'R\$\s*([\d.,]+)\s+R\$\s*([\d.,]+)', re.IGNORECASE
+        )
+        for i_l, linha in enumerate(linhas):
+            ll = linha.lower()
+            if 'saldo de abertura' in ll and 'saldo de fechamento' in ll:
+                # Ambos rótulos na mesma linha — valores na próxima
+                if i_l + 1 < len(linhas):
+                    m = _re_btg_vals.search(linhas[i_l + 1])
+                    if m:
+                        ini = _parse_valor_br(m.group(1))
+                        fim = _parse_valor_br(m.group(2))
+                        return ini, fim
+            # Fallback: rótulos em linhas separadas
+            if ini is None and 'saldo de abertura' in ll:
+                m = re.search(r'R\$\s*([\d.,]+)', linha, re.IGNORECASE)
+                if m:
+                    ini = _parse_valor_br(m.group(1))
+                elif i_l + 1 < len(linhas):
+                    v = _r_num(linhas[i_l + 1])
+                    if v is not None:
+                        ini = v
+            if 'saldo de fechamento' in ll:
+                m = re.search(r'R\$\s*([\d.,]+)', linha, re.IGNORECASE)
+                if m:
+                    fim = _parse_valor_br(m.group(1))
+                elif i_l + 1 < len(linhas):
+                    v = _r_num(linhas[i_l + 1])
+                    if v is not None:
+                        fim = v
+        return ini, fim
+
     # ─── Santander Empresas: reutiliza lógica do Santander genérico ─────────
     if banco == 'santander_empresas':
         # Internet Banking Empresarial não expõe saldo do período de forma padronizada
@@ -399,8 +433,24 @@ def _extrair_saldos_pdf(pdf_path: str, banco_key: str = '', password: str | None
         banco = 'bradesco'
         # re-executa o bloco Bradesco acima reutilizando o fallback genérico abaixo
 
-    # ─── Santander / XP: sem saldo do período ────────────────────────────────
-    if banco in ('santander', 'xp_extrato', 'xp_posicao'):
+    # ─── Santander PF/PJ ────────────────────────────────────────────────────
+    # SI: "SALDO ANTERIOR X" (primeira ocorrência nas transações)
+    # SF: "SALDO FINAL X" ou "SALDO ATUAL X" (NÃO usar "Saldo disponível" — é saldo corrente, não do período)
+    if banco == 'santander':
+        for linha in linhas:
+            ll = linha.lower()
+            if ini is None and 'saldo anterior' in ll:
+                v = _ultimo_num(linha)
+                if v is not None:
+                    ini = v
+            if 'saldo final' in ll or 'saldo atual' in ll:
+                v = _r_num(linha) or _ultimo_num(linha)
+                if v is not None:
+                    fim = v
+        return ini, fim
+
+    # ─── XP: sem saldo do período ────────────────────────────────────────────
+    if banco in ('xp_extrato', 'xp_posicao'):
         return None, None
 
     # ─── Fallback genérico ───────────────────────────────────────────────────
@@ -443,6 +493,7 @@ from .parsers.n2.itau_empresas_n2 import ParserItauEmpresasN2
 from .parsers.santander_empresas.santander_empresas_v1 import ParserSantanderEmpresasV1
 from .parsers.santander_empresas.santander_empresas_v2 import ParserSantanderEmpresasV2
 from .parsers.safra import ParserSafra
+from .parsers.btg import ParserBTG
 
 
 # Mapeamento banco_key -> classe parser
@@ -475,6 +526,7 @@ PARSERS: dict[str, type] = {
     'santander_empresas_v1': ParserSantanderEmpresasV1,
     'santander_empresas_v2': ParserSantanderEmpresasV2,
     'safra': ParserSafra,
+    'btg': ParserBTG,
 }
 
 # Mapeamento de parsers de fallback.
@@ -512,11 +564,20 @@ _ASSINATURAS: list[tuple[str, list[list[str]]]] = [
     # nubank: ANTES do bradesco porque "BCO BRADESCO S.A." aparece em descrições de Pix
     # em extratos Nubank. 'nu pagamentos' é exclusivo do Nubank.
     ('nubank',       [['nu pagamentos'], ['nu financeira'], ['nubank.com'], ['nu.com.br']]),
+    # btg: BTG Pactual — CNPJ e domínio; "conta corrente - pj" + "banco 208" exclusivo
+    ('btg', [
+        ['btgpactual'], ['btg pactual'],
+        ['30.306.294'],                           # CNPJ BTG Pactual
+        ['conta corrente - pj', 'banco 208'],     # código COMPE 208 = BTG
+        ['sac@btgpactual'],
+    ]),
     # bradesco_net_empresas: Net Empresas — detectado por 'total disponível (r$)' + 'bradesco'
+    # Encoding do PDF pode corromper "Disponível" → "Dispon\ufffdvel": usar prefixo sem acento
     ('bradesco_net_empresas', [
         ['bradesco', 'total disponível (r$)'],
         ['bradesco', 'total disponivel (r$)'],
         ['bradesco', 'net empresa'],
+        ['bradesco', 'total dispon'],              # fallback encoding-safe
     ]),
     # bradesco: 'dcto.' é o cabeçalho de coluna único do Bradesco;
     # 'bradesco' nem sempre está no texto visível do PDF
@@ -526,7 +587,12 @@ _ASSINATURAS: list[tuple[str, list[list[str]]]] = [
         ['extrato consolidado inteligente'],
         ['contamax empresarial'],
     ]),
-    # santander_empresas_v1: Internet Banking Empresarial com CREDITO/DEBITO R$
+    # santander_empresas: Internet Banking Empresarial formato App (ANTES de v1)
+    # Detectado por: texto contém dia da semana por extenso + CREDITO/DEBITO
+    ('santander_empresas', [
+        ['internet banking empresarial', 'credito r$', 'debito r$'],
+    ]),
+    # santander_empresas_v1: Internet Banking Empresarial formato tabular com colunas
     ('santander_empresas_v1', [
         ['santander', 'credito r$', 'debito r$'],
         ['contamax', 'credito r$'],
@@ -539,8 +605,9 @@ _ASSINATURAS: list[tuple[str, list[list[str]]]] = [
     ('safra',        [['banco safra'], ['safra s/a'], ['58.160.789/0001-28']]),
     # pagbank:
     ('pagbank',      [['pagbank'], ['pagseguro']]),
-    # cora: 'cora scfi' é o nome legal do banco
-    ('cora',         [['cora scfi'], ['banco cora'], ['cora']]),
+    # cora: 'cora scfi' é o nome legal do banco.
+    # NUNCA usar 'cora' sozinho — dá falso positivo em 'ancoradouro', 'decoração' etc.
+    ('cora',         [['cora scfi'], ['banco cora'], ['cora s.a']]),
     # bb: 'bb rende' captura extratos BB corporativos; 'dia lote documento' é o
     # cabeçalho exclusivo do "Extrato de Conta Corrente" do BB (impede falso positivo
     # quando descrições de pagamento contêm 'itau', 'bradesco', etc.)
@@ -554,17 +621,22 @@ _ASSINATURAS: list[tuple[str, list[list[str]]]] = [
     ]),
     # inter: 'banco inter' ou 'bancointer'
     ('inter',        [['banco inter'], ['bancointer']]),
-    # bs2: banco BS2
-    ('bs2',          [['bs2 banco'], ['banco bs2'], ['bs2.com.br'], ['empresas.bs2'], ['bs2']]),
+    # bs2: banco BS2 — usar termos compostos (evitar 'bs2' sozinho = substring frágil)
+    ('bs2',          [['bs2 banco'], ['banco bs2'], ['bs2.com.br'], ['empresas.bs2'],
+                      ['bs2 s.a'], ['bs2 dtvm']]),
     # caixa: 'sac caixa' aparece no rodapé dos PDFs da CEF
     ('caixa',        [['caixa econômica'], ['caixa economica'], ['sac caixa'], ['cef']]),
-    # c6bank:
-    ('c6bank',       [['c6 bank'], ['c6bank'], ['banco c6']]),
+    # c6bank: adicionar 'extrato exportado' + contexto de agência curta (formato C6 web)
+    ('c6bank',       [['c6 bank'], ['c6bank'], ['banco c6'],
+                      ['extrato exportado', 'saldo do dia']]),
     # itau_n2: formato ANTARTI.CO com colunas Razão Social e CNPJ/CPF
+    # Encoding do PDF pode corromper "Razão" → "Raz\ufffdo": usar prefixo 'raz' + 'cnpj/cpf'
     ('itau_n2', [
         ['itaú', 'razão social', 'cnpj/cpf'],
         ['itau', 'razao social', 'cnpj/cpf'],
         ['itaú', 'saldo total disponível dia', 'lançamentos'],
+        # Fallback encoding-safe: coluna "CNPJ/CPF" + layout Itaú N2
+        ['cnpj/cpf', 'saldo anterior', 'valor (r$)', 'saldo (r$)'],
     ]),
     # itau_empresas: vem ANTES do itau genérico — assinaturas específicas de conta PJ
     ('itau_empresas', [
@@ -575,6 +647,8 @@ _ASSINATURAS: list[tuple[str, list[list[str]]]] = [
         ['extrato empresas', 'itaú'], ['extrato empresas', 'itau'],
         # Rodapé do PDF de conta corrente PJ online do Itaú
         ['itau.com.br/empresas'],
+        # Conta corrente PJ com encoding corrompido (sem 'itaú' mas com 'conta corrente - pj')
+        ['conta corrente - pj', 'saldo de abertura'],
     ]),
     # itau: mais genérico — verifica por último
     # 'saldo aplic aut mais' e 'extrato mensal ag' são exclusivos do Itaú
@@ -637,6 +711,8 @@ def detectar_banco(pdf_path: str, password: str | None = None) -> str:
         'sumup':     'sumup',
         'cora':      'cora',
         'bs2':       'bs2',
+        'btg':       'btg',
+        'safra':     'safra',
     }
     for banco_key, hint in _FILENAME_HINTS.items():
         if hint in nome_arquivo:
@@ -706,7 +782,7 @@ def detectar_banco_com_confianca(
         'inter': 'inter', 'bradesco': 'bradesco', 'santander': 'santander',
         'caixa': 'caixa', 'bb': 'banco do brasil', 'c6bank': 'c6',
         'pagbank': 'pagbank', 'stone': 'stone', 'sumup': 'sumup',
-        'cora': 'cora', 'bs2': 'bs2',
+        'cora': 'cora', 'bs2': 'bs2', 'btg': 'btg', 'safra': 'safra',
     }
     for banco_key, hint in _FILENAME_HINTS.items():
         if hint in nome_arquivo:
@@ -1082,6 +1158,7 @@ _NOME_BANCO_EXIBICAO: dict[str, str] = {
     'santander_empresas_v2': 'Santander Empresas',
     'stone_n2': 'Stone',
     'safra': 'Banco Safra',
+    'btg': 'BTG Pactual',
 }
 
 
