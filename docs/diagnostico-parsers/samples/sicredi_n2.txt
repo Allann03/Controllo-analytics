@@ -1,0 +1,22 @@
+# SOURCE: Extrato SICREDI N2.pdf
+# PAGES: 1
+
+
+===== PAGE 1 =====
+11/02/2026, 17:04 Internet Banking Sicredi
+Associado: CW TOUR LTDA
+Cooperativa: 2606 Conta Corrente: 40838-5 Impresso em 11/02/2026 17:04:27
+Extrato
+Dados referentes ao período 01/01/2026 a 31/01/2026.
+Data Descrição Documento Valor (R$) Saldo (R$)
+SALDO 548,77
+12/01/2026 RECEBIMENTO PIX 04699574000150 CW TOUR LTDA PIX_CRED 16.770,49 17.319,26
+12/01/2026 DEB.CTA.FATURA CM960086 -16.770,49 548,77
+20/01/2026 RECEBIMENTO PIX 04699574000150 CW TOUR LTDA PIX_CRED 500,00 1.048,77
+20/01/2026 RECEBIMENTO PIX 04699574000150 CW TOUR LTDA PIX_CRED 5.000,00 6.048,77
+23/01/2026 PLANO INT CAPITAL COTA -500,00 5.548,77
+Sicredi Fone 3003 4770 (Capitais e Regiões Metropolitanas)
+0800 724 4770 (Demais Regiões)
+SAC 0800 724 7220
+Ouvidoria 0800 646 2519
+https://ibpj.sicredi.com.br/ib-view/extrato/form/1.html?oidTrans=116 1/1

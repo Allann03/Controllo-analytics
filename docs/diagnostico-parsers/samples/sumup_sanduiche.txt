@@ -1,0 +1,218 @@
+# SOURCE: account_statement-e09135bc-cf6b-41c8-a1c0-6b9dffc50dc6.pdf
+# PAGES: 8
+
+
+===== PAGE 1 =====
+EXTRATO DE CONTA
+DUKKA SUPLEMENTOS LTDA
+CPF/CNPJ: 60093285000184 Agência: 1 Conta: 23999479995
+Periodo: De 01-02-2026 al 28-02-2026
+Entradas: R$ 7.307,11
+Saldo inicial: R$ 233,56 Saldo final: R$ 922,79
+Saidas: R$ -6.617,88
+DETALHE DOS MOVIMENTOS
+Data Descrição ID da operação Valor Saldo
+Transferência Pix enviada
+01-02-2026 143668952229 R$ -233,56 R$ 0,00
+Dukka Suplementos Ltda
+01-02-2026 Liberação de dinheiro 143707144605 R$ 44,15 R$ 44,15
+01-02-2026 Liberação de dinheiro 143710632229 R$ 86,69 R$ 130,84
+01-02-2026 Liberação de dinheiro 143711767631 R$ 44,15 R$ 174,99
+Transferência Pix enviada
+01-02-2026 143725018037 R$ -174,99 R$ 0,00
+Dukka Suplementos Ltda
+02-02-2026 Liberação de dinheiro 144486324744 R$ 117,90 R$ 117,90
+02-02-2026 Liberação de dinheiro 143814355485 R$ 2,87 R$ 120,77
+02-02-2026 Liberação de dinheiro 143847089629 R$ 88,52 R$ 209,29
+02-02-2026 Liberação de dinheiro 144530060464 R$ 10,13 R$ 219,42
+02-02-2026 Liberação de dinheiro 143865175175 R$ 61,38 R$ 280,80
+Transferência Pix enviada
+02-02-2026 144556444574 R$ -280,80 R$ 0,00
+Dukka Suplementos Ltda
+1/8
+
+===== PAGE 2 =====
+Data Descrição ID da operação Valor Saldo
+03-02-2026 Liberação de dinheiro 143945278231 R$ 180,14 R$ 180,14
+03-02-2026 Liberação de dinheiro 144650879086 R$ 9,75 R$ 189,89
+Pagamento com Código QR
+03-02-2026 Pix DENIS DOS SANTOS 143981042995 R$ 89,73 R$ 279,62
+ALVES
+03-02-2026 Liberação de dinheiro 143983022971 R$ 9,73 R$ 289,35
+Transferência Pix recebida
+03-02-2026 Mariana Regina Silva 144681817084 R$ 30,00 R$ 319,35
+Rodrigues
+Transferência Pix enviada
+03-02-2026 144019001659 R$ -319,35 R$ 0,00
+Dukka Suplementos Ltda
+04-02-2026 Liberação de dinheiro 144781569182 R$ 44,15 R$ 44,15
+04-02-2026 Liberação de dinheiro 144782445644 R$ 38,48 R$ 82,63
+04-02-2026 Liberação de dinheiro 144108771621 R$ 73,04 R$ 155,67
+04-02-2026 Liberação de dinheiro 144797671830 R$ 91,84 R$ 247,51
+04-02-2026 Liberação de dinheiro 144114949285 R$ 29,40 R$ 276,91
+Transferência Pix recebida
+04-02-2026 54.806.614 WESLEY SILVA DE 144158700823 R$ 130,00 R$ 406,91
+LIMA
+04-02-2026 Liberação de dinheiro 144159007497 R$ 129,98 R$ 536,89
+Transferência Pix enviada
+04-02-2026 144161910231 R$ -536,89 R$ 0,00
+Dukka Suplementos Ltda
+2/8
+
+===== PAGE 3 =====
+Data Descrição ID da operação Valor Saldo
+05-02-2026 Liberação de dinheiro 144227562831 R$ 2,93 R$ 2,93
+05-02-2026 Liberação de dinheiro 140884106572 R$ 64,63 R$ 67,56
+05-02-2026 Liberação de dinheiro 144282675821 R$ 31,72 R$ 99,28
+Pagamento com Código QR
+05-02-2026 144992721206 R$ 182,21 R$ 281,49
+Pix JUAN PACO VITOR RAREZ
+Pix enviado Dukka
+05-02-2026 144995665540 R$ -281,49 R$ 0,00
+Suplementos Ltda
+05-02-2026 Liberação de dinheiro 145004388900 R$ 3,37 R$ 3,37
+05-02-2026 Liberação de dinheiro 144324842895 R$ 41,68 R$ 45,05
+Pix enviado Dukka
+05-02-2026 145015585296 R$ -45,05 R$ 0,00
+Suplementos Ltda
+06-02-2026 Liberação de dinheiro 145112181544 R$ 49,06 R$ 49,06
+Pix enviado Dukka
+06-02-2026 145166298766 R$ -49,06 R$ 0,00
+Suplementos Ltda
+07-02-2026 Liberação de dinheiro 145226339282 R$ 73,55 R$ 73,55
+07-02-2026 Liberação de dinheiro 144552477015 R$ 141,63 R$ 215,18
+07-02-2026 Liberação de dinheiro 145238582740 R$ 22,95 R$ 238,13
+07-02-2026 Liberação de dinheiro 144558327823 R$ 12,22 R$ 250,35
+07-02-2026 Liberação de dinheiro 144560991575 R$ 323,27 R$ 573,62
+3/8
+
+===== PAGE 4 =====
+Data Descrição ID da operação Valor Saldo
+07-02-2026 Liberação de dinheiro 145247122156 R$ 4,82 R$ 578,44
+07-02-2026 Liberação de dinheiro 145250135086 R$ 142,72 R$ 721,16
+07-02-2026 Liberação de dinheiro 145250362340 R$ 117,90 R$ 839,06
+Pix enviado Dukka
+07-02-2026 145312817942 R$ -839,06 R$ 0,00
+Suplementos Ltda
+08-02-2026 Liberação de dinheiro 145357222822 R$ 4,87 R$ 4,87
+Pagamento com Código QR
+08-02-2026 Pix MARLI APARECIDA DOS 145362100198 R$ 75,91 R$ 80,78
+SANTOS
+08-02-2026 Liberação de dinheiro 144676286423 R$ 81,77 R$ 162,55
+Pagamento com Código QR
+08-02-2026 Pix SORAIA ALEXANDRA 144679823825 R$ 109,02 R$ 271,57
+ZANZINE
+08-02-2026 Liberação de dinheiro 144684991325 R$ 190,26 R$ 461,83
+Pagamento com Código QR
+08-02-2026 Pix DENIS JOSE PAZ DE 145373350466 R$ 84,36 R$ 546,19
+SOUSA
+08-02-2026 Liberação de dinheiro 144699883897 R$ 26,38 R$ 572,57
+08-02-2026 Liberação de dinheiro 144701461807 R$ 147,35 R$ 719,92
+Pix enviado Dukka
+08-02-2026 144702333427 R$ -719,92 R$ 0,00
+Suplementos Ltda
+Pagamento com Código QR
+Pix VICTOR TAKIMOTO DA
+4/8
+
+===== PAGE 5 =====
+Data Descrição ID da operação Valor Saldo
+09-02-2026 SILVA 144806816801 R$ 103,28 R$ 103,28
+Pagamento de assinatura
+MERCADO PAGO
+09-02-2026 144819507145 R$ -79,00 R$ 24,28
+INSTITUICAO DE
+PAGAMENTO LTDA
+10-02-2026 Liberação de dinheiro 144958705937 R$ 77,39 R$ 101,67
+Pagamento com Código QR
+10-02-2026 145704873110 R$ 123,41 R$ 225,08
+Pix EDUARDO DIAS SANTANA
+10-02-2026 Liberação de dinheiro 145725856732 R$ 106,48 R$ 331,56
+11-02-2026 Liberação de dinheiro 141697088552 R$ 157,66 R$ 489,22
+11-02-2026 Liberação de dinheiro 145130191237 R$ 44,15 R$ 533,37
+11-02-2026 Liberação de dinheiro 145174221981 R$ 115,62 R$ 648,99
+13-02-2026 Liberação de dinheiro 145403022669 R$ 39,49 R$ 688,48
+13-02-2026 Liberação de dinheiro 145465909795 R$ 115,62 R$ 804,10
+13-02-2026 Liberação de dinheiro 145483174821 R$ 11,72 R$ 815,82
+13-02-2026 Liberação de dinheiro 145495927523 R$ 98,28 R$ 914,10
+14-02-2026 Liberação de dinheiro 145582928651 R$ 34,03 R$ 948,13
+15-02-2026 Liberação de dinheiro 145684448397 R$ 139,63 R$ 1.087,76
+15-02-2026 Liberação de dinheiro 145686241835 R$ 57,71 R$ 1.145,47
+5/8
+
+===== PAGE 6 =====
+Data Descrição ID da operação Valor Saldo
+15-02-2026 Liberação de dinheiro 145687209717 R$ 13,93 R$ 1.159,40
+Pix enviado Dukka
+15-02-2026 145714321921 R$ -1.159,40 R$ 0,00
+Suplementos Ltda
+16-02-2026 Pix recebido MARINA JOTTEN 145795559589 R$ 25,65 R$ 25,65
+16-02-2026 Liberação de dinheiro 145799157445 R$ 16,29 R$ 41,94
+16-02-2026 Liberação de dinheiro 146523690548 R$ 61,65 R$ 103,59
+16-02-2026 Liberação de dinheiro 145839704255 R$ 43,30 R$ 146,89
+17-02-2026 Liberação de dinheiro 146626572394 R$ 108,64 R$ 255,53
+17-02-2026 Liberação de dinheiro 145948777395 R$ 44,15 R$ 299,68
+18-02-2026 Liberação de dinheiro 146074509133 R$ 88,40 R$ 388,08
+18-02-2026 Liberação de dinheiro 146077474269 R$ 29,40 R$ 417,48
+18-02-2026 Liberação de dinheiro 146779316282 R$ 3,37 R$ 420,85
+18-02-2026 Liberação de dinheiro 146084532931 R$ 4,87 R$ 425,72
+18-02-2026 Liberação de dinheiro 146088432879 R$ 135,85 R$ 561,57
+18-02-2026 Liberação de dinheiro 146098061717 R$ 92,09 R$ 653,66
+18-02-2026 Liberação de dinheiro 146103199099 R$ 60,58 R$ 714,24
+18-02-2026 Liberação de dinheiro 146124379519 R$ 237,12 R$ 951,36
+6/8
+
+===== PAGE 7 =====
+Data Descrição ID da operação Valor Saldo
+19-02-2026 Liberação de dinheiro 146875669782 R$ 296,98 R$ 1.248,34
+19-02-2026 Liberação de dinheiro 146198503109 R$ 43,30 R$ 1.291,64
+19-02-2026 Liberação de dinheiro 146897332060 R$ 4,09 R$ 1.295,73
+19-02-2026 Liberação de dinheiro 146931419370 R$ 125,39 R$ 1.421,12
+Pix recebido FATIMA
+19-02-2026 146968088300 R$ 100,00 R$ 1.521,12
+PALMEIRA BOMBARDA
+20-02-2026 Liberação de dinheiro 146337236953 R$ 32,35 R$ 1.553,47
+20-02-2026 Liberação de dinheiro 147056553350 R$ 7,87 R$ 1.561,34
+21-02-2026 Liberação de dinheiro 146488145347 R$ 79,46 R$ 1.640,80
+21-02-2026 Liberação de dinheiro 147209485522 R$ 53,04 R$ 1.693,84
+21-02-2026 Pix recebido Otto Larson 146537760665 R$ 44,45 R$ 1.738,29
+21-02-2026 Liberação de dinheiro 146539468365 R$ 54,78 R$ 1.793,07
+22-02-2026 Liberação de dinheiro 146626958693 R$ 38,28 R$ 1.831,35
+22-02-2026 Liberação de dinheiro 146629150219 R$ 67,96 R$ 1.899,31
+Pix enviado Dukka
+22-02-2026 146630412315 R$ -1.899,31 R$ 0,00
+Suplementos Ltda
+23-02-2026 Liberação de dinheiro 147423479068 R$ 271,74 R$ 271,74
+23-02-2026 Liberação de dinheiro 146782388505 R$ 73,19 R$ 344,93
+7/8
+
+===== PAGE 8 =====
+Data Descrição ID da operação Valor Saldo
+24-02-2026 Liberação de dinheiro 147625842668 R$ 10,13 R$ 355,06
+Pix recebido JOAO ROGERIO
+26-02-2026 147928281632 R$ 113,90 R$ 468,96
+RODRIGUES GARCIA PISMEL
+Pagamento com Código QR
+26-02-2026 Pix MICHEL BUENO DE 147929566680 R$ 6,97 R$ 475,93
+SANTANA
+26-02-2026 Liberação de dinheiro 147967463772 R$ 41,18 R$ 517,11
+26-02-2026 Liberação de dinheiro 147279751383 R$ 28,84 R$ 545,95
+27-02-2026 Liberação de dinheiro 148084035516 R$ 58,80 R$ 604,75
+27-02-2026 Liberação de dinheiro 148116720758 R$ 45,71 R$ 650,46
+27-02-2026 Liberação de dinheiro 147418164179 R$ 0,97 R$ 651,43
+27-02-2026 Liberação de dinheiro 148151431506 R$ 44,15 R$ 695,58
+28-02-2026 Liberação de dinheiro 148223248592 R$ 8,20 R$ 703,78
+Pix recebido IZABEL
+28-02-2026 147525037357 R$ 113,90 R$ 817,68
+APARECIDA PALMEIRA
+Pix recebido FATIMA
+28-02-2026 148256080178 R$ 14,15 R$ 831,83
+PALMEIRA BOMBARDA
+28-02-2026 Liberação de dinheiro 147546225777 R$ 90,96 R$ 922,79
+Data de geração: 09-03-2026
+Você tem alguma dúvida? Conte com o nosso Portal de ajuda para encontrar informações sobre nossos produtos e serviços. Se deseja falar com
+o nosso SAC, ligue para 0800 637 7246. Você precisará de um código de atendimento para nos contatar. Se já nos contatou e precisa de ajuda
+da ouvidoria, ligue para 0800 688 4365 com o protocolo do primeiro atendimento.
+Mercado Pago Instituição de Pagamento Ltda. CNPJ n.º 10.573.521/0001-91. Av. das Nações Unidas, nº 3.003, Bonfim, Osasco SP - CEP 06233-
+903. Encontre nossos canais de consulta em:www.mercadopago.com.br
+8/8

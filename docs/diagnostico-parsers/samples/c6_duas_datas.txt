@@ -1,0 +1,378 @@
+# SOURCE: Extrato C6 (Aten??o ao ano)..pdf
+# PAGES: 8
+
+
+===== PAGE 1 =====
+Extrato exportado no dia 30 de setembro de 2025 às 17:22
+CIPA • 51.242.875/0001-30
+Agência: 1 • Conta: 281343527
+Extrato Período • 3 de abril de 2025 até 30 de setembro de 2025
+Saldo do dia • 30 de setembro de 2025 • R$ 3.000,10
+Abril 2025 ( 03/04/2025 - 30/04/2025 ) Entradas: R$ 9.529,75 • Saídas: R$ 6.350,89
+Data Data
+Tipo Descrição Valor
+lançamento contábil
+04/04 04/04 Entrada PIX Pix recebido de POUSADA NANAI LTDA R$ 628,00
+Saldo do dia 04/04/25 R$ 631,42
+07/04 07/04 Entrada PIX Pix recebido de MAURICIO DONADEL R$ 1.552,00
+07/04 07/04 Entrada PIX Pix recebido de GUILHERME FRANCA REIS R$ 180,00
+07/04 07/04 Saída PIX Pix enviado para CARLOS ALBERTO DIAS PINHEIRO -R$ 2.355,89
+Saldo do dia 07/04/25 R$ 7,53
+10/04 10/04 Entrada PIX Pix recebido de VAGNER CAETANO R$ 350,00
+10/04 10/04 Entrada PIX Pix recebido de GRACIELA ANATALIA CAETANO 30129786829 R$ 2.137,75
+Saldo do dia 10/04/25 R$ 2.495,28
+17/04 17/04 Saída PIX Pix enviado para EDNA PUNGELLI -R$ 1.530,00
+17/04 17/04 Saída PIX Pix enviado para GUILHERME FRANCA REIS -R$ 965,00
+17/04 17/04 Entrada PIX Pix recebido de EMERSON RAMOS DA SILVA JUNIOR R$ 1.500,00
+Saldo do dia 17/04/25 R$ 1.500,28
+20/04 22/04 Saída PIX Pix enviado para GUILHERME FRANCA REIS -R$ 1.500,00
+25/04 25/04 Entrada PIX Pix recebido de GUILHERME MEIRELES ALEIXO R$ 750,00
+Saldo do dia 25/04/25 R$ 750,28
+26/04 28/04 Entrada PIX Pix recebido de IZAEL ARANTES DE GODOI JR R$ 1.800,00
+30/04 30/04 Entrada PIX Pix recebido de THIAGO UEHARA CABRAL R$ 171,50
+30/04 30/04 Entrada PIX Pix recebido de TORRECILHA RESTAURANTE LTDA EPP R$ 460,50
+Saldo do dia 30/04/25 R$ 3.182,28
+Maio 2025 ( 01/05/2025 - 31/05/2025 ) Entradas: R$ 10.080,50 • Saídas: R$ 11.065,00
+Data Data
+Tipo Descrição Valor
+lançamento contábil
+01/05 02/05 Entrada PIX Pix recebido de JOAO CESAR BOREGGIO DE ARAUJO R$ 343,00
+01/05 02/05 Entrada PIX Pix recebido de JACOMO STORNIOLO NETO R$ 171,50
+01/05 02/05 Entrada PIX Pix recebido de RODRIGO CAPELARI VICTAGLIANO R$ 171,50
+02/05 02/05 Entrada PIX Pix recebido de Joao Paulo Torrecilha R$ 171,50
+Saldo do dia 02/05/25 R$ 4.039,78
+05/05 05/05 Entrada PIX Pix recebido de ROBERTO LUIZ BARROSO FILHO R$ 500,00
+05/05 05/05 Saída PIX Pix enviado para GUILHERME FRANCA REIS -R$ 4.535,00
+Saldo do dia 05/05/25 R$ 4,78
+07/05 07/05 Entrada PIX Pix recebido de RENATO RIBEIRO ESCOCARD R$ 520,00
+Saldo do dia 07/05/25 R$ 524,78
+08/05 08/05 Entrada PIX Pix recebido de RENATO RIBEIRO ESCOCARD R$ 520,00
+08/05 08/05 Entrada PIX Pix recebido de DANIEL SAGIORATO R$ 868,00
+08/05 08/05 Saída PIX Pix enviado para ALINE CECILIA NICACIO -R$ 400,00
+Saldo do dia 08/05/25 R$ 1.512,78
+
+===== PAGE 2 =====
+Data Data
+Tipo Descrição Valor
+lançamento contábil
+15/05 15/05 Entrada PIX Pix recebido de POUSADA NANAI LTDA R$ 4.168,00
+Saldo do dia 15/05/25 R$ 5.680,78
+16/05 16/05 Saída PIX Pix enviado para GUILHERME FRANCA REIS -R$ 5.680,00
+Saldo do dia 16/05/25 R$ 0,78
+20/05 20/05 Entrada PIX Pix recebido de EMERSON RAMOS DA SILVA JUNIOR R$ 1.200,00
+Saldo do dia 20/05/25 R$ 1.200,78
+21/05 21/05 Entrada PIX Pix recebido de VANESSA PEREIRA MOTA R$ 1.447,00
+Saldo do dia 21/05/25 R$ 2.647,78
+27/05 27/05 Saída PIX Pix enviado para GUILHERME FRANCA REIS -R$ 450,00
+Saldo do dia 27/05/25 R$ 2.197,78
+Junho 2025 ( 01/06/2025 - 30/06/2025 ) Entradas: R$ 13.923,00 • Saídas: R$ 13.120,00
+Data Data
+Tipo Descrição Valor
+lançamento contábil
+01/06 02/06 Entrada PIX Pix recebido de ANTONIO ENEAS DE CAMPOS FILHO R$ 1.750,00
+02/06 02/06 Entrada PIX Pix recebido de TIAGO GEMIGNANI R$ 1.884,00
+02/06 02/06 Saída PIX Pix enviado para Herico de Souza Danieli -R$ 4.000,00
+Saldo do dia 02/06/25 R$ 1.831,78
+03/06 03/06 Saída PIX Pix enviado para EDNALDO FIRMINO FERREIRA -R$ 1.000,00
+Saldo do dia 03/06/25 R$ 831,78
+04/06 04/06 Saída PIX Pix enviado para GUILHERME FRANCA REIS -R$ 60,00
+Saldo do dia 04/06/25 R$ 771,78
+06/06 06/06 Entrada PIX Pix recebido c6 de BRUNO FIGUEIREDO PEREIRA R$ 2.000,00
+06/06 06/06 Entrada PIX Pix recebido c6 de R S MIX CONCRETO LTDA R$ 885,00
+06/06 06/06 Entrada PIX Pix recebido de MAIRA FERREIRA MAGACHO JIMENEZ R$ 804,00
+06/06 06/06 Saída PIX Pix enviado para GUILHERME FRANCA REIS -R$ 2.000,00
+Saldo do dia 06/06/25 R$ 2.460,78
+09/06 09/06 Saída PIX Pix enviado para GUILHERME FRANCA REIS -R$ 2.460,00
+Saldo do dia 09/06/25 R$ 0,78
+10/06 10/06 Entrada PIX Pix recebido de EMERSON RAMOS DA SILVA JUNIOR R$ 1.500,00
+Saldo do dia 10/06/25 R$ 1.500,78
+11/06 11/06 Saída PIX Pix enviado para GENIVALDO OLIVEIRA DA SILVA -R$ 1.500,00
+Saldo do dia 11/06/25 R$ 0,78
+18/06 18/06 Entrada PIX Pix recebido de POUSADA NANAI LTDA R$ 2.100,00
+Saldo do dia 18/06/25 R$ 2.100,78
+20/06 20/06 Saída PIX Pix enviado para EDNA PUNGELLI -R$ 2.100,00
+Saldo do dia 20/06/25 R$ 0,78
+26/06 26/06 Entrada PIX Pix recebido de GUILHERME MEIRELES ALEIXO R$ 1.000,00
+26/06 26/06 Entrada PIX Pix recebido de LUVICEN PARTICIPACOES LTDA R$ 2.000,00
+Saldo do dia 26/06/25 R$ 3.000,78
+Julho 2025 ( 01/07/2025 - 31/07/2025 ) Entradas: R$ 9.343,00 • Saídas: R$ 10.180,24
+
+===== PAGE 3 =====
+Data Data
+Tipo Descrição Valor
+lançamento contábil
+01/07 01/07 Entrada PIX Pix recebido de GUILHERME FRANCA REIS R$ 1.000,00
+01/07 01/07 Saída PIX Pix enviado para ROSANGELA VIETZE -R$ 4.000,00
+Saldo do dia 01/07/25 R$ 1.000,78
+02/07 01/07 Entrada PIX Pix recebido de EMERSON RAMOS DA SILVA JUNIOR R$ 1.000,00
+03/07 03/07 Saída PIX Pix enviado para GUILHERME FRANCA REIS -R$ 20,00
+Saldo do dia 03/07/25 R$ 980,78
+07/07 07/07 Entrada PIX Pix recebido de EMERSON RAMOS DA SILVA JUNIOR R$ 2.000,00
+Saldo do dia 07/07/25 R$ 2.980,78
+08/07 08/07 Saída PIX Pix enviado para GUILHERME FRANCA REIS -R$ 2.980,00
+Saldo do dia 08/07/25 R$ 0,78
+17/07 17/07 Entrada PIX Pix recebido de Jarbas Vieira R$ 1.092,00
+Saldo do dia 17/07/25 R$ 1.092,78
+18/07 18/07 Entrada PIX Pix recebido de EDUARDO GARGANTINI FERREIRA R$ 892,00
+18/07 18/07 Entrada PIX Pix recebido de VITORIA GABRIELLY DIAS DE FRANCA R$ 940,00
+Saldo do dia 18/07/25 R$ 2.924,78
+21/07 21/07 Saída PIX Pix enviado para EDNA PUNGELLI -R$ 2.260,00
+Saldo do dia 21/07/25 R$ 664,78
+23/07 23/07 Saída PIX Pix enviado para SERGIO VERDUM JUNIOR -R$ 500,00
+Saldo do dia 23/07/25 R$ 164,78
+24/07 24/07 Entrada PIX Pix recebido c6 de TANGO VINO EVENTOS LTDA R$ 419,00
+Saldo do dia 24/07/25 R$ 583,78
+30/07 30/07 Pagamento CONTROLLO BPO A E CONTABIL -R$ 420,24
+Saldo do dia 30/07/25 R$ 163,54
+31/07 31/07 Entrada PIX Pix recebido de EMERSON RAMOS DA SILVA JUNIOR R$ 2.000,00
+Saldo do dia 31/07/25 R$ 2.163,54
+Agosto 2025 ( 01/08/2025 - 31/08/2025 ) Entradas: R$ 31.114,00 • Saídas: R$ 29.530,64
+Data Data
+Tipo Descrição Valor
+lançamento contábil
+01/08 01/08 Entrada PIX Pix recebido de Rafael de Sant Anna Mello R$ 900,00
+01/08 01/08 Entrada PIX Pix recebido de GUILHERME FRANCA REIS R$ 1.000,00
+01/08 01/08 Saída PIX Pix enviado para COMPANY CONSTRUTORA -R$ 4.000,00
+Saldo do dia 01/08/25 R$ 63,54
+04/08 04/08 Entrada PIX Pix recebido de ANTONIO CARLOS GOMES LEAL JUNIOR R$ 1.502,00
+Saldo do dia 04/08/25 R$ 1.565,54
+07/08 07/08 Entrada PIX Pix recebido de EMERSON RAMOS DA SILVA JUNIOR R$ 2.500,00
+07/08 07/08 Saída PIX Pix enviado para CARLOS ALBERTO DIAS PINHEIRO -R$ 2.355,89
+Saldo do dia 07/08/25 R$ 1.709,65
+08/08 08/08 Entrada PIX Pix recebido de Rafael de Sant Anna Mello R$ 600,00
+Saldo do dia 08/08/25 R$ 2.309,65
+10/08 11/08 Débito de Cartão RAIA2048 SAO PAULO BRA -R$ 0,75
+11/08 11/08 Débito de Cartão REDE PAPA SAO PAULO BRA -R$ 108,99
+11/08 11/08 Saída PIX Pix enviado para Jefferson Felipe de melo -R$ 100,00
+11/08 11/08 Débito de Cartão REDE PAPA SAO PAULO BRA -R$ 50,00
+
+===== PAGE 4 =====
+Data Data
+Tipo Descrição Valor
+lançamento contábil
+11/08 11/08 Débito de Cartão GELATO RIMINI JUNDIAI BRA -R$ 58,00
+11/08 11/08 Entrada PIX Pix recebido de EMERSON RAMOS DA SILVA JUNIOR R$ 3.000,00
+Saldo do dia 11/08/25 R$ 4.991,91
+12/08 12/08 Débito de Cartão POTENZA SAO PAULO BRA -R$ 60,00
+12/08 12/08 Débito de Cartão YasminSouzaDos SAO PAULO BRA -R$ 20,00
+12/08 12/08 Saída PIX Pix enviado para BEATRIZ ALVES DA SILVA -R$ 10,00
+12/08 12/08 Saída PIX Pix enviado para CONTROLLO -R$ 260,00
+Saldo do dia 12/08/25 R$ 4.641,91
+13/08 13/08 Débito de Cartão REDE PAPA SAO PAULO BRA -R$ 50,00
+13/08 13/08 Débito de Cartão MP *LADONAMOSAICO So Paulo BRA -R$ 9,50
+13/08 13/08 Saída PIX Pix enviado para Tim S A -R$ 66,53
+Saldo do dia 13/08/25 R$ 4.515,88
+14/08 14/08 Débito de Cartão MP *MAPARK SAO PAULO BRA -R$ 10,00
+14/08 14/08 Saída PIX Pix enviado para GDO PARTICIPACOES S/A -R$ 73,80
+14/08 14/08 Débito de Cartão PORQUILLO RESTAURANTE SOROCABA BRA -R$ 90,00
+14/08 14/08 Entrada PIX Pix recebido de POUSADA NANAI LTDA R$ 650,00
+Saldo do dia 14/08/25 R$ 4.992,08
+15/08 15/08 Débito de Cartão YasminSouzaDos SAO PAULO BRA -R$ 32,00
+15/08 15/08 Débito de Cartão LEANDRO PALAZZI DE SOU MOGI DAS CRUZ BRA -R$ 9,00
+15/08 15/08 Saída PIX Pix enviado para GDO PARTICIPACOES S/A -R$ 73,80
+15/08 15/08 Débito de Cartão MERCADO HORTIMIX LTDA SAO PAULO BRA -R$ 125,09
+15/08 15/08 Pagamento GPS -R$ 166,98
+Saldo do dia 15/08/25 R$ 4.585,21
+16/08 18/08 Débito de Cartão MP *MAPARK SAO PAULO BRA -R$ 10,00
+16/08 18/08 Débito de Cartão Mercadocar SP BRA -R$ 26,90
+16/08 18/08 Saída PIX Pix enviado para GDO PARTICIPACOES S/A -R$ 73,80
+16/08 18/08 Débito de Cartão MERCADO HORTIMIX LTDA SAO PAULO BRA -R$ 14,28
+16/08 18/08 Débito de Cartão MP *SILVAGAS MAIRINQUE BRA -R$ 28,00
+17/08 18/08 Débito de Cartão MP *MAPARK SAO PAULO BRA -R$ 10,00
+17/08 18/08 Saída PIX Pix enviado para GDO PARTICIPACOES S/A -R$ 73,80
+17/08 18/08 Débito de Cartão MERCADO HORTIMIX LTDA SAO PAULO BRA -R$ 56,37
+17/08 18/08 Débito de Cartão BABAE GELATO SAO PAULO BRA -R$ 48,00
+17/08 18/08 Débito de Cartão ATACADAO 939 AS SAO PAULO BRA -R$ 126,21
+18/08 18/08 Débito de Cartão MP *MAPARK SAO PAULO BRA -R$ 10,00
+18/08 18/08 Débito de Cartão CRJ ATACADAO LTDA SAO PAULO BRA -R$ 15,00
+18/08 18/08 Saída PIX Pix enviado para CELIA REGINA EVANGELISTA REBOUCAS 22364690803 -R$ 9,50
+18/08 18/08 Saída PIX Pix enviado para Tim S A -R$ 64,99
+Saldo do dia 18/08/25 R$ 4.018,36
+19/08 19/08 Débito de Cartão REDE PAPA SAO PAULO BRA -R$ 70,00
+19/08 19/08 Saída PIX Pix enviado para GDO PARTICIPACOES S/A -R$ 73,80
+19/08 19/08 Saída PIX Pix enviado para EDNA PUNGELLI -R$ 2.100,00
+19/08 19/08 Saída PIX Pix enviado para EDNALDO FIRMINO FERREIRA -R$ 500,00
+Saldo do dia 19/08/25 R$ 1.274,56
+20/08 20/08 Entrada PIX Pix recebido c6 de 55.736.717 bruno figueiredo pereira R$ 5.000,00
+20/08 20/08 Saída PIX Pix recusado -R$ 300,00
+20/08 20/08 Entradas Pix estornado R$ 300,00
+20/08 20/08 Débito de Cartão CONFEITARIA VERA CRUZ SAO PAULO BRA -R$ 23,50
+20/08 20/08 Entrada PIX Pix recebido de RICARDO MOYA VALDE R$ 300,00
+20/08 20/08 Débito de Cartão PastelKakazu SAO PAULO BRA -R$ 12,00
+20/08 20/08 Entrada PIX Pix recebido c6 de 37.585.318 felipe do amaral lima R$ 2.400,00
+20/08 20/08 Entrada PIX Pix recebido de RENATO RIBEIRO ESCOCARD R$ 1.000,00
+
+===== PAGE 5 =====
+Data Data
+Tipo Descrição Valor
+lançamento contábil
+20/08 20/08 Entrada PIX Pix recebido de RENATO RIBEIRO ESCOCARD R$ 460,00
+20/08 20/08 Entrada PIX Pix recebido de 22.960.559 MARIA APARECIDA DE MELO SILVA R$ 2.500,00
+20/08 20/08 Entrada PIX Pix recebido de EMERSON RAMOS DA SILVA JUNIOR R$ 1.200,00
+20/08 20/08 Saída PIX Pix enviado para RECEITA FEDERAL -R$ 81,90
+Saldo do dia 20/08/25 R$ 14.017,16
+21/08 21/08 Débito de Cartão POTENZA SAO PAULO BRA -R$ 60,00
+21/08 21/08 Entrada PIX Pix recebido de JORGE ALBERTO ZIMBARG R$ 892,00
+21/08 21/08 Entrada PIX Pix recebido de ANDERSON TADEU ZANNI R$ 580,00
+21/08 21/08 Débito de Cartão YasminSouzaDos SAO PAULO BRA -R$ 34,00
+21/08 21/08 Entrada PIX Pix recebido de MARCIO FERNANDO DA SILVA GOMES R$ 2.390,00
+21/08 21/08 Entrada PIX Pix recebido de CLAUDIA MARMO ACQUAROLI R$ 200,00
+21/08 21/08 Débito de Cartão BURGER KING SAO PAULO BRA -R$ 47,90
+21/08 21/08 Débito de Cartão MERCADINHO DAYANA SAO PAULO BRA -R$ 9,90
+21/08 21/08 Saída PIX Pix enviado para THREE INTERMEDIACOES DE NEGOCIOS LTDA -R$ 10.100,00
+21/08 21/08 Saída PIX Pix enviado para GUILHERME FRANCA REIS -R$ 5.000,00
+Saldo do dia 21/08/25 R$ 2.827,36
+22/08 22/08 Débito de Cartão POTENZA SAO PAULO BRA -R$ 60,00
+22/08 22/08 Débito de Cartão MP *MAPARK SAO PAULO BRA -R$ 20,00
+22/08 22/08 Saída PIX Pix enviado para PIRIKITO PARKING -R$ 1.400,00
+22/08 22/08 Saída PIX Pix enviado para GUILHERME FRANCA REIS -R$ 200,00
+22/08 22/08 Saída PIX Pix enviado para GDO PARTICIPACOES S/A -R$ 99,63
+22/08 22/08 Débito de Cartão PIZZARIA FAMILIA BRESS SAO PAULO BRA -R$ 85,90
+Saldo do dia 22/08/25 R$ 961,83
+23/08 25/08 Débito de Cartão DROGARIA SAO PAULO 511 SAO PAULO BRA -R$ 57,59
+23/08 25/08 Saída PIX Pix enviado para DOJIVAL DOS SANTOS VIEIRA -R$ 20,00
+23/08 25/08 Débito de Cartão FernandoLopesDa GUARUJA BRA -R$ 98,00
+23/08 25/08 Débito de Cartão PEG PESE SUPERMERCADOS SAO PAULO BRA -R$ 132,82
+24/08 25/08 Saída PIX Pix enviado para GDO PARTICIPACOES S/A -R$ 92,25
+24/08 25/08 Débito de Cartão MERCADO HORTIMIX LTDA SAO PAULO BRA -R$ 213,54
+24/08 25/08 Débito de Cartão MERCADINHO DAYANA SAO PAULO BRA -R$ 8,50
+25/08 25/08 Débito de Cartão MP *LADONAMOSAICO So Paulo BRA -R$ 9,50
+25/08 25/08 Débito de Cartão MP *MAPARK SAO PAULO BRA -R$ 10,00
+25/08 25/08 Débito de Cartão LanchoneteEstrela SAO PAULO BRA -R$ 6,00
+25/08 25/08 Saída PIX Pix enviado para CERIM -R$ 54,55
+25/08 25/08 Débito de Cartão OXXO SANTA EGRACIA SAO PAULO BRA -R$ 12,60
+Saldo do dia 25/08/25 R$ 246,48
+26/08 26/08 Débito de Cartão Mercadocar SP BRA -R$ 57,80
+26/08 26/08 Débito de Cartão YasminSouzaDos SAO PAULO BRA -R$ 24,00
+26/08 26/08 Débito de Cartão YasminSouzaDos SAO PAULO BRA -R$ 10,00
+26/08 26/08 Débito de Cartão ESTRELA DO CANINDE SAO PAULO BRA -R$ 6,00
+26/08 26/08 Débito de Cartão BELLA PANE PADARIA E SANTA BARBARA BRA -R$ 24,04
+26/08 26/08 Débito de Cartão DESTRA PETSHOP SAO PAULO BRA -R$ 23,00
+Saldo do dia 26/08/25 R$ 101,64
+27/08 27/08 Débito de Cartão REDE PAPA SAO PAULO BRA -R$ 60,00
+27/08 27/08 Débito de Cartão MP *LADONAMOSAICO So Paulo BRA -R$ 9,50
+27/08 27/08 Débito de Cartão MP *MAPARK SAO PAULO BRA -R$ 10,00
+27/08 27/08 Débito de Cartão MERCADO HORTIMIX LTDA SAO PAULO BRA -R$ 15,24
+Saldo do dia 27/08/25 R$ 6,90
+28/08 28/08 Entrada PIX Pix recebido de ALEXS FABIAN ALVES AGUIAR R$ 1.240,00
+28/08 28/08 Entrada PIX Pix recebido de EMERSON RAMOS DA SILVA JUNIOR R$ 2.500,00
+Saldo do dia 28/08/25 R$ 3.746,90
+
+===== PAGE 6 =====
+Setembro 2025 ( 01/09/2025 - 30/09/2025 ) Entradas: R$ 21.811,00 • Saídas: R$ 22.557,80
+Data Data
+Tipo Descrição Valor
+lançamento contábil
+01/09 01/09 Entrada PIX Pix recebido de GUILHERME FRANCA REIS R$ 300,00
+01/09 01/09 Saída PIX Pix enviado para COMPANY CONSTRUTORA -R$ 4.000,00
+Saldo do dia 01/09/25 R$ 46,90
+03/09 03/09 Entrada PIX Pix recebido de FERNANDO FUGITA VITAL R$ 1.469,00
+03/09 03/09 Entrada PIX Pix recebido de JOAO LUIZ DE CAMPOS R$ 1.500,00
+03/09 03/09 Débito de Cartão ASSAI ATACADISTA LJ273 SAO PAULO BRA -R$ 444,08
+Saldo do dia 03/09/25 R$ 2.571,82
+04/09 04/09 Débito de Cartão MERCADO HORTIMIX LTDA SAO PAULO BRA -R$ 149,15
+Saldo do dia 04/09/25 R$ 2.422,67
+06/09 08/09 Débito de Cartão REDE PAPA SAO PAULO BRA -R$ 77,40
+06/09 08/09 Débito de Cartão M & E PARK ESTACIONAME SAO PAULO BRA -R$ 17,00
+08/09 08/09 Entrada PIX Pix recebido de GUILHERME FRANCA REIS R$ 30,00
+08/09 08/09 Saída PIX Pix enviado para CARLOS ALBERTO DIAS PINHEIRO -R$ 2.355,89
+08/09 08/09 Entrada PIX Pix recebido de EMERSON RAMOS DA SILVA JUNIOR R$ 1.000,00
+08/09 08/09 Entrada PIX Pix recebido de NUNTIUS TECNOLOGIA R$ 1.350,00
+Saldo do dia 08/09/25 R$ 2.352,38
+09/09 09/09 Entrada PIX Pix recebido de PEDRO CHIANELLI SALGADO DIEGUEZ R$ 1.720,00
+Saldo do dia 09/09/25 R$ 4.072,38
+11/09 11/09 Saída PIX Pix enviado para GUILHERME FRANCA REIS -R$ 600,00
+Saldo do dia 11/09/25 R$ 3.472,38
+12/09 12/09 Débito de Cartão MP *LADONAMOSAICO So Paulo BRA -R$ 9,50
+12/09 12/09 Saída PIX Pix enviado para EDNALDO FIRMINO FERREIRA -R$ 1.000,00
+12/09 12/09 Débito de Cartão Parks SAO PAULO BRA -R$ 60,00
+12/09 12/09 Débito de Cartão SUPERMERCADO JAGUARE SAO PAULO BRA -R$ 59,96
+12/09 12/09 Entrada PIX Pix recebido de MARCOS DE OLIVEIRA LIMA R$ 630,00
+12/09 12/09 Débito de Cartão PIZZARIA FAMILIA BRESS SAO PAULO BRA -R$ 95,90
+Saldo do dia 12/09/25 R$ 2.877,02
+13/09 15/09 Débito de Cartão REDE PAPA SAO PAULO BRA -R$ 35,00
+13/09 15/09 Débito de Cartão Mercadocar SP BRA -R$ 53,80
+13/09 15/09 Entrada PIX Pix recebido de 22.960.559 MARIA APARECIDA DE MELO SILVA R$ 1.360,00
+13/09 15/09 Entrada PIX Pix recebido c6 de 51.914.744 vagner sanches R$ 120,00
+13/09 15/09 Débito de Cartão PEZAO BAR INDAIATUBA BRA -R$ 185,98
+13/09 15/09 Débito de Cartão ESTACIONAMENTO RODA VE INDAIATUBA BRA -R$ 20,00
+13/09 15/09 Débito de Cartão AUTO POSTO PAVAO 91 LT ITU BRA -R$ 50,00
+13/09 15/09 Débito de Cartão CAMARGO MAIRINQUE BRA -R$ 180,00
+14/09 15/09 Débito de Cartão REDE PAPA SAO PAULO BRA -R$ 77,80
+14/09 15/09 Débito de Cartão MP *MAPARK SAO PAULO BRA -R$ 23,00
+14/09 15/09 Débito de Cartão SUPERMERCADO JAGUARE SAO PAULO BRA -R$ 39,63
+15/09 15/09 Débito de Cartão REDE PAPA SAO PAULO BRA -R$ 77,80
+15/09 15/09 Débito de Cartão MP *LADONAMOSAICO So Paulo BRA -R$ 9,50
+15/09 15/09 Débito de Cartão BORA BORA HORTIFRUTT SAO PAULO BRA -R$ 89,68
+15/09 15/09 Débito de Cartão RAIA2048 SAO PAULO BRA -R$ 52,28
+15/09 15/09 Entrada PIX Pix recebido c6 de 55.736.717 bruno figueiredo pereira R$ 5.000,00
+15/09 15/09 Entrada PIX Pix recebido de GUILHERME MEIRELES ALEIXO R$ 940,00
+Saldo do dia 15/09/25 R$ 9.402,55
+16/09 16/09 Débito de Cartão REDE PAPA SAO PAULO BRA -R$ 77,80
+16/09 16/09 Débito de Cartão MP *LADONAMOSAICO So Paulo BRA -R$ 9,50
+
+===== PAGE 7 =====
+Data Data
+Tipo Descrição Valor
+lançamento contábil
+16/09 16/09 Débito de Cartão BURGER KING SAO PAULO BRA -R$ 46,90
+16/09 16/09 Pagamento GPS -R$ 167,53
+16/09 16/09 Pagamento TIM SA -R$ 67,56
+16/09 16/09 Débito de Cartão MERCADINHO DAYANA SAO PAULO BRA -R$ 8,35
+16/09 16/09 Entrada PIX Pix recebido de EMERSON RAMOS DA SILVA JUNIOR R$ 2.500,00
+16/09 16/09 Saída PIX Pix enviado para CARLOS ALBERTO DE NATALE GUIDINI -R$ 2.940,00
+Saldo do dia 16/09/25 R$ 8.584,91
+17/09 17/09 Débito de Cartão POTENZA SAO PAULO BRA -R$ 51,00
+17/09 17/09 Débito de Cartão MP *LADONAMOSAICO So Paulo BRA -R$ 9,50
+17/09 17/09 Débito de Cartão PastelKakazu SAO PAULO BRA -R$ 12,00
+17/09 17/09 Entrada PIX Pix recebido de ANTONIO JOSE BANHARA R$ 892,00
+17/09 17/09 Débito de Cartão OGGI SORVETES MASCOT SAO PAULO BRA -R$ 5,99
+17/09 17/09 Débito de Cartão MERCADO HORTIMIX LTDA SAO PAULO BRA -R$ 165,73
+17/09 17/09 Saída PIX Pix enviado para KLEBER DE SOUZA MORAES -R$ 1.260,00
+Saldo do dia 17/09/25 R$ 7.972,69
+18/09 18/09 Débito de Cartão REDE PAPA SAO PAULO BRA -R$ 77,80
+18/09 18/09 Débito de Cartão MP *TORETTO Mogi das Cruz BRA -R$ 11,50
+18/09 18/09 Débito de Cartão ESTRELA DO CANINDE SAO PAULO BRA -R$ 6,00
+Saldo do dia 18/09/25 R$ 7.877,39
+19/09 19/09 Débito de Cartão M & E PARK ESTACIONAME SAO PAULO BRA -R$ 10,00
+19/09 19/09 Débito de Cartão M & E PARK ESTACIONAME SAO PAULO BRA -R$ 12,00
+19/09 19/09 Débito de Cartão MP *LADONAMOSAICO So Paulo BRA -R$ 9,50
+19/09 19/09 Débito de Cartão CRJ ATACADAO LTDA SAO PAULO BRA -R$ 15,00
+19/09 19/09 Saída PIX Pix enviado para GUILHERME FRANCA REIS -R$ 4.000,00
+19/09 19/09 Débito de Cartão OXXO SANTA EGRACIA SAO PAULO BRA -R$ 18,77
+19/09 19/09 Saída PIX Pix enviado para EDNALDO FIRMINO FERREIRA -R$ 800,00
+Saldo do dia 19/09/25 R$ 3.012,12
+20/09 22/09 Débito de Cartão REDE PAPA SAO PAULO BRA -R$ 77,80
+20/09 22/09 Débito de Cartão LANCHONETE FABINHO SAO PAULO BRA -R$ 4,00
+20/09 22/09 Débito de Cartão MAIS1 CAFE PAMPLONA SAO PAULO BRA -R$ 19,70
+20/09 22/09 Débito de Cartão MERCADINHO DAYANA SAO PAULO BRA -R$ 16,60
+20/09 22/09 Saída PIX Pix enviado para EDNALDO FIRMINO FERREIRA -R$ 2.200,00
+25/09 25/09 Débito de Cartão MP *LADONAMOSAICO So Paulo BRA -R$ 9,50
+Saldo do dia 25/09/25 R$ 684,52
+26/09 26/09 Débito de Cartão MP *MAPARK SAO PAULO BRA -R$ 10,00
+26/09 26/09 Débito de Cartão MP *LADONAMOSAICO So Paulo BRA -R$ 9,50
+26/09 26/09 Débito de Cartão RESTAURANTEYASSUNAGA SAO PAULO BRA -R$ 79,49
+26/09 26/09 Débito de Cartão 52016699 THAIS MARTINS JUNDIAI BRA -R$ 29,50
+26/09 26/09 Saída PIX Pix enviado para CERIM -R$ 51,59
+26/09 26/09 Saída PIX Pix enviado para RECEITA FEDERAL -R$ 82,98
+26/09 26/09 Débito de Cartão PIZZARIA FAMILIA BRESS SAO PAULO BRA -R$ 85,90
+Saldo do dia 26/09/25 R$ 335,56
+27/09 29/09 Débito de Cartão MP *MAPARK SAO PAULO BRA -R$ 10,00
+27/09 29/09 Débito de Cartão MERCADO HORTIMIX LTDA SAO PAULO BRA -R$ 26,46
+27/09 29/09 Débito de Cartão CRISTIANE RODRIGUES C SAO PAULO BRA -R$ 50,00
+27/09 29/09 Saída PIX Pix enviado para GUILHERME FRANCA REIS -R$ 249,00
+29/09 29/09 Entrada PIX Pix recebido de EMERSON RAMOS DA SILVA JUNIOR R$ 3.000,00
+Saldo do dia 29/09/25 R$ 3.000,10
+Informações sujeitas a alteração até o final do dia
+
+===== PAGE 8 =====
+Atendimento 24 horas Ouvidoria
+Chat para clientes Capitais e regiões Segunda à sexta, exceto feriado, das 9h às 18h
+No app do C6 Bank metropolitanas 0800 660 6060
+3003 6116
+Abra uma conta para
+SAC
+você e sua empresa
+Demais localidades Whatsapp 24 horas Baixe o app pelo QR Code e
+abra sua conta.
+0800 660 6116 (11) 2832 6088 0800 660 6060
