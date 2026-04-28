@@ -474,62 +474,63 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
   return (
     <ToastProvider>
     <EmpresaProvider>
-      <div className="flex flex-col h-screen overflow-hidden" style={{ background: "var(--bg-primary)" }}>
+      <div className="flex flex-col h-screen overflow-hidden" style={{ background: "var(--bg-canvas)" }}>
 
         {/* ════════════════════ TOPBAR ════════════════════ */}
         <header className="h-14 flex-shrink-0 flex items-center px-4 gap-3 z-30"
           style={{
-            background: "rgba(2,4,16,0.88)",
-            borderBottom: "1px solid rgba(79,106,255,0.14)",
-            backdropFilter: "blur(16px)",
-            WebkitBackdropFilter: "blur(16px)",
+            background: "var(--bg-surface)",
+            borderBottom: "1px solid var(--border-subtle)",
           }}>
 
           {/* Logo e botão collapse foram movidos para a sidebar (Fase 4 §5.2) */}
 
-          {/* ── Saudação premium ── */}
+          {/* ── Avatar + Saudação ── */}
           <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
-            <div className="text-right leading-none">
-              <p className="text-[13px] font-bold" style={{ color: "var(--text-primary)" }}>
-                {saudacao},{" "}
-                <span className="font-extrabold greeting-name text-navy-600 dark:text-navy-400">
-                  {primeiroNome}
-                </span>
-              </p>
-              <p className="text-[10px] mt-1" style={{ color: "var(--text-muted)" }}>
-                {diasPT[agora.getDay()]}, {String(agora.getDate()).padStart(2, "0")} de {mesesPT[agora.getMonth()]}
-              </p>
-            </div>
-            {/* Avatar */}
+            {/* Avatar 32px à ESQUERDA da saudação */}
             <div className="relative flex-shrink-0">
-              <div className="w-8 h-8 rounded-full overflow-hidden ring-2 ring-white/10 flex items-center justify-center bg-slate-200 text-slate-900 text-[11px] font-semibold select-none leading-none">
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold select-none leading-none"
+                style={{
+                  background: "var(--accent)",
+                  color: "var(--text-inverse)",
+                }}
+              >
                 {iniciais}
               </div>
               {/* Status online dot */}
-              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-[rgba(2,4,16,0.9)]" />
+              <span
+                className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full"
+                style={{
+                  background: "var(--success)",
+                  boxShadow: "0 0 0 2px var(--bg-surface)",
+                }}
+              />
             </div>
-            {cargo && (
-              <span className="hidden lg:flex text-[10px] font-semibold px-2.5 py-1 rounded-full flex-shrink-0 text-[#9BB3FF]"
-                style={{ background: "rgba(79,106,255,0.12)", border: "1px solid rgba(79,106,255,0.22)" }}>
-                {cargo}
-              </span>
-            )}
-            {usuario?.is_ceo ? (
-              <span className="hidden lg:flex text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full flex-shrink-0 text-amber-400"
-                style={{ background: "rgba(234,179,8,0.12)", border: "1px solid rgba(234,179,8,0.25)" }}>
-                C.E.O.
-              </span>
-            ) : usuario?.is_admin ? (
-              <span className="hidden lg:flex text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full flex-shrink-0 text-emerald-400"
-                style={{ background: "rgba(16,185,129,0.12)", border: "1px solid rgba(16,185,129,0.2)" }}>
-                Admin
-              </span>
-            ) : usuario?.is_gestor ? (
-              <span className="hidden lg:flex text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full flex-shrink-0 text-indigo-400"
-                style={{ background: "rgba(139,92,246,0.12)", border: "1px solid rgba(139,92,246,0.2)" }}>
-                Gestor
-              </span>
-            ) : null}
+            <div className="leading-tight">
+              <p
+                className="text-base font-medium"
+                style={{ color: "var(--text-primary)" }}
+              >
+                {saudacao}, {primeiroNome}
+              </p>
+              <p className="text-xs mt-0.5" style={{ color: "var(--text-tertiary)" }}>
+                {diasPT[agora.getDay()]}, {String(agora.getDate()).padStart(2, "0")} de {mesesPT[agora.getMonth()]}
+              </p>
+            </div>
+
+            {/* ── Pill consolidado de role (Q5: §5.3 consolida CEO + Admin) ── */}
+            <span
+              className="hidden lg:flex text-xs font-semibold tracking-wide px-2.5 py-1 flex-shrink-0 border"
+              style={{
+                background: "var(--accent-subtle)",
+                color: "var(--accent-text)",
+                borderColor: "var(--accent-border)",
+                borderRadius: "var(--radius-md)",
+              }}
+            >
+              {usuario?.is_ceo ? "C.E.O." : usuario?.is_admin ? "Administrador" : usuario?.is_gestor ? "Gestor" : "Analista"}
+            </span>
           </div>
 
           {/* Spacer */}
@@ -538,28 +539,33 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
           {/* Empresa selector */}
           {token && <EmpresaSelectorWidget token={token} topbar />}
 
-          {/* Divider */}
-          <div className="w-px h-5 flex-shrink-0" style={{ background: "rgba(79,106,255,0.18)" }} />
-
           {/* Bell icon — alertas da agenda */}
           <a
             href="/agenda"
-            className="relative flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-xl transition-all hover:bg-white/5"
-            style={{ color: atrasados > 0 ? "#f59e0b" : "#64748b", border: "1px solid rgba(79,106,255,0.15)" }}
+            className="relative flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-md transition-colors"
+            style={{
+              color: atrasados > 0 ? "var(--warning)" : "var(--text-tertiary)",
+            }}
+            onMouseEnter={(e) => {
+              if (atrasados === 0) e.currentTarget.style.color = "var(--text-secondary)";
+            }}
+            onMouseLeave={(e) => {
+              if (atrasados === 0) e.currentTarget.style.color = "var(--text-tertiary)";
+            }}
             title={atrasados > 0 ? `${atrasados} lembrete${atrasados !== 1 ? "s" : ""} atrasado${atrasados !== 1 ? "s" : ""}` : "Agenda"}
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
             </svg>
             {atrasados > 0 && (
-              <span className="absolute -top-1 -right-1 min-w-[16px] h-4 flex items-center justify-center rounded-full bg-red-500 text-white text-[9px] font-bold px-1 leading-none">
+              <span
+                className="absolute -top-1 -right-1 min-w-[16px] h-4 flex items-center justify-center rounded-full text-white text-[9px] font-bold px-1 leading-none"
+                style={{ background: "var(--danger)" }}
+              >
                 {atrasados > 99 ? "99+" : atrasados}
               </span>
             )}
           </a>
-
-          {/* Divider */}
-          <div className="w-px h-5 flex-shrink-0" style={{ background: "rgba(79,106,255,0.18)" }} />
 
           {/* Theme toggle */}
           <ThemeToggle />
