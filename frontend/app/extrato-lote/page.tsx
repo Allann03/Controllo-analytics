@@ -638,8 +638,15 @@ export default function ExtratoLotePage() {
                 </button>
                 <button
                   onClick={voltarParaUpload}
-                  className="px-4 py-2.5 rounded-xl text-sm font-medium transition-colors"
-                  style={{ color: "var(--text-muted)" }}
+                  className="px-4 py-2.5 text-sm font-medium transition-colors border"
+                  style={{
+                    background: "var(--bg-elevated)",
+                    borderColor: "var(--border-default)",
+                    color: "var(--text-primary)",
+                    borderRadius: "var(--radius-md)",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = "var(--bg-overlay)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = "var(--bg-elevated)"; }}
                 >
                   Limpar
                 </button>
@@ -681,7 +688,15 @@ export default function ExtratoLotePage() {
                 </p>
                 <button
                   onClick={voltarParaUpload}
-                  className="text-[11px] font-medium transition-colors px-2 py-1 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/30 text-slate-400 dark:text-slate-500 hover:text-rose-600 dark:hover:text-rose-400"
+                  className="text-xs font-medium transition-colors px-2.5 py-1 border"
+                  style={{
+                    background: "var(--bg-elevated)",
+                    borderColor: "var(--border-default)",
+                    color: "var(--text-primary)",
+                    borderRadius: "var(--radius-md)",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = "var(--bg-overlay)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = "var(--bg-elevated)"; }}
                 >
                   Voltar
                 </button>
@@ -857,8 +872,15 @@ export default function ExtratoLotePage() {
               </button>
               <button
                 onClick={voltarParaUpload}
-                className="px-4 py-2.5 rounded-xl text-sm font-medium transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
-                style={{ color: "var(--text-muted)" }}
+                className="px-4 py-2.5 text-sm font-medium transition-colors border"
+                style={{
+                  background: "var(--bg-elevated)",
+                  borderColor: "var(--border-default)",
+                  color: "var(--text-primary)",
+                  borderRadius: "var(--radius-md)",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = "var(--bg-overlay)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = "var(--bg-elevated)"; }}
               >
                 Cancelar
               </button>
