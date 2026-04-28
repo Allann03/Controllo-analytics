@@ -9,15 +9,37 @@ function cn(...c: (string | undefined | false | null)[]) {
 }
 
 // ─── Card ──────────────────────────────────────────────────────────────
-interface CardProps { children: ReactNode; className?: string }
+type CardVariant = "default" | "hero" | "clickable";
 
-export function Card({ children, className }: CardProps) {
+interface CardProps {
+  children: ReactNode;
+  className?: string;
+  /** "default" mantém backward-compat (sem padding intrínseco — esperado para uso com CardHeader/CardContent).
+   *  "hero" adiciona p-8 + radius-xl + shadow-md.
+   *  "clickable" adiciona hover state (translateY -1px + border shift). */
+  variant?: CardVariant;
+  onClick?: () => void;
+}
+
+export function Card({ children, className, variant = "default", onClick }: CardProps) {
+  const isHero = variant === "hero";
+  const isClickable = variant === "clickable" || !!onClick;
   return (
-    <div className={cn(
-      "rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800",
-      "shadow-sm ring-1 ring-slate-200/50 dark:ring-slate-700/30",
-      className,
-    )}>
+    <div
+      onClick={onClick}
+      className={cn(
+        "border",
+        isHero && "p-8",
+        isClickable && "cursor-pointer transition-all duration-150 hover:-translate-y-px",
+        className,
+      )}
+      style={{
+        background: "var(--bg-surface)",
+        borderColor: "var(--border-subtle)",
+        borderRadius: isHero ? "var(--radius-xl)" : "var(--radius-lg)",
+        boxShadow: isHero ? "var(--shadow-md)" : "var(--shadow-sm)",
+      }}
+    >
       {children}
     </div>
   );
@@ -25,11 +47,13 @@ export function Card({ children, className }: CardProps) {
 
 export function CardHeader({ children, className }: CardProps) {
   return (
-    <div className={cn(
-      "px-5 py-4 bg-slate-50 dark:bg-slate-700/50",
-      "border-b border-slate-200 dark:border-slate-700",
-      className,
-    )}>
+    <div
+      className={cn("px-5 py-4 border-b", className)}
+      style={{
+        background: "var(--bg-inset)",
+        borderColor: "var(--border-subtle)",
+      }}
+    >
       {children}
     </div>
   );
@@ -40,37 +64,45 @@ export function CardContent({ children, className }: CardProps) {
 }
 
 // ─── Badge (non-interactive — label/tag only) ──────────────────────────
-export type BadgeVariant = "default" | "primary" | "success" | "warning" | "danger" | "muted";
+// "primary" e "accent" sao aliases (backward-compat). "muted" preservado.
+export type BadgeVariant = "default" | "primary" | "accent" | "success" | "warning" | "danger" | "muted";
 
-const BADGE_CLS: Record<BadgeVariant, string> = {
-  default: "bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-700 dark:text-slate-300 dark:border-slate-600",
-  primary: "bg-navy-100 text-navy-800 border-navy-200 dark:bg-navy-900/40 dark:text-navy-300 dark:border-navy-800/60",
-  success: "bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-400 dark:border-emerald-800/40",
-  warning: "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-800/40",
-  danger:  "bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800/40",
-  muted:   "bg-slate-50 text-slate-500 border-slate-100 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700",
-};
+type BadgeStyle = { bg: string; border: string; color: string; dot: string };
 
-const DOT_CLS: Record<BadgeVariant, string> = {
-  default: "bg-slate-400",
-  primary: "bg-navy-500",
-  success: "bg-emerald-600",
-  warning: "bg-amber-500",
-  danger:  "bg-red-500",
-  muted:   "bg-slate-400",
+const BADGE_STYLES: Record<BadgeVariant, BadgeStyle> = {
+  default: { bg: "var(--bg-inset)",        border: "var(--border-default)", color: "var(--text-secondary)", dot: "var(--text-tertiary)" },
+  primary: { bg: "var(--accent-subtle)",   border: "var(--accent-border)",  color: "var(--accent-text)",    dot: "var(--accent)"        },
+  accent:  { bg: "var(--accent-subtle)",   border: "var(--accent-border)",  color: "var(--accent-text)",    dot: "var(--accent)"        },
+  success: { bg: "var(--success-subtle)",  border: "var(--success-border)", color: "var(--success)",        dot: "var(--success)"       },
+  warning: { bg: "var(--warning-subtle)",  border: "var(--warning-border)", color: "var(--warning)",        dot: "var(--warning)"       },
+  danger:  { bg: "var(--danger-subtle)",   border: "var(--danger-border)",  color: "var(--danger)",         dot: "var(--danger)"        },
+  muted:   { bg: "var(--bg-inset)",        border: "var(--border-subtle)",  color: "var(--text-tertiary)",  dot: "var(--text-tertiary)" },
 };
 
 interface BadgeProps { children: ReactNode; variant?: BadgeVariant; dot?: boolean; className?: string }
 
 export function Badge({ children, variant = "default", dot, className }: BadgeProps) {
+  const s = BADGE_STYLES[variant];
   return (
-    <span className={cn(
-      "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border",
-      "text-xs font-semibold cursor-default select-none whitespace-nowrap",
-      BADGE_CLS[variant],
-      className,
-    )}>
-      {dot && <span className={cn("w-1.5 h-1.5 rounded-full flex-shrink-0", DOT_CLS[variant])} />}
+    <span
+      className={cn(
+        "inline-flex items-center gap-1 px-2 py-0.5 border",
+        "text-xs font-semibold cursor-default select-none whitespace-nowrap",
+        className,
+      )}
+      style={{
+        background: s.bg,
+        borderColor: s.border,
+        color: s.color,
+        borderRadius: "var(--radius-md)",
+      }}
+    >
+      {dot && (
+        <span
+          className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+          style={{ background: s.dot }}
+        />
+      )}
       {children}
     </span>
   );
@@ -110,10 +142,14 @@ export function Avatar({ name, size = "md", className }: AvatarProps) {
   const initials = (name || "?").split(" ").filter(Boolean)
     .map(n => n[0]).join("").substring(0, 2).toUpperCase();
   return (
-    <div data-notheme className={cn(
-      "rounded-lg flex items-center justify-center font-bold flex-shrink-0 text-white",
-      avatarBg(name), AVATAR_SIZE[size], className,
-    )}>
+    <div
+      data-notheme
+      className={cn(
+        "rounded-full flex items-center justify-center font-semibold flex-shrink-0 text-white",
+        avatarBg(name), AVATAR_SIZE[size], className,
+      )}
+      style={{ boxShadow: "var(--shadow-sm)" }}
+    >
       {initials}
     </div>
   );
@@ -154,23 +190,51 @@ export function PageHeader({ section, title, titleAccent, subtitle, actions, ico
 }
 
 // ─── Input (theme-aware) ───────────────────────────────────────────────
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> { label?: string }
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+  /** Mensagem de erro opcional. Quando presente: border vira danger + helper text abaixo. */
+  error?: string;
+}
 
-export function Input({ label, className, ...props }: InputProps) {
+export function Input({ label, error, className, ...props }: InputProps) {
+  const hasError = !!error;
   return (
     <div className="flex flex-col gap-1">
       {label && (
-        <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+        <label
+          className="text-xs font-medium uppercase tracking-widest"
+          style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}
+        >
           {label}
         </label>
       )}
-      <input className={cn(
-        "rounded-xl px-3 py-2 text-xs outline-none transition-all",
-        "bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700",
-        "text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500",
-        "focus:border-navy-500 focus:ring-2 focus:ring-navy-500/20",
-        className,
-      )} {...props} />
+      <input
+        {...props}
+        className={cn(
+          "px-3 py-2.5 text-sm border outline-none transition-colors",
+          "focus:[box-shadow:0_0_0_3px_var(--accent-subtle)]",
+          className,
+        )}
+        style={{
+          background: "var(--bg-inset)",
+          borderColor: hasError ? "var(--danger)" : "var(--border-default)",
+          borderRadius: "var(--radius-md)",
+          color: "var(--text-primary)",
+        }}
+        onFocus={(e) => {
+          if (!hasError) e.currentTarget.style.borderColor = "var(--border-focus)";
+          props.onFocus?.(e);
+        }}
+        onBlur={(e) => {
+          if (!hasError) e.currentTarget.style.borderColor = "var(--border-default)";
+          props.onBlur?.(e);
+        }}
+      />
+      {hasError && (
+        <p className="text-xs font-medium" style={{ color: "var(--danger)" }}>
+          {error}
+        </p>
+      )}
     </div>
   );
 }
