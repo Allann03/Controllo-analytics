@@ -5,7 +5,6 @@ import Link from "next/link";
 import { EmpresaProvider, useEmpresa } from "@/contexts/EmpresaContext";
 import type { EmpresaSimples } from "@/contexts/EmpresaContext";
 import { ToastProvider } from "@/contexts/ToastContext";
-import { UserAvatar } from "@/components/UserAvatar";
 
 interface Usuario {
   id: number;
@@ -828,37 +827,67 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
             {/* ── Profile no rodapé ── */}
             <div
               className={collapsed ? "p-2" : "p-3"}
-              style={{ borderTop: "1px solid var(--sidebar-footer-border)" }}
+              style={{ borderTop: "1px solid var(--border-subtle)" }}
             >
               {collapsed ? (
                 <div className="flex flex-col items-center gap-2">
-                  <UserAvatar size={32} />
-                  <button onClick={fazerLogout} title="Sair"
-                    className="w-8 h-8 flex items-center justify-center rounded-xl text-slate-500 hover:text-rose-400 hover:bg-rose-400/10 transition-all">
+                  <div
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold leading-none"
+                    style={{ background: "var(--accent)", color: "var(--text-inverse)" }}
+                    title={usuario?.nome}
+                  >
+                    {iniciais}
+                  </div>
+                  <button
+                    onClick={fazerLogout}
+                    title="Sair"
+                    className="w-8 h-8 flex items-center justify-center rounded-md transition-colors"
+                    style={{ color: "var(--text-tertiary)" }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = "var(--danger)"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-tertiary)"; }}
+                  >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                     </svg>
                   </button>
                 </div>
               ) : (
-                <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl group transition-all"
+                <div
+                  className="flex items-center gap-3 px-3 py-2.5 transition-colors border"
                   style={{
-                    background: "var(--sidebar-profile-bg)",
-                    border: "1px solid var(--sidebar-profile-border)",
-                    boxShadow: "var(--sidebar-profile-shadow)",
+                    background: "var(--bg-elevated)",
+                    borderColor: "var(--border-subtle)",
+                    borderRadius: "var(--radius-md)",
                   }}
                 >
-                  <UserAvatar size={28} className="group-hover:scale-105 transition-transform" />
+                  <div
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0 leading-none"
+                    style={{ background: "var(--accent)", color: "var(--text-inverse)" }}
+                  >
+                    {iniciais}
+                  </div>
                   <div className="overflow-hidden flex-1 min-w-0">
-                    <p className="font-semibold text-sm truncate leading-tight" style={{ color: "var(--nav-text-hover)" }}>{usuario?.nome}</p>
-                    <p className={`text-[10px] uppercase tracking-tight font-medium ${
-                        usuario?.is_ceo ? "text-amber-400" : usuario?.is_admin ? "text-emerald-400" : usuario?.is_gestor ? "text-indigo-400" : "text-slate-500"
-                      }`}>
-                      {usuario?.is_ceo ? "C.E.O." : usuario?.is_admin ? "Admin" : usuario?.is_gestor ? "Gestor" : "Analista"}
+                    <p
+                      className="font-medium text-sm truncate leading-tight"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      {usuario?.nome}
+                    </p>
+                    <p
+                      className="text-xs mt-0.5 truncate"
+                      style={{ color: "var(--text-tertiary)" }}
+                    >
+                      {usuario?.is_ceo ? "C.E.O." : usuario?.is_admin ? "Administrador" : usuario?.is_gestor ? "Gestor" : "Analista"}
                     </p>
                   </div>
-                  <button onClick={fazerLogout} title="Sair"
-                    className="p-1.5 text-slate-500 hover:text-rose-400 hover:bg-rose-400/10 rounded-lg transition-all flex-shrink-0">
+                  <button
+                    onClick={fazerLogout}
+                    title="Sair"
+                    className="p-1.5 rounded-md transition-colors flex-shrink-0"
+                    style={{ color: "var(--text-tertiary)" }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = "var(--danger)"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-tertiary)"; }}
+                  >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                     </svg>
