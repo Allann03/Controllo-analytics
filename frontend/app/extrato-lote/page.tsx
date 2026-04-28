@@ -603,22 +603,171 @@ export default function ExtratoLotePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                   </svg>
                   <p className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>
-                    {drag ? "Solte para adicionar" : `${arquivos.length} PDF(s) selecionado(s) — clique para adicionar mais`}
+                    {drag
+                      ? "Solte para adicionar"
+                      : etapa === "detectando"
+                        ? "Aguarde a identificação concluir antes de adicionar mais"
+                        : "Adicionar mais PDFs"}
                   </p>
                 </div>
               )}
             </div>
 
-            {/* Loading de detecção */}
-            {etapa === "detectando" && (
-              <div className="flex items-center justify-center gap-3 py-8">
-                <svg className="animate-spin w-5 h-5 text-[#3b6ea5]" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                </svg>
-                <p className="text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
-                  Identificando bancos de {arquivos.length} extrato(s)...
-                </p>
+            {/* ── Lista de PDFs adicionados (N2) ── */}
+            {arquivos.length > 0 && (
+              <div
+                className="border"
+                style={{
+                  background: "var(--bg-surface)",
+                  borderColor: "var(--border-subtle)",
+                  borderRadius: "var(--radius-lg)",
+                }}
+              >
+                {/* Header com contador (N3 enriquece em tempo de detecção) */}
+                <div
+                  className="px-4 py-3 flex items-center justify-between"
+                  style={{ borderBottom: "1px solid var(--border-subtle)" }}
+                >
+                  <p
+                    className="text-xs uppercase font-medium"
+                    style={{
+                      color: "var(--text-tertiary)",
+                      letterSpacing: "var(--tracking-widest)",
+                    }}
+                  >
+                    {etapa === "detectando"
+                      ? `Identificando bancos de ${arquivos.length} extrato(s)…`
+                      : `${arquivos.length} arquivo(s) selecionado(s)`}
+                  </p>
+                  <span
+                    className="text-xs font-mono tabular-nums"
+                    style={{ color: "var(--text-tertiary)" }}
+                  >
+                    {(arquivos.reduce((acc, a) => acc + a.file.size, 0) / 1024 / 1024).toFixed(1)} MB
+                  </span>
+                </div>
+
+                {/* Lista */}
+                <ul className="divide-y" style={{ borderColor: "var(--border-subtle)" }}>
+                  {arquivos.map((arq, idx) => {
+                    const tamanho = arq.file.size;
+                    const tamanhoLabel = tamanho >= 1_000_000
+                      ? `${(tamanho / 1_000_000).toFixed(1)} MB`
+                      : `${(tamanho / 1024).toFixed(0)} KB`;
+
+                    // ── Indicador de status (N3) durante detecção ──
+                    let indicador: React.ReactNode = null;
+                    if (etapa === "detectando") {
+                      if (arq.bancoDetectado || arq.bancoId) {
+                        // Identificado
+                        indicador = (
+                          <span className="flex items-center gap-1.5 text-xs flex-shrink-0" style={{ color: "var(--success)" }}>
+                            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="font-medium">{arq.bancoDetectado || BANCOS.find(b => b.id === arq.bancoId)?.label}</span>
+                          </span>
+                        );
+                      } else if (arq.erroPdf) {
+                        indicador = (
+                          <span className="flex items-center gap-1.5 text-xs flex-shrink-0" style={{ color: "var(--danger)" }}>
+                            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                            <span className="font-medium truncate max-w-[140px]">{arq.erroPdf}</span>
+                          </span>
+                        );
+                      } else {
+                        // Identificando — spinner Lucide Loader2
+                        indicador = (
+                          <span className="flex items-center gap-1.5 text-xs flex-shrink-0" style={{ color: "var(--accent)" }}>
+                            <svg className="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-6.219-8.56" />
+                            </svg>
+                            <span className="font-medium">Identificando…</span>
+                          </span>
+                        );
+                      }
+                    }
+
+                    return (
+                      <li
+                        key={arq.id}
+                        className="flex items-center gap-3 px-4 py-2"
+                        style={{
+                          borderTopColor: idx > 0 ? "var(--border-subtle)" : undefined,
+                        }}
+                      >
+                        {/* Ícone PDF */}
+                        <svg
+                          className="w-4 h-4 flex-shrink-0"
+                          style={{ color: "var(--text-tertiary)" }}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={1.5}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+
+                        {/* Nome */}
+                        <span
+                          className="text-sm truncate flex-1 min-w-0"
+                          style={{ color: "var(--text-primary)" }}
+                          title={arq.file.name}
+                        >
+                          {arq.file.name}
+                        </span>
+
+                        {/* Tamanho */}
+                        <span
+                          className="text-xs font-mono tabular-nums flex-shrink-0"
+                          style={{ color: "var(--text-tertiary)" }}
+                        >
+                          {tamanhoLabel}
+                        </span>
+
+                        {/* Indicador de detecção (N3) */}
+                        {indicador}
+
+                        {/* Botão remover individual */}
+                        <button
+                          onClick={(e) => { e.stopPropagation(); remover(arq.id); }}
+                          disabled={etapa === "detectando"}
+                          title="Remover"
+                          className="flex-shrink-0 w-7 h-7 flex items-center justify-center transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                          style={{
+                            color: "var(--text-tertiary)",
+                            borderRadius: "var(--radius-sm)",
+                          }}
+                          onMouseEnter={(e) => {
+                            if (!e.currentTarget.disabled) e.currentTarget.style.color = "var(--danger)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "var(--text-tertiary)";
+                          }}
+                        >
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+
+                {/* Contador de progresso (N3) — quando detectando */}
+                {etapa === "detectando" && (
+                  <div
+                    className="px-4 py-2 text-xs font-mono tabular-nums"
+                    style={{
+                      borderTop: "1px solid var(--border-subtle)",
+                      color: "var(--text-tertiary)",
+                    }}
+                  >
+                    {arquivos.filter(a => a.bancoDetectado || a.bancoId || a.erroPdf).length} de {arquivos.length} concluídos
+                  </div>
+                )}
               </div>
             )}
 
