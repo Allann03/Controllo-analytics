@@ -9,7 +9,7 @@
    Restrição cromática · hierarquia clara · UMA cor de marca
    ══════════════════════════════════════════════════════════════════════ */
 
-/* ── Tailwind theme tokens (gera classes utilitárias bg-*/text-*) ─── */
+/* ── Tailwind theme tokens (gera classes utilitárias bg-X / text-X) ─── */
 @theme {
   /* Navy preservado para retro-compat de classes `bg-navy-X` em uso */
   --color-navy-50:  #f0f4f8;
