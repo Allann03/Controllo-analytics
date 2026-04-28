@@ -4,7 +4,6 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { EmpresaProvider, useEmpresa } from "@/contexts/EmpresaContext";
 import type { EmpresaSimples } from "@/contexts/EmpresaContext";
-import GlobeBackground from "@/components/GlobeBackground";
 import { ToastProvider } from "@/contexts/ToastContext";
 import { UserAvatar } from "@/components/UserAvatar";
 
@@ -828,8 +827,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
           </aside>
 
           {/* ════════════════════ MAIN ════════════════════ */}
-          <main className="flex-1 overflow-y-auto relative min-w-0" style={{ background: "var(--bg-primary)" }}>
-            <GlobeBackground />
+          <main className="flex-1 overflow-y-auto relative min-w-0" style={{ background: "var(--bg-canvas)" }}>
             <div className="relative min-h-full">
               {children}
             </div>
