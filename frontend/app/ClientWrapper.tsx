@@ -152,26 +152,32 @@ function ThemeToggle() {
   }
 
   const isLight = tema === "light";
+  // Toggle icon-only 32x32 — clicar alterna o tema oposto.
+  // Mostra Sun no dark (porque clica para virar light) e Moon no light.
+  const proximoTema = isLight ? "dark" : "light";
   return (
-    <div className="flex items-center rounded-full p-0.5 gap-0.5 flex-shrink-0"
-      style={{ background: isLight ? "rgba(220,220,240,0.9)" : "rgba(15,23,42,0.6)", border: "1px solid rgba(79,106,255,0.25)" }}>
-      <button onClick={() => alternar("dark")}
-        className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold transition-all"
-        style={tema === "dark" ? { background: "#102a43", color: "white" } : { color: "#888899" }}>
-        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+    <button
+      onClick={() => alternar(proximoTema)}
+      className="w-8 h-8 flex items-center justify-center rounded-md transition-colors flex-shrink-0"
+      style={{ color: "var(--text-tertiary)" }}
+      onMouseEnter={(e) => { e.currentTarget.style.color = "var(--text-primary)"; }}
+      onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-tertiary)"; }}
+      title={isLight ? "Mudar para tema escuro" : "Mudar para tema claro"}
+      aria-label={isLight ? "Mudar para tema escuro" : "Mudar para tema claro"}
+    >
+      {isLight ? (
+        // Moon (Lucide)
+        <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
-        Escuro
-      </button>
-      <button onClick={() => alternar("light")}
-        className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold transition-all"
-        style={tema === "light" ? { background: "#102a43", color: "white" } : { color: "#888899" }}>
-        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
+      ) : (
+        // Sun (Lucide)
+        <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <circle cx="12" cy="12" r="4" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
         </svg>
-        Claro
-      </button>
-    </div>
+      )}
+    </button>
   );
 }
 
@@ -223,35 +229,42 @@ function EmpresaSelectorWidget({ token, topbar }: { token: string; topbar?: bool
   const DropdownContent = () => (
     <div className="max-h-56 overflow-y-auto">
       {carregando ? (
-        <p className="text-xs text-slate-500 text-center py-4">Carregando...</p>
+        <p className="text-xs text-center py-4" style={{ color: "var(--text-tertiary)" }}>Carregando...</p>
       ) : empresas.length === 0 ? (
-        <p className="text-xs text-slate-500 text-center py-4">Nenhuma empresa encontrada</p>
+        <p className="text-xs text-center py-4" style={{ color: "var(--text-tertiary)" }}>Nenhuma empresa encontrada</p>
       ) : (
         <>
           {empresaSelecionada && (
             <button onClick={() => { setEmpresaSelecionada(null); setAberto(false); }}
-              className="w-full flex items-center gap-2 px-3 py-2 text-xs text-slate-500 transition-colors"
-              style={{ borderBottom: "1px solid var(--border)" }}
-              onMouseEnter={ev => { (ev.currentTarget as HTMLElement).style.background = "var(--bg-card-hover)"; }}
+              className="w-full flex items-center gap-2 px-3 py-2 text-xs transition-colors"
+              style={{ borderBottom: "1px solid var(--border-subtle)", color: "var(--text-secondary)" }}
+              onMouseEnter={ev => { (ev.currentTarget as HTMLElement).style.background = "var(--bg-elevated)"; }}
               onMouseLeave={ev => { (ev.currentTarget as HTMLElement).style.background = "transparent"; }}>
-              <span className="text-rose-400">✕</span> Limpar seleção
+              <span style={{ color: "var(--danger)" }}>✕</span> Limpar seleção
             </button>
           )}
           {empresas.map(e => (
             <button key={e.id} onClick={() => { setEmpresaSelecionada(e); setAberto(false); }}
               className="w-full flex items-center gap-2 px-3 py-2.5 text-left transition-colors"
-              style={{ background: empresaSelecionada?.id === e.id ? "var(--bg-secondary)" : undefined }}
-              onMouseEnter={ev => { if (empresaSelecionada?.id !== e.id) (ev.currentTarget as HTMLElement).style.background = "var(--bg-card-hover)"; }}
+              style={{ background: empresaSelecionada?.id === e.id ? "var(--accent-subtle)" : undefined }}
+              onMouseEnter={ev => { if (empresaSelecionada?.id !== e.id) (ev.currentTarget as HTMLElement).style.background = "var(--bg-elevated)"; }}
               onMouseLeave={ev => { if (empresaSelecionada?.id !== e.id) (ev.currentTarget as HTMLElement).style.background = "transparent"; }}>
-              <div className="w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-black flex-shrink-0" style={{ background: "#1e3a5f", color: "white" }}>
+              <div
+                className="w-6 h-6 flex items-center justify-center text-[10px] font-semibold flex-shrink-0"
+                style={{
+                  background: "var(--accent)",
+                  color: "var(--text-inverse)",
+                  borderRadius: "var(--radius-sm)",
+                }}
+              >
                 {(e.nome_fantasia || e.nome).slice(0, 2).toUpperCase()}
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-xs font-semibold text-slate-200 truncate">{e.nome_fantasia || e.nome}</p>
-                {e.cnpj && <p className="text-[10px] text-slate-500 font-mono">{e.cnpj}</p>}
+                <p className="text-xs font-semibold truncate" style={{ color: "var(--text-primary)" }}>{e.nome_fantasia || e.nome}</p>
+                {e.cnpj && <p className="text-[10px] font-mono" style={{ color: "var(--text-tertiary)" }}>{e.cnpj}</p>}
               </div>
               {empresaSelecionada?.id === e.id && (
-                <svg className="w-3 h-3 flex-shrink-0" style={{ color: "#102a43" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                <svg className="w-3 h-3 flex-shrink-0" style={{ color: "var(--accent)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               )}
@@ -265,35 +278,51 @@ function EmpresaSelectorWidget({ token, topbar }: { token: string; topbar?: bool
   if (topbar) {
     return (
       <div ref={ref} className="relative flex-shrink-0">
-        <button onClick={handleAbrir}
-          className={`flex items-center gap-2 px-3 py-2 rounded-xl border text-xs transition-all ${
-            empresaSelecionada
-              ? "border-[#102a43]/30 text-slate-200 hover:border-[#102a43]/50"
-              : "border-slate-700/60 text-slate-400 hover:border-slate-600 hover:text-slate-300"
-          }`}
-          style={empresaSelecionada
-            ? { background: "var(--bg-secondary)" }
-            : { background: "var(--bg-card)" }
-          }>
-          <svg className="w-3.5 h-3.5 flex-shrink-0" style={{ color: empresaSelecionada ? "#3b6ea5" : "#64748b" }}
+        <button
+          onClick={handleAbrir}
+          className="flex items-center gap-2 px-3 py-2 border text-sm transition-colors"
+          style={{
+            background: "var(--bg-elevated)",
+            borderColor: "var(--border-default)",
+            color: empresaSelecionada ? "var(--text-primary)" : "var(--text-tertiary)",
+            borderRadius: "var(--radius-md)",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--border-strong)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-default)"; }}
+        >
+          {/* Building2 (Lucide) */}
+          <svg className="w-4 h-4 flex-shrink-0" style={{ color: empresaSelecionada ? "var(--accent)" : "var(--text-tertiary)" }}
             fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2M10 6h4M10 10h4M10 14h4M10 18h4" />
           </svg>
-          <span className="font-semibold max-w-[160px] truncate">{nomeExibido}</span>
-          <svg className="w-3 h-3 flex-shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          <span className="font-medium max-w-[180px] truncate">{nomeExibido}</span>
+          {/* Chevron down (Lucide) */}
+          <svg className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "var(--text-tertiary)" }}
+            fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
           </svg>
         </button>
         {aberto && (
-          <div className="absolute top-full left-0 mt-1.5 z-50 w-80 rounded-2xl overflow-hidden"
-            style={{ background: "var(--bg-card)", border: "1px solid var(--border)", boxShadow: "0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(79,106,255,0.1)" }}>
-            <div className="p-2.5" style={{ borderBottom: "1px solid var(--border)" }}>
+          <div className="absolute top-full left-0 mt-1.5 z-50 w-80 overflow-hidden"
+            style={{
+              background: "var(--bg-overlay)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-lg)",
+              boxShadow: "var(--shadow-lg)",
+            }}>
+            <div className="p-2.5" style={{ borderBottom: "1px solid var(--border-subtle)" }}>
               <input autoFocus value={busca} onChange={e => setBusca(e.target.value)}
                 placeholder="Buscar empresa..."
-                className="w-full px-3 py-2 rounded-xl text-xs focus:outline-none"
-                style={{ background: "var(--bg-secondary)", border: "1px solid var(--border)", color: "var(--text-primary)" }}
-                onFocus={ev => { ev.currentTarget.style.borderColor = "rgba(79,106,255,0.5)"; }}
-                onBlur={ev => { ev.currentTarget.style.borderColor = "var(--border)"; }} />
+                className="w-full px-3 py-2 text-xs focus:outline-none border"
+                style={{
+                  background: "var(--bg-inset)",
+                  borderColor: "var(--border-default)",
+                  color: "var(--text-primary)",
+                  borderRadius: "var(--radius-md)",
+                }}
+                onFocus={ev => { ev.currentTarget.style.borderColor = "var(--border-focus)"; }}
+                onBlur={ev => { ev.currentTarget.style.borderColor = "var(--border-default)"; }} />
             </div>
             <DropdownContent />
           </div>
@@ -305,35 +334,51 @@ function EmpresaSelectorWidget({ token, topbar }: { token: string; topbar?: bool
   // Sidebar variant
   return (
     <div ref={ref} className="relative px-3 pb-3">
-      <button onClick={handleAbrir}
-        className={`w-full flex items-center gap-2 px-3 py-2 rounded-xl border text-xs transition-all ${
-          empresaSelecionada
-            ? "border-[#102a43]/30 text-slate-200"
-            : "text-slate-500 hover:border-[#102a43]/20"
-        }`}
-        style={{ background: "var(--bg-secondary)", borderColor: empresaSelecionada ? undefined : "var(--border)" }}>
-        <svg className="w-3.5 h-3.5 flex-shrink-0" style={{ color: empresaSelecionada ? "#3b6ea5" : undefined }}
+      <button
+        onClick={handleAbrir}
+        className="w-full flex items-center gap-2 px-3 py-2 border text-xs transition-colors"
+        style={{
+          background: "var(--bg-elevated)",
+          borderColor: "var(--border-default)",
+          color: empresaSelecionada ? "var(--text-primary)" : "var(--text-tertiary)",
+          borderRadius: "var(--radius-md)",
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--border-strong)"; }}
+        onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-default)"; }}
+      >
+        <svg className="w-3.5 h-3.5 flex-shrink-0" style={{ color: empresaSelecionada ? "var(--accent)" : "var(--text-tertiary)" }}
           fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2M10 6h4M10 10h4M10 14h4M10 18h4" />
         </svg>
         <div className="flex-1 text-left min-w-0 overflow-hidden">
-          <p className="truncate font-semibold leading-tight">{nomeExibido}</p>
-          {empresaSelecionada?.cnpj && <p className="text-[10px] text-slate-500 font-mono truncate">{empresaSelecionada.cnpj}</p>}
+          <p className="truncate font-medium leading-tight">{nomeExibido}</p>
+          {empresaSelecionada?.cnpj && <p className="text-[10px] font-mono truncate" style={{ color: "var(--text-tertiary)" }}>{empresaSelecionada.cnpj}</p>}
         </div>
-        <svg className="w-3 h-3 flex-shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        <svg className="w-3 h-3 flex-shrink-0" style={{ color: "var(--text-tertiary)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
         </svg>
       </button>
       {aberto && (
-        <div className="absolute left-3 right-3 top-full mt-1 z-50 rounded-xl overflow-hidden"
-          style={{ background: "var(--bg-card)", border: "1px solid var(--border)", boxShadow: "0 8px 24px rgba(0,0,0,0.25)" }}>
-          <div className="p-2" style={{ borderBottom: "1px solid var(--border)" }}>
+        <div className="absolute left-3 right-3 top-full mt-1 z-50 overflow-hidden"
+          style={{
+            background: "var(--bg-overlay)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-lg)",
+            boxShadow: "var(--shadow-md)",
+          }}>
+          <div className="p-2" style={{ borderBottom: "1px solid var(--border-subtle)" }}>
             <input autoFocus value={busca} onChange={e => setBusca(e.target.value)}
               placeholder="Buscar empresa..."
-              className="w-full px-3 py-1.5 rounded-lg text-xs focus:outline-none"
-              style={{ background: "var(--bg-secondary)", border: "1px solid var(--border)", color: "var(--text-primary)" }}
-              onFocus={ev => { ev.currentTarget.style.borderColor = "rgba(79,106,255,0.5)"; }}
-              onBlur={ev => { ev.currentTarget.style.borderColor = "var(--border)"; }} />
+              className="w-full px-3 py-1.5 text-xs focus:outline-none border"
+              style={{
+                background: "var(--bg-inset)",
+                borderColor: "var(--border-default)",
+                color: "var(--text-primary)",
+                borderRadius: "var(--radius-md)",
+              }}
+              onFocus={ev => { ev.currentTarget.style.borderColor = "var(--border-focus)"; }}
+              onBlur={ev => { ev.currentTarget.style.borderColor = "var(--border-default)"; }} />
           </div>
           <DropdownContent />
         </div>
@@ -781,7 +826,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
               {/* ── Equipe (gestor + admin) ── */}
               {isGestorOrAdmin && (
                 <>
-                  <SectionLabel label="Equipe" color="#a78bfa" collapsed={collapsed} />
+                  <SectionLabel label="Equipe" collapsed={collapsed} />
                   <NavLink href="/gestor/equipe" label="Gestão de Equipe" collapsed={collapsed}
                     active={pathname === "/gestor/equipe"}
                     icon={<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>}
@@ -792,7 +837,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
               {/* ── Central de Controle (master only) ── */}
               {usuario?.is_master && (
                 <>
-                  <SectionLabel label="Controle" color="#818cf8" collapsed={collapsed} />
+                  <SectionLabel label="Controle" collapsed={collapsed} />
                   <NavLink href="/master" label="Central de Controle" collapsed={collapsed}
                     active={pathname === "/master"}
                     icon={<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>}
@@ -803,7 +848,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
               {/* ── Administração (admin only) ─�� */}
               {usuario?.is_admin && (
                 <>
-                  <SectionLabel label="Administração" color="#34d399" collapsed={collapsed} />
+                  <SectionLabel label="Administração" collapsed={collapsed} />
                   <NavLink href="/admin" label="Usuários" collapsed={collapsed}
                     active={pathname === "/admin"}
                     icon={<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>}
