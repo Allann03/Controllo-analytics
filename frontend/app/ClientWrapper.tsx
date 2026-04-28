@@ -102,19 +102,21 @@ function SectionLabel({ label, color, collapsed }: { label: string; color?: stri
   if (collapsed) {
     return (
       <div className="my-2 flex items-center justify-center">
-        <div className="w-5 h-px" style={{ background: color ? `${color}33` : "rgba(79,106,255,0.2)" }} />
+        <div className="w-5 h-px" style={{ background: "var(--border-subtle)" }} />
       </div>
     );
   }
   return (
-    <div className="pt-4 pb-1 px-3 flex items-center gap-2">
+    <div className="px-3 pt-6 pb-2">
       <span
-        className="text-[9px] font-bold uppercase tracking-[0.18em] whitespace-nowrap"
-        style={{ color: color || "rgba(100,116,139,0.85)" }}
+        className="text-xs uppercase font-medium whitespace-nowrap"
+        style={{
+          color: color || "var(--text-tertiary)",
+          letterSpacing: "var(--tracking-widest)",
+        }}
       >
         {label}
       </span>
-      <div className="flex-1 h-px" style={{ background: color ? `${color}25` : "rgba(79,106,255,0.1)" }} />
     </div>
   );
 }
@@ -477,42 +479,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
             WebkitBackdropFilter: "blur(16px)",
           }}>
 
-          {/* Toggle */}
-          <button onClick={toggleSidebar}
-            className="hidden md:flex w-8 h-8 items-center justify-center rounded-xl transition-all hover:bg-white/5 flex-shrink-0"
-            style={{ color: "#64748b", border: "1px solid rgba(79,106,255,0.15)" }}
-            title={sidebarAberta ? "Recolher menu" : "Expandir menu"}>
-            {sidebarAberta ? (
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7M18 19l-7-7 7-7" />
-              </svg>
-            ) : (
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
-
-          {/* Logo + Nome do app */}
-          <div className="flex items-center gap-2.5 flex-shrink-0">
-            <div className="w-7 h-7 flex items-center justify-center rounded-lg logo-box bg-navy-800 border border-navy-600/30 dark:bg-navy-800 dark:border-navy-600/30">
-              <svg className="w-4 h-4 text-navy-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round">
-                <circle cx="12" cy="12" r="9.5" strokeWidth="1.3" />
-                <path d="M12 2.5C9 5.8 7.8 9 7.8 12s1.2 6.2 4.2 9.5" strokeWidth="1" />
-                <path d="M12 2.5c3 3.3 4.2 6.5 4.2 9.5s-1.2 6.2-4.2 9.5" strokeWidth="1" />
-                <line x1="2.5" y1="12" x2="21.5" y2="12" strokeWidth="1" />
-                <path d="M5.2 7.5Q12 6.3 18.8 7.5" strokeWidth="0.75" />
-                <path d="M5.2 16.5Q12 17.7 18.8 16.5" strokeWidth="0.75" />
-              </svg>
-            </div>
-            <div className="hidden sm:block leading-none">
-              <div className="text-white font-black text-[11px] tracking-[0.08em] uppercase">CONTROLLO BPO</div>
-              <div className="text-[9px] font-semibold tracking-[0.24em] uppercase mt-[3px] text-[#3b6ea5]">Analytics</div>
-            </div>
-          </div>
-
-          {/* Divider */}
-          <div className="hidden sm:block w-px h-5 flex-shrink-0" style={{ background: "rgba(79,106,255,0.18)" }} />
+          {/* Logo e botão collapse foram movidos para a sidebar (Fase 4 §5.2) */}
 
           {/* ── Saudação premium ── */}
           <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
@@ -599,17 +566,80 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
           <aside
             className="hidden md:flex flex-col flex-shrink-0 overflow-hidden z-20"
             style={{
-              width: sidebarAberta ? 224 : 56,
+              width: sidebarAberta ? 256 : 56,
               transition: "width 0.25s cubic-bezier(0.4,0,0.2,1)",
               background: "var(--sidebar-bg)",
               borderRight: "1px solid var(--sidebar-border)",
               boxShadow: "var(--sidebar-shadow)",
             }}
           >
-            <nav className="flex-1 overflow-y-auto overflow-x-hidden py-4 space-y-0.5"
+            {/* ── Header da sidebar: wordmark + botão collapse ── */}
+            {collapsed ? (
+              <div
+                className="flex items-center justify-center"
+                style={{ height: 56, borderBottom: "1px solid var(--border-subtle)" }}
+              >
+                <button
+                  onClick={toggleSidebar}
+                  className="w-7 h-7 flex items-center justify-center rounded-md transition-colors"
+                  style={{ color: "var(--text-tertiary)" }}
+                  aria-label="Expandir menu"
+                  title="Expandir menu"
+                  onMouseEnter={(e) => { e.currentTarget.style.color = "var(--text-secondary)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-tertiary)"; }}
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+              </div>
+            ) : (
+              <div
+                className="flex items-center justify-between"
+                style={{
+                  height: 56,
+                  padding: "0 16px",
+                  borderBottom: "1px solid var(--border-subtle)",
+                }}
+              >
+                <div className="flex flex-col gap-0.5 min-w-0">
+                  <span
+                    className="font-bold tracking-tight"
+                    style={{ color: "var(--text-primary)", fontSize: "var(--text-base)" }}
+                  >
+                    CONTROLLO
+                  </span>
+                  <span
+                    className="text-xs uppercase font-medium"
+                    style={{
+                      color: "var(--text-tertiary)",
+                      letterSpacing: "var(--tracking-widest)",
+                      lineHeight: 1,
+                    }}
+                  >
+                    BPO Analytics
+                  </span>
+                </div>
+                <button
+                  onClick={toggleSidebar}
+                  className="w-7 h-7 flex items-center justify-center rounded-md transition-colors flex-shrink-0"
+                  style={{ color: "var(--text-tertiary)" }}
+                  aria-label="Recolher menu"
+                  title="Recolher menu"
+                  onMouseEnter={(e) => { e.currentTarget.style.color = "var(--text-secondary)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-tertiary)"; }}
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7M18 19l-7-7 7-7" />
+                  </svg>
+                </button>
+              </div>
+            )}
+
+            <nav className="flex-1 overflow-y-auto overflow-x-hidden py-2 space-y-0.5"
               style={{
-                paddingLeft: collapsed ? 8 : 12,
-                paddingRight: collapsed ? 8 : 12,
+                paddingLeft: collapsed ? 0 : 12,
+                paddingRight: collapsed ? 0 : 12,
                 transition: "padding 0.25s cubic-bezier(0.4,0,0.2,1)",
               }}>
 
