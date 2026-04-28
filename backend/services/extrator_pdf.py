@@ -486,6 +486,7 @@ from .parsers.xp_posicao import ParserXPPosicao
 from .parsers.nubank import ParserNubank
 from .parsers.bs2 import ParserBS2
 from .parsers.santander_consolidado import ParserSantanderConsolidado
+from .parsers.santander_ib_novo import ParserSantanderIBNovo
 from .parsers.bradesco_empresas.bradesco_net_empresas import ParserBradescoNetEmpresas
 from .parsers.n2.itau_n2 import ParserItauN2
 from .parsers.n2.inter_n2 import ParserInterN2
@@ -519,6 +520,7 @@ PARSERS: dict[str, type] = {
     'nubank': ParserNubank,
     'bs2': ParserBS2,
     'santander_consolidado': ParserSantanderConsolidado,
+    'santander_ib_novo': ParserSantanderIBNovo,
     'bradesco_net_empresas': ParserBradescoNetEmpresas,
     'itau_n2': ParserItauN2,
     'inter_n2': ParserInterN2,
@@ -582,6 +584,17 @@ _ASSINATURAS: list[tuple[str, list[list[str]]]] = [
     # bradesco: 'dcto.' é o cabeçalho de coluna único do Bradesco;
     # 'bradesco' nem sempre está no texto visível do PDF
     ('bradesco',     [['bradesco'], ['dcto.'], ['rentab.invest facilcred']]),
+    # santander_ib_novo: Internet Banking Empresarial layout NOVO.
+    # Distingue dos outros 3 layouts Santander pela presença de
+    # 'saldo do dia r$' (linha por dia, ausente no DLS antigo, no
+    # Consolidado e no formato App "por dia da semana") em conjunto
+    # com o cabeçalho 'internet banking empresarial'.
+    # Inserido ANTES de santander_consolidado / santander_empresas /
+    # santander para impedir que 'contamax' (presente em descrições
+    # do IB novo) capture esse extrato no roteador genérico.
+    ('santander_ib_novo', [
+        ['internet banking empresarial', 'saldo do dia r$'],
+    ]),
     # santander_consolidado: Extrato Consolidado Inteligente
     ('santander_consolidado', [
         ['extrato consolidado inteligente'],
@@ -1153,6 +1166,7 @@ _NOME_BANCO_EXIBICAO: dict[str, str] = {
     'inter_n2': 'Inter',
     'itau_empresas_n2': 'Itaú Empresas',
     'santander_consolidado': 'Santander',
+    'santander_ib_novo': 'Santander Empresas',
     'bradesco_net_empresas': 'Bradesco Net Empresas',
     'santander_empresas_v1': 'Santander Empresas',
     'santander_empresas_v2': 'Santander Empresas',
