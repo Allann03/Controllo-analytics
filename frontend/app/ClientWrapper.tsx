@@ -28,43 +28,42 @@ function NavLink({
 }) {
   const [hovered, setHovered] = useState(false);
 
+  // Estado visual
+  const textColor = active || hovered ? "var(--text-primary)" : "var(--text-secondary)";
+  const bgColor = active
+    ? "var(--accent-subtle)"
+    : hovered ? "var(--bg-elevated)" : "transparent";
+
   return (
     <Link
       href={href}
-      title={collapsed ? label : undefined}
-      className="group relative flex items-center w-full rounded-xl font-medium"
+      className={`group relative flex items-center w-full font-medium ${collapsed ? "justify-center" : ""}`}
       style={{
-        padding: collapsed ? "10px 10px" : "10px 12px",
+        padding: collapsed ? "10px 0" : "8px 12px",
         gap: collapsed ? 0 : 12,
-        color: active ? "var(--nav-active-text)" : "var(--nav-text)",
-        background: active ? "var(--nav-active-bg)" : hovered ? "var(--nav-hover-bg)" : "transparent",
-        border: `1px solid ${active ? "var(--nav-active-border)" : "transparent"}`,
-        boxShadow: active ? "var(--nav-active-shadow)" : "none",
-        transition: "padding 0.25s cubic-bezier(0.4,0,0.2,1), gap 0.25s cubic-bezier(0.4,0,0.2,1), background 0.18s, color 0.15s, box-shadow 0.18s",
+        color: textColor,
+        background: bgColor,
+        borderRadius: "var(--radius-md)",
+        // Border-left 2px do estado ativo via box-shadow inset (não afeta layout)
+        boxShadow: active && !collapsed ? "inset 2px 0 0 var(--accent)" : "none",
+        transition: "padding 0.25s cubic-bezier(0.4,0,0.2,1), gap 0.25s cubic-bezier(0.4,0,0.2,1), background 0.15s, color 0.15s, box-shadow 0.15s",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {active && !collapsed && (
-        <span
-          className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 rounded-r-full"
-          style={{ background: "var(--nav-indicator)", boxShadow: "var(--nav-indicator-glow)" }}
-        />
-      )}
-      {/* Icon */}
+      {/* Icon (Lucide ~18px) */}
       <span
-        className="flex-shrink-0 flex items-center justify-center rounded-lg transition-all duration-200 [&>svg]:w-[18px] [&>svg]:h-[18px]"
-        style={{
-          width: 22, height: 22,
-          background: active ? "var(--nav-icon-active-bg)" : "transparent",
-          boxShadow: active ? "var(--nav-icon-active-shadow)" : "none",
-        }}
-      >{icon}</span>
+        className="flex-shrink-0 flex items-center justify-center [&>svg]:w-[18px] [&>svg]:h-[18px]"
+        style={{ width: 18, height: 18 }}
+      >
+        {icon}
+      </span>
+
       {/* Label */}
       <span
         className="text-sm leading-normal whitespace-nowrap"
         style={{
-          maxWidth: collapsed ? 0 : 155,
+          maxWidth: collapsed ? 0 : 200,
           opacity: collapsed ? 0 : 1,
           overflow: "hidden",
           transition: "max-width 0.25s cubic-bezier(0.4,0,0.2,1), opacity 0.15s",
@@ -73,11 +72,13 @@ function NavLink({
       >
         {label}
       </span>
-      {/* Badge */}
+
+      {/* Badge numérico (modo expandido) */}
       {badge !== undefined && badge > 0 && (
         <span
-          className="flex-shrink-0 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-rose-500 text-white text-[10px] font-bold px-1"
+          className="flex-shrink-0 min-w-[18px] h-[18px] flex items-center justify-center rounded-full text-white text-[10px] font-bold px-1"
           style={{
+            background: "var(--danger)",
             maxWidth: collapsed ? 0 : 40,
             opacity: collapsed ? 0 : 1,
             overflow: "hidden",
@@ -87,10 +88,15 @@ function NavLink({
           {badge > 99 ? "99+" : badge}
         </span>
       )}
+
+      {/* Dot indicador no modo colapsado */}
       {collapsed && badge !== undefined && badge > 0 && (
         <span
-          className="absolute top-1 right-1 w-2 h-2 rounded-full bg-rose-500"
-          style={{ boxShadow: "0 0 0 2px var(--bg-primary)" }}
+          className="absolute top-1 right-1 w-2 h-2 rounded-full"
+          style={{
+            background: "var(--danger)",
+            boxShadow: "0 0 0 2px var(--bg-canvas)",
+          }}
         />
       )}
     </Link>
