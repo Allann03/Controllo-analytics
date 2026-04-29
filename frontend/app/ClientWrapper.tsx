@@ -5,6 +5,7 @@ import Link from "next/link";
 import { EmpresaProvider, useEmpresa } from "@/contexts/EmpresaContext";
 import type { EmpresaSimples } from "@/contexts/EmpresaContext";
 import { ToastProvider } from "@/contexts/ToastContext";
+import { UserAvatar } from "@/components/UserAvatar";
 
 interface Usuario {
   id: number;
@@ -876,12 +877,8 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
             >
               {collapsed ? (
                 <div className="flex flex-col items-center gap-2">
-                  <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold leading-none"
-                    style={{ background: "var(--accent)", color: "var(--text-inverse)" }}
-                    title={usuario?.nome}
-                  >
-                    {iniciais}
+                  <div title={usuario?.nome}>
+                    <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" />
                   </div>
                   <button
                     onClick={fazerLogout}
@@ -905,12 +902,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
                     borderRadius: "var(--radius-md)",
                   }}
                 >
-                  <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0 leading-none"
-                    style={{ background: "var(--accent)", color: "var(--text-inverse)" }}
-                  >
-                    {iniciais}
-                  </div>
+                  <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" />
                   <div className="overflow-hidden flex-1 min-w-0">
                     <p
                       className="font-medium text-sm truncate leading-tight"
