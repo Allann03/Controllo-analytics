@@ -19,6 +19,7 @@ interface Perfil {
   cargo: string;
   is_admin: boolean;
   avatar_id?: string | null;
+  exibir_nome_social?: boolean;
 }
 
 // ── Hook de tema ────────────────────────────────────────────────────
@@ -197,6 +198,7 @@ export default function ConfiguracoesPage() {
   // Perfil
   const [nomeExibicao, setNomeExibicao] = useState("");
   const [cargo, setCargo] = useState("");
+  const [exibirNomeSocial, setExibirNomeSocial] = useState(false);
   const [salvandoPerfil, setSalvandoPerfil] = useState(false);
   const [msgPerfil, setMsgPerfil] = useState<{ texto: string; tipo: "ok" | "erro" } | null>(null);
 
@@ -214,6 +216,7 @@ export default function ConfiguracoesPage() {
         setPerfil(d);
         setNomeExibicao(d.nome_exibicao || "");
         setCargo(d.cargo || "");
+        setExibirNomeSocial(!!d.exibir_nome_social);
         // Prioriza avatar do backend; se null/undefined, mantem o que ja foi
         // lido do localStorage no useEffect anterior. Backend wins.
         if (d.avatar_id) {
@@ -232,14 +235,14 @@ export default function ConfiguracoesPage() {
       const res = await fetch(`${API}/api/auth/perfil`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${tk()}` },
-        body: JSON.stringify({ nome_exibicao: nomeExibicao, cargo }),
+        body: JSON.stringify({ nome_exibicao: nomeExibicao, cargo, exibir_nome_social: exibirNomeSocial }),
       });
       const d = await res.json();
       if (!res.ok) throw new Error(d.detail || "Erro ao salvar.");
       setMsgPerfil({ texto: "Perfil atualizado com sucesso.", tipo: "ok" });
       try {
         const u = JSON.parse(localStorage.getItem("controllo_user") ?? "{}");
-        localStorage.setItem("controllo_user", JSON.stringify({ ...u, nome_exibicao: d.nome_exibicao, cargo: d.cargo }));
+        localStorage.setItem("controllo_user", JSON.stringify({ ...u, nome_exibicao: d.nome_exibicao, cargo: d.cargo, exibir_nome_social: d.exibir_nome_social }));
       } catch { /* ignore */ }
     } catch (e) {
       setMsgPerfil({ texto: (e as Error).message, tipo: "erro" });
@@ -453,6 +456,38 @@ export default function ConfiguracoesPage() {
                   placeholder="Como quer ser chamado(a)"
                   hint="Aparece nos cumprimentos e cabeçalhos de relatórios"
                 />
+                <div className="flex items-start gap-3">
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={exibirNomeSocial}
+                    onClick={() => setExibirNomeSocial(v => !v)}
+                    className="flex-shrink-0 mt-0.5 transition-colors relative"
+                    style={{
+                      width: 36, height: 20, borderRadius: 9999,
+                      background: exibirNomeSocial ? "var(--accent)" : "var(--bg-elevated)",
+                      border: "1px solid var(--border-default)",
+                    }}
+                  >
+                    <span
+                      className="block transition-transform"
+                      style={{
+                        width: 16, height: 16, borderRadius: 9999,
+                        background: "var(--text-inverse)",
+                        position: "absolute", top: 1, left: 1,
+                        transform: exibirNomeSocial ? "translateX(16px)" : "translateX(0)",
+                      }}
+                    />
+                  </button>
+                  <div>
+                    <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
+                      Permitir que outros membros vejam meu nome de exibição
+                    </p>
+                    <p className="text-xs mt-0.5" style={{ color: "var(--text-tertiary)" }}>
+                      Quando desativado, apenas você vê seu nome de exibição. Outros membros (incluindo administradores) verão apenas seu login.
+                    </p>
+                  </div>
+                </div>
                 <InputField
                   label="Cargo / Função"
                   value={cargo}
