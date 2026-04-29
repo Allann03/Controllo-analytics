@@ -1,6 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import {
+  Calculator, Users, Briefcase, BriefcaseBusiness, ShieldCheck, Shield,
+  Wallet, Crown, Award, Scale,
+  type LucideIcon,
+} from "lucide-react";
 import { validarSenha, senhaValida, REGRAS_LABELS, type RegrasSenha } from "@/lib/validacao-senha";
 
 const _rawApi = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
@@ -74,48 +79,37 @@ const SECOES: { key: Secao; label: string; icon: React.ReactNode }[] = [
 interface FlatIconDef {
   id: string;
   label: string;
-  svgPath: string;
-  multiPath?: boolean;
-  paths?: string[];
+  Icon: LucideIcon;
 }
 
 const FLAT_ICONS: FlatIconDef[] = [
-  { id: "m1", label: "Analista", svgPath: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" },
-  { id: "m2", label: "Gestor", multiPath: true, paths: ["M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"], svgPath: "" },
-  { id: "m3", label: "Executivo", svgPath: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" },
-  { id: "m4", label: "Diretor", svgPath: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" },
-  { id: "m5", label: "Consultor", svgPath: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" },
-  { id: "m6", label: "Sócio", svgPath: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" },
-  { id: "f1", label: "Analista", svgPath: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" },
-  { id: "f2", label: "Gestora", svgPath: "M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" },
-  { id: "f3", label: "Executiva", svgPath: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" },
-  { id: "f4", label: "Diretora", svgPath: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" },
-  { id: "f5", label: "Consultora", svgPath: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" },
-  { id: "f6", label: "Sócia", svgPath: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" },
+  { id: "cont",     label: "Contabilidade",        Icon: Calculator },
+  { id: "dp",       label: "Departamento Pessoal", Icon: Users },
+  { id: "gestor",   label: "Gestor",                Icon: Briefcase },
+  { id: "gestora",  label: "Gestora",               Icon: BriefcaseBusiness },
+  { id: "diretor",  label: "Diretor",               Icon: ShieldCheck },
+  { id: "diretora", label: "Diretora",              Icon: Shield },
+  { id: "fin",      label: "Financeiro",            Icon: Wallet },
+  { id: "socio",    label: "Sócio",                 Icon: Crown },
+  { id: "socia",    label: "Sócia",                 Icon: Award },
+  { id: "fiscal",   label: "Fiscal",                Icon: Scale },
 ];
 
 function FlatAvatar({ iconId, size = 48 }: { iconId: string; size?: number }) {
   const icon = FLAT_ICONS.find(i => i.id === iconId);
-  const pathData = icon?.multiPath ? icon.paths?.[0] : icon?.svgPath;
-  const iconSize = Math.max(16, Math.round(size * 0.55));
+  const Icon = icon?.Icon ?? Users;
+  const iconSize = Math.max(16, Math.round(size * 0.5));
   return (
     <div
       className="flex items-center justify-center rounded-xl"
       style={{
         width: size, height: size,
-        background: "linear-gradient(135deg, rgba(30,73,118,0.15), rgba(59,110,165,0.08))",
-        border: "1px solid rgba(30,73,118,0.2)",
+        background: "var(--accent-subtle)",
+        border: "1px solid var(--accent-border)",
+        color: "var(--accent)",
       }}
     >
-      <svg
-        style={{ width: iconSize, height: iconSize }}
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="#3b6ea5"
-        strokeWidth={1.8}
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" d={pathData ?? "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"} />
-      </svg>
+      <Icon size={iconSize} strokeWidth={1.75} />
     </div>
   );
 }
@@ -493,31 +487,38 @@ export default function ConfiguracoesPage() {
               )}
 
               {/* Grid de ícones flat */}
-              <div className="grid grid-cols-4 sm:grid-cols-6 gap-3 mb-5">
-                {FLAT_ICONS.map(icon => {
-                  const selected = avatarPendente === icon.id;
-                  const pathData = icon.multiPath ? icon.paths?.[0] : icon.svgPath;
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-5">
+                {FLAT_ICONS.map(({ id, label, Icon }) => {
+                  const selected = avatarPendente === id;
                   return (
                     <button
-                      key={icon.id}
-                      onClick={() => setAvatarPendente(icon.id)}
-                      title={icon.label}
-                      className={`relative flex flex-col items-center gap-1.5 p-3 rounded-xl transition-all ${
-                        selected ? "ring-2 ring-[#1E4976] ring-offset-2" : "hover:bg-slate-50"
-                      }`}
-                      style={{ border: `1px solid ${selected ? "#1E4976" : "var(--border)"}` }}
+                      key={id}
+                      onClick={() => setAvatarPendente(id)}
+                      title={label}
+                      className="relative flex flex-col items-center gap-1.5 p-3 rounded-xl transition-all"
+                      style={{
+                        border: `1px solid ${selected ? "var(--accent)" : "var(--border-subtle)"}`,
+                        background: selected ? "var(--accent-subtle)" : "transparent",
+                      }}
                     >
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100 text-slate-500">
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d={pathData ?? "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"} />
-                        </svg>
+                      <div
+                        className="w-10 h-10 rounded-full flex items-center justify-center"
+                        style={{
+                          background: selected ? "var(--accent-subtle)" : "var(--bg-inset)",
+                          color: selected ? "var(--accent)" : "var(--text-secondary)",
+                        }}
+                      >
+                        <Icon size={20} strokeWidth={1.75} />
                       </div>
-                      <span className="text-[10px] font-medium text-center leading-tight" style={{ color: "var(--text-muted)" }}>
-                        {icon.label}
+                      <span className="text-[11px] font-medium text-center leading-tight" style={{ color: "var(--text-secondary)" }}>
+                        {label}
                       </span>
                       {selected && (
-                        <div className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#1E4976] flex items-center justify-center">
-                          <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <div
+                          className="absolute top-1 right-1 w-4 h-4 rounded-full flex items-center justify-center"
+                          style={{ background: "var(--accent)" }}
+                        >
+                          <svg className="w-2.5 h-2.5" style={{ color: "var(--text-inverse)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                           </svg>
                         </div>
