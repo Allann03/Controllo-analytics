@@ -293,17 +293,30 @@ export default function ConciliacaoPage() {
 
           {/* 3 mini-explicações */}
           <div
-            className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4"
-            style={{ borderTop: "1px solid var(--border-subtle)" }}
+            className="pt-4"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+              gap: "1rem",
+              borderTop: "1px solid var(--border-subtle)",
+            }}
           >
             {[
               { Icon: CopyCheck, text: "Detecção automática de duplicidades" },
               { Icon: Layers, text: "Match por data + valor + descrição" },
               { Icon: Building2, text: "Lógica específica por banco" },
             ].map(({ Icon, text }) => (
-              <div key={text} className="flex items-center gap-2.5">
-                <Icon size={20} strokeWidth={1.75} style={{ color: "var(--text-tertiary)" }} />
-                <p className="text-xs leading-snug" style={{ color: "var(--text-secondary)" }}>{text}</p>
+              <div
+                key={text}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "20px 1fr",
+                  alignItems: "start",
+                  gap: "0.625rem",
+                }}
+              >
+                <Icon size={20} strokeWidth={1.75} style={{ color: "var(--text-tertiary)", marginTop: 1 }} />
+                <p className="text-sm leading-snug" style={{ color: "var(--text-secondary)" }}>{text}</p>
               </div>
             ))}
           </div>
