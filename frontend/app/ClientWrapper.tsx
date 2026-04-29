@@ -534,15 +534,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
           <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
             {/* Avatar 32px à ESQUERDA da saudação */}
             <div className="relative flex-shrink-0">
-              <div
-                className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold select-none leading-none"
-                style={{
-                  background: "var(--accent)",
-                  color: "var(--text-inverse)",
-                }}
-              >
-                {iniciais}
-              </div>
+              <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" />
               {/* Status online dot */}
               <span
                 className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full"
