@@ -128,24 +128,36 @@ export default function AbaBalanco({ balanco }: { balanco: BalancoResponse }) {
                 </PieChart>
               </ResponsiveContainer>
             </GraficoComNome>
-            {/* Legenda manual */}
-            <div className="flex flex-col gap-1.5 mt-2">
-              {dadosAtivo.map((item, i) => {
+            {/* Breakdown — substitui legenda, mostra dot + nome + R$ + % */}
+            <div className="mt-3">
+              {(() => {
                 const total = dadosAtivo.reduce((acc, d) => acc + d.value, 0);
-                const pct = total > 0 ? ((item.value / total) * 100).toFixed(0) : "0";
-                return (
-                  <div key={i} className="flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-2">
+                return dadosAtivo.map((item, i) => {
+                  const pct = total > 0 ? ((item.value / total) * 100).toFixed(0) : "0";
+                  const isLast = i === dadosAtivo.length - 1;
+                  return (
+                    <div
+                      key={i}
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "12px 1fr auto 60px",
+                        alignItems: "center",
+                        gap: "0.75rem",
+                        padding: "0.5rem 0",
+                        borderBottom: isLast ? "none" : "1px solid var(--border-subtle)",
+                      }}
+                    >
                       <span
-                        className="w-2.5 h-2.5 rounded-sm flex-shrink-0"
+                        className="w-3 h-3 rounded-sm"
                         style={{ background: item.color, opacity: item.opacity }}
                       />
-                      <span style={{ color: "var(--text-secondary)" }}>{item.name}</span>
+                      <span className="text-sm" style={{ color: "var(--text-secondary)" }}>{item.name}</span>
+                      <span className="font-mono tabular-nums text-sm" style={{ color: "var(--text-primary)" }}>{fmt(item.value)}</span>
+                      <span className="font-mono tabular-nums text-xs text-right" style={{ color: "var(--text-tertiary)" }}>{pct}%</span>
                     </div>
-                    <span className="font-mono font-semibold tabular-nums" style={{ color: "var(--text-primary)" }}>{pct}%</span>
-                  </div>
-                );
-              })}
+                  );
+                });
+              })()}
             </div>
           </div>
         )}
