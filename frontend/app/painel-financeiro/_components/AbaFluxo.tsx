@@ -16,6 +16,11 @@ export default function AbaFluxo({ fluxo }: { fluxo: FluxoResponse }) {
   const projTrend = proj3m >= saldoAtual;
   const currentMonth = new Date().toLocaleString("pt-BR", { month: "short" }).replace(".", "");
 
+  // Chart tokens — semantica §5.6
+  const chartC1 = ct.isLight ? "#3B82F6" : "#4F8EFF"; // saldo (azul)
+  const chartC2 = ct.isLight ? "#059669" : "#34D399"; // entradas (verde)
+  const chartC3 = ct.isLight ? "#DC2626" : "#F87171"; // saidas  (vermelho)
+
   return (
     <div className="space-y-6">
       {/* Cards de resumo — 4 cards responsivos */}
@@ -84,9 +89,9 @@ export default function AbaFluxo({ fluxo }: { fluxo: FluxoResponse }) {
               <YAxis tick={{ fill: ct.tickFill, fontSize: 11 }} tickFormatter={(v) => `${((v as number) / 1000).toFixed(0)}k`} />
               <Tooltip contentStyle={ct.tooltipStyle} labelStyle={ct.tooltipLabelStyle} itemStyle={ct.tooltipItemStyle} formatter={(v) => fmt(v as number)} />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="entradas" name="Entradas" fill="#10b981" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="saidas" name="Saídas" fill="#ef4444" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="saldo" name="Saldo" fill="#3b6ea5" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="entradas" name="Entradas" fill={chartC2} radius={[3, 3, 0, 0]} />
+              <Bar dataKey="saidas" name="Saídas" fill={chartC3} radius={[3, 3, 0, 0]} />
+              <Bar dataKey="saldo" name="Saldo" fill={chartC1} radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
