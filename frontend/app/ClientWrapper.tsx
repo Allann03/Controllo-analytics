@@ -450,6 +450,18 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
     setCarregando(false);
   }, [API_URL]);
 
+  // Propagacao cross-componente: /configuracoes dispara este evento ao salvar
+  // o avatar para que sidebar e topbar reflitam a mudanca sem F5.
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const ev = e as CustomEvent<{ avatar_id: string | null }>;
+      const novoAvatarId = ev.detail?.avatar_id;
+      setPerfilExtra((prev) => prev ? { ...prev, avatar_id: novoAvatarId ?? null } : prev);
+    };
+    window.addEventListener("controllo-avatar-change", handler);
+    return () => window.removeEventListener("controllo-avatar-change", handler);
+  }, []);
+
   // Tarefas pendentes (localStorage)
   useEffect(() => {
     if (isRotaPublica) return;

@@ -303,6 +303,9 @@ export default function ConfiguracoesPage() {
       setAvatarId(persistido);
       setAvatarPendente(persistido);
       setMsgAvatar({ texto: "Avatar salvo com sucesso.", tipo: "ok" });
+      window.dispatchEvent(new CustomEvent("controllo-avatar-change", {
+        detail: { avatar_id: persistido || null },
+      }));
       setTimeout(() => setMsgAvatar(null), 3000);
     } catch (e) {
       // Falha de rede: persiste localmente como fallback otimista. Proxima
