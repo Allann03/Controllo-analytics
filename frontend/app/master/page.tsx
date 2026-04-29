@@ -103,7 +103,7 @@ function Badge({ children, className }: { children: React.ReactNode; className: 
   return <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide ${className}`}>{children}</span>;
 }
 
-function KpiCard({ label, value, icon }: { label: string; value: number | string; icon?: React.ReactNode }) {
+function KpiCard({ label, value, icon, contexto }: { label: string; value: number | string; icon?: React.ReactNode; contexto?: string }) {
   return (
     <div
       className="rounded-2xl p-5 flex flex-col gap-2"
@@ -130,6 +130,11 @@ function KpiCard({ label, value, icon }: { label: string; value: number | string
       >
         {value}
       </span>
+      {contexto && (
+        <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>
+          {contexto}
+        </p>
+      )}
     </div>
   );
 }
@@ -533,10 +538,10 @@ export default function MasterPage() {
             <div className="space-y-6">
               {/* summary */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <KpiCard label="Total"            value={escritorios.length}                              icon={<Building2 size={20} strokeWidth={1.75} />} />
-                <KpiCard label="Ativos"           value={escritorios.filter(e => e.ativo).length}         icon={<CheckCircle2 size={20} strokeWidth={1.75} />} />
-                <KpiCard label="Inativos"         value={escritorios.filter(e => !e.ativo).length}        icon={<XCircle size={20} strokeWidth={1.75} />} />
-                <KpiCard label="Pendentes Global" value={pendentesGlobal}                                  icon={<Clock size={20} strokeWidth={1.75} />} />
+                <KpiCard label="Total"            value={escritorios.length}                              icon={<Building2 size={20} strokeWidth={1.75} />}    contexto="escritórios cadastrados" />
+                <KpiCard label="Ativos"           value={escritorios.filter(e => e.ativo).length}         icon={<CheckCircle2 size={20} strokeWidth={1.75} />} contexto="em operação" />
+                <KpiCard label="Inativos"         value={escritorios.filter(e => !e.ativo).length}        icon={<XCircle size={20} strokeWidth={1.75} />}      contexto="desativados" />
+                <KpiCard label="Pendentes Global" value={pendentesGlobal}                                  icon={<Clock size={20} strokeWidth={1.75} />}        contexto="aguardando aprovação" />
               </div>
 
               {/* toolbar */}
