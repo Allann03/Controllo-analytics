@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Building2, CheckCircle2, XCircle, Clock } from "lucide-react";
+import { Building2, CheckCircle2, XCircle, Clock, ArrowLeft } from "lucide-react";
 
 /* -- types ------------------------------------------------ */
 interface Escritorio {
@@ -451,45 +451,37 @@ export default function MasterPage() {
     <div className="min-h-screen font-[var(--font-body)]" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
       <ToastBar toast={toast} onDone={() => setToast(null)} />
 
-      {/* Geometric background */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-        <div className="absolute inset-0 opacity-[var(--geo-dots-opacity,0.03)]"
-          style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full border border-current opacity-[var(--geo-ring-opacity,0.04)]" />
-        <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full border border-current opacity-[var(--geo-ring-opacity,0.03)]" />
-      </div>
-
       {/* header */}
       <header
         className="relative z-10 px-8 pt-8 pb-6"
         style={{ borderBottom: "1px solid var(--border-subtle)" }}
       >
-        <div className="max-w-7xl mx-auto flex items-start justify-between gap-4">
-          <div>
-            <p
-              className="text-xs uppercase font-medium mb-2"
-              style={{
-                color: "var(--text-tertiary)",
-                letterSpacing: "var(--tracking-widest)",
-              }}
-            >
-              Administrador
-            </p>
-            <h1 className="text-2xl tracking-tight">
-              <span className="font-semibold" style={{ color: "var(--text-primary)" }}>Central de </span>
-              <span className="font-normal" style={{ color: "var(--text-secondary)" }}>Controle</span>
-            </h1>
-            <p className="text-sm mt-1" style={{ color: "var(--text-secondary)" }}>
-              Gestão centralizada de escritórios e usuários da plataforma
-            </p>
-          </div>
+        <div className="max-w-7xl mx-auto">
+          <p
+            className="text-xs uppercase font-medium mb-2"
+            style={{
+              color: "var(--text-tertiary)",
+              letterSpacing: "var(--tracking-widest)",
+            }}
+          >
+            Administrador
+          </p>
+          <h1 className="text-2xl tracking-tight">
+            <span className="font-semibold" style={{ color: "var(--text-primary)" }}>Central de </span>
+            <span className="font-normal" style={{ color: "var(--text-secondary)" }}>Controle</span>
+          </h1>
+          <p className="text-sm mt-1" style={{ color: "var(--text-secondary)" }}>
+            Gestão centralizada de escritórios e usuários da plataforma
+          </p>
+          {/* Link Voltar — dentro da hierarquia do header, abaixo do subtitulo */}
           <button
             onClick={() => router.push("/dashboard")}
-            className="text-xs transition-colors"
+            className="mt-3 text-sm transition-colors inline-flex items-center gap-1.5"
             style={{ color: "var(--text-tertiary)" }}
             onMouseEnter={(e) => { e.currentTarget.style.color = "var(--text-primary)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-tertiary)"; }}
           >
+            <ArrowLeft size={14} strokeWidth={2} />
             Voltar ao Dashboard
           </button>
         </div>
