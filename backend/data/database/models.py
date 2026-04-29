@@ -42,6 +42,7 @@ class Usuario(Base):
     token_version = Column(Integer, default=0, nullable=False, server_default="0")
     nome_exibicao = Column(String, default="")   # nome de exibição / apelido
     cargo = Column(String, default="")            # cargo/função opcional
+    avatar_id = Column(String, nullable=True, default=None)  # identificador do avatar selecionado (ex: "contabilidade")
 
     __table_args__ = (
         UniqueConstraint("escritorio_id", "nome", name="uq_usuario_escritorio_nome"),
