@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { Check, X, Ban, Trash2, Search, UserPlus } from "lucide-react";
+import { UserAvatar } from "@/components/UserAvatar";
 
 interface Usuario {
   id: number;
@@ -11,6 +12,7 @@ interface Usuario {
   is_gestor?: boolean;
   is_ceo?: boolean;
   is_aprovado: boolean;
+  avatar_id?: string | null;
 }
 
 interface Toast {
@@ -493,28 +495,17 @@ export default function AdminPage() {
                     {/* Avatar + nome */}
                     <td className="px-5 py-3.5">
                       <div className="flex items-center gap-3">
-                        <div
-                          className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-                          style={{
-                            background: u.is_admin
-                              ? "var(--accent-subtle)"
-                              : u.status === "pendente"
-                              ? "var(--warning-subtle)"
-                              : "var(--bg-inset)",
-                            border: `1px solid ${u.is_admin
-                              ? "var(--accent-border)"
-                              : u.status === "pendente"
-                              ? "var(--warning-border)"
-                              : "var(--border-subtle)"}`,
-                            color: u.is_admin
-                              ? "var(--accent)"
-                              : u.status === "pendente"
-                              ? "var(--warning)"
-                              : "var(--text-secondary)",
-                          }}
-                        >
-                          <Iniciais nome={u.nome} />
-                        </div>
+                        <UserAvatar
+                          size={32}
+                          rounded="full"
+                          avatarIdOverride={u.avatar_id ?? null}
+                          fallbackIniciais={(() => {
+                            const partes = u.nome.trim().split(" ");
+                            return partes.length >= 2
+                              ? (partes[0][0] + partes[partes.length - 1][0]).toUpperCase()
+                              : partes[0].slice(0, 2).toUpperCase();
+                          })()}
+                        />
                         <div>
                           <p className="font-medium text-sm leading-tight" style={{ color: "var(--text-primary)" }}>{u.nome}</p>
                           <p className="text-[11px] mt-0.5 font-mono tabular-nums" style={{ color: "var(--text-tertiary)" }}>ID #{u.id}</p>
