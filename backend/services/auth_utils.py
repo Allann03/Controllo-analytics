@@ -207,6 +207,23 @@ def resolve_empresa_or_403(
     return empresa
 
 
+# ── Privacidade do nome social ───────────────────────────────────────
+
+def filtrar_nome_social(target_user, viewer_user_id) -> str:
+    """Retorna nome_exibicao do target apenas quando permitido.
+
+    Regra unica (sem excecao por role): o proprio usuario sempre ve seu
+    nome_exibicao. Outros so veem se target.exibir_nome_social == True.
+    Quando bloqueado, retorna string vazia para preservar o tipo (frontend
+    cai no fallback `nome_exibicao || nome` automaticamente).
+    """
+    if target_user.id == viewer_user_id:
+        return target_user.nome_exibicao or ""
+    if getattr(target_user, "exibir_nome_social", False):
+        return target_user.nome_exibicao or ""
+    return ""
+
+
 # ── Validação de força de senha (R1) ────────────────────────────────
 
 _ESPECIAIS = set("!@#$%^&*()_+-=[]{}|;:,.<>?")
