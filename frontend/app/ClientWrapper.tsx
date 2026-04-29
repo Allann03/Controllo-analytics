@@ -905,7 +905,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
             >
               {collapsed ? (
                 <div className="flex flex-col items-center gap-2">
-                  <div title={usuario?.nome}>
+                  <div title={perfilExtra?.nome_exibicao || usuario?.nome}>
                     <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" avatarIdOverride={perfilExtra?.avatar_id ?? undefined} />
                   </div>
                   <button
@@ -936,7 +936,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
                       className="font-medium text-sm truncate leading-tight"
                       style={{ color: "var(--text-primary)" }}
                     >
-                      {usuario?.nome}
+                      {perfilExtra?.nome_exibicao || usuario?.nome}
                     </p>
                     <p
                       className="text-xs mt-0.5 truncate"
