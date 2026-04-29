@@ -395,7 +395,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
   const [carregando, setCarregando] = useState(true);
   const [atrasados, setAtrasados] = useState(0);
   const [tarefasPendentes, setTarefasPendentes] = useState(0);
-  const [perfilExtra, setPerfilExtra] = useState<{ nome_exibicao: string; cargo: string } | null>(null);
+  const [perfilExtra, setPerfilExtra] = useState<{ nome_exibicao: string; cargo: string; avatar_id?: string | null } | null>(null);
   const [sidebarAberta, setSidebarAberta] = useState(true);
   const [agora, setAgora] = useState(() => new Date());
   const pathname = usePathname();
@@ -437,7 +437,14 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
       }
       fetch(`${API_URL}/api/auth/me`, { headers: { Authorization: `Bearer ${t}` } })
         .then(r => r.ok ? r.json() : null)
-        .then(d => { if (d) setPerfilExtra({ nome_exibicao: d.nome_exibicao ?? "", cargo: d.cargo ?? "" }); })
+        .then(d => {
+          if (!d) return;
+          setPerfilExtra({ nome_exibicao: d.nome_exibicao ?? "", cargo: d.cargo ?? "", avatar_id: d.avatar_id ?? null });
+          // Sincroniza cache local do avatar com o backend (single-source-of-truth).
+          if (d.avatar_id && typeof window !== "undefined") {
+            localStorage.setItem("controllo_avatar", d.avatar_id);
+          }
+        })
         .catch(() => {});
     }
     setCarregando(false);
@@ -534,7 +541,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
           <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
             {/* Avatar 32px à ESQUERDA da saudação */}
             <div className="relative flex-shrink-0">
-              <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" />
+              <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" avatarIdOverride={perfilExtra?.avatar_id} />
               {/* Status online dot */}
               <span
                 className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full"
@@ -870,7 +877,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
               {collapsed ? (
                 <div className="flex flex-col items-center gap-2">
                   <div title={usuario?.nome}>
-                    <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" />
+                    <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" avatarIdOverride={perfilExtra?.avatar_id} />
                   </div>
                   <button
                     onClick={fazerLogout}
@@ -894,7 +901,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
                     borderRadius: "var(--radius-md)",
                   }}
                 >
-                  <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" />
+                  <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" avatarIdOverride={perfilExtra?.avatar_id} />
                   <div className="overflow-hidden flex-1 min-w-0">
                     <p
                       className="font-medium text-sm truncate leading-tight"

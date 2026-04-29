@@ -18,6 +18,7 @@ interface Perfil {
   nome_exibicao: string;
   cargo: string;
   is_admin: boolean;
+  avatar_id?: string | null;
 }
 
 // ── Hook de tema ────────────────────────────────────────────────────
@@ -213,6 +214,13 @@ export default function ConfiguracoesPage() {
         setPerfil(d);
         setNomeExibicao(d.nome_exibicao || "");
         setCargo(d.cargo || "");
+        // Prioriza avatar do backend; se null/undefined, mantem o que ja foi
+        // lido do localStorage no useEffect anterior. Backend wins.
+        if (d.avatar_id) {
+          setAvatarId(d.avatar_id);
+          setAvatarPendente(d.avatar_id);
+          saveAvatarId(d.avatar_id); // sincroniza cache local
+        }
       })
       .catch(() => {});
   }, []);
@@ -281,19 +289,29 @@ export default function ConfiguracoesPage() {
     setSalvandoAvatar(true);
     setMsgAvatar(null);
     try {
-      saveAvatarId(avatarPendente);
-      setAvatarId(avatarPendente);
-      // Tenta persistir no backend (ignora erro se endpoint não suportar)
-      await fetch(`${API}/api/auth/perfil`, {
+      const res = await fetch(`${API}/api/auth/perfil`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${tk()}` },
         body: JSON.stringify({ avatar_id: avatarPendente }),
-      }).catch(() => {});
+      });
+      const d = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(d.detail || "Erro ao salvar.");
+      // Backend persistiu — sincroniza cache local com o valor confirmado pelo
+      // servidor (que pode ter normalizado lowercase ou ignorado char invalido).
+      const persistido = (d.avatar_id ?? avatarPendente) as string;
+      saveAvatarId(persistido);
+      setAvatarId(persistido);
+      setAvatarPendente(persistido);
       setMsgAvatar({ texto: "Avatar salvo com sucesso.", tipo: "ok" });
       setTimeout(() => setMsgAvatar(null), 3000);
-    } catch {
-      setMsgAvatar({ texto: "Erro ao salvar avatar.", tipo: "erro" });
-      setTimeout(() => setMsgAvatar(null), 3000);
+    } catch (e) {
+      // Falha de rede: persiste localmente como fallback otimista. Proxima
+      // visita com backend disponivel re-sincroniza via /api/auth/me.
+      saveAvatarId(avatarPendente);
+      setAvatarId(avatarPendente);
+      const msg = e instanceof Error ? e.message : "Erro ao salvar avatar.";
+      setMsgAvatar({ texto: `${msg} (salvo localmente)`, tipo: "erro" });
+      setTimeout(() => setMsgAvatar(null), 4000);
     } finally {
       setSalvandoAvatar(false);
     }

@@ -33,26 +33,44 @@ interface UserAvatarProps {
   fallbackIniciais?: string;
   /** Border radius (default: rounded-full quando size <= 28, senao 12px). Pass "full" para sempre full. */
   rounded?: "default" | "full";
+  /** Override explicito do avatar id. Quando passado (string ou null), tem
+   *  prioridade sobre a leitura do localStorage. Use para renderizar avatar
+   *  de OUTRO usuario (ex: lista de admin lendo cada Usuario.avatar_id do
+   *  payload). null/undefined faz cair no fallbackIniciais. */
+  avatarIdOverride?: string | null;
 }
 
-/** Componente de avatar que lê automaticamente do localStorage.
- *  Quando `controllo_avatar` esta vazio e `fallbackIniciais` foi passado,
- *  renderiza as iniciais sobre fundo accent. Caso contrario, mostra o
- *  icone Users default sobre fundo inset. */
-export function UserAvatar({ size = 32, className = "", fallbackIniciais, rounded = "default" }: UserAvatarProps) {
+/** Componente de avatar.
+ *  - Se `avatarIdOverride` for passado (incluindo null), usa ele direto.
+ *  - Caso contrario, le `controllo_avatar` do localStorage (avatar do usuario
+ *    logado) com polling 2s + storage event listener.
+ *  - Fallback: se nao houver avatar e `fallbackIniciais` veio, renderiza as
+ *    iniciais sobre fundo accent. Senao, icone Users default em bg-inset. */
+export function UserAvatar({
+  size = 32,
+  className = "",
+  fallbackIniciais,
+  rounded = "default",
+  avatarIdOverride,
+}: UserAvatarProps) {
   const [avatarId, setAvatarId] = useState("");
 
+  // Polling do localStorage so faz sentido quando NAO ha override explicito.
+  // Quando override e passado, o componente deve renderizar exatamente o que
+  // veio do parent (geralmente do backend) sem se preocupar com localStorage.
+  const usaOverride = avatarIdOverride !== undefined;
+
   useEffect(() => {
+    if (usaOverride) return; // override fixo, sem polling
     setAvatarId(getAvatarId());
-    // Re-check when storage changes (e.g., after saving in configuracoes)
     const handler = () => setAvatarId(getAvatarId());
     window.addEventListener("storage", handler);
-    // Also poll for same-tab changes
     const interval = setInterval(handler, 2000);
     return () => { window.removeEventListener("storage", handler); clearInterval(interval); };
-  }, []);
+  }, [usaOverride]);
 
-  const Icon = FLAT_ICONS_MAP[avatarId];
+  const efetivo = usaOverride ? (avatarIdOverride ?? "") : avatarId;
+  const Icon = FLAT_ICONS_MAP[efetivo];
   const hasIcon = !!Icon;
   const showIniciais = !hasIcon && !!fallbackIniciais;
 
