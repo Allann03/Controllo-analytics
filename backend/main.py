@@ -1091,6 +1091,7 @@ class PerfilUpdate(BaseModel):
     nome_exibicao: Optional[str] = None
     cargo: Optional[str] = None
     avatar_id: Optional[str] = None
+    exibir_nome_social: Optional[bool] = None
 
 class SenhaUpdate(BaseModel):
     senha_atual: str
@@ -1141,12 +1142,15 @@ def atualizar_perfil(
         elif clean == "":
             current_user.avatar_id = None  # permite remover avatar
         # caracteres invalidos -> ignora silenciosamente (preserva valor anterior)
+    if body.exibir_nome_social is not None:
+        current_user.exibir_nome_social = bool(body.exibir_nome_social)
     db.commit()
     return {
         "mensagem": "Perfil atualizado.",
         "nome_exibicao": current_user.nome_exibicao or "",
         "cargo": current_user.cargo or "",
         "avatar_id": current_user.avatar_id,
+        "exibir_nome_social": bool(current_user.exibir_nome_social),
     }
 
 @app.patch("/api/auth/senha")
