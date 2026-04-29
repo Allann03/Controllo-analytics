@@ -244,6 +244,13 @@ export default function ConfiguracoesPage() {
         const u = JSON.parse(localStorage.getItem("controllo_user") ?? "{}");
         localStorage.setItem("controllo_user", JSON.stringify({ ...u, nome_exibicao: d.nome_exibicao, cargo: d.cargo, exibir_nome_social: d.exibir_nome_social }));
       } catch { /* ignore */ }
+      window.dispatchEvent(new CustomEvent("controllo-perfil-change", {
+        detail: {
+          nome_exibicao: d.nome_exibicao ?? "",
+          cargo: d.cargo ?? "",
+          exibir_nome_social: !!d.exibir_nome_social,
+        },
+      }));
     } catch (e) {
       setMsgPerfil({ texto: (e as Error).message, tipo: "erro" });
     } finally {

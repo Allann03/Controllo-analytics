@@ -462,6 +462,23 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
     return () => window.removeEventListener("controllo-avatar-change", handler);
   }, []);
 
+  // Propagacao cross-componente do perfil (nome_exibicao, cargo, exibir_nome_social):
+  // /configuracoes dispara este evento ao salvar o form de perfil para que a
+  // saudacao do topbar reflita o novo nome sem F5.
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const ev = e as CustomEvent<{ nome_exibicao: string; cargo: string; exibir_nome_social: boolean }>;
+      const det = ev.detail;
+      if (!det) return;
+      setPerfilExtra((prev) => prev
+        ? { ...prev, nome_exibicao: det.nome_exibicao ?? "", cargo: det.cargo ?? "" }
+        : { nome_exibicao: det.nome_exibicao ?? "", cargo: det.cargo ?? "" }
+      );
+    };
+    window.addEventListener("controllo-perfil-change", handler);
+    return () => window.removeEventListener("controllo-perfil-change", handler);
+  }, []);
+
   // Tarefas pendentes (localStorage)
   useEffect(() => {
     if (isRotaPublica) return;
