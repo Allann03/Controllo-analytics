@@ -312,14 +312,16 @@ export default function ConfiguracoesPage() {
       >
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex items-center gap-4">
-            {/* Avatar */}
+            {/* Avatar — wrapper flex-centered para anular mismatch entre
+                box 56x56 e conteudo do FlatAvatar (48x48) que ficava
+                ancorado top-left empurrando o icone visualmente para cima. */}
             <div
-              className="w-14 h-14 rounded-2xl overflow-hidden flex-shrink-0 shadow-lg ring-2 ring-[#102a43]/20 cursor-pointer hover:ring-[#102a43]/40 transition-all"
+              className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg ring-2 ring-[#102a43]/20 cursor-pointer hover:ring-[#102a43]/40 transition-all overflow-hidden"
               onClick={() => setSecao("avatar")}
               title="Clique para alterar o avatar"
             >
               {avatarId ? (
-                <FlatAvatar iconId={avatarId} />
+                <FlatAvatar iconId={avatarId} size={56} />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-slate-100 text-slate-500">
                   <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -328,16 +330,16 @@ export default function ConfiguracoesPage() {
                 </div>
               )}
             </div>
-            <div>
+            <div className="flex flex-col justify-center">
               <p className="text-xs font-semibold uppercase tracking-widest mb-0.5" style={{ color: "#102a43" }}>
                 Configurações
               </p>
-              <h1 className="text-2xl font-extrabold tracking-tight" style={{ color: "var(--text-primary)" }}>
+              <h1 className="text-2xl font-extrabold tracking-tight leading-tight" style={{ color: "var(--text-primary)" }}>
                 Olá, {saudacao}
               </h1>
-              <p className="text-sm mt-0.5" style={{ color: "var(--text-secondary)" }}>
-                {perfil?.is_admin ? "Administrador" : "Analista"}
-                {cargo && <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-semibold bg-navy-100 text-navy-800 border border-navy-200 dark:bg-navy-900/40 dark:text-navy-300 dark:border-navy-800/60">{cargo}</span>}
+              <p className="text-sm mt-0.5 flex items-center gap-2" style={{ color: "var(--text-secondary)" }}>
+                <span>{perfil?.is_admin ? "Administrador" : "Analista"}</span>
+                {cargo && <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-navy-100 text-navy-800 border border-navy-200 dark:bg-navy-900/40 dark:text-navy-300 dark:border-navy-800/60">{cargo}</span>}
               </p>
             </div>
           </div>
