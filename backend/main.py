@@ -1111,6 +1111,7 @@ def meu_perfil(current_user: models.Usuario = Depends(get_current_user), db: Ses
         "nome_exibicao": current_user.nome_exibicao or "",
         "cargo": current_user.cargo or "",
         "avatar_id": current_user.avatar_id,
+        "exibir_nome_social": bool(getattr(current_user, "exibir_nome_social", False)),
         "is_master": _is_master,
         "is_admin": current_user.is_admin,
         "is_ceo": _is_ceo,
