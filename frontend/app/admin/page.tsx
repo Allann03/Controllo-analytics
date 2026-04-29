@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { Check, X, Ban, Trash2, Search } from "lucide-react";
+import { Check, X, Ban, Trash2, Search, UserPlus } from "lucide-react";
 
 interface Usuario {
   id: number;
@@ -650,6 +650,60 @@ export default function AdminPage() {
             </div>
           )}
         </div>
+
+        {/* Empty state pedagogico — exibido apenas quando ha 1 unico usuario
+            cadastrado no escritorio (provavelmente o proprio admin que esta
+            visualizando). */}
+        {total === 1 && (
+          <div
+            className="mt-6 p-6 rounded-lg flex items-start gap-4"
+            style={{
+              background: "var(--bg-surface)",
+              border: "1px solid var(--border-subtle)",
+            }}
+          >
+            <div
+              className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+              style={{
+                background: "var(--accent-subtle)",
+                color: "var(--accent)",
+              }}
+            >
+              <UserPlus size={24} strokeWidth={1.75} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p
+                className="text-xs uppercase font-medium mb-1"
+                style={{
+                  color: "var(--text-tertiary)",
+                  letterSpacing: "var(--tracking-widest)",
+                }}
+              >
+                Primeiro usuário
+              </p>
+              <h3 className="text-base font-semibold" style={{ color: "var(--text-primary)" }}>
+                Convide colaboradores para sua equipe
+              </h3>
+              <p className="text-sm leading-normal mt-1" style={{ color: "var(--text-secondary)" }}>
+                Compartilhe o link de cadastro do seu escritório com sua equipe. Eles poderão criar conta e aguardar aprovação.
+              </p>
+              <button
+                onClick={() => router.push("/configuracoes")}
+                className="mt-3 px-3.5 py-1.5 text-xs font-semibold transition-colors border"
+                style={{
+                  background: "var(--bg-elevated)",
+                  borderColor: "var(--border-default)",
+                  color: "var(--text-primary)",
+                  borderRadius: "var(--radius-md)",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = "var(--bg-overlay)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = "var(--bg-elevated)"; }}
+              >
+                Ver instruções de convite
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Inline styles para hover dos botoes de acao (Lucide icons) */}
