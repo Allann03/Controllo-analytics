@@ -201,7 +201,15 @@ export default function ImportarPage() {
           </div>
           <button
             onClick={baixarModeloExtrato}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold border border-emerald-600/40 text-emerald-400 bg-emerald-500/5 hover:bg-emerald-500/15 transition-all"
+            className="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors border"
+            style={{
+              background: "var(--bg-elevated)",
+              borderColor: "var(--border-default)",
+              color: "var(--text-primary)",
+              borderRadius: "var(--radius-md)",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "var(--bg-overlay)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "var(--bg-elevated)"; }}
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />

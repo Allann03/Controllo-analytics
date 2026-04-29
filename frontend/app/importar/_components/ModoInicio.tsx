@@ -38,10 +38,8 @@ interface Props {
 }
 
 // ─────────────────────────────────────────────────────────────────
-//  Accent colors per data type (cycles if needed)
+//  Tipos de planilha — ordem canônica
 // ─────────────────────────────────────────────────────────────────
-
-const ACCENT_COLORS = ["#102a43", "#3b6ea5", "#10b981", "#f59e0b", "#f43f5e", "#a855f7", "#06b6d4"];
 
 const TIPOS_ORDER = ["faturamento", "despesas", "impostos", "folha", "fluxo", "balanco", "dre"];
 
@@ -56,94 +54,65 @@ export default function ModoInicio({
 
   const howItWorks = [
     {
-      num: "1",
+      num: "01",
       title: "Baixe o modelo",
       desc: "Cada tipo de dado tem uma planilha modelo com as colunas certas e exemplos preenchidos.",
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-        </svg>
-      ),
     },
     {
-      num: "2",
+      num: "02",
       title: "Preencha com seus dados",
       desc: "Substitua os exemplos pelos dados reais da empresa. Mantenha o formato das colunas.",
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-        </svg>
-      ),
     },
     {
-      num: "3",
+      num: "03",
       title: "Faça o upload",
       desc: "Suba o arquivo preenchido. O sistema processa e atualiza automaticamente os painéis.",
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-        </svg>
-      ),
     },
   ];
 
   return (
     <>
       {/* ── Como funciona ── */}
-      <div className="rounded-2xl p-6 bg-slate-50 border border-slate-200 dark:bg-slate-800/30 dark:border-slate-700/60">
+      <div
+        className="rounded-2xl p-6"
+        style={{
+          background: "var(--bg-surface)",
+          border: "1px solid var(--border-subtle)",
+        }}
+      >
         {/* Section title */}
-        <div className="flex items-center gap-3 mb-5">
+        <div className="flex items-center gap-3 mb-6">
           <span
-            className="text-[11px] font-bold uppercase tracking-widest"
-            style={{ color: "var(--text-muted)" }}
+            className="text-[11px] font-semibold uppercase"
+            style={{
+              color: "var(--text-tertiary)",
+              letterSpacing: "var(--tracking-widest)",
+            }}
           >
             Como funciona
           </span>
-          <div className="flex-1 h-px" style={{ background: "var(--border)" }} />
+          <div className="flex-1 h-px" style={{ background: "var(--border-subtle)" }} />
         </div>
 
-        {/* 3-step horizontal flow */}
-        <div className="flex items-start gap-0">
-          {howItWorks.map((s, idx) => (
-            <div key={s.num} className="flex items-start gap-0 flex-1">
-              <div className="flex flex-col items-center flex-1 text-center px-2">
-                {/* Numbered circle */}
-                <div
-                  className="w-8 h-8 rounded-full flex items-center justify-center mb-3 flex-shrink-0"
-                  style={{
-                    background: "linear-gradient(135deg, #102a43, #3b6ea5)",
-                    boxShadow: "0 0 12px rgba(79,106,255,0.30)",
-                    color: "#fff",
-                  }}
-                >
-                  <span className="text-[11px] font-extrabold">{s.num}</span>
-                </div>
-                {/* Icon */}
-                <div
-                  className="w-9 h-9 rounded-xl flex items-center justify-center mb-2.5"
-                  style={{
-                    background: "rgba(79,106,255,0.10)",
-                    border: "1px solid rgba(79,106,255,0.18)",
-                    color: "#3b6ea5",
-                  }}
-                >
-                  {s.icon}
-                </div>
-                <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>{s.title}</p>
-                <p className="text-xs mt-1 leading-relaxed" style={{ color: "var(--text-muted)" }}>{s.desc}</p>
-              </div>
-
-              {/* Dashed connector */}
-              {idx < howItWorks.length - 1 && (
-                <div
-                  className="flex-1 self-start mt-4"
-                  style={{
-                    borderTop: "1px dashed rgba(79,106,255,0.20)",
-                    margin: "16px 12px 0",
-                    minWidth: 24,
-                  }}
-                />
-              )}
+        {/* 3-step horizontal flow — sober numeric headers, no connector lines */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {howItWorks.map((s) => (
+            <div key={s.num} className="flex flex-col gap-2">
+              <span
+                className="text-xs uppercase font-medium"
+                style={{
+                  color: "var(--text-tertiary)",
+                  letterSpacing: "var(--tracking-widest)",
+                }}
+              >
+                Passo {s.num}
+              </span>
+              <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
+                {s.title}
+              </p>
+              <p className="text-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                {s.desc}
+              </p>
             </div>
           ))}
         </div>
@@ -152,13 +121,14 @@ export default function ModoInicio({
       {/* ── Planilhas Modelo ── */}
       <div>
         <div className="flex items-center justify-between mb-4">
-          <p className="text-sm font-bold" style={{ color: "var(--text-primary)" }}>Planilhas Modelo</p>
+          <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Planilhas Modelo</p>
           <span
-            className="text-[11px] font-bold px-2.5 py-1 rounded-lg font-mono"
+            className="text-[11px] font-medium px-2.5 py-1 font-mono"
             style={{
-              background: "var(--bg-secondary)",
-              border: "1px solid var(--border)",
-              color: "var(--text-muted)",
+              background: "var(--bg-inset)",
+              border: "1px solid var(--border-subtle)",
+              borderRadius: "var(--radius-sm)",
+              color: "var(--text-tertiary)",
               letterSpacing: "0.03em",
             }}
           >
@@ -167,20 +137,18 @@ export default function ModoInicio({
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-          {TIPOS_ORDER.map((tipo, idx) => {
+          {TIPOS_ORDER.map((tipo) => {
             const info = TIPO_INFO[tipo];
             const campos = camposDestino[tipo] ?? [];
             const obrig = campos.filter((c) => c.obrigatorio).map((c) => c.label);
-            const accent = ACCENT_COLORS[idx % ACCENT_COLORS.length];
 
             return (
               <div
                 key={tipo}
                 className="rounded-2xl overflow-hidden flex flex-col"
                 style={{
-                  background: "var(--bg-card)",
-                  border: "1px solid var(--border)",
-                  borderTop: `3px solid ${accent}`,
+                  background: "var(--bg-surface)",
+                  border: "1px solid var(--border-subtle)",
                 }}
               >
                 {/* Card body */}
@@ -190,8 +158,9 @@ export default function ModoInicio({
                     <div
                       className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
                       style={{
-                        background: `${accent}18`,
-                        border: `1px solid ${accent}28`,
+                        background: "var(--bg-inset)",
+                        border: "1px solid var(--border-subtle)",
+                        color: "var(--text-secondary)",
                       }}
                     >
                       <svg
@@ -199,7 +168,6 @@ export default function ModoInicio({
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
-                        style={{ color: accent }}
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
@@ -210,7 +178,7 @@ export default function ModoInicio({
                   </div>
 
                   {/* Description */}
-                  <p className="text-[11px] leading-snug" style={{ color: "var(--text-muted)" }}>
+                  <p className="text-[11px] leading-snug" style={{ color: "var(--text-secondary)" }}>
                     {info?.descricao ?? ""}
                   </p>
 
@@ -220,11 +188,11 @@ export default function ModoInicio({
                       {obrig.map((l) => (
                         <span
                           key={l}
-                          className="text-[9px] font-bold px-1.5 py-0.5 rounded-full"
+                          className="text-[9px] font-medium px-1.5 py-0.5 rounded-full"
                           style={{
-                            background: `${accent}12`,
-                            border: `1px solid ${accent}25`,
-                            color: accent,
+                            background: "var(--bg-inset)",
+                            border: "1px solid var(--border-subtle)",
+                            color: "var(--text-secondary)",
                           }}
                         >
                           {l}
@@ -237,14 +205,14 @@ export default function ModoInicio({
                 {/* Download button — separated section */}
                 <button
                   onClick={() => baixarTemplate(tipo)}
-                  className="w-full text-left px-3.5 py-2.5 text-[11px] font-bold transition-all duration-150"
+                  className="w-full text-left px-3.5 py-2.5 text-[11px] font-semibold transition-colors"
                   style={{
-                    borderTop: "1px solid var(--border)",
-                    color: accent,
+                    borderTop: "1px solid var(--border-subtle)",
+                    color: "var(--accent)",
                     background: "transparent",
                   }}
-                  onMouseEnter={e => (e.currentTarget.style.background = `${accent}08`)}
-                  onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = "var(--accent-subtle)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
                 >
                   Download →
                 </button>
