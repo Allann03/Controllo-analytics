@@ -541,7 +541,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
           <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
             {/* Avatar 32px à ESQUERDA da saudação */}
             <div className="relative flex-shrink-0">
-              <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" avatarIdOverride={perfilExtra?.avatar_id} />
+              <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" avatarIdOverride={perfilExtra?.avatar_id ?? undefined} />
               {/* Status online dot */}
               <span
                 className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full"
@@ -877,7 +877,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
               {collapsed ? (
                 <div className="flex flex-col items-center gap-2">
                   <div title={usuario?.nome}>
-                    <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" avatarIdOverride={perfilExtra?.avatar_id} />
+                    <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" avatarIdOverride={perfilExtra?.avatar_id ?? undefined} />
                   </div>
                   <button
                     onClick={fazerLogout}
@@ -901,7 +901,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
                     borderRadius: "var(--radius-md)",
                   }}
                 >
-                  <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" avatarIdOverride={perfilExtra?.avatar_id} />
+                  <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" avatarIdOverride={perfilExtra?.avatar_id ?? undefined} />
                   <div className="overflow-hidden flex-1 min-w-0">
                     <p
                       className="font-medium text-sm truncate leading-tight"
