@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ArrowUp, ArrowDown, Info } from "lucide-react";
 import { n, CardIndicador, Gauge, COR_POSITIVO, COR_NEGATIVO, COR_ATENCAO, COR_NEUTRO } from "./shared";
 import type { IndicadoresResponse, IndicadorItem, MetricaFlat } from "./shared";
 
@@ -57,99 +58,6 @@ function GaugeCard({ label, tooltip, variacao, valor, faixas, invertido = false,
   );
 }
 
-// ── Zone bar component ────────────────────────────────────────────────
-function ZoneBar({ valor, faixas, invertido = false, unidade = "%" }: {
-  valor: number | null;
-  faixas: { ok: number; atencao: number };
-  invertido?: boolean;
-  unidade?: string;
-}) {
-  if (valor === null || valor === undefined) {
-    return (
-      <div className="mt-3">
-        <div className="h-6 rounded-lg bg-slate-100 dark:bg-slate-700/40 flex items-center justify-center">
-          <span className="text-[10px] text-[#94A3B8] dark:text-slate-600">Dados insuficientes</span>
-        </div>
-      </div>
-    );
-  }
-
-  // Display range: 0 → maxDisplay
-  const maxDisplay = invertido
-    ? faixas.atencao * 1.5
-    : faixas.ok * 1.8;
-
-  const clampedVal = Math.min(maxDisplay, Math.max(0, valor));
-  const pointerPct = (clampedVal / maxDisplay) * 100;
-
-  // Three zone segments (widths as % of maxDisplay)
-  const zones = invertido
-    ? [
-        { label: "Ideal",   w: (faixas.ok / maxDisplay) * 100,                          bg: "#DCFCE7", darkBg: "rgba(20,83,45,0.25)",  textColor: "#1A6B3C" },
-        { label: "Atenção", w: ((faixas.atencao - faixas.ok) / maxDisplay) * 100,        bg: "#FEF3C7", darkBg: "rgba(69,26,3,0.25)",   textColor: "#92400E" },
-        { label: "Risco",   w: ((maxDisplay - faixas.atencao) / maxDisplay) * 100,       bg: "#FEE2E2", darkBg: "rgba(69,10,10,0.25)",  textColor: "#B83030" },
-      ]
-    : [
-        { label: "Baixo",   w: (faixas.atencao / maxDisplay) * 100,                      bg: "#FEE2E2", darkBg: "rgba(69,10,10,0.25)",  textColor: "#B83030" },
-        { label: "Atenção", w: ((faixas.ok - faixas.atencao) / maxDisplay) * 100,        bg: "#FEF3C7", darkBg: "rgba(69,26,3,0.25)",   textColor: "#92400E" },
-        { label: "Ideal",   w: ((maxDisplay - faixas.ok) / maxDisplay) * 100,            bg: "#DCFCE7", darkBg: "rgba(20,83,45,0.25)",  textColor: "#1A6B3C" },
-      ];
-
-  return (
-    <div className="mt-3 w-full select-none">
-      {/* Segmented bar with pointer */}
-      <div className="relative">
-        <div className="flex h-7 rounded-lg overflow-hidden gap-px">
-          {zones.map((z, i) => (
-            <div
-              key={i}
-              style={{ width: `${z.w}%`, background: z.bg }}
-              className="flex items-center justify-center dark:opacity-80"
-            >
-              <span className="text-[9px] font-black uppercase tracking-wider hidden sm:block" style={{ color: z.textColor }}>
-                {z.label}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        {/* Marker line */}
-        <div
-          className="absolute top-0 bottom-0 flex flex-col items-center pointer-events-none"
-          style={{ left: `${pointerPct}%`, transform: "translateX(-50%)" }}
-        >
-          <div className="w-0.5 h-7 bg-[#0F2D4A] dark:bg-white rounded-full" />
-        </div>
-      </div>
-
-      {/* Value label positioned under marker */}
-      <div className="relative h-5 mt-1">
-        <div
-          className="absolute -translate-x-1/2 text-[10px] font-black tabular-nums whitespace-nowrap"
-          style={{
-            left: `clamp(16px, ${pointerPct}%, calc(100% - 16px))`,
-            color: "var(--text-primary)",
-          }}
-        >
-          {valor.toFixed(unidade === "%" ? 1 : 2)}{unidade}
-        </div>
-      </div>
-
-      {/* Scale labels */}
-      <div className="flex justify-between mt-0.5">
-        <span className="text-[9px] text-[#94A3B8] dark:text-slate-600 tabular-nums">0{unidade}</span>
-        <span className="text-[9px] text-[#94A3B8] dark:text-slate-600 tabular-nums">
-          {invertido ? faixas.ok : faixas.atencao}{unidade}
-        </span>
-        <span className="text-[9px] text-[#94A3B8] dark:text-slate-600 tabular-nums">
-          {invertido ? faixas.atencao : faixas.ok}{unidade}
-        </span>
-        <span className="text-[9px] text-[#94A3B8] dark:text-slate-600 tabular-nums">{maxDisplay.toFixed(0)}{unidade}</span>
-      </div>
-    </div>
-  );
-}
-
 // ── Métrica Financeira card (Rentabilidade) ───────────────────────────
 function MetricaFinanceira({ label, valor, variacao, faixas, invertido = false, unidade = "%", tooltip, explicacao }: {
   label: string;
@@ -178,77 +86,118 @@ function MetricaFinanceira({ label, valor, variacao, faixas, invertido = false, 
 
   const status = getStatus();
 
-  const statusCfg = {
-    ideal:     { label: "Ideal",    bg: "bg-emerald-50 dark:bg-emerald-500/10",  border: "border-emerald-200 dark:border-emerald-500/30",  text: "text-emerald-700 dark:text-emerald-400",  accentBorder: "#1A6B3C", valueCor: COR_POSITIVO },
-    atencao:   { label: "Atenção",  bg: "bg-amber-50 dark:bg-amber-500/10",      border: "border-amber-200 dark:border-amber-500/30",      text: "text-amber-700 dark:text-amber-400",      accentBorder: "#92400E", valueCor: COR_ATENCAO },
-    risco:     { label: "Risco",    bg: "bg-rose-50 dark:bg-rose-500/10",        border: "border-rose-200 dark:border-rose-500/30",        text: "text-rose-700 dark:text-rose-400",        accentBorder: "#B83030", valueCor: COR_NEGATIVO },
-    "sem-dados": { label: "—",      bg: "bg-slate-50 dark:bg-slate-800/40",      border: "border-slate-200 dark:border-slate-700",        text: "text-[#94A3B8]",                          accentBorder: "#CBD5E1", valueCor: "#94A3B8" },
+  // Cor semantica via tokens — border-left 3px (consistente com AbaBalanco)
+  const semantic = {
+    ideal:       { borderLeft: "var(--success)", pillBg: "var(--success-subtle)", pillBorder: "var(--success-border)", pillText: "var(--success)", label: "Ideal" },
+    atencao:     { borderLeft: "var(--warning)", pillBg: "var(--warning-subtle)", pillBorder: "var(--warning-border)", pillText: "var(--warning)", label: "Atenção" },
+    risco:       { borderLeft: "var(--danger)",  pillBg: "var(--danger-subtle)",  pillBorder: "var(--danger-border)",  pillText: "var(--danger)",  label: "Risco" },
+    "sem-dados": { borderLeft: "var(--border-default)", pillBg: "var(--bg-inset)", pillBorder: "var(--border-subtle)", pillText: "var(--text-tertiary)", label: "—" },
   }[status];
 
   const variacaoPos = variacao !== null && variacao !== undefined && variacao > 0;
   const variacaoNeg = variacao !== null && variacao !== undefined && variacao < 0;
+  const variacaoColor = variacaoPos ? "var(--success)" : variacaoNeg ? "var(--danger)" : "var(--text-tertiary)";
+
+  // Benchmark text — gerado a partir de faixas.ok + invertido
+  const benchmarkText = invertido ? `≤ ${faixas.ok}${unidade}` : `≥ ${faixas.ok}${unidade}`;
+  const distanciaText = (() => {
+    if (valor === null) return null;
+    const diff = valor - faixas.ok;
+    const abs = Math.abs(diff);
+    if (abs < 0.5) return "alinhado";
+    const lado = invertido ? (diff > 0 ? "acima" : "abaixo") : (diff > 0 ? "acima" : "abaixo");
+    return `${abs.toFixed(1)} pp ${lado}`;
+  })();
 
   return (
-    <div className="bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden">
-      {/* Accent top bar */}
-      <div className="h-1 w-full" style={{ background: statusCfg.accentBorder }} />
-
-      <div className="p-5">
-        {/* Header */}
-        <div className="flex items-start justify-between mb-3">
-          <p className="text-[11px] font-black text-[#64748B] dark:text-slate-500 uppercase tracking-widest">{label}</p>
-          <div className="flex items-center gap-2">
-            {/* Status badge */}
-            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border ${statusCfg.bg} ${statusCfg.border} ${statusCfg.text}`}>
-              <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: statusCfg.accentBorder }} />
-              {statusCfg.label}
-            </span>
-            {/* Info icon */}
-            <button
-              onMouseEnter={() => setShowTip(true)}
-              onMouseLeave={() => setShowTip(false)}
-              className="relative flex-shrink-0"
-            >
-              <svg className="w-3.5 h-3.5 text-[#94A3B8] dark:text-slate-600 hover:text-[#64748B] dark:hover:text-slate-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              {showTip && tooltip && (
-                <div className="absolute right-0 bottom-full mb-2 w-56 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-xl p-3 text-xs text-[#475569] dark:text-slate-300 leading-relaxed z-20 shadow-xl">
-                  {tooltip}
-                </div>
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Value + trend */}
-        <div className="flex items-baseline gap-3 mb-1">
-          <p className="text-3xl font-black font-mono tabular-nums leading-none" style={{ color: statusCfg.valueCor }}>
-            {valor !== null ? `${valor.toFixed(1)}${unidade}` : "—"}
-          </p>
-          {variacao !== null && variacao !== undefined && (
-            <span className={`text-xs font-bold ${variacaoPos ? "text-emerald-700 dark:text-emerald-400" : variacaoNeg ? "text-rose-700 dark:text-rose-400" : "text-[#94A3B8]"}`}>
-              {variacaoPos ? "▲" : variacaoNeg ? "▼" : "—"} {Math.abs(variacao).toFixed(1)}% vs mês ant.
-            </span>
-          )}
-        </div>
-
-        {/* Mini explanation */}
-        {explicacao}
-
-        {/* Zone bar */}
-        <ZoneBar valor={valor} faixas={faixas} invertido={invertido} unidade={unidade} />
-
-        {/* Benchmark reference */}
-        <div className="flex items-center gap-1.5 mt-3 pt-3 border-t border-slate-100 dark:border-slate-700/60">
-          <svg className="w-3 h-3 text-[#94A3B8] dark:text-slate-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-          </svg>
-          <span className="text-[10px] text-[#94A3B8] dark:text-slate-600">
-            Benchmark: <span className="font-bold">{invertido ? `≤ ${faixas.ok}${unidade}` : `≥ ${faixas.ok}${unidade}`}</span>
+    <div
+      className="bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 rounded-2xl p-5"
+      style={{ borderLeft: `3px solid ${semantic.borderLeft}` }}
+    >
+      {/* Header — eyebrow + status pill + info */}
+      <div className="flex items-start justify-between mb-3 gap-2">
+        <p
+          className="text-xs uppercase font-medium"
+          style={{
+            color: "var(--text-tertiary)",
+            letterSpacing: "var(--tracking-widest)",
+          }}
+        >
+          {label}
+        </p>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <span
+            className="text-xs font-semibold px-2 py-0.5"
+            style={{
+              background: semantic.pillBg,
+              border: `1px solid ${semantic.pillBorder}`,
+              color: semantic.pillText,
+              borderRadius: "var(--radius-md)",
+            }}
+          >
+            {semantic.label}
           </span>
+          <button
+            onMouseEnter={() => setShowTip(true)}
+            onMouseLeave={() => setShowTip(false)}
+            className="relative flex-shrink-0"
+          >
+            <Info size={14} strokeWidth={2} style={{ color: "var(--text-tertiary)" }} />
+            {showTip && tooltip && (
+              <div
+                className="absolute right-0 bottom-full mb-2 w-56 rounded-xl p-3 text-xs leading-relaxed z-20"
+                style={{
+                  background: "var(--bg-overlay)",
+                  border: "1px solid var(--border-default)",
+                  color: "var(--text-secondary)",
+                  boxShadow: "var(--shadow-lg)",
+                }}
+              >
+                {tooltip}
+              </div>
+            )}
+          </button>
         </div>
       </div>
+
+      {/* Valor principal + delta */}
+      <div className="flex items-baseline gap-3 mb-1">
+        <p
+          className="text-3xl font-mono font-semibold tabular-nums leading-none"
+          style={{ color: "var(--text-primary)" }}
+        >
+          {valor !== null ? `${valor.toFixed(1)}${unidade}` : "—"}
+        </p>
+        {variacao !== null && variacao !== undefined && (
+          <span
+            className="text-xs font-medium inline-flex items-center gap-1"
+            style={{ color: variacaoColor }}
+          >
+            {variacaoPos ? <ArrowUp size={12} strokeWidth={2.5} /> : variacaoNeg ? <ArrowDown size={12} strokeWidth={2.5} /> : null}
+            {Math.abs(variacao).toFixed(1)}% vs mês ant.
+          </span>
+        )}
+      </div>
+
+      {/* Mini explicacao contextual */}
+      {explicacao}
+
+      {/* Benchmark de mercado */}
+      <p
+        className="text-xs mt-3 pt-3"
+        style={{
+          color: "var(--text-tertiary)",
+          borderTop: "1px solid var(--border-subtle)",
+        }}
+      >
+        Benchmark de mercado: <span style={{ color: "var(--text-secondary)" }}>{benchmarkText}</span>
+        {distanciaText && (
+          <>
+            {" — você está "}
+            <span style={{ color: "var(--text-secondary)" }}>{distanciaText}</span>
+          </>
+        )}
+      </p>
     </div>
   );
 }
@@ -334,7 +283,7 @@ export default function AbaIndicadores({ ind, metricas }: { ind: IndicadoresResp
             unidade="%"
             tooltip={ind.roe?.tooltip ?? "Lucro Líquido / Patrimônio Líquido"}
             explicacao={ind.roe?.valor != null ? (
-              <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-1 leading-snug">
+              <p className="text-xs mt-1 leading-snug" style={{ color: "var(--text-tertiary)" }}>
                 A cada R$ 1 investido, retorno de R$ {(ind.roe.valor / 100).toFixed(2)}
               </p>
             ) : undefined}
@@ -347,7 +296,7 @@ export default function AbaIndicadores({ ind, metricas }: { ind: IndicadoresResp
             unidade="%"
             tooltip={ind.roa?.tooltip ?? "Lucro Líquido / Ativo Total"}
             explicacao={ind.roa?.valor != null ? (
-              <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-1 leading-snug">
+              <p className="text-xs mt-1 leading-snug" style={{ color: "var(--text-tertiary)" }}>
                 Os ativos geram {ind.roa.valor.toFixed(1)}% de retorno
               </p>
             ) : undefined}
@@ -361,7 +310,7 @@ export default function AbaIndicadores({ ind, metricas }: { ind: IndicadoresResp
             unidade="%"
             tooltip={ind.endividamento_geral?.tooltip ?? "Passivo Total / Ativo Total"}
             explicacao={ind.endividamento_geral?.valor != null ? (
-              <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-1 leading-snug">
+              <p className="text-xs mt-1 leading-snug" style={{ color: "var(--text-tertiary)" }}>
                 {ind.endividamento_geral.valor <= 50 ? "Endividamento controlado" : ind.endividamento_geral.valor <= 70 ? "Atencao ao nivel de divida" : "Endividamento elevado"}
               </p>
             ) : undefined}
