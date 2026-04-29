@@ -291,32 +291,19 @@ export default function ConciliacaoPage() {
             automaticamente cada transação por data · valor · tipo usando lógica específica de cada banco.
           </p>
 
-          {/* 3 mini-explicações */}
+          {/* 3 mini-explicações — flex centralizado, mesmo eixo do hero */}
           <div
-            className="pt-4"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-              gap: "1rem",
-              borderTop: "1px solid var(--border-subtle)",
-            }}
+            className="pt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
+            style={{ borderTop: "1px solid var(--border-subtle)" }}
           >
             {[
               { Icon: CopyCheck, text: "Detecção automática de duplicidades" },
               { Icon: Layers, text: "Match por data + valor + descrição" },
               { Icon: Building2, text: "Lógica específica por banco" },
             ].map(({ Icon, text }) => (
-              <div
-                key={text}
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "20px 1fr",
-                  alignItems: "start",
-                  gap: "0.625rem",
-                }}
-              >
-                <Icon size={20} strokeWidth={1.75} style={{ color: "var(--text-tertiary)", marginTop: 1 }} />
-                <p className="text-sm leading-snug" style={{ color: "var(--text-secondary)" }}>{text}</p>
+              <div key={text} className="flex items-center gap-2">
+                <Icon size={18} strokeWidth={1.75} style={{ color: "var(--text-tertiary)", flexShrink: 0 }} />
+                <span className="text-xs whitespace-nowrap" style={{ color: "var(--text-secondary)" }}>{text}</span>
               </div>
             ))}
           </div>
