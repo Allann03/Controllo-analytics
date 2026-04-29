@@ -214,7 +214,7 @@ export default function ClassificacaoContabilPage() {
 
   // ════════════════════════════════════════════════════════════════
   return (
-    <div className="min-h-full bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+    <div className="min-h-full" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)" }}>
       {toast && <div className={`fixed top-6 right-6 z-50 px-5 py-3 rounded-xl border text-sm font-semibold shadow-2xl ${toast.tipo === "ok" ? "bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-600/20 dark:border-emerald-500/40 dark:text-emerald-300" : "bg-red-50 border-red-200 text-red-700 dark:bg-red-600/20 dark:border-red-500/40 dark:text-red-300"}`}>{toast.msg}</div>}
 
       <header className="px-8 pt-8 pb-6 border-b border-slate-200 dark:border-slate-700">

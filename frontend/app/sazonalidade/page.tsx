@@ -220,7 +220,7 @@ export default function SazonalidadePage() {
   ];
 
   return (
-    <div className="min-h-full bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+    <div className="min-h-full" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)" }}>
       {/* Header */}
       <header className="px-8 pt-8 pb-0 border-b border-slate-200 dark:border-slate-700">
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-5">

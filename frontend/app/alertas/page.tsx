@@ -331,7 +331,7 @@ export default function AlertasPage() {
   );
 
   return (
-    <div className="min-h-full bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+    <div className="min-h-full" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)" }}>
 
       {/* ── HEADER ── */}
       <div className="relative overflow-hidden border-b border-slate-100 dark:border-slate-800">

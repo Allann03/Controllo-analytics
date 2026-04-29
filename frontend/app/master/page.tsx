@@ -412,7 +412,7 @@ export default function MasterPage() {
   const glassCard = "bg-white/70 dark:bg-slate-800/40 backdrop-blur-sm border border-slate-200/80 dark:border-slate-700/50 rounded-2xl shadow-lg shadow-slate-200/50 dark:shadow-black/5";
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 font-[var(--font-body)]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+    <div className="min-h-screen font-[var(--font-body)]" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
       <ToastBar toast={toast} onDone={() => setToast(null)} />
 
       {/* Geometric background */}

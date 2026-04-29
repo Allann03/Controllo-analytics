@@ -150,7 +150,7 @@ export default function SimulacaoTributariaPage() {
   const empresaSel = empresas.find(e => e.id === empresaId);
 
   return (
-    <div className="min-h-full p-6 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+    <div className="min-h-full p-6" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)" }}>
 
       {/* Header */}
       <header className="mb-8">

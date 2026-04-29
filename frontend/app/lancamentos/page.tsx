@@ -221,7 +221,7 @@ export default function LancamentosPage() {
   };
 
   return (
-    <div className="min-h-full bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+    <div className="min-h-full" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)" }}>
 
       {/* Toast */}
       {toast && (

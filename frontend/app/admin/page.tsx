@@ -231,7 +231,7 @@ export default function AdminPage() {
 
   if (carregando) {
     return (
-      <div className="min-h-full bg-white dark:bg-slate-900">
+      <div className="min-h-full" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)" }}>
         <div className="px-8 pt-8 pb-6 border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
           <div className="skeleton h-4 w-24 rounded mb-3" />
           <div className="skeleton h-8 w-64 rounded mb-2" />

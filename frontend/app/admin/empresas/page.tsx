@@ -213,7 +213,7 @@ export default function AdminEmpresasPage() {
   const cnpjStatus = cnpjNums.length === 0 ? "vazio" : cnpjNums.length < 14 ? "incompleto" : cnpjErro ? "invalido" : "valido";
 
   return (
-    <div className="min-h-full bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+    <div className="min-h-full" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)" }}>
 
       {toast && (
         <div className={`fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-3.5 rounded-2xl border text-sm font-semibold shadow-2xl ${

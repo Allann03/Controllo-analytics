@@ -231,7 +231,7 @@ export default function BalancoPage() {
   ] : [];
 
   return (
-    <div className="min-h-full bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+    <div className="min-h-full" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)" }}>
 
       {/* HEADER */}
       <header className="page-header px-8 pt-8 pb-6 border-b border-slate-200 dark:border-slate-700">

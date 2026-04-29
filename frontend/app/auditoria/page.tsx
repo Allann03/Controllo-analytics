@@ -294,7 +294,7 @@ export default function AuditoriaPage() {
   }, [dados]);
 
   return (
-    <div className="min-h-full bg-[#f8f9fb] dark:bg-slate-900">
+    <div className="min-h-full" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)" }}>
 
       {/* ── Header ── */}
       <div className="px-6 pt-6 pb-5 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
