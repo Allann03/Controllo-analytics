@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { Building2, CheckCircle2, XCircle, Clock } from "lucide-react";
 
 /* -- types ------------------------------------------------ */
 interface Escritorio {
@@ -104,12 +105,31 @@ function Badge({ children, className }: { children: React.ReactNode; className: 
 
 function KpiCard({ label, value, icon }: { label: string; value: number | string; icon?: React.ReactNode }) {
   return (
-    <div className="bg-white/70 dark:bg-slate-800/40 backdrop-blur-sm border border-slate-200/80 dark:border-slate-700/50 rounded-2xl p-5 flex flex-col gap-1.5 shadow-lg shadow-slate-200/50 dark:shadow-black/5">
+    <div
+      className="rounded-2xl p-5 flex flex-col gap-2"
+      style={{
+        background: "var(--bg-surface)",
+        border: "1px solid var(--border-subtle)",
+      }}
+    >
       <div className="flex items-center justify-between">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">{label}</span>
-        {icon && <span className="text-slate-400 dark:text-slate-500">{icon}</span>}
+        <span
+          className="text-xs uppercase font-medium"
+          style={{
+            color: "var(--text-tertiary)",
+            letterSpacing: "var(--tracking-widest)",
+          }}
+        >
+          {label}
+        </span>
+        {icon && <span style={{ color: "var(--text-tertiary)" }}>{icon}</span>}
       </div>
-      <span className="text-3xl font-black font-mono tabular-nums text-slate-900 dark:text-slate-100">{value}</span>
+      <span
+        className="text-3xl font-mono font-semibold tabular-nums"
+        style={{ color: "var(--text-primary)" }}
+      >
+        {value}
+      </span>
     </div>
   );
 }
@@ -404,12 +424,28 @@ export default function MasterPage() {
 
   /* -- render --------------------------------------------- */
   const inputCls = "w-full px-4 py-2.5 rounded-xl text-sm border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all";
+
+  // Tokens-based button styles (§5.8). Inline to manter o estilo original
+  // dos modais e formularios (que ainda usam classes proprietarias).
+  const btnPrimaryStyle: React.CSSProperties = {
+    background: "var(--accent)",
+    color: "var(--text-inverse)",
+    borderRadius: "var(--radius-md)",
+  };
+  const btnSecondaryStyle: React.CSSProperties = {
+    background: "var(--bg-elevated)",
+    border: "1px solid var(--border-default)",
+    color: "var(--text-primary)",
+    borderRadius: "var(--radius-md)",
+  };
+
+  // Mantidos para os modais (form Criar Escritorio, Editar Escritorio, etc).
   const btnPrimary = "px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm transition-colors";
   const btnDanger = "px-3 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold transition-colors";
   const btnSecondary = "px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 text-sm font-semibold transition-colors";
   const btnGreen = "px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-colors";
 
-  const glassCard = "bg-white/70 dark:bg-slate-800/40 backdrop-blur-sm border border-slate-200/80 dark:border-slate-700/50 rounded-2xl shadow-lg shadow-slate-200/50 dark:shadow-black/5";
+  const glassCard = "bg-white dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/50 rounded-2xl";
 
   return (
     <div className="min-h-screen font-[var(--font-body)]" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
@@ -424,47 +460,68 @@ export default function MasterPage() {
       </div>
 
       {/* header */}
-      <header className="relative z-10 px-8 pt-8 pb-6 border-b border-slate-200 dark:border-slate-700/60">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3 mb-1">
-            <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
-              <svg className="w-5 h-5 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
-                  Central de <span className="text-indigo-600 dark:text-indigo-400">Controle</span>
-                </h1>
-                <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
-                  Administrador
-                </span>
-              </div>
-              <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">
-                Gestao centralizada de escritorios e usuarios da plataforma
-              </p>
-            </div>
+      <header
+        className="relative z-10 px-8 pt-8 pb-6"
+        style={{ borderBottom: "1px solid var(--border-subtle)" }}
+      >
+        <div className="max-w-7xl mx-auto flex items-start justify-between gap-4">
+          <div>
+            <p
+              className="text-xs uppercase font-medium mb-2"
+              style={{
+                color: "var(--text-tertiary)",
+                letterSpacing: "var(--tracking-widest)",
+              }}
+            >
+              Administrador
+            </p>
+            <h1 className="text-2xl font-extrabold tracking-tight" style={{ color: "var(--text-primary)" }}>
+              Central de Controle
+            </h1>
+            <p className="text-sm mt-1" style={{ color: "var(--text-secondary)" }}>
+              Gestão centralizada de escritórios e usuários da plataforma
+            </p>
           </div>
-          <button onClick={() => router.push("/dashboard")} className="text-xs text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+          <button
+            onClick={() => router.push("/dashboard")}
+            className="text-xs transition-colors"
+            style={{ color: "var(--text-tertiary)" }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = "var(--text-primary)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-tertiary)"; }}
+          >
             Voltar ao Dashboard
           </button>
         </div>
       </header>
 
-      {/* tabs */}
-      <nav className="relative z-10 max-w-7xl mx-auto px-6 pt-4">
-        <div className="flex gap-1 p-1 rounded-xl bg-white/50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/50 w-fit">
+      {/* tabs — underline horizontal sobrio */}
+      <nav className="relative z-10 max-w-7xl mx-auto px-6 pt-2">
+        <div
+          className="flex gap-0.5"
+          style={{ borderBottom: "1px solid var(--border-subtle)" }}
+        >
           {(["escritorios", "usuarios", "metricas"] as Tab[]).map(t => {
-            const labels: Record<Tab, string> = { escritorios: "Escritorios", usuarios: "Usuarios", metricas: "Metricas" };
+            const labels: Record<Tab, string> = { escritorios: "Escritórios", usuarios: "Usuários", metricas: "Métricas" };
+            const active = tab === t;
             return (
-              <button key={t} onClick={() => setTab(t)}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
-                  tab === t
-                    ? "bg-indigo-600 text-white shadow-sm"
-                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
-                }`}
-              >{labels[t]}</button>
+              <button
+                key={t}
+                onClick={() => setTab(t)}
+                className="relative px-5 py-3 text-sm font-semibold transition-colors"
+                style={{
+                  color: active ? "var(--text-primary)" : "var(--text-secondary)",
+                }}
+                onMouseEnter={(e) => { if (!active) e.currentTarget.style.color = "var(--text-primary)"; }}
+                onMouseLeave={(e) => { if (!active) e.currentTarget.style.color = "var(--text-secondary)"; }}
+              >
+                {labels[t]}
+                {active && (
+                  <span
+                    className="absolute left-0 right-0 -bottom-px h-0.5"
+                    style={{ background: "var(--accent)" }}
+                  />
+                )}
+              </button>
             );
           })}
         </div>
@@ -483,90 +540,171 @@ export default function MasterPage() {
             <div className="space-y-6">
               {/* summary */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <KpiCard label="Total" value={escritorios.length} icon={
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
-                } />
-                <KpiCard label="Ativos" value={escritorios.filter(e => e.ativo).length} icon={
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                } />
-                <KpiCard label="Inativos" value={escritorios.filter(e => !e.ativo).length} icon={
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg>
-                } />
-                <KpiCard label="Pendentes Global" value={pendentesGlobal} icon={
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                } />
+                <KpiCard label="Total"            value={escritorios.length}                              icon={<Building2 size={20} strokeWidth={1.75} />} />
+                <KpiCard label="Ativos"           value={escritorios.filter(e => e.ativo).length}         icon={<CheckCircle2 size={20} strokeWidth={1.75} />} />
+                <KpiCard label="Inativos"         value={escritorios.filter(e => !e.ativo).length}        icon={<XCircle size={20} strokeWidth={1.75} />} />
+                <KpiCard label="Pendentes Global" value={pendentesGlobal}                                  icon={<Clock size={20} strokeWidth={1.75} />} />
               </div>
 
               {/* toolbar */}
               <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
                 <input placeholder="Buscar por nome ou código..." value={buscaEsc} onChange={e => setBuscaEsc(e.target.value)} className={`${inputCls} max-w-xs`} />
-                <button onClick={() => { resetForm(); setShowCriar(true); }} className={btnPrimary}>+ Novo Escritorio</button>
+                <button
+                  onClick={() => { resetForm(); setShowCriar(true); }}
+                  className="px-4 py-2 text-sm font-semibold transition-colors"
+                  style={btnPrimaryStyle}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = "var(--accent-hover)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = "var(--accent)"; }}
+                >
+                  + Novo Escritório
+                </button>
               </div>
 
               {/* list */}
               <div className="grid gap-4">
                 {escFiltrados.map(e => {
-                  const pl = PLANOS[e.plano] || PLANOS.trial;
                   return (
-                    <div key={e.id} className={`${glassCard} p-5 flex flex-col md:flex-row md:items-start gap-4`}>
+                    <div
+                      key={e.id}
+                      className="rounded-2xl p-5 flex flex-col md:flex-row md:items-start gap-4"
+                      style={{
+                        background: "var(--bg-surface)",
+                        border: "1px solid var(--border-subtle)",
+                      }}
+                    >
+                      <Building2 size={32} strokeWidth={1.5} style={{ color: "var(--text-tertiary)", flexShrink: 0 }} />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <svg className="w-5 h-5 text-slate-400 dark:text-slate-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                          </svg>
-                          <span className="font-bold text-slate-900 dark:text-slate-100 text-base">{e.nome}</span>
-                          <span className="text-slate-400 dark:text-slate-500 text-sm">@{e.slug}</span>
-                          <Badge className={`${pl.bg} ${pl.cor} border`}>{e.plano}</Badge>
-                          <Badge className={e.ativo
-                            ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                            : "bg-rose-500/10 text-rose-600 dark:text-rose-400"}>
+                          <span className="font-bold text-base" style={{ color: "var(--text-primary)" }}>{e.nome}</span>
+                          <span className="text-sm" style={{ color: "var(--text-tertiary)" }}>@{e.slug}</span>
+                          <span
+                            className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide"
+                            style={{
+                              background: "var(--accent-subtle)",
+                              border: "1px solid var(--accent-border)",
+                              color: "var(--accent-text)",
+                            }}
+                          >
+                            {e.plano}
+                          </span>
+                          <span
+                            className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide"
+                            style={{
+                              background: e.ativo ? "var(--success-subtle)" : "var(--bg-inset)",
+                              border: `1px solid ${e.ativo ? "var(--success-border)" : "var(--border-subtle)"}`,
+                              color: e.ativo ? "var(--success)" : "var(--text-tertiary)",
+                            }}
+                          >
                             {e.ativo ? "Ativo" : "Inativo"}
-                          </Badge>
+                          </span>
                         </div>
 
-                        {/* progress bars */}
-                        <div className="mt-3 space-y-2">
+                        {/* progress bars — 4px, bg-inset, fill accent */}
+                        <div className="mt-3 space-y-2.5">
                           <div>
-                            <div className="flex justify-between text-[10px] text-slate-500 dark:text-slate-400 mb-1">
+                            <div className="flex justify-between text-[11px] mb-1" style={{ color: "var(--text-tertiary)" }}>
                               <span>Empresas</span>
-                              <span className="font-mono">{e.empresas_count}/{e.max_empresas}</span>
+                              <span className="font-mono tabular-nums">{e.empresas_count}/{e.max_empresas}</span>
                             </div>
-                            <div className="h-1.5 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
-                              <div className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all"
-                                style={{ width: `${Math.min(100, (e.empresas_count / e.max_empresas) * 100)}%` }} />
+                            <div className="h-1 rounded-full overflow-hidden" style={{ background: "var(--bg-inset)" }}>
+                              <div
+                                className="h-full rounded-full transition-all"
+                                style={{
+                                  width: `${Math.min(100, (e.empresas_count / e.max_empresas) * 100)}%`,
+                                  background: "var(--accent)",
+                                }}
+                              />
                             </div>
                           </div>
                           <div>
-                            <div className="flex justify-between text-[10px] text-slate-500 dark:text-slate-400 mb-1">
-                              <span>Usuarios</span>
-                              <span className="font-mono">{e.usuarios_count}/{e.max_usuarios}</span>
+                            <div className="flex justify-between text-[11px] mb-1" style={{ color: "var(--text-tertiary)" }}>
+                              <span>Usuários</span>
+                              <span className="font-mono tabular-nums">{e.usuarios_count}/{e.max_usuarios}</span>
                             </div>
-                            <div className="h-1.5 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
-                              <div className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all"
-                                style={{ width: `${Math.min(100, (e.usuarios_count / e.max_usuarios) * 100)}%` }} />
+                            <div className="h-1 rounded-full overflow-hidden" style={{ background: "var(--bg-inset)" }}>
+                              <div
+                                className="h-full rounded-full transition-all"
+                                style={{
+                                  width: `${Math.min(100, (e.usuarios_count / e.max_usuarios) * 100)}%`,
+                                  background: "var(--accent)",
+                                }}
+                              />
                             </div>
                           </div>
                         </div>
 
                         {e.usuarios_pendentes > 0 && (
-                          <div className="mt-2">
-                            <Badge className="bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">{e.usuarios_pendentes} pendente{e.usuarios_pendentes > 1 ? "s" : ""}</Badge>
+                          <div className="mt-2.5">
+                            <span
+                              className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide"
+                              style={{
+                                background: "var(--warning-subtle)",
+                                border: "1px solid var(--warning-border)",
+                                color: "var(--warning)",
+                              }}
+                            >
+                              {e.usuarios_pendentes} pendente{e.usuarios_pendentes > 1 ? "s" : ""}
+                            </span>
                           </div>
                         )}
                       </div>
                       <div className="flex items-center gap-2 flex-shrink-0">
-                        <button onClick={() => openEdit(e)} className="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-colors hover:bg-slate-200 dark:hover:bg-slate-600">Gerenciar</button>
-                        <button onClick={() => toggleAtivo(e)} className={e.ativo ? btnDanger : btnGreen}>
+                        <button
+                          onClick={() => openEdit(e)}
+                          className="px-3 py-1.5 text-xs font-semibold transition-colors"
+                          style={btnSecondaryStyle}
+                          onMouseEnter={(ev) => { ev.currentTarget.style.background = "var(--bg-overlay)"; }}
+                          onMouseLeave={(ev) => { ev.currentTarget.style.background = "var(--bg-elevated)"; }}
+                        >
+                          Gerenciar
+                        </button>
+                        <button
+                          onClick={() => toggleAtivo(e)}
+                          className="px-3 py-1.5 text-xs font-semibold transition-colors"
+                          style={{
+                            background: "transparent",
+                            color: "var(--text-secondary)",
+                            borderRadius: "var(--radius-md)",
+                            border: "1px solid var(--border-subtle)",
+                          }}
+                          onMouseEnter={(ev) => {
+                            ev.currentTarget.style.background = e.ativo ? "var(--warning-subtle)" : "var(--success-subtle)";
+                            ev.currentTarget.style.color = e.ativo ? "var(--warning)" : "var(--success)";
+                          }}
+                          onMouseLeave={(ev) => {
+                            ev.currentTarget.style.background = "transparent";
+                            ev.currentTarget.style.color = "var(--text-secondary)";
+                          }}
+                        >
                           {e.ativo ? "Desativar" : "Ativar"}
                         </button>
                         {e.empresas_count === 0 && (
-                          <button onClick={() => excluirEscritorio(e)} className={btnDanger}>Excluir</button>
+                          <button
+                            onClick={() => excluirEscritorio(e)}
+                            className="px-3 py-1.5 text-xs font-semibold transition-colors"
+                            style={{
+                              background: "transparent",
+                              color: "var(--text-secondary)",
+                              borderRadius: "var(--radius-md)",
+                              border: "1px solid var(--border-subtle)",
+                            }}
+                            onMouseEnter={(ev) => {
+                              ev.currentTarget.style.background = "var(--danger-subtle)";
+                              ev.currentTarget.style.color = "var(--danger)";
+                            }}
+                            onMouseLeave={(ev) => {
+                              ev.currentTarget.style.background = "transparent";
+                              ev.currentTarget.style.color = "var(--text-secondary)";
+                            }}
+                          >
+                            Excluir
+                          </button>
                         )}
                       </div>
                     </div>
                   );
                 })}
-                {escFiltrados.length === 0 && <p className="text-center text-slate-500 py-8">Nenhum escritorio encontrado.</p>}
+                {escFiltrados.length === 0 && <p className="text-center py-8" style={{ color: "var(--text-tertiary)" }}>Nenhum escritório encontrado.</p>}
               </div>
             </div>
           )}
