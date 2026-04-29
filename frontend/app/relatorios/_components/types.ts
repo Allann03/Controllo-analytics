@@ -27,6 +27,17 @@ export interface LancamentoMensal {
   depreciacao_amortizacao: number;
   ano: number;
   mes: number;
+
+  // indicadores derivados pelo backend (services/financeiro_service.py:_lanc_to_metricas)
+  receita_liquida?: number | null;
+  lucro_bruto?: number | null;
+  ebit?: number | null;
+  lair?: number | null;
+  resultado_liquido?: number | null;
+  lucro_liquido?: number | null;
+  margem_bruta?: number | null;
+  margem_liquida?: number | null;
+  ebitda?: number | null;
 }
 
 export const MESES = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
