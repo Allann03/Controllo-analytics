@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
+import { Check, X, Ban, Trash2, Search } from "lucide-react";
 
 interface Usuario {
   id: number;
@@ -303,111 +304,134 @@ export default function AdminPage() {
 
       {/* HEADER */}
       <header
-        style={{ background: "var(--bg-card)", borderBottom: "1px solid var(--border)" }}
         className="px-8 pt-8 pb-6"
+        style={{ borderBottom: "1px solid var(--border-subtle)" }}
       >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-5">
           <div>
-            <div className="inline-flex items-center gap-2 mb-3">
-              <span className="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-widest bg-navy-50 border border-navy-200 text-navy-700 dark:bg-navy-900/30 dark:border-navy-700/50 dark:text-navy-400">
-                Administrador
-              </span>
-            </div>
-            <h1 className="text-3xl font-extrabold tracking-tight" style={{ color: "var(--text-primary)" }}>
-              Gestão de{" "}
-              <span style={{ color: "#1E4976" }}>Usuários</span>
+            <p
+              className="text-xs uppercase font-medium mb-2"
+              style={{
+                color: "var(--text-tertiary)",
+                letterSpacing: "var(--tracking-widest)",
+              }}
+            >
+              Administrador
+            </p>
+            <h1 className="text-3xl font-semibold tracking-tight" style={{ color: "var(--text-primary)" }}>
+              Gestão de Usuários
             </h1>
-            <p className="text-sm mt-1.5" style={{ color: "var(--text-muted)" }}>
+            <p className="text-sm mt-1.5" style={{ color: "var(--text-secondary)" }}>
               Controle de acessos e permissões — Controllo Analytics
             </p>
           </div>
 
-          {/* KPI cards */}
+          {/* KPI cards — variante neutra padrao do sistema */}
           <div className="flex items-stretch gap-3">
-            <div className="flex flex-col items-center justify-center rounded-xl px-4 py-2.5 min-w-[64px]" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
-              <p className="text-[10px] uppercase font-bold tracking-widest mb-0.5" style={{ color: "var(--text-muted)" }}>Total</p>
-              <p className="text-xl font-mono font-bold" style={{ color: "var(--text-primary)" }}>{total}</p>
-            </div>
-            <div className="flex flex-col items-center justify-center bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-500/20 rounded-xl px-4 py-2.5 min-w-[64px]">
-              <p className="text-[10px] text-emerald-700 dark:text-emerald-500 uppercase font-bold tracking-widest mb-0.5">Ativos</p>
-              <p className="text-xl font-mono font-bold text-emerald-700 dark:text-emerald-400">{totalAtivos}</p>
-            </div>
-            {totalPendentes > 0 && (
-              <div className="flex flex-col items-center justify-center bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-500/20 rounded-xl px-4 py-2.5 min-w-[64px]">
-                <div className="flex items-center gap-1.5 mb-0.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-                  <p className="text-[10px] text-amber-700 dark:text-amber-500 uppercase font-bold tracking-widest">Pendentes</p>
-                </div>
-                <p className="text-xl font-mono font-bold text-amber-700 dark:text-amber-400">{totalPendentes}</p>
+            {[
+              { label: "Total",     value: total },
+              { label: "Ativos",    value: totalAtivos },
+              ...(totalPendentes > 0 ? [{ label: "Pendentes", value: totalPendentes }] : []),
+              { label: "Admins",    value: totalAdmins },
+            ].map(({ label, value }) => (
+              <div
+                key={label}
+                className="flex flex-col rounded-xl px-4 py-2.5 min-w-[80px]"
+                style={{
+                  background: "var(--bg-surface)",
+                  border: "1px solid var(--border-subtle)",
+                }}
+              >
+                <p
+                  className="text-[10px] uppercase font-medium mb-0.5"
+                  style={{
+                    color: "var(--text-tertiary)",
+                    letterSpacing: "var(--tracking-widest)",
+                  }}
+                >
+                  {label}
+                </p>
+                <p className="text-xl font-mono font-semibold tabular-nums" style={{ color: "var(--text-primary)" }}>{value}</p>
               </div>
-            )}
-            <div className="flex flex-col items-center justify-center bg-blue-50 dark:bg-navy-800/40 border border-blue-200 dark:border-navy-500/20 rounded-xl px-4 py-2.5 min-w-[64px]">
-              <p className="text-[10px] text-[#1E4976] dark:text-navy-400 uppercase font-bold tracking-widest mb-0.5">Admins</p>
-              <p className="text-xl font-mono font-bold text-[#1E4976] dark:text-navy-300">{totalAdmins}</p>
-            </div>
+            ))}
           </div>
         </div>
       </header>
 
       {/* TOOLBAR */}
-      <div className="px-8 py-4 flex flex-col sm:flex-row gap-3" style={{ borderBottom: "1px solid var(--border)", background: "var(--bg-card)" }}>
+      <div
+        className="px-8 py-4 flex flex-col sm:flex-row gap-6 items-start sm:items-center"
+        style={{ borderBottom: "1px solid var(--border-subtle)" }}
+      >
         {/* Busca */}
         <div className="relative flex-1 max-w-xs">
-          <svg className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
+          <Search size={16} strokeWidth={2} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: "var(--text-tertiary)" }} />
           <input
             type="text"
             placeholder="Buscar por nome..."
             value={busca}
             onChange={(e) => setBusca(e.target.value)}
-            className="w-full rounded-xl pl-9 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-navy-500/30 transition-colors"
-            style={{ background: "var(--bg-card)", border: "1px solid var(--border)", color: "var(--text-primary)" }}
+            className="w-full pl-9 pr-4 py-2 text-sm focus:outline-none transition-colors"
+            style={{
+              background: "var(--bg-elevated)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-md)",
+              color: "var(--text-primary)",
+            }}
           />
         </div>
 
-        {/* Filtro status */}
-        <div className="flex rounded-xl overflow-hidden text-xs font-semibold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
-          {(["todos", "ativo", "pendente"] as FiltroStatus[]).map((f) => (
-            <button
-              key={f}
-              onClick={() => setFiltroStatus(f)}
-              className={`px-3 py-2 transition-colors ${
-                filtroStatus === f
-                  ? "bg-navy-600 text-white dark:bg-navy-500"
-                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700"
-              }`}
-            >
-              {f === "todos" ? "Todos" : f === "ativo" ? "Ativos" : "Pendentes"}
-            </button>
-          ))}
+        {/* Filtro status — tab strip com underline */}
+        <div className="flex gap-0.5">
+          {(["todos", "ativo", "pendente"] as FiltroStatus[]).map((f) => {
+            const active = filtroStatus === f;
+            const labels: Record<FiltroStatus, string> = { todos: "Todos", ativo: "Ativos", pendente: "Pendentes" };
+            return (
+              <button
+                key={f}
+                onClick={() => setFiltroStatus(f)}
+                className="relative px-3 py-2 text-xs font-semibold transition-colors"
+                style={{ color: active ? "var(--text-primary)" : "var(--text-tertiary)" }}
+                onMouseEnter={(e) => { if (!active) e.currentTarget.style.color = "var(--text-primary)"; }}
+                onMouseLeave={(e) => { if (!active) e.currentTarget.style.color = "var(--text-tertiary)"; }}
+              >
+                {labels[f]}
+                {active && <span className="absolute left-2 right-2 -bottom-1 h-0.5" style={{ background: "var(--accent)" }} />}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Filtro perfil */}
-        <div className="flex rounded-xl overflow-hidden text-xs font-semibold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
-          {(["todos", "admin", "operador"] as FiltroPerfil[]).map((f) => (
-            <button
-              key={f}
-              onClick={() => setFiltroPerfil(f)}
-              className={`px-3 py-2 transition-colors ${
-                filtroPerfil === f
-                  ? "bg-navy-600 text-white dark:bg-navy-500"
-                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700"
-              }`}
-            >
-              {f === "todos" ? "Todos" : f === "admin" ? "Admin" : "Operador"}
-            </button>
-          ))}
+        {/* Filtro perfil — tab strip com underline */}
+        <div className="flex gap-0.5">
+          {(["todos", "admin", "operador"] as FiltroPerfil[]).map((f) => {
+            const active = filtroPerfil === f;
+            const labels: Record<FiltroPerfil, string> = { todos: "Todos", admin: "Admin", operador: "Operador" };
+            return (
+              <button
+                key={f}
+                onClick={() => setFiltroPerfil(f)}
+                className="relative px-3 py-2 text-xs font-semibold transition-colors"
+                style={{ color: active ? "var(--text-primary)" : "var(--text-tertiary)" }}
+                onMouseEnter={(e) => { if (!active) e.currentTarget.style.color = "var(--text-primary)"; }}
+                onMouseLeave={(e) => { if (!active) e.currentTarget.style.color = "var(--text-tertiary)"; }}
+              >
+                {labels[f]}
+                {active && <span className="absolute left-2 right-2 -bottom-1 h-0.5" style={{ background: "var(--accent)" }} />}
+              </button>
+            );
+          })}
         </div>
 
         {(busca || filtroStatus !== "todos" || filtroPerfil !== "todos") && (
           <button
             onClick={() => { setBusca(""); setFiltroStatus("todos"); setFiltroPerfil("todos"); }}
-            className="text-xs text-slate-500 hover:text-slate-300 transition-colors flex items-center gap-1"
+            className="text-xs transition-colors flex items-center gap-1"
+            style={{ color: "var(--text-tertiary)" }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = "var(--text-primary)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-tertiary)"; }}
           >
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <X size={14} strokeWidth={2} />
             Limpar
           </button>
         )}
@@ -418,27 +442,37 @@ export default function AdminPage() {
         <div
           className="rounded-2xl overflow-hidden"
           style={{
-            background: "var(--bg-card)",
-            border: "1px solid var(--border)",
-            boxShadow: "0 4px 32px rgba(0,0,0,0.3)",
+            background: "var(--bg-surface)",
+            border: "1px solid var(--border-subtle)",
           }}
         >
-          {/* Top accent line */}
-          <div style={{ height: "1px", background: "linear-gradient(90deg, #102a43 0%, #3b6ea5 60%, transparent 100%)" }} />
           <table className="w-full text-left">
             <thead>
-              <tr className="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700">
-                <th className="px-5 py-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Usuário</th>
-                <th className="px-5 py-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Perfil</th>
-                <th className="px-5 py-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Status</th>
-                <th className="px-5 py-3.5 text-[10px] font-bold uppercase tracking-wider text-right text-slate-500 dark:text-slate-400">Ações</th>
+              <tr style={{ borderBottom: "1px solid var(--border-subtle)" }}>
+                {[
+                  { label: "Usuário", align: "left" as const },
+                  { label: "Perfil",  align: "left" as const },
+                  { label: "Status",  align: "left" as const },
+                  { label: "Ações",   align: "right" as const },
+                ].map(({ label, align }) => (
+                  <th
+                    key={label}
+                    className={`px-5 py-3.5 text-xs uppercase font-medium ${align === "right" ? "text-right" : "text-left"}`}
+                    style={{
+                      color: "var(--text-tertiary)",
+                      letterSpacing: "var(--tracking-widest)",
+                    }}
+                  >
+                    {label}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
               {filtrados.length === 0 ? (
                 <tr>
                   <td colSpan={4} className="px-5 py-14 text-center">
-                    <div className="flex flex-col items-center gap-2 text-slate-600">
+                    <div className="flex flex-col items-center gap-2" style={{ color: "var(--text-tertiary)" }}>
                       <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
@@ -447,34 +481,47 @@ export default function AdminPage() {
                   </td>
                 </tr>
               ) : (
-                filtrados.map((u) => (
+                filtrados.map((u, idx) => (
                   <tr
                     key={u.id}
-                    className="border-b border-slate-200 dark:border-slate-700/40 last:border-0 hover:bg-slate-50 dark:hover:bg-slate-700/20 transition-colors group"
+                    className="transition-colors group"
+                    style={{ borderBottom: idx === filtrados.length - 1 ? "none" : "1px solid var(--border-subtle)" }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = "var(--bg-elevated)"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
                   >
                     {/* Avatar + nome */}
                     <td className="px-5 py-3.5">
                       <div className="flex items-center gap-3">
                         <div
-                          className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                            u.is_admin
-                              ? "bg-[#1E4976]"
+                          className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                          style={{
+                            background: u.is_admin
+                              ? "var(--accent-subtle)"
                               : u.status === "pendente"
-                              ? "bg-amber-600"
-                              : "bg-[#64748B]"
-                          }`}
-                          style={{ color: "white" }}
+                              ? "var(--warning-subtle)"
+                              : "var(--bg-inset)",
+                            border: `1px solid ${u.is_admin
+                              ? "var(--accent-border)"
+                              : u.status === "pendente"
+                              ? "var(--warning-border)"
+                              : "var(--border-subtle)"}`,
+                            color: u.is_admin
+                              ? "var(--accent)"
+                              : u.status === "pendente"
+                              ? "var(--warning)"
+                              : "var(--text-secondary)",
+                          }}
                         >
                           <Iniciais nome={u.nome} />
                         </div>
                         <div>
-                          <p className="font-medium text-[#0F172A] dark:text-slate-200 text-sm leading-tight">{u.nome}</p>
-                          <p className="text-[11px] text-[#64748B] dark:text-slate-500 mt-0.5">ID #{u.id}</p>
+                          <p className="font-medium text-sm leading-tight" style={{ color: "var(--text-primary)" }}>{u.nome}</p>
+                          <p className="text-[11px] mt-0.5 font-mono tabular-nums" style={{ color: "var(--text-tertiary)" }}>ID #{u.id}</p>
                         </div>
                       </div>
                     </td>
 
-                    {/* Perfil */}
+                    {/* Perfil — pills semanticas via tokens */}
                     <td className="px-5 py-3.5">
                       {u.status === "ativo" ? (
                         <div className="flex items-center gap-1.5 flex-wrap">
@@ -482,11 +529,12 @@ export default function AdminPage() {
                             <button
                               onClick={() => definirCEO(u.id, !u.is_ceo)}
                               title={u.is_ceo ? "Revogar CEO" : "Promover a CEO"}
-                              className={`text-[10px] font-bold px-2.5 py-1 rounded-full border transition-all ${
-                                u.is_ceo
-                                  ? "border-yellow-300 dark:border-yellow-500/40 text-yellow-700 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-500/10 hover:bg-yellow-100 dark:hover:bg-yellow-500/20"
-                                  : "border-slate-300 dark:border-slate-600 text-[#475569] dark:text-slate-500 bg-slate-100 dark:bg-slate-700/50 hover:border-slate-400 dark:hover:border-slate-500 hover:text-[#1E293B] dark:hover:text-slate-300"
-                              }`}
+                              className="text-[10px] font-semibold px-2.5 py-1 rounded-full transition-all"
+                              style={{
+                                background: u.is_ceo ? "var(--warning-subtle)" : "var(--bg-inset)",
+                                border: `1px solid ${u.is_ceo ? "var(--warning-border)" : "var(--border-subtle)"}`,
+                                color: u.is_ceo ? "var(--warning)" : "var(--text-tertiary)",
+                              }}
                             >
                               {u.is_ceo ? "✓ C.E.O." : "C.E.O."}
                             </button>
@@ -494,11 +542,12 @@ export default function AdminPage() {
                           <button
                             onClick={() => promover(u.id, !u.is_admin)}
                             title={u.is_admin ? "Revogar Admin" : "Promover a Admin"}
-                            className={`text-[10px] font-bold px-2.5 py-1 rounded-full border transition-all ${
-                              u.is_admin
-                                ? "border-emerald-200 dark:border-emerald-500/40 text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 hover:bg-emerald-100 dark:hover:bg-emerald-500/20"
-                                : "border-slate-300 dark:border-slate-600 text-[#475569] dark:text-slate-500 bg-slate-100 dark:bg-slate-700/50 hover:border-slate-400 dark:hover:border-slate-500 hover:text-[#1E293B] dark:hover:text-slate-300"
-                            }`}
+                            className="text-[10px] font-semibold px-2.5 py-1 rounded-full transition-all"
+                            style={{
+                              background: u.is_admin ? "var(--accent-subtle)" : "var(--bg-inset)",
+                              border: `1px solid ${u.is_admin ? "var(--accent-border)" : "var(--border-subtle)"}`,
+                              color: u.is_admin ? "var(--accent-text)" : "var(--text-tertiary)",
+                            }}
                           >
                             {u.is_admin ? "✓ ADMIN" : "ADMIN"}
                           </button>
@@ -506,39 +555,34 @@ export default function AdminPage() {
                             <button
                               onClick={() => definirGestor(u.id, !u.is_gestor)}
                               title={u.is_gestor ? "Revogar Gestor" : "Promover a Gestor"}
-                              className={`text-[10px] font-bold px-2.5 py-1 rounded-full border transition-all ${
-                                u.is_gestor
-                                  ? "border-indigo-200 dark:border-indigo-500/40 text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 hover:bg-indigo-100 dark:hover:bg-indigo-500/20"
-                                  : "border-slate-300 dark:border-slate-600 text-[#475569] dark:text-slate-500 bg-slate-100 dark:bg-slate-700/50 hover:border-slate-400 dark:hover:border-slate-500 hover:text-[#1E293B] dark:hover:text-slate-300"
-                              }`}
+                              className="text-[10px] font-semibold px-2.5 py-1 rounded-full transition-all"
+                              style={{
+                                background: u.is_gestor ? "var(--accent-subtle)" : "var(--bg-inset)",
+                                border: `1px solid ${u.is_gestor ? "var(--accent-border)" : "var(--border-subtle)"}`,
+                                color: u.is_gestor ? "var(--accent-text)" : "var(--text-tertiary)",
+                              }}
                             >
                               {u.is_gestor ? "✓ GESTOR" : "GESTOR"}
                             </button>
                           )}
                         </div>
                       ) : (
-                        <span className="text-[10px] font-bold px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 text-[#64748B] dark:text-slate-600 bg-slate-100 dark:bg-slate-800">
-                          —
-                        </span>
+                        <span style={{ color: "var(--text-tertiary)" }}>—</span>
                       )}
                     </td>
 
-                    {/* Status */}
+                    {/* Status — dot 6px sem pill */}
                     <td className="px-5 py-3.5">
-                      {u.status === "ativo" ? (
-                        <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-500/20 text-emerald-700 dark:text-emerald-400">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                          Ativo
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-500/20 text-amber-700 dark:text-amber-400">
-                          <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-                          Pendente
-                        </span>
-                      )}
+                      <span className="inline-flex items-center gap-2 text-xs font-medium" style={{ color: u.status === "ativo" ? "var(--success)" : "var(--warning)" }}>
+                        <span
+                          className="w-1.5 h-1.5 rounded-full"
+                          style={{ background: u.status === "ativo" ? "var(--success)" : "var(--warning)" }}
+                        />
+                        {u.status === "ativo" ? "Ativo" : "Pendente"}
+                      </span>
                     </td>
 
-                    {/* Ações */}
+                    {/* Ações — Lucide 16px text-tertiary, hover semantico */}
                     <td className="px-5 py-3.5">
                       <div className="flex items-center justify-end gap-1.5">
                         {u.status === "pendente" ? (
@@ -546,22 +590,19 @@ export default function AdminPage() {
                             <button
                               onClick={() => aprovar(u.id, true)}
                               title="Aprovar acesso"
-                              className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500 hover:text-white border border-emerald-500/20 hover:border-emerald-500 transition-all"
+                              className="p-2 rounded-lg transition-all"
+                              style={{ color: "var(--text-tertiary)" }}
+                              onMouseEnter={(e) => { e.currentTarget.style.background = "var(--success-subtle)"; e.currentTarget.style.color = "var(--success)"; }}
+                              onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--text-tertiary)"; }}
                             >
-                              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                              </svg>
+                              <Check size={16} strokeWidth={2.25} />
                             </button>
                             <ConfirmButton
                               onConfirm={() => excluir(u.id)}
                               label="Recusar e remover"
                               confirmLabel="Recusar"
-                              icon={
-                                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                              }
-                              className="p-2 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white border border-red-500/20 hover:border-red-500 transition-all"
+                              icon={<X size={16} strokeWidth={2.25} />}
+                              className="p-2 rounded-lg transition-all admin-action-danger"
                             />
                           </>
                         ) : (
@@ -570,23 +611,15 @@ export default function AdminPage() {
                               onConfirm={() => aprovar(u.id, false)}
                               label="Bloquear acesso"
                               confirmLabel="Bloquear"
-                              icon={
-                                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-                                </svg>
-                              }
-                              className="p-2 rounded-lg text-slate-500 hover:text-amber-400 hover:bg-amber-400/10 border border-transparent hover:border-amber-400/20 transition-all"
+                              icon={<Ban size={16} strokeWidth={2} />}
+                              className="p-2 rounded-lg transition-all admin-action-warning"
                             />
                             <ConfirmButton
                               onConfirm={() => excluir(u.id)}
                               label="Excluir usuário"
                               confirmLabel="Excluir"
-                              icon={
-                                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                </svg>
-                              }
-                              className="p-2 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-400/10 border border-transparent hover:border-red-400/20 transition-all"
+                              icon={<Trash2 size={16} strokeWidth={2} />}
+                              className="p-2 rounded-lg transition-all admin-action-danger"
                             />
                           </>
                         )}
@@ -600,17 +633,31 @@ export default function AdminPage() {
 
           {/* Footer da tabela */}
           {filtrados.length > 0 && (
-            <div className="px-5 py-3 flex items-center justify-between" style={{ borderTop: "1px solid var(--border)", background: "var(--bg-secondary)" }}>
-              <p className="text-[11px] text-slate-500">
+            <div
+              className="px-5 py-3 flex items-center justify-between"
+              style={{
+                borderTop: "1px solid var(--border-subtle)",
+                background: "var(--bg-inset)",
+              }}
+            >
+              <p className="text-[11px] font-mono tabular-nums" style={{ color: "var(--text-tertiary)" }}>
                 Exibindo {filtrados.length} de {total} usuários
               </p>
               {(busca || filtroStatus !== "todos" || filtroPerfil !== "todos") && (
-                <p className="text-[11px] text-[#3b6ea5]">Filtros ativos</p>
+                <p className="text-[11px]" style={{ color: "var(--accent)" }}>Filtros ativos</p>
               )}
             </div>
           )}
         </div>
       </div>
+
+      {/* Inline styles para hover dos botoes de acao (Lucide icons) */}
+      <style jsx>{`
+        :global(.admin-action-warning) { color: var(--text-tertiary); }
+        :global(.admin-action-warning:hover) { background: var(--warning-subtle); color: var(--warning); }
+        :global(.admin-action-danger) { color: var(--text-tertiary); }
+        :global(.admin-action-danger:hover) { background: var(--danger-subtle); color: var(--danger); }
+      `}</style>
     </div>
   );
 }
