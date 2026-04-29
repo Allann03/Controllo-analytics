@@ -216,11 +216,16 @@ export default function AdminEmpresasPage() {
     <div className="min-h-full" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)" }}>
 
       {toast && (
-        <div className={`fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-3.5 rounded-2xl border text-sm font-semibold shadow-2xl ${
-          toast.tipo === "ok"
-            ? "bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-950/90 dark:border-emerald-500/30 dark:text-emerald-300"
-            : "bg-red-50 border-red-200 text-red-700 dark:bg-red-950/90 dark:border-red-500/30 dark:text-red-300"
-        }`}>
+        <div
+          className="fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-3.5 text-sm font-medium"
+          style={{
+            background: toast.tipo === "ok" ? "var(--success-subtle)" : "var(--danger-subtle)",
+            border: `1px solid ${toast.tipo === "ok" ? "var(--success-border)" : "var(--danger-border)"}`,
+            color: toast.tipo === "ok" ? "var(--success)" : "var(--danger)",
+            borderRadius: "var(--radius-md)",
+            boxShadow: "var(--shadow-md)",
+          }}
+        >
           {toast.tipo === "ok"
             ? <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
             : <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -230,31 +235,35 @@ export default function AdminEmpresasPage() {
       )}
 
       {/* Header */}
-      <header className="px-6 pt-6 pb-4 border-b border-slate-100 dark:border-slate-800">
+      <header className="px-6 pt-6 pb-4" style={{ borderBottom: "1px solid var(--border-subtle)" }}>
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-5">
           <div>
-            <div className="inline-flex items-center gap-2 mb-3">
-              <span className="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-widest bg-navy-50 border border-navy-200 text-navy-700 dark:bg-navy-500/10 dark:border-navy-500/35 dark:text-navy-300">
-                Administrador
-              </span>
-            </div>
-            <h1 className="text-3xl font-extrabold tracking-tight">
-              Gestão de{" "}
-              <span className="text-navy-600 dark:text-navy-400">Empresas</span>
+            <p
+              className="text-xs uppercase font-medium mb-2"
+              style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}
+            >
+              Administrador
+            </p>
+            <h1 className="text-3xl font-semibold tracking-tight" style={{ color: "var(--text-primary)" }}>
+              Gestão de empresas
             </h1>
-            <p className="text-sm mt-1.5 text-slate-500 dark:text-slate-400">
+            <p className="text-sm mt-1.5" style={{ color: "var(--text-secondary)" }}>
               Cadastre e gerencie as empresas do escritório — {total} cadastrada{total !== 1 ? "s" : ""}
             </p>
           </div>
           <button
             onClick={abrirNovo}
-            data-notheme
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-colors active:scale-95 flex-shrink-0 bg-navy-600 hover:bg-navy-700 dark:bg-navy-500 dark:hover:bg-navy-600"
+            className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold transition-opacity active:scale-95 flex-shrink-0 hover:opacity-90"
+            style={{
+              background: "var(--accent)",
+              color: "var(--text-inverse)",
+              borderRadius: "var(--radius-md)",
+            }}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
-            Nova Empresa
+            Nova empresa
           </button>
         </div>
       </header>
@@ -264,30 +273,43 @@ export default function AdminEmpresasPage() {
         {/* Busca + contador */}
         <div className="flex items-center gap-4">
           <div className="relative flex-1 max-w-sm">
-            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "var(--text-tertiary)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <input
               value={buscaInput} onChange={e => setBuscaInput(e.target.value)}
               placeholder="Buscar por nome, CNPJ ou CCM..."
-              className="w-full pl-9 pr-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-slate-200 text-sm placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-700 focus:ring-2 focus:ring-blue-900/20 transition-all"
+              className="w-full pl-9 pr-4 py-2 text-sm focus:outline-none transition-all"
+              style={{
+                background: "var(--bg-elevated)",
+                border: "1px solid var(--border-default)",
+                color: "var(--text-primary)",
+                borderRadius: "var(--radius-md)",
+              }}
+              onFocus={ev => { ev.currentTarget.style.borderColor = "var(--border-focus)"; }}
+              onBlur={ev => { ev.currentTarget.style.borderColor = "var(--border-default)"; }}
             />
           </div>
-          <p className="text-slate-500 text-sm">{total} empresa{total !== 1 ? "s" : ""} cadastrada{total !== 1 ? "s" : ""}</p>
+          <p className="text-sm" style={{ color: "var(--text-tertiary)" }}>{total} empresa{total !== 1 ? "s" : ""} cadastrada{total !== 1 ? "s" : ""}</p>
         </div>
 
         {/* Tabela */}
         {carregando ? (
-          <div className="rounded-2xl overflow-hidden space-y-0 page-enter"
-            style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
-            <div style={{ height: "1px", background: "linear-gradient(90deg, #102a43 0%, #3b6ea5 60%, transparent 100%)" }} />
-            <div className="px-5 py-3.5 flex gap-4 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+          <div
+            className="overflow-hidden space-y-0 page-enter"
+            style={{
+              background: "var(--bg-surface)",
+              border: "1px solid var(--border-subtle)",
+              borderRadius: "var(--radius-md)",
+            }}
+          >
+            <div className="px-5 py-3.5 flex gap-4" style={{ background: "var(--bg-elevated)", borderBottom: "1px solid var(--border-subtle)" }}>
               {["w-20","w-28","w-16","w-24","w-20","w-14"].map((w, i) => (
                 <div key={i} className={`skeleton h-3 ${w} rounded`} />
               ))}
             </div>
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="px-5 py-4 flex items-center gap-4" style={{ borderBottom: "1px solid rgba(79,106,255,0.05)" }}>
+              <div key={i} className="px-5 py-4 flex items-center gap-4" style={{ borderBottom: "1px solid var(--border-subtle)" }}>
                 <div className="skeleton w-8 h-8 rounded-xl flex-shrink-0" />
                 <div className="skeleton h-3.5 w-40 rounded" />
                 <div className="skeleton h-3 w-32 rounded ml-auto" />
@@ -298,95 +320,141 @@ export default function AdminEmpresasPage() {
             ))}
           </div>
         ) : empresas.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20 border border-dashed border-slate-300 dark:border-slate-700/60 rounded-2xl">
-            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-              <Building2 className="w-8 h-8 text-slate-400 dark:text-slate-500" />
-            </div>
-            <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
-              {buscaInput ? "Nenhuma empresa encontrada." : "Nenhuma empresa cadastrada."}
+          <div
+            className="flex flex-col items-center justify-center py-16 px-6 text-center"
+            style={{
+              background: "var(--bg-surface)",
+              border: "1px solid var(--border-subtle)",
+              borderRadius: "var(--radius-md)",
+            }}
+          >
+            <Building2 className="w-6 h-6 mb-4" style={{ color: "var(--text-tertiary)" }} strokeWidth={1.75} />
+            <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
+              {buscaInput ? "Nenhuma empresa encontrada" : "Nenhuma empresa cadastrada"}
             </p>
-            <p className="text-xs mt-1 text-slate-400 dark:text-slate-500">
+            <p className="text-xs mt-1" style={{ color: "var(--text-tertiary)" }}>
               {buscaInput ? "Tente ajustar os filtros de busca." : "Cadastre a primeira empresa para começar."}
             </p>
             {!buscaInput && (
-              <button onClick={abrirNovo} className="mt-4 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white bg-navy-600 hover:bg-navy-700 transition-colors">
+              <button
+                onClick={abrirNovo}
+                className="mt-5 flex items-center gap-2 px-4 py-2 text-sm font-semibold transition-opacity hover:opacity-90"
+                style={{
+                  background: "var(--accent)",
+                  color: "var(--text-inverse)",
+                  borderRadius: "var(--radius-md)",
+                }}
+              >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
                 Cadastrar primeira empresa
               </button>
             )}
           </div>
         ) : (
-          <div className="rounded-2xl overflow-hidden"
+          <div
+            className="overflow-hidden"
             style={{
-              background: "var(--bg-card)",
-              border: "1px solid var(--border)",
-              boxShadow: "0 4px 32px rgba(0,0,0,0.25)",
-            }}>
-            {/* Accent line */}
-            <div style={{ height: "1px", background: "linear-gradient(90deg, #102a43 0%, #3b6ea5 60%, transparent 100%)" }} />
+              background: "var(--bg-surface)",
+              border: "1px solid var(--border-subtle)",
+              borderRadius: "var(--radius-md)",
+            }}
+          >
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700">
-                  <th className="text-left px-5 py-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Nome</th>
-                  <th className="text-left px-5 py-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">CNPJ</th>
-                  <th className="text-left px-5 py-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">CCM</th>
-                  <th className="text-left px-5 py-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Regime</th>
-                  <th className="text-left px-5 py-3.5 text-[10px] font-bold uppercase tracking-wider hidden lg:table-cell text-slate-500 dark:text-slate-400">Observação</th>
-                  <th className="text-left px-5 py-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Carteira</th>
-                  <th className="text-right px-5 py-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Ações</th>
+                <tr style={{ background: "var(--bg-elevated)", borderBottom: "1px solid var(--border-subtle)" }}>
+                  <th className="text-left px-5 py-3.5 text-xs uppercase font-medium" style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}>Nome</th>
+                  <th className="text-left px-5 py-3.5 text-xs uppercase font-medium" style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}>CNPJ</th>
+                  <th className="text-left px-5 py-3.5 text-xs uppercase font-medium" style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}>CCM</th>
+                  <th className="text-left px-5 py-3.5 text-xs uppercase font-medium" style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}>Regime</th>
+                  <th className="text-left px-5 py-3.5 text-xs uppercase font-medium hidden lg:table-cell" style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}>Observação</th>
+                  <th className="text-left px-5 py-3.5 text-xs uppercase font-medium" style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}>Carteira</th>
+                  <th className="text-right px-5 py-3.5 text-xs uppercase font-medium" style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}>Ações</th>
                 </tr>
               </thead>
               <tbody>
                 {empresas.map(e => (
-                  <tr key={e.id} className="border-b border-slate-100 dark:border-slate-700/30 last:border-0 hover:bg-slate-50 dark:hover:bg-slate-700/20 transition-colors">
+                  <tr
+                    key={e.id}
+                    className="last:border-0 transition-colors"
+                    style={{ borderBottom: "1px solid var(--border-subtle)" }}
+                    onMouseEnter={ev => { (ev.currentTarget as HTMLElement).style.background = "var(--bg-elevated)"; }}
+                    onMouseLeave={ev => { (ev.currentTarget as HTMLElement).style.background = "transparent"; }}
+                  >
                     <td className="px-5 py-3.5">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-700/50 flex items-center justify-center flex-shrink-0">
-                          <Building2 className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                        <div
+                          className="w-8 h-8 flex items-center justify-center flex-shrink-0"
+                          style={{ background: "var(--bg-inset)", borderRadius: "var(--radius-sm)" }}
+                        >
+                          <Building2 className="w-4 h-4" style={{ color: "var(--text-tertiary)" }} />
                         </div>
                         <div>
-                          <span className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>{e.nome}</span>
+                          <span className="font-medium text-sm" style={{ color: "var(--text-primary)" }}>{e.nome}</span>
                           {e.segmento && (
-                            <p className="text-[10px] mt-0.5" style={{ color: "var(--text-muted)" }}>{e.segmento}</p>
+                            <p className="text-[10px] mt-0.5" style={{ color: "var(--text-tertiary)" }}>{e.segmento}</p>
                           )}
                         </div>
                       </div>
                     </td>
-                    <td className="px-5 py-3.5 font-mono text-xs" style={{ color: "var(--text-secondary)" }}>
-                      {e.cnpj || <span style={{ color: "var(--text-muted)" }}>—</span>}
+                    <td className="px-5 py-3.5 font-mono tabular-nums text-xs" style={{ color: "var(--text-secondary)" }}>
+                      {e.cnpj || <span style={{ color: "var(--text-tertiary)" }}>—</span>}
                     </td>
                     <td className="px-5 py-3.5 text-xs" style={{ color: "var(--text-secondary)" }}>
-                      {e.ccm || <span style={{ color: "var(--text-muted)" }}>—</span>}
+                      {e.ccm || <span style={{ color: "var(--text-tertiary)" }}>—</span>}
                     </td>
-                    <td className="px-5 py-3.5 text-xs" style={{ color: "var(--text-secondary)" }}>
-                      {e.regime_tributario ? (
-                        <span className={`inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-semibold ${
-                          e.regime_tributario === 'simples' ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20' :
-                          e.regime_tributario === 'presumido' ? 'bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20' :
-                          e.regime_tributario === 'real' ? 'bg-violet-50 dark:bg-violet-500/10 text-violet-700 dark:text-violet-400 border border-violet-200 dark:border-violet-500/20' :
-                          'bg-slate-50 dark:bg-slate-700/30 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-600/30'
-                        }`}>
-                          {e.regime_tributario === 'simples' ? 'Simples' : e.regime_tributario === 'presumido' ? 'Presumido' : e.regime_tributario === 'real' ? 'Lucro Real' : e.regime_tributario}
-                        </span>
-                      ) : (
-                        <span style={{ color: "var(--text-muted)" }}>—</span>
+                    <td className="px-5 py-3.5 text-xs">
+                      {e.regime_tributario ? (() => {
+                        const regime = e.regime_tributario;
+                        const isSimples   = regime === "simples";
+                        const isPresumido = regime === "presumido";
+                        const isReal      = regime === "real";
+                        const bg     = isSimples ? "var(--success-subtle)" : isPresumido ? "var(--accent-subtle)" : isReal ? "var(--warning-subtle)" : "var(--bg-elevated)";
+                        const border = isSimples ? "var(--success-border)" : isPresumido ? "var(--accent-border)" : isReal ? "var(--warning-border)" : "var(--border-subtle)";
+                        const color  = isSimples ? "var(--success)"        : isPresumido ? "var(--accent-text)"   : isReal ? "var(--warning)"        : "var(--text-secondary)";
+                        const label  = isSimples ? "Simples" : isPresumido ? "Presumido" : isReal ? "Lucro Real" : regime;
+                        return (
+                          <span
+                            className="inline-flex items-center px-2 py-0.5 text-[10px] font-medium"
+                            style={{ background: bg, border: `1px solid ${border}`, color, borderRadius: "var(--radius-sm)" }}
+                          >
+                            {label}
+                          </span>
+                        );
+                      })() : (
+                        <span style={{ color: "var(--text-tertiary)" }}>—</span>
                       )}
                     </td>
                     <td className="px-5 py-3.5 text-xs max-w-xs hidden lg:table-cell" style={{ color: "var(--text-secondary)" }}>
                       {e.observacoes
                         ? <span className="whitespace-pre-wrap">{e.observacoes}</span>
-                        : <span style={{ color: "var(--text-muted)" }}>—</span>
+                        : <span style={{ color: "var(--text-tertiary)" }}>—</span>
                       }
                     </td>
                     <td className="px-5 py-3.5">
                       {e.carteira_usuario_nome ? (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-700 dark:text-blue-400">
-                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400" />
+                        <span
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-medium"
+                          style={{
+                            background: "var(--accent-subtle)",
+                            border: "1px solid var(--accent-border)",
+                            color: "var(--accent-text)",
+                            borderRadius: "var(--radius-sm)",
+                          }}
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--accent)" }} />
                           {e.carteira_usuario_nome}
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 text-emerald-700 dark:text-emerald-400">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400" />
+                        <span
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-medium"
+                          style={{
+                            background: "var(--success-subtle)",
+                            border: "1px solid var(--success-border)",
+                            color: "var(--success)",
+                            borderRadius: "var(--radius-sm)",
+                          }}
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--success)" }} />
                           Disponível
                         </span>
                       )}
@@ -395,7 +463,10 @@ export default function AdminEmpresasPage() {
                       <div className="flex items-center justify-end gap-1.5">
                         <button
                           onClick={() => abrirEditar(e)}
-                          className="p-2 rounded-xl text-slate-500 hover:text-[#3b6ea5] hover:bg-[#102a43]/10 border border-transparent hover:border-[#102a43]/20 transition-all"
+                          className="p-2 transition-colors"
+                          style={{ color: "var(--text-tertiary)", borderRadius: "var(--radius-sm)" }}
+                          onMouseEnter={ev => { ev.currentTarget.style.color = "var(--accent)"; ev.currentTarget.style.background = "var(--accent-subtle)"; }}
+                          onMouseLeave={ev => { ev.currentTarget.style.color = "var(--text-tertiary)"; ev.currentTarget.style.background = "transparent"; }}
                           title="Editar empresa"
                         >
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -404,7 +475,10 @@ export default function AdminEmpresasPage() {
                         </button>
                         <button
                           onClick={() => abrirExclusao(e)}
-                          className="p-2 rounded-xl text-slate-500 hover:text-rose-400 hover:bg-rose-400/10 border border-transparent hover:border-rose-400/20 transition-all"
+                          className="p-2 transition-colors"
+                          style={{ color: "var(--text-tertiary)", borderRadius: "var(--radius-sm)" }}
+                          onMouseEnter={ev => { ev.currentTarget.style.color = "var(--danger)"; ev.currentTarget.style.background = "var(--danger-subtle)"; }}
+                          onMouseLeave={ev => { ev.currentTarget.style.color = "var(--text-tertiary)"; ev.currentTarget.style.background = "transparent"; }}
                           title="Excluir empresa"
                         >
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -423,26 +497,44 @@ export default function AdminEmpresasPage() {
         {/* Paginação */}
         {totalPages > 1 && (
           <div className="flex items-center justify-between pt-1">
-            <p className="text-xs text-slate-500">
+            <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>
               {total} empresa{total !== 1 ? "s" : ""} — página {page} de {totalPages}
             </p>
             <div className="flex items-center gap-1">
-              <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}
-                className="p-1.5 rounded-lg text-slate-500 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:cursor-not-allowed transition-all">
+              <button
+                onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}
+                className="p-1.5 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                style={{ color: "var(--text-tertiary)", borderRadius: "var(--radius-sm)" }}
+                onMouseEnter={ev => { if (!ev.currentTarget.disabled) { ev.currentTarget.style.color = "var(--text-primary)"; ev.currentTarget.style.background = "var(--bg-elevated)"; } }}
+                onMouseLeave={ev => { ev.currentTarget.style.color = "var(--text-tertiary)"; ev.currentTarget.style.background = "transparent"; }}
+              >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               </button>
               {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
                 const start = Math.max(1, Math.min(page - 2, totalPages - 4));
                 const num = start + i;
+                const isActive = num === page;
                 return (
-                  <button key={num} onClick={() => setPage(num)}
-                    className={`w-8 h-8 rounded-lg text-xs font-semibold transition-all ${num === page ? "text-white" : "text-slate-400 hover:text-white hover:bg-slate-800"}`}
-                    style={num === page ? { background: "#1e3a5f" } : {}}
+                  <button
+                    key={num} onClick={() => setPage(num)}
+                    className="w-8 h-8 text-xs font-semibold transition-colors"
+                    style={{
+                      background: isActive ? "var(--accent)" : "transparent",
+                      color: isActive ? "var(--text-inverse)" : "var(--text-tertiary)",
+                      borderRadius: "var(--radius-sm)",
+                    }}
+                    onMouseEnter={ev => { if (!isActive) { ev.currentTarget.style.color = "var(--text-primary)"; ev.currentTarget.style.background = "var(--bg-elevated)"; } }}
+                    onMouseLeave={ev => { if (!isActive) { ev.currentTarget.style.color = "var(--text-tertiary)"; ev.currentTarget.style.background = "transparent"; } }}
                   >{num}</button>
                 );
               })}
-              <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}
-                className="p-1.5 rounded-lg text-slate-500 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:cursor-not-allowed transition-all">
+              <button
+                onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}
+                className="p-1.5 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                style={{ color: "var(--text-tertiary)", borderRadius: "var(--radius-sm)" }}
+                onMouseEnter={ev => { if (!ev.currentTarget.disabled) { ev.currentTarget.style.color = "var(--text-primary)"; ev.currentTarget.style.background = "var(--bg-elevated)"; } }}
+                onMouseLeave={ev => { ev.currentTarget.style.color = "var(--text-tertiary)"; ev.currentTarget.style.background = "transparent"; }}
+              >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
               </button>
             </div>
@@ -452,86 +544,145 @@ export default function AdminEmpresasPage() {
 
       {/* ── MODAL CRIAR/EDITAR ── */}
       {modalAberto && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-slate-800">
-              <h2 className="font-bold text-lg text-slate-900 dark:text-white">{editando ? "Editar Empresa" : "Nova Empresa"}</h2>
-              <button onClick={() => setModalAberto(false)} className="p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)" }}>
+          <div
+            className="w-full max-w-md overflow-hidden"
+            style={{
+              background: "var(--bg-overlay)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-lg)",
+              boxShadow: "var(--shadow-lg)",
+            }}
+          >
+            <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: "1px solid var(--border-subtle)" }}>
+              <h2 className="font-semibold text-lg" style={{ color: "var(--text-primary)" }}>{editando ? "Editar empresa" : "Nova empresa"}</h2>
+              <button
+                onClick={() => setModalAberto(false)}
+                className="p-1.5 transition-colors"
+                style={{ color: "var(--text-tertiary)", borderRadius: "var(--radius-sm)" }}
+                onMouseEnter={ev => { ev.currentTarget.style.color = "var(--text-primary)"; ev.currentTarget.style.background = "var(--bg-elevated)"; }}
+                onMouseLeave={ev => { ev.currentTarget.style.color = "var(--text-tertiary)"; ev.currentTarget.style.background = "transparent"; }}
+              >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
             </div>
             <form onSubmit={salvar} className="p-6 space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Nome da Empresa *</label>
+                <label className="block text-xs font-medium mb-1.5 uppercase" style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}>Nome da empresa *</label>
                 <input
                   value={nome} onChange={e => setNome(e.target.value)} required minLength={2}
                   placeholder="Ex: Empresa ABC Comércio Ltda"
-                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white text-sm placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-900/20 focus:border-blue-700 transition-all"
+                  className="w-full px-4 py-2.5 text-sm focus:outline-none transition-all"
+                  style={{
+                    background: "var(--bg-inset)",
+                    border: "1px solid var(--border-default)",
+                    color: "var(--text-primary)",
+                    borderRadius: "var(--radius-md)",
+                  }}
+                  onFocus={ev => { ev.currentTarget.style.borderColor = "var(--border-focus)"; }}
+                  onBlur={ev => { ev.currentTarget.style.borderColor = "var(--border-default)"; }}
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">
-                    CNPJ <span className="text-slate-400 dark:text-slate-600 normal-case font-normal">(opcional)</span>
+                  <label className="block text-xs font-medium mb-1.5 uppercase" style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}>
+                    CNPJ <span className="normal-case font-normal" style={{ color: "var(--text-disabled)" }}>(opcional)</span>
                   </label>
                   <input
                     value={cnpj} onChange={e => handleCnpjChange(e.target.value)}
                     placeholder="00.000.000/0001-00"
-                    className={`w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border rounded-xl text-slate-900 dark:text-white text-sm font-mono placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${
-                      cnpjStatus === "valido"     ? "border-emerald-500 focus:ring-emerald-700/20" :
-                      cnpjStatus === "invalido"   ? "border-rose-600 focus:ring-rose-700/20" :
-                      cnpjStatus === "incompleto" ? "border-amber-500 focus:ring-amber-700/20" :
-                                                    "border-slate-200 dark:border-slate-700 focus:ring-blue-900/20 focus:border-blue-700"
-                    }`}
+                    className="w-full px-4 py-2.5 text-sm font-mono tabular-nums focus:outline-none transition-all"
+                    style={{
+                      background: "var(--bg-inset)",
+                      border: `1px solid ${
+                        cnpjStatus === "valido"     ? "var(--success-border)" :
+                        cnpjStatus === "invalido"   ? "var(--danger-border)"  :
+                        cnpjStatus === "incompleto" ? "var(--warning-border)" :
+                                                      "var(--border-default)"
+                      }`,
+                      color: "var(--text-primary)",
+                      borderRadius: "var(--radius-md)",
+                    }}
                   />
                   {cnpjStatus === "valido" && (
-                    <p className="text-[11px] text-emerald-700 dark:text-emerald-400 mt-1 flex items-center gap-1">
+                    <p className="text-[11px] mt-1 flex items-center gap-1" style={{ color: "var(--success)" }}>
                       <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                       Válido
                     </p>
                   )}
                   {cnpjStatus === "incompleto" && (
-                    <p className="text-[11px] text-amber-700 dark:text-amber-400 mt-1">
-                      Incompleto — <button type="button" onClick={() => { setCnpj(""); setCnpjErro(""); }} className="underline hover:text-slate-900 dark:hover:text-white">limpar</button>
+                    <p className="text-[11px] mt-1" style={{ color: "var(--warning)" }}>
+                      Incompleto — <button type="button" onClick={() => { setCnpj(""); setCnpjErro(""); }} className="underline" style={{ color: "var(--warning)" }}>limpar</button>
                     </p>
                   )}
-                  {cnpjStatus === "invalido" && <p className="text-[11px] text-rose-700 dark:text-rose-400 mt-1">CNPJ inválido</p>}
+                  {cnpjStatus === "invalido" && <p className="text-[11px] mt-1" style={{ color: "var(--danger)" }}>CNPJ inválido</p>}
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">
-                    CCM <span className="text-slate-400 dark:text-slate-600 normal-case font-normal">(opcional)</span>
+                  <label className="block text-xs font-medium mb-1.5 uppercase" style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}>
+                    CCM <span className="normal-case font-normal" style={{ color: "var(--text-disabled)" }}>(opcional)</span>
                   </label>
                   <input
                     value={ccm} onChange={e => setCcm(e.target.value)}
                     placeholder="Inscrição municipal"
-                    className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white text-sm font-mono placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-900/20 focus:border-blue-700 transition-all"
+                    className="w-full px-4 py-2.5 text-sm font-mono tabular-nums focus:outline-none transition-all"
+                    style={{
+                      background: "var(--bg-inset)",
+                      border: "1px solid var(--border-default)",
+                      color: "var(--text-primary)",
+                      borderRadius: "var(--radius-md)",
+                    }}
+                    onFocus={ev => { ev.currentTarget.style.borderColor = "var(--border-focus)"; }}
+                    onBlur={ev => { ev.currentTarget.style.borderColor = "var(--border-default)"; }}
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">
-                  Observação <span className="text-slate-400 dark:text-slate-600 normal-case font-normal">(opcional)</span>
+                <label className="block text-xs font-medium mb-1.5 uppercase" style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}>
+                  Observação <span className="normal-case font-normal" style={{ color: "var(--text-disabled)" }}>(opcional)</span>
                 </label>
                 <textarea
                   value={observacoes} onChange={e => setObservacoes(e.target.value.slice(0, 500))} rows={3}
                   placeholder="Ex: Cliente desde 2020, regime Simples Nacional, atenção especial na folha..."
-                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white text-sm placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-900/20 focus:border-blue-700 transition-all resize-none"
+                  className="w-full px-4 py-2.5 text-sm focus:outline-none transition-all resize-none"
+                  style={{
+                    background: "var(--bg-inset)",
+                    border: "1px solid var(--border-default)",
+                    color: "var(--text-primary)",
+                    borderRadius: "var(--radius-md)",
+                  }}
+                  onFocus={ev => { ev.currentTarget.style.borderColor = "var(--border-focus)"; }}
+                  onBlur={ev => { ev.currentTarget.style.borderColor = "var(--border-default)"; }}
                 />
-                <p className="text-right text-[11px] text-slate-400 mt-0.5">{observacoes.length}/500</p>
+                <p className="text-right text-[11px] mt-0.5" style={{ color: "var(--text-tertiary)" }}>{observacoes.length}/500</p>
               </div>
 
               <div className="flex gap-3 pt-1">
-                <button type="button" onClick={() => setModalAberto(false)}
-                  className="flex-1 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-slate-600 text-sm font-medium transition-all">
+                <button
+                  type="button" onClick={() => setModalAberto(false)}
+                  className="flex-1 py-2.5 text-sm font-medium transition-colors"
+                  style={{
+                    background: "var(--bg-elevated)",
+                    border: "1px solid var(--border-default)",
+                    color: "var(--text-secondary)",
+                    borderRadius: "var(--radius-md)",
+                  }}
+                  onMouseEnter={ev => { ev.currentTarget.style.color = "var(--text-primary)"; ev.currentTarget.style.borderColor = "var(--border-strong)"; }}
+                  onMouseLeave={ev => { ev.currentTarget.style.color = "var(--text-secondary)"; ev.currentTarget.style.borderColor = "var(--border-default)"; }}
+                >
                   Cancelar
                 </button>
                 <button
                   type="submit"
                   disabled={salvando || (!!cnpjErro && cnpj.replace(/\D/g, "").length > 0)}
-                  data-notheme
-                  className="flex-1 py-2.5 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-bold bg-blue-900 hover:bg-blue-950 transition-all">
+                  className="flex-1 py-2.5 disabled:opacity-50 disabled:cursor-not-allowed text-sm font-semibold transition-opacity hover:opacity-90"
+                  style={{
+                    background: "var(--accent)",
+                    color: "var(--text-inverse)",
+                    borderRadius: "var(--radius-md)",
+                  }}
+                >
                   {salvando ? "Salvando..." : editando ? "Salvar alterações" : "Cadastrar"}
                 </button>
               </div>
@@ -542,54 +693,98 @@ export default function AdminEmpresasPage() {
 
       {/* ── MODAL EXCLUSÃO ── */}
       {modalExclusao && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-slate-800">
-              <h2 className="font-bold text-lg text-rose-700 dark:text-rose-400">Excluir Empresa</h2>
-              <button onClick={() => setModalExclusao(null)} className="p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)" }}>
+          <div
+            className="w-full max-w-md overflow-hidden"
+            style={{
+              background: "var(--bg-overlay)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-lg)",
+              boxShadow: "var(--shadow-lg)",
+            }}
+          >
+            <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: "1px solid var(--border-subtle)" }}>
+              <h2 className="font-semibold text-lg" style={{ color: "var(--danger)" }}>Excluir empresa</h2>
+              <button
+                onClick={() => setModalExclusao(null)}
+                className="p-1.5 transition-colors"
+                style={{ color: "var(--text-tertiary)", borderRadius: "var(--radius-sm)" }}
+                onMouseEnter={ev => { ev.currentTarget.style.color = "var(--text-primary)"; ev.currentTarget.style.background = "var(--bg-elevated)"; }}
+                onMouseLeave={ev => { ev.currentTarget.style.color = "var(--text-tertiary)"; ev.currentTarget.style.background = "transparent"; }}
+              >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
             </div>
             <div className="p-6 space-y-4">
-              <p className="text-slate-700 dark:text-slate-300 text-sm">
+              <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
                 Tem certeza que deseja excluir{" "}
-                <span className="font-bold text-slate-900 dark:text-white">{modalExclusao.nome}</span>?
+                <span className="font-semibold" style={{ color: "var(--text-primary)" }}>{modalExclusao.nome}</span>?
               </p>
 
               {dadosEmpresa?.has_data && (
-                <div className="bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/30 rounded-xl px-4 py-3 text-sm text-rose-800 dark:text-rose-300">
+                <div
+                  className="px-4 py-3 text-sm"
+                  style={{
+                    background: "var(--danger-subtle)",
+                    border: "1px solid var(--danger-border)",
+                    color: "var(--danger)",
+                    borderRadius: "var(--radius-md)",
+                  }}
+                >
                   <p className="font-semibold mb-1">Esta empresa possui dados importados.</p>
-                  <p className="text-xs text-rose-700 dark:text-rose-400">Ao excluir, todos os lançamentos, extratos e importações serão removidos permanentemente.</p>
+                  <p className="text-xs">Ao excluir, todos os lançamentos, extratos e importações serão removidos permanentemente.</p>
                 </div>
               )}
 
               {!dadosEmpresa?.has_data && (
-                <p className="text-xs text-slate-500">Esta ação não pode ser desfeita.</p>
+                <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>Esta ação não pode ser desfeita.</p>
               )}
 
               {dadosEmpresa?.has_data && (
                 <div>
-                  <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">
+                  <label className="block text-xs font-medium mb-1.5 uppercase" style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}>
                     Digite o nome da empresa para confirmar
                   </label>
                   <input
                     value={nomeConfirmacao}
                     onChange={e => setNomeConfirmacao(e.target.value)}
                     placeholder={modalExclusao.nome}
-                    className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-rose-300 dark:border-rose-500/40 rounded-xl text-slate-900 dark:text-white text-sm placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-rose-600/20 transition-all"
+                    className="w-full px-4 py-2.5 text-sm focus:outline-none transition-all"
+                    style={{
+                      background: "var(--bg-inset)",
+                      border: "1px solid var(--danger-border)",
+                      color: "var(--text-primary)",
+                      borderRadius: "var(--radius-md)",
+                    }}
                   />
                 </div>
               )}
 
               <div className="flex gap-3 pt-1">
-                <button type="button" onClick={() => setModalExclusao(null)}
-                  className="flex-1 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-slate-600 text-sm font-medium transition-all">
+                <button
+                  type="button" onClick={() => setModalExclusao(null)}
+                  className="flex-1 py-2.5 text-sm font-medium transition-colors"
+                  style={{
+                    background: "var(--bg-elevated)",
+                    border: "1px solid var(--border-default)",
+                    color: "var(--text-secondary)",
+                    borderRadius: "var(--radius-md)",
+                  }}
+                  onMouseEnter={ev => { ev.currentTarget.style.color = "var(--text-primary)"; ev.currentTarget.style.borderColor = "var(--border-strong)"; }}
+                  onMouseLeave={ev => { ev.currentTarget.style.color = "var(--text-secondary)"; ev.currentTarget.style.borderColor = "var(--border-default)"; }}
+                >
                   Cancelar
                 </button>
                 <button
                   onClick={confirmarExclusao}
                   disabled={excluindo || (!!dadosEmpresa?.has_data && nomeConfirmacao.trim().toLowerCase() !== modalExclusao.nome.trim().toLowerCase())}
-                  className="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-semibold transition-all">
+                  className="flex-1 py-2.5 disabled:opacity-40 disabled:cursor-not-allowed text-sm font-semibold transition-opacity hover:opacity-90"
+                  style={{
+                    background: "var(--danger)",
+                    color: "var(--text-inverse)",
+                    borderRadius: "var(--radius-md)",
+                  }}
+                >
                   {excluindo ? "Excluindo..." : "Excluir definitivamente"}
                 </button>
               </div>
