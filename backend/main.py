@@ -721,6 +721,7 @@ class UsuarioResponse(BaseModel):
     is_ceo: bool = False
     is_gestor: bool = False
     is_aprovado: bool
+    avatar_id: Optional[str] = None
     class Config:
         from_attributes = True
 
@@ -1108,6 +1109,7 @@ def meu_perfil(current_user: models.Usuario = Depends(get_current_user), db: Ses
         "login": f"{current_user.nome}@{esc.slug}" if esc else current_user.nome,
         "nome_exibicao": current_user.nome_exibicao or "",
         "cargo": current_user.cargo or "",
+        "avatar_id": current_user.avatar_id,
         "is_master": _is_master,
         "is_admin": current_user.is_admin,
         "is_ceo": _is_ceo,

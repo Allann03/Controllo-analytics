@@ -104,6 +104,7 @@ def _user_to_dict(u: models.Usuario, slug: str = "") -> dict:
         "login_completo": f"{u.nome}@{slug}" if slug else u.nome,
         "nome_exibicao": u.nome_exibicao or "",
         "cargo": u.cargo or "",
+        "avatar_id": getattr(u, "avatar_id", None),
         "is_master": getattr(u, "is_master", False),
         "is_dono": getattr(u, "is_dono", False),
         "is_admin": u.is_admin,
