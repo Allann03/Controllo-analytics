@@ -475,8 +475,9 @@ export default function MasterPage() {
             >
               Administrador
             </p>
-            <h1 className="text-2xl font-extrabold tracking-tight" style={{ color: "var(--text-primary)" }}>
-              Central de Controle
+            <h1 className="text-2xl tracking-tight">
+              <span className="font-semibold" style={{ color: "var(--text-primary)" }}>Central de </span>
+              <span className="font-normal" style={{ color: "var(--text-secondary)" }}>Controle</span>
             </h1>
             <p className="text-sm mt-1" style={{ color: "var(--text-secondary)" }}>
               Gestão centralizada de escritórios e usuários da plataforma

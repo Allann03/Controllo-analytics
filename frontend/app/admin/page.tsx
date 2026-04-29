@@ -318,8 +318,9 @@ export default function AdminPage() {
             >
               Administrador
             </p>
-            <h1 className="text-3xl font-semibold tracking-tight" style={{ color: "var(--text-primary)" }}>
-              Gestão de Usuários
+            <h1 className="text-3xl tracking-tight">
+              <span className="font-semibold" style={{ color: "var(--text-primary)" }}>Gestão de </span>
+              <span className="font-normal" style={{ color: "var(--text-secondary)" }}>Usuários</span>
             </h1>
             <p className="text-sm mt-1.5" style={{ color: "var(--text-secondary)" }}>
               Controle de acessos e permissões — Controllo Analytics
