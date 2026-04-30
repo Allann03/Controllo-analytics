@@ -1367,3 +1367,26 @@ Zero regressao atribuivel a S22.
 
 - **`saldo_inicial=None` no-op:** se algum dev futuro reintroduzir uso de `saldo_inicial` no Excel basico sem revisar a spec, perde-se o layout contabil. Mitigado por: docstring deprecation explicita + 8 testes blindando o layout.
 - **Filtro `posicao`:** se cliente XP usar especificamente o Excel basico esperando ver posicoes da carteira, perde isso. Decisao consciente — spec contabil prevalece. Caso algum cliente reclame, gerador novo dedicado a posicoes.
+
+### Extensao: indicador visual de cor (S22 ext.)
+
+Apos validacao visual da S22 base, Allan pediu indicadores de cor para facilitar leitura humana. Mudanca aditiva sobre a S22 base — mesma branch, novo commit, sem regressao do layout.
+
+**Cores aplicadas (codigos ARGB para openpyxl):**
+
+| Elemento | Fundo | Texto | Regra |
+|---|---|---|---|
+| Cabecalho (linha 1) | Azul serio `FF1F4E79` | Branco `FFFFFFFF` (negrito) | Sempre |
+| Linha de dados | Verde-claro `FFE2EFDA` | Preto (default) | Se `tipo == 'entrada'` |
+| Linha de dados | Rosa-claro `FFFCE4D6` | Preto (default) | Caso contrario (saida e fallback) |
+
+**Aplicacao:** fill cobre todas as 7 colunas (A:G) em cada linha, incluindo as colunas vazias C/D/F. Filtro `tipo='posicao'` da S22 base permanece — posicoes nao aparecem, sem cor.
+
+**3 novos testes em `test_gerador_excel_spec_allan.py` (11/11 passando):**
+- `test_cabecalho_tem_fundo_azul_e_texto_branco` — valida fill, font color, bold no cabecalho.
+- `test_linha_entrada_tem_fundo_verde_em_todas_colunas` — confirma fill verde em A:G.
+- `test_linha_saida_tem_fundo_rosa_em_todas_colunas` — confirma fill rosa em A:G.
+
+**Validacao visual humana:** Allan abriu `C:\Users\Allan\AppData\Local\Temp\s22_extensao_teste.xlsx` (gerado a partir de `Extrato Bradesco TLA - 11.25.pdf`, 73 tx — 45 entradas + 28 saidas) no Excel real e confirmou que cores aparecem corretamente.
+
+**Pytest:** 820 → 823 collected (+3 da extensao). Zero regressao. R-B `gerador_excel_contabil.py` continua intocado.

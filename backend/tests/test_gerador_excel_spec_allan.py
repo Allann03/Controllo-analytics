@@ -150,3 +150,63 @@ def test_sem_abas_extras_sem_totalizadores(excel_path):
         for col in range(1, 8):
             v = ws.cell(row=row, column=col).value
             assert v is None, f"linha {row} col {col} tem valor {v!r} — não deveria haver totalizador"
+
+
+# ---------------------------------------------------------------------------
+# Extensão S22: indicador visual de cor (cabeçalho azul + linhas verde/rosa).
+# ---------------------------------------------------------------------------
+
+# openpyxl normaliza cores para "AARRGGBB" (8 chars com canal alpha).
+COR_HEADER_BG = "FF1F4E79"
+COR_HEADER_FG = "FFFFFFFF"
+COR_ENTRADA_BG = "FFE2EFDA"
+COR_SAIDA_BG = "FFFCE4D6"
+
+
+def _cor_fill(cell):
+    """Lê a cor de fundo de uma célula como string AARRGGBB (ou None se sem fill)."""
+    if cell.fill is None or cell.fill.fgColor is None:
+        return None
+    return cell.fill.fgColor.rgb
+
+
+def test_cabecalho_tem_fundo_azul_e_texto_branco(excel_path):
+    txs = [_tx("01/01/2026", "X", Decimal("10.00"), tipo="entrada")]
+    gerar_excel(txs, excel_path)
+
+    ws = load_workbook(excel_path).active
+    for col in range(1, 8):
+        cell = ws.cell(row=1, column=col)
+        assert _cor_fill(cell) == COR_HEADER_BG, f"col {col}: fundo cabeçalho deve ser azul {COR_HEADER_BG}"
+        assert cell.font.color.rgb == COR_HEADER_FG, f"col {col}: texto cabeçalho deve ser branco"
+        assert cell.font.bold is True, f"col {col}: cabeçalho deve permanecer em negrito"
+
+
+def test_linha_entrada_tem_fundo_verde_em_todas_colunas(excel_path):
+    txs = [
+        _tx("01/01/2026", "Receita", Decimal("100.00"), tipo="entrada"),
+        _tx("02/01/2026", "Despesa", Decimal("-50.00"), tipo="saida"),
+    ]
+    gerar_excel(txs, excel_path)
+
+    ws = load_workbook(excel_path).active
+    # Linha 2 = entrada → verde em A:G (incluindo C, D, F que são vazias)
+    for col in range(1, 8):
+        assert _cor_fill(ws.cell(row=2, column=col)) == COR_ENTRADA_BG, (
+            f"linha entrada col {col}: fundo deve ser verde {COR_ENTRADA_BG}"
+        )
+
+
+def test_linha_saida_tem_fundo_rosa_em_todas_colunas(excel_path):
+    txs = [
+        _tx("01/01/2026", "Receita", Decimal("100.00"), tipo="entrada"),
+        _tx("02/01/2026", "Despesa", Decimal("-50.00"), tipo="saida"),
+    ]
+    gerar_excel(txs, excel_path)
+
+    ws = load_workbook(excel_path).active
+    # Linha 3 = saida → rosa em A:G (incluindo C, D, F que são vazias)
+    for col in range(1, 8):
+        assert _cor_fill(ws.cell(row=3, column=col)) == COR_SAIDA_BG, (
+            f"linha saida col {col}: fundo deve ser rosa {COR_SAIDA_BG}"
+        )

@@ -9,11 +9,19 @@ contas, ver gerador_excel_contabil.py (não tocado nesta sessão).
 from datetime import datetime
 from decimal import Decimal
 from openpyxl import Workbook
-from openpyxl.styles import Font
+from openpyxl.styles import Font, PatternFill
 
 
 _CABECALHOS = ["Lançamento", "Data", "Débito", "Crédito", "Valor", "Histórico", "Complemento"]
 _LARGURAS = [12, 12, 10, 10, 14, 10, 50]
+_NUM_COLUNAS = len(_CABECALHOS)
+
+# Estilos S22 — extensão visual (Sessão 22 ext.):
+# cabeçalho azul sério com texto branco, linhas verde-claro (entrada) e rosa-claro (saída).
+_HEADER_FILL = PatternFill("solid", start_color="FF1F4E79", end_color="FF1F4E79")
+_HEADER_FONT = Font(bold=True, color="FFFFFFFF")
+_ROW_FILL_ENTRADA = PatternFill("solid", start_color="FFE2EFDA", end_color="FFE2EFDA")
+_ROW_FILL_SAIDA = PatternFill("solid", start_color="FFFCE4D6", end_color="FFFCE4D6")
 
 
 def _to_float(val) -> float:
@@ -49,16 +57,17 @@ def gerar_excel(transacoes: list, caminho_saida: str, saldo_inicial: float = Non
     ws = wb.active
     ws.title = "Lançamentos"
 
-    header_font = Font(bold=True)
     for col_idx, (cab, larg) in enumerate(zip(_CABECALHOS, _LARGURAS), start=1):
         cell = ws.cell(row=1, column=col_idx, value=cab)
-        cell.font = header_font
+        cell.font = _HEADER_FONT
+        cell.fill = _HEADER_FILL
         ws.column_dimensions[cell.column_letter].width = larg
 
     for i, t in enumerate(transacoes_filtradas, start=1):
         row = i + 1
         valor = abs(_to_float(t.get("valor", 0)))
         data_val = _parse_data(t.get("data", ""))
+        fill_linha = _ROW_FILL_ENTRADA if t.get("tipo") == "entrada" else _ROW_FILL_SAIDA
 
         ws.cell(row=row, column=1, value=i)
         c_data = ws.cell(row=row, column=2, value=data_val)
@@ -67,6 +76,10 @@ def gerar_excel(transacoes: list, caminho_saida: str, saldo_inicial: float = Non
         c_valor = ws.cell(row=row, column=5, value=valor)
         c_valor.number_format = "#,##0.00"
         ws.cell(row=row, column=7, value=t.get("descricao", ""))
+
+        # Aplica fill em A:G (linha inteira) — inclui colunas vazias C/D/F.
+        for col_idx in range(1, _NUM_COLUNAS + 1):
+            ws.cell(row=row, column=col_idx).fill = fill_linha
 
     wb.save(caminho_saida)
     return caminho_saida
