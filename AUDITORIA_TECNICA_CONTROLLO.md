@@ -945,7 +945,7 @@ O Controllo e uma aplicacao SaaS funcional com ~50.200 linhas de codigo, cobrind
 
 **Data**: 2026-04-30
 **Branch**: `fix/bradesco-net-empresas-saldoanterior-sinal` (a partir do tip da Sessao 15, commit `e3673c4`)
-**Commit**: <preencher apos commit>
+**Commit**: `1733d1c`
 
 **Problema**: Pipeline calculava SI/SF com sinais invertidos no `Bradesco Net Empresas (2).pdf` (CW TOUR EIRELI jan/2026), gerando "Excel vs Extrato diff=-918,38" em producao mesmo com pipeline marcando como RECONCILIADO/ALTA porque a equacao `SI+E-S=SF` batia matematicamente.
 
