@@ -603,22 +603,171 @@ export default function ExtratoLotePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                   </svg>
                   <p className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>
-                    {drag ? "Solte para adicionar" : `${arquivos.length} PDF(s) selecionado(s) — clique para adicionar mais`}
+                    {drag
+                      ? "Solte para adicionar"
+                      : etapa === "detectando"
+                        ? "Aguarde a identificação concluir antes de adicionar mais"
+                        : "Adicionar mais PDFs"}
                   </p>
                 </div>
               )}
             </div>
 
-            {/* Loading de detecção */}
-            {etapa === "detectando" && (
-              <div className="flex items-center justify-center gap-3 py-8">
-                <svg className="animate-spin w-5 h-5 text-[#3b6ea5]" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                </svg>
-                <p className="text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
-                  Identificando bancos de {arquivos.length} extrato(s)...
-                </p>
+            {/* ── Lista de PDFs adicionados (N2) ── */}
+            {arquivos.length > 0 && (
+              <div
+                className="border"
+                style={{
+                  background: "var(--bg-surface)",
+                  borderColor: "var(--border-subtle)",
+                  borderRadius: "var(--radius-lg)",
+                }}
+              >
+                {/* Header com contador (N3 enriquece em tempo de detecção) */}
+                <div
+                  className="px-4 py-3 flex items-center justify-between"
+                  style={{ borderBottom: "1px solid var(--border-subtle)" }}
+                >
+                  <p
+                    className="text-xs uppercase font-medium"
+                    style={{
+                      color: "var(--text-tertiary)",
+                      letterSpacing: "var(--tracking-widest)",
+                    }}
+                  >
+                    {etapa === "detectando"
+                      ? `Identificando bancos de ${arquivos.length} extrato(s)…`
+                      : `${arquivos.length} arquivo(s) selecionado(s)`}
+                  </p>
+                  <span
+                    className="text-xs font-mono tabular-nums"
+                    style={{ color: "var(--text-tertiary)" }}
+                  >
+                    {(arquivos.reduce((acc, a) => acc + a.file.size, 0) / 1024 / 1024).toFixed(1)} MB
+                  </span>
+                </div>
+
+                {/* Lista */}
+                <ul className="divide-y" style={{ borderColor: "var(--border-subtle)" }}>
+                  {arquivos.map((arq, idx) => {
+                    const tamanho = arq.file.size;
+                    const tamanhoLabel = tamanho >= 1_000_000
+                      ? `${(tamanho / 1_000_000).toFixed(1)} MB`
+                      : `${(tamanho / 1024).toFixed(0)} KB`;
+
+                    // ── Indicador de status (N3) durante detecção ──
+                    let indicador: React.ReactNode = null;
+                    if (etapa === "detectando") {
+                      if (arq.bancoDetectado || arq.bancoId) {
+                        // Identificado
+                        indicador = (
+                          <span className="flex items-center gap-1.5 text-xs flex-shrink-0" style={{ color: "var(--success)" }}>
+                            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="font-medium">{arq.bancoDetectado || BANCOS.find(b => b.id === arq.bancoId)?.label}</span>
+                          </span>
+                        );
+                      } else if (arq.erroPdf) {
+                        indicador = (
+                          <span className="flex items-center gap-1.5 text-xs flex-shrink-0" style={{ color: "var(--danger)" }}>
+                            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                            <span className="font-medium truncate max-w-[140px]">{arq.erroPdf}</span>
+                          </span>
+                        );
+                      } else {
+                        // Identificando — spinner Lucide Loader2
+                        indicador = (
+                          <span className="flex items-center gap-1.5 text-xs flex-shrink-0" style={{ color: "var(--accent)" }}>
+                            <svg className="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-6.219-8.56" />
+                            </svg>
+                            <span className="font-medium">Identificando…</span>
+                          </span>
+                        );
+                      }
+                    }
+
+                    return (
+                      <li
+                        key={arq.id}
+                        className="flex items-center gap-3 px-4 py-2"
+                        style={{
+                          borderTopColor: idx > 0 ? "var(--border-subtle)" : undefined,
+                        }}
+                      >
+                        {/* Ícone PDF */}
+                        <svg
+                          className="w-4 h-4 flex-shrink-0"
+                          style={{ color: "var(--text-tertiary)" }}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={1.5}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+
+                        {/* Nome */}
+                        <span
+                          className="text-sm truncate flex-1 min-w-0"
+                          style={{ color: "var(--text-primary)" }}
+                          title={arq.file.name}
+                        >
+                          {arq.file.name}
+                        </span>
+
+                        {/* Tamanho */}
+                        <span
+                          className="text-xs font-mono tabular-nums flex-shrink-0"
+                          style={{ color: "var(--text-tertiary)" }}
+                        >
+                          {tamanhoLabel}
+                        </span>
+
+                        {/* Indicador de detecção (N3) */}
+                        {indicador}
+
+                        {/* Botão remover individual */}
+                        <button
+                          onClick={(e) => { e.stopPropagation(); remover(arq.id); }}
+                          disabled={etapa === "detectando"}
+                          title="Remover"
+                          className="flex-shrink-0 w-7 h-7 flex items-center justify-center transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                          style={{
+                            color: "var(--text-tertiary)",
+                            borderRadius: "var(--radius-sm)",
+                          }}
+                          onMouseEnter={(e) => {
+                            if (!e.currentTarget.disabled) e.currentTarget.style.color = "var(--danger)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "var(--text-tertiary)";
+                          }}
+                        >
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+
+                {/* Contador de progresso (N3) — quando detectando */}
+                {etapa === "detectando" && (
+                  <div
+                    className="px-4 py-2 text-xs font-mono tabular-nums"
+                    style={{
+                      borderTop: "1px solid var(--border-subtle)",
+                      color: "var(--text-tertiary)",
+                    }}
+                  >
+                    {arquivos.filter(a => a.bancoDetectado || a.bancoId || a.erroPdf).length} de {arquivos.length} concluídos
+                  </div>
+                )}
               </div>
             )}
 
@@ -638,8 +787,15 @@ export default function ExtratoLotePage() {
                 </button>
                 <button
                   onClick={voltarParaUpload}
-                  className="px-4 py-2.5 rounded-xl text-sm font-medium transition-colors"
-                  style={{ color: "var(--text-muted)" }}
+                  className="px-4 py-2.5 text-sm font-medium transition-colors border"
+                  style={{
+                    background: "var(--bg-elevated)",
+                    borderColor: "var(--border-default)",
+                    color: "var(--text-primary)",
+                    borderRadius: "var(--radius-md)",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = "var(--bg-overlay)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = "var(--bg-elevated)"; }}
                 >
                   Limpar
                 </button>
@@ -681,7 +837,15 @@ export default function ExtratoLotePage() {
                 </p>
                 <button
                   onClick={voltarParaUpload}
-                  className="text-[11px] font-medium transition-colors px-2 py-1 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/30 text-slate-400 dark:text-slate-500 hover:text-rose-600 dark:hover:text-rose-400"
+                  className="text-xs font-medium transition-colors px-2.5 py-1 border"
+                  style={{
+                    background: "var(--bg-elevated)",
+                    borderColor: "var(--border-default)",
+                    color: "var(--text-primary)",
+                    borderRadius: "var(--radius-md)",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = "var(--bg-overlay)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = "var(--bg-elevated)"; }}
                 >
                   Voltar
                 </button>
@@ -857,8 +1021,15 @@ export default function ExtratoLotePage() {
               </button>
               <button
                 onClick={voltarParaUpload}
-                className="px-4 py-2.5 rounded-xl text-sm font-medium transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
-                style={{ color: "var(--text-muted)" }}
+                className="px-4 py-2.5 text-sm font-medium transition-colors border"
+                style={{
+                  background: "var(--bg-elevated)",
+                  borderColor: "var(--border-default)",
+                  color: "var(--text-primary)",
+                  borderRadius: "var(--radius-md)",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = "var(--bg-overlay)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = "var(--bg-elevated)"; }}
               >
                 Cancelar
               </button>
@@ -1014,96 +1185,161 @@ function ArquivoRow({
 }) {
   const isOk   = item.status === "ok";
   const isProc = item.status === "processando";
+  const bancoLabel = item.bancoDetectado ?? BANCOS.find(b => b.id === item.bancoId)?.label ?? item.bancoId ?? "—";
 
+  // Grid de colunas fixas (N1 do spec): icon | nome+pills | transacoes | entradas | saidas | banco | acoes.
+  // text-right + min-width nas colunas numericas garantem alinhamento perfeito.
   return (
     <div
-      className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/20"
-      style={{ borderBottom: "1px solid var(--border)" }}
+      className="grid items-center gap-4 px-4 py-3 transition-colors"
+      style={{
+        gridTemplateColumns: "32px minmax(180px, 1fr) 100px 140px 140px 140px 100px",
+        borderBottom: "1px solid var(--border-subtle)",
+      }}
+      onMouseEnter={(e) => { e.currentTarget.style.background = "var(--bg-elevated)"; }}
+      onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
     >
-      {/* Ícone de arquivo */}
-      <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
-        isOk   ? "bg-emerald-100 dark:bg-emerald-900/30" :
-        isProc ? "bg-blue-100 dark:bg-blue-900/30 animate-pulse" :
-                 "bg-slate-100 dark:bg-slate-800"
-      }`}>
-        <svg className={`w-4 h-4 ${
-          isOk   ? "text-emerald-600 dark:text-emerald-400" :
-          isProc ? "text-blue-500" :
-                   "text-slate-400 dark:text-slate-500"
-        }`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      {/* COL 1: Ícone */}
+      <div
+        className="w-8 h-8 flex items-center justify-center flex-shrink-0"
+        style={{
+          background: isOk
+            ? "var(--success-subtle)"
+            : isProc
+              ? "var(--accent-subtle)"
+              : "var(--bg-inset)",
+          borderRadius: "var(--radius-md)",
+        }}
+      >
+        <svg
+          className={`w-4 h-4 ${isProc ? "animate-pulse" : ""}`}
+          style={{
+            color: isOk ? "var(--success)" : isProc ? "var(--accent)" : "var(--text-tertiary)",
+          }}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
             d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
       </div>
 
-      {/* Informações do arquivo */}
-      <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2 flex-wrap">
-          <p className="text-xs font-mono font-medium truncate max-w-[260px]"
-             style={{ color: "var(--text-primary)" }} title={item.file.name}>
-            {item.file.name}
-          </p>
+      {/* COL 2: Nome + pills (stack vertical compacto, gap-1, sem sobreposicao) */}
+      <div className="min-w-0 flex flex-col gap-1">
+        <p
+          className="text-sm font-medium truncate leading-tight"
+          style={{ color: "var(--text-primary)" }}
+          title={item.file.name}
+        >
+          {item.file.name}
+        </p>
+        <div className="flex items-center gap-1 flex-wrap">
           <StatusPill status={item.status} />
-        </div>
-        <div className="flex items-center gap-3 mt-0.5 flex-wrap">
-          <span className="text-[10px]" style={{ color: "var(--text-muted)" }}>
-            {(item.file.size / 1024).toFixed(0)} KB
-          </span>
-          {item.periodoLabel && (
-            <span className="text-[10px] text-slate-500 dark:text-slate-400">· {item.periodoLabel}</span>
+          {item.verificacao && item.verificacao.status !== "SKIPPED" && (
+            <VerificacaoBadge verificacao={item.verificacao} />
           )}
-          {item.numeroConta && (
-            <span className="text-[10px] text-slate-500 dark:text-slate-400">· Conta {item.numeroConta}</span>
+          {item.periodoLabel && (
+            <span
+              className="text-xs px-2 py-0.5 border"
+              style={{
+                background: "var(--bg-inset)",
+                borderColor: "var(--border-subtle)",
+                color: "var(--text-tertiary)",
+                borderRadius: "var(--radius-md)",
+              }}
+            >
+              {item.periodoLabel}
+            </span>
           )}
           {item.erroMsg && (
-            <span className="text-[10px] text-rose-600 dark:text-rose-400 truncate max-w-[300px]"
-                  title={item.erroMsg}>
+            <span
+              className="text-xs truncate max-w-[280px]"
+              style={{ color: "var(--danger)" }}
+              title={item.erroMsg}
+            >
               ⚠ {item.erroMsg}
             </span>
           )}
           {item.avisos && item.avisos.length > 0 && item.status !== "erro" && (
-            <span className="text-[10px] text-amber-600 dark:text-amber-400 truncate max-w-[300px]"
-                  title={item.avisos.join(" | ")}>
+            <span
+              className="text-xs truncate max-w-[280px]"
+              style={{ color: "var(--warning)" }}
+              title={item.avisos.join(" | ")}
+            >
               ⚠ {item.avisos[0]}
             </span>
-          )}
-          {item.verificacao && item.verificacao.status !== "SKIPPED" && (
-            <VerificacaoBadge verificacao={item.verificacao} />
           )}
         </div>
       </div>
 
-      {/* Resumo financeiro — visível quando ok */}
-      {isOk && item.resumo && (
-        <div className="hidden md:flex items-center gap-4 flex-shrink-0 text-right">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-wide text-slate-400 dark:text-slate-500">Transações</p>
-            <p className="text-sm font-bold font-mono" style={{ color: "var(--text-primary)" }}>
-              {item.totalTransacoes}
-            </p>
-          </div>
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-wide text-emerald-500/70">Entradas</p>
-            <p className="text-sm font-bold font-mono text-emerald-600 dark:text-emerald-400">
-              {fmt(item.resumo.entradas)}
-            </p>
-          </div>
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-wide text-rose-500/70">Saídas</p>
-            <p className="text-sm font-bold font-mono text-rose-600 dark:text-rose-400">
-              {fmt(item.resumo.saidas)}
-            </p>
-          </div>
-        </div>
-      )}
+      {/* COL 3: Transações (numerica, text-right, font-mono tabular-nums) */}
+      <div className="text-right">
+        <p
+          className="text-xs uppercase font-medium"
+          style={{
+            color: "var(--text-tertiary)",
+            letterSpacing: "var(--tracking-widest)",
+          }}
+        >
+          Transações
+        </p>
+        <p
+          className="text-sm font-mono tabular-nums font-semibold mt-0.5"
+          style={{ color: isOk ? "var(--text-primary)" : "var(--text-tertiary)" }}
+        >
+          {isOk ? item.totalTransacoes ?? "—" : "—"}
+        </p>
+      </div>
 
-      {/* Seletor de banco ou banco detectado */}
-      <div className="flex-shrink-0 w-44">
+      {/* COL 4: Entradas */}
+      <div className="text-right">
+        <p
+          className="text-xs uppercase font-medium"
+          style={{
+            color: "var(--text-tertiary)",
+            letterSpacing: "var(--tracking-widest)",
+          }}
+        >
+          Entradas
+        </p>
+        <p
+          className="text-sm font-mono tabular-nums font-semibold mt-0.5"
+          style={{ color: isOk && item.resumo ? "var(--success)" : "var(--text-tertiary)" }}
+        >
+          {isOk && item.resumo ? fmt(item.resumo.entradas) : "—"}
+        </p>
+      </div>
+
+      {/* COL 5: Saídas */}
+      <div className="text-right">
+        <p
+          className="text-xs uppercase font-medium"
+          style={{
+            color: "var(--text-tertiary)",
+            letterSpacing: "var(--tracking-widest)",
+          }}
+        >
+          Saídas
+        </p>
+        <p
+          className="text-sm font-mono tabular-nums font-semibold mt-0.5"
+          style={{ color: isOk && item.resumo ? "var(--danger)" : "var(--text-tertiary)" }}
+        >
+          {isOk && item.resumo ? fmt(item.resumo.saidas) : "—"}
+        </p>
+      </div>
+
+      {/* COL 6: Banco — texto quando ok, select quando precisa intervencao */}
+      <div className="min-w-0">
         {isOk || item.status === "vazio" ? (
-          <div className="flex items-center gap-1.5">
-            <div className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0" />
-            <span className="text-xs font-semibold truncate" style={{ color: "var(--text-primary)" }}>
-              {item.bancoDetectado ?? BANCOS.find(b => b.id === item.bancoId)?.label ?? item.bancoId}
+          <div className="flex items-center gap-1.5 min-w-0">
+            <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: "var(--success)" }} />
+            <span
+              className="text-xs font-medium truncate"
+              style={{ color: "var(--text-primary)" }}
+            >
+              {bancoLabel}
             </span>
           </div>
         ) : (
@@ -1112,17 +1348,18 @@ function ArquivoRow({
               value={item.bancoId}
               onChange={e => onBanco(e.target.value)}
               disabled={isProc}
-              className="w-full pl-2.5 pr-7 py-1.5 rounded-lg text-xs border transition-all outline-none disabled:opacity-50 cursor-pointer"
+              className="w-full pl-2.5 pr-7 py-1.5 text-xs border transition-colors outline-none disabled:opacity-50 cursor-pointer"
               style={{
-                background: "var(--bg-secondary)",
-                borderColor: !item.bancoId ? "rgba(245,158,11,0.5)" : "var(--border)",
+                background: "var(--bg-inset)",
+                borderColor: !item.bancoId ? "var(--warning-border)" : "var(--border-default)",
                 color: "var(--text-primary)",
                 colorScheme: isLight ? "light" : "dark",
                 appearance: item.bancoId ? "none" : undefined,
                 WebkitAppearance: item.bancoId ? "none" : undefined,
+                borderRadius: "var(--radius-md)",
               } as React.CSSProperties}
             >
-              <option value="">— Selecione o banco —</option>
+              <option value="">— Selecione —</option>
               {BANCO_GROUPS.map(group => (
                 <optgroup key={group} label={group}>
                   {BANCOS.filter(b => b.group === group).map(b => (
@@ -1133,8 +1370,8 @@ function ArquivoRow({
             </select>
             {!item.bancoId && (
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                <svg className="w-3 h-3 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                <svg className="w-3 h-3" style={{ color: "var(--text-tertiary)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m6 9 6 6 6-6" />
                 </svg>
               </div>
             )}
@@ -1142,7 +1379,10 @@ function ArquivoRow({
               <button
                 onClick={() => onBanco("")}
                 title="Limpar seleção"
-                className="absolute inset-y-0 right-0 flex items-center pr-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+                className="absolute inset-y-0 right-0 flex items-center pr-2 transition-colors"
+                style={{ color: "var(--text-tertiary)" }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = "var(--text-primary)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-tertiary)"; }}
               >
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -1153,14 +1393,18 @@ function ArquivoRow({
         )}
       </div>
 
-      {/* Ações */}
-      <div className="flex items-center gap-1.5 flex-shrink-0">
+      {/* COL 7: Ações */}
+      <div className="flex items-center gap-1.5 justify-end">
         {isOk && item.excelId && (
           <button
             onClick={onBaixar}
-            data-notheme
             title={item.filenameSugerido}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-700/25 dark:hover:bg-emerald-700/40 text-white dark:text-emerald-300 border border-emerald-600 dark:border-emerald-500/30 rounded-lg text-[11px] font-bold transition-all"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold transition-colors"
+            style={{
+              background: "var(--success)",
+              color: "var(--text-inverse)",
+              borderRadius: "var(--radius-md)",
+            }}
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -1169,25 +1413,20 @@ function ArquivoRow({
             Baixar
           </button>
         )}
-        {!isProc && !isOk && (
+        {!isProc && (
           <button
             onClick={onRemover}
             title="Remover"
-            className="p-1.5 rounded-lg transition-colors text-slate-400 dark:text-slate-500 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30"
+            className="w-7 h-7 flex items-center justify-center transition-colors"
+            style={{
+              color: "var(--text-tertiary)",
+              borderRadius: "var(--radius-sm)",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = "var(--danger)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-tertiary)"; }}
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        )}
-        {isOk && (
-          <button
-            onClick={onRemover}
-            title="Remover"
-            className="p-1.5 rounded-lg transition-colors text-slate-300 dark:text-slate-600 hover:text-slate-500 dark:hover:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50"
-          >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         )}

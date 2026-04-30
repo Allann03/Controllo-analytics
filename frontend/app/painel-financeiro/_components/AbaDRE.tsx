@@ -8,8 +8,8 @@ import { useChartTheme } from "@/components/useChartTheme";
 import { fmt, fmtPct, n, SectionTitle, InsightsList, COR_POSITIVO, COR_NEGATIVO } from "./shared";
 import type { DREResponse, HistoricoItem, MetricaFlat } from "./shared";
 
-// Cores distintas para cada categoria de despesa
-const DESP_COLORS = ["#1E4976", "#B83030", "#92400E", "#3b6ea5", "#64748B"];
+// Opacidades decrescentes por valor (rank desc) — gradiente conceitual iOS Health.
+const DESP_OPACITY = [1.0, 0.85, 0.7, 0.55, 0.4];
 
 // ── DRERow — inline MoM variation next to value ─────────────────────
 function DRERow({ label, value, metricKey, m, ant }: { label: string; value: string; metricKey?: string; m: MetricaFlat; ant: MetricaFlat }) {
@@ -74,13 +74,20 @@ export default function AbaDRE({
   const m = dre.metricas;
   const ant = dre.anterior ?? {};
 
+  // Chart tokens — semantica §5.6
+  const chartC1 = ct.isLight ? "#3B82F6" : "#4F8EFF"; // receita / positivo
+  const chartC2 = ct.isLight ? "#059669" : "#34D399"; // lucro / positivo
+  const chartC3 = ct.isLight ? "#DC2626" : "#F87171"; // despesa / negativo
+
   const dispDesp = [
     { name: "Custo Serv.", value: n(m.custo_servicos) },
     { name: "Desp. Adm.", value: n(m.despesas_adm) },
     { name: "Desp. Comerciais", value: n(m.despesas_comerciais) },
     { name: "Desp. Financeiras", value: n(m.despesas_financeiras) },
     { name: "Outras", value: n(m.outras_despesas) },
-  ].filter((d) => d.value > 0);
+  ]
+    .filter((d) => d.value > 0)
+    .sort((a, b) => b.value - a.value);
 
   const hist12 = historico.slice(-12);
 
@@ -159,7 +166,11 @@ export default function AbaDRE({
                 <Tooltip contentStyle={ct.tooltipStyle} labelStyle={ct.tooltipLabelStyle} itemStyle={ct.tooltipItemStyle} formatter={(v) => fmt(v as number)} />
                 <Bar dataKey="value" name="Valor" radius={[0, 3, 3, 0]}>
                   {dispDesp.map((_, i) => (
-                    <Cell key={i} fill={DESP_COLORS[i % DESP_COLORS.length]} />
+                    <Cell
+                      key={i}
+                      fill={chartC3}
+                      fillOpacity={DESP_OPACITY[Math.min(i, DESP_OPACITY.length - 1)]}
+                    />
                   ))}
                 </Bar>
               </BarChart>
@@ -179,8 +190,8 @@ export default function AbaDRE({
                 <YAxis tick={{ fill: ct.tickFill, fontSize: 11 }} tickFormatter={(v) => `${((v as number) / 1000).toFixed(0)}k`} />
                 <Tooltip contentStyle={ct.tooltipStyle} labelStyle={ct.tooltipLabelStyle} itemStyle={ct.tooltipItemStyle} formatter={(v) => fmt(v as number)} />
                 <Legend wrapperStyle={{ fontSize: 11 }} />
-                <Bar dataKey="receita_liquida" name="Receita Líquida" fill="#1E4976" radius={[3, 3, 0, 0]} />
-                <Bar dataKey="lucro_liquido" name="Lucro Líquido" fill="#10b981" radius={[3, 3, 0, 0]} />
+                <Bar dataKey="receita_liquida" name="Receita Líquida" fill={chartC1} radius={[3, 3, 0, 0]} />
+                <Bar dataKey="lucro_liquido" name="Lucro Líquido" fill={chartC2} radius={[3, 3, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>

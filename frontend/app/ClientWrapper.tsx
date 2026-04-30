@@ -4,7 +4,6 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { EmpresaProvider, useEmpresa } from "@/contexts/EmpresaContext";
 import type { EmpresaSimples } from "@/contexts/EmpresaContext";
-import GlobeBackground from "@/components/GlobeBackground";
 import { ToastProvider } from "@/contexts/ToastContext";
 import { UserAvatar } from "@/components/UserAvatar";
 
@@ -29,43 +28,42 @@ function NavLink({
 }) {
   const [hovered, setHovered] = useState(false);
 
+  // Estado visual
+  const textColor = active || hovered ? "var(--text-primary)" : "var(--text-secondary)";
+  const bgColor = active
+    ? "var(--accent-subtle)"
+    : hovered ? "var(--bg-elevated)" : "transparent";
+
   return (
     <Link
       href={href}
-      title={collapsed ? label : undefined}
-      className="group relative flex items-center w-full rounded-xl font-medium"
+      className={`group relative flex items-center w-full font-medium ${collapsed ? "justify-center" : ""}`}
       style={{
-        padding: collapsed ? "10px 10px" : "10px 12px",
+        padding: collapsed ? "10px 0" : "8px 12px",
         gap: collapsed ? 0 : 12,
-        color: active ? "var(--nav-active-text)" : "var(--nav-text)",
-        background: active ? "var(--nav-active-bg)" : hovered ? "var(--nav-hover-bg)" : "transparent",
-        border: `1px solid ${active ? "var(--nav-active-border)" : "transparent"}`,
-        boxShadow: active ? "var(--nav-active-shadow)" : "none",
-        transition: "padding 0.25s cubic-bezier(0.4,0,0.2,1), gap 0.25s cubic-bezier(0.4,0,0.2,1), background 0.18s, color 0.15s, box-shadow 0.18s",
+        color: textColor,
+        background: bgColor,
+        borderRadius: "var(--radius-md)",
+        // Border-left 2px do estado ativo via box-shadow inset (não afeta layout)
+        boxShadow: active && !collapsed ? "inset 2px 0 0 var(--accent)" : "none",
+        transition: "padding 0.25s cubic-bezier(0.4,0,0.2,1), gap 0.25s cubic-bezier(0.4,0,0.2,1), background 0.15s, color 0.15s, box-shadow 0.15s",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {active && !collapsed && (
-        <span
-          className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 rounded-r-full"
-          style={{ background: "var(--nav-indicator)", boxShadow: "var(--nav-indicator-glow)" }}
-        />
-      )}
-      {/* Icon */}
+      {/* Icon (Lucide ~18px) */}
       <span
-        className="flex-shrink-0 flex items-center justify-center rounded-lg transition-all duration-200 [&>svg]:w-[18px] [&>svg]:h-[18px]"
-        style={{
-          width: 22, height: 22,
-          background: active ? "var(--nav-icon-active-bg)" : "transparent",
-          boxShadow: active ? "var(--nav-icon-active-shadow)" : "none",
-        }}
-      >{icon}</span>
+        className="flex-shrink-0 flex items-center justify-center [&>svg]:w-[18px] [&>svg]:h-[18px]"
+        style={{ width: 18, height: 18 }}
+      >
+        {icon}
+      </span>
+
       {/* Label */}
       <span
         className="text-sm leading-normal whitespace-nowrap"
         style={{
-          maxWidth: collapsed ? 0 : 155,
+          maxWidth: collapsed ? 0 : 200,
           opacity: collapsed ? 0 : 1,
           overflow: "hidden",
           transition: "max-width 0.25s cubic-bezier(0.4,0,0.2,1), opacity 0.15s",
@@ -74,11 +72,13 @@ function NavLink({
       >
         {label}
       </span>
-      {/* Badge */}
+
+      {/* Badge numérico (modo expandido) */}
       {badge !== undefined && badge > 0 && (
         <span
-          className="flex-shrink-0 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-rose-500 text-white text-[10px] font-bold px-1"
+          className="flex-shrink-0 min-w-[18px] h-[18px] flex items-center justify-center rounded-full text-white text-[10px] font-bold px-1"
           style={{
+            background: "var(--danger)",
             maxWidth: collapsed ? 0 : 40,
             opacity: collapsed ? 0 : 1,
             overflow: "hidden",
@@ -88,10 +88,15 @@ function NavLink({
           {badge > 99 ? "99+" : badge}
         </span>
       )}
+
+      {/* Dot indicador no modo colapsado */}
       {collapsed && badge !== undefined && badge > 0 && (
         <span
-          className="absolute top-1 right-1 w-2 h-2 rounded-full bg-rose-500"
-          style={{ boxShadow: "0 0 0 2px var(--bg-primary)" }}
+          className="absolute top-1 right-1 w-2 h-2 rounded-full"
+          style={{
+            background: "var(--danger)",
+            boxShadow: "0 0 0 2px var(--bg-canvas)",
+          }}
         />
       )}
     </Link>
@@ -103,19 +108,21 @@ function SectionLabel({ label, color, collapsed }: { label: string; color?: stri
   if (collapsed) {
     return (
       <div className="my-2 flex items-center justify-center">
-        <div className="w-5 h-px" style={{ background: color ? `${color}33` : "rgba(79,106,255,0.2)" }} />
+        <div className="w-5 h-px" style={{ background: "var(--border-subtle)" }} />
       </div>
     );
   }
   return (
-    <div className="pt-4 pb-1 px-3 flex items-center gap-2">
+    <div className="px-3 pt-6 pb-2">
       <span
-        className="text-[9px] font-bold uppercase tracking-[0.18em] whitespace-nowrap"
-        style={{ color: color || "rgba(100,116,139,0.85)" }}
+        className="text-xs uppercase font-medium whitespace-nowrap"
+        style={{
+          color: color || "var(--text-tertiary)",
+          letterSpacing: "var(--tracking-widest)",
+        }}
       >
         {label}
       </span>
-      <div className="flex-1 h-px" style={{ background: color ? `${color}25` : "rgba(79,106,255,0.1)" }} />
     </div>
   );
 }
@@ -146,26 +153,32 @@ function ThemeToggle() {
   }
 
   const isLight = tema === "light";
+  // Toggle icon-only 32x32 — clicar alterna o tema oposto.
+  // Mostra Sun no dark (porque clica para virar light) e Moon no light.
+  const proximoTema = isLight ? "dark" : "light";
   return (
-    <div className="flex items-center rounded-full p-0.5 gap-0.5 flex-shrink-0"
-      style={{ background: isLight ? "rgba(220,220,240,0.9)" : "rgba(15,23,42,0.6)", border: "1px solid rgba(79,106,255,0.25)" }}>
-      <button onClick={() => alternar("dark")}
-        className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold transition-all"
-        style={tema === "dark" ? { background: "#102a43", color: "white" } : { color: "#888899" }}>
-        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+    <button
+      onClick={() => alternar(proximoTema)}
+      className="w-8 h-8 flex items-center justify-center rounded-md transition-colors flex-shrink-0"
+      style={{ color: "var(--text-tertiary)" }}
+      onMouseEnter={(e) => { e.currentTarget.style.color = "var(--text-primary)"; }}
+      onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-tertiary)"; }}
+      title={isLight ? "Mudar para tema escuro" : "Mudar para tema claro"}
+      aria-label={isLight ? "Mudar para tema escuro" : "Mudar para tema claro"}
+    >
+      {isLight ? (
+        // Moon (Lucide)
+        <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
-        Escuro
-      </button>
-      <button onClick={() => alternar("light")}
-        className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold transition-all"
-        style={tema === "light" ? { background: "#102a43", color: "white" } : { color: "#888899" }}>
-        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
+      ) : (
+        // Sun (Lucide)
+        <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <circle cx="12" cy="12" r="4" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
         </svg>
-        Claro
-      </button>
-    </div>
+      )}
+    </button>
   );
 }
 
@@ -217,35 +230,42 @@ function EmpresaSelectorWidget({ token, topbar }: { token: string; topbar?: bool
   const DropdownContent = () => (
     <div className="max-h-56 overflow-y-auto">
       {carregando ? (
-        <p className="text-xs text-slate-500 text-center py-4">Carregando...</p>
+        <p className="text-xs text-center py-4" style={{ color: "var(--text-tertiary)" }}>Carregando...</p>
       ) : empresas.length === 0 ? (
-        <p className="text-xs text-slate-500 text-center py-4">Nenhuma empresa encontrada</p>
+        <p className="text-xs text-center py-4" style={{ color: "var(--text-tertiary)" }}>Nenhuma empresa encontrada</p>
       ) : (
         <>
           {empresaSelecionada && (
             <button onClick={() => { setEmpresaSelecionada(null); setAberto(false); }}
-              className="w-full flex items-center gap-2 px-3 py-2 text-xs text-slate-500 transition-colors"
-              style={{ borderBottom: "1px solid var(--border)" }}
-              onMouseEnter={ev => { (ev.currentTarget as HTMLElement).style.background = "var(--bg-card-hover)"; }}
+              className="w-full flex items-center gap-2 px-3 py-2 text-xs transition-colors"
+              style={{ borderBottom: "1px solid var(--border-subtle)", color: "var(--text-secondary)" }}
+              onMouseEnter={ev => { (ev.currentTarget as HTMLElement).style.background = "var(--bg-elevated)"; }}
               onMouseLeave={ev => { (ev.currentTarget as HTMLElement).style.background = "transparent"; }}>
-              <span className="text-rose-400">✕</span> Limpar seleção
+              <span style={{ color: "var(--danger)" }}>✕</span> Limpar seleção
             </button>
           )}
           {empresas.map(e => (
             <button key={e.id} onClick={() => { setEmpresaSelecionada(e); setAberto(false); }}
               className="w-full flex items-center gap-2 px-3 py-2.5 text-left transition-colors"
-              style={{ background: empresaSelecionada?.id === e.id ? "var(--bg-secondary)" : undefined }}
-              onMouseEnter={ev => { if (empresaSelecionada?.id !== e.id) (ev.currentTarget as HTMLElement).style.background = "var(--bg-card-hover)"; }}
+              style={{ background: empresaSelecionada?.id === e.id ? "var(--accent-subtle)" : undefined }}
+              onMouseEnter={ev => { if (empresaSelecionada?.id !== e.id) (ev.currentTarget as HTMLElement).style.background = "var(--bg-elevated)"; }}
               onMouseLeave={ev => { if (empresaSelecionada?.id !== e.id) (ev.currentTarget as HTMLElement).style.background = "transparent"; }}>
-              <div className="w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-black flex-shrink-0" style={{ background: "#1e3a5f", color: "white" }}>
+              <div
+                className="w-6 h-6 flex items-center justify-center text-[10px] font-semibold flex-shrink-0"
+                style={{
+                  background: "var(--accent)",
+                  color: "var(--text-inverse)",
+                  borderRadius: "var(--radius-sm)",
+                }}
+              >
                 {(e.nome_fantasia || e.nome).slice(0, 2).toUpperCase()}
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-xs font-semibold text-slate-200 truncate">{e.nome_fantasia || e.nome}</p>
-                {e.cnpj && <p className="text-[10px] text-slate-500 font-mono">{e.cnpj}</p>}
+                <p className="text-xs font-semibold truncate" style={{ color: "var(--text-primary)" }}>{e.nome_fantasia || e.nome}</p>
+                {e.cnpj && <p className="text-[10px] font-mono" style={{ color: "var(--text-tertiary)" }}>{e.cnpj}</p>}
               </div>
               {empresaSelecionada?.id === e.id && (
-                <svg className="w-3 h-3 flex-shrink-0" style={{ color: "#102a43" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                <svg className="w-3 h-3 flex-shrink-0" style={{ color: "var(--accent)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               )}
@@ -259,35 +279,51 @@ function EmpresaSelectorWidget({ token, topbar }: { token: string; topbar?: bool
   if (topbar) {
     return (
       <div ref={ref} className="relative flex-shrink-0">
-        <button onClick={handleAbrir}
-          className={`flex items-center gap-2 px-3 py-2 rounded-xl border text-xs transition-all ${
-            empresaSelecionada
-              ? "border-[#102a43]/30 text-slate-200 hover:border-[#102a43]/50"
-              : "border-slate-700/60 text-slate-400 hover:border-slate-600 hover:text-slate-300"
-          }`}
-          style={empresaSelecionada
-            ? { background: "var(--bg-secondary)" }
-            : { background: "var(--bg-card)" }
-          }>
-          <svg className="w-3.5 h-3.5 flex-shrink-0" style={{ color: empresaSelecionada ? "#3b6ea5" : "#64748b" }}
+        <button
+          onClick={handleAbrir}
+          className="flex items-center gap-2 px-3 py-2 border text-sm transition-colors"
+          style={{
+            background: "var(--bg-elevated)",
+            borderColor: "var(--border-default)",
+            color: empresaSelecionada ? "var(--text-primary)" : "var(--text-tertiary)",
+            borderRadius: "var(--radius-md)",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--border-strong)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-default)"; }}
+        >
+          {/* Building2 (Lucide) */}
+          <svg className="w-4 h-4 flex-shrink-0" style={{ color: empresaSelecionada ? "var(--accent)" : "var(--text-tertiary)" }}
             fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2M10 6h4M10 10h4M10 14h4M10 18h4" />
           </svg>
-          <span className="font-semibold max-w-[160px] truncate">{nomeExibido}</span>
-          <svg className="w-3 h-3 flex-shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          <span className="font-medium max-w-[180px] truncate">{nomeExibido}</span>
+          {/* Chevron down (Lucide) */}
+          <svg className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "var(--text-tertiary)" }}
+            fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
           </svg>
         </button>
         {aberto && (
-          <div className="absolute top-full left-0 mt-1.5 z-50 w-80 rounded-2xl overflow-hidden"
-            style={{ background: "var(--bg-card)", border: "1px solid var(--border)", boxShadow: "0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(79,106,255,0.1)" }}>
-            <div className="p-2.5" style={{ borderBottom: "1px solid var(--border)" }}>
+          <div className="absolute top-full left-0 mt-1.5 z-50 w-80 overflow-hidden"
+            style={{
+              background: "var(--bg-overlay)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-lg)",
+              boxShadow: "var(--shadow-lg)",
+            }}>
+            <div className="p-2.5" style={{ borderBottom: "1px solid var(--border-subtle)" }}>
               <input autoFocus value={busca} onChange={e => setBusca(e.target.value)}
                 placeholder="Buscar empresa..."
-                className="w-full px-3 py-2 rounded-xl text-xs focus:outline-none"
-                style={{ background: "var(--bg-secondary)", border: "1px solid var(--border)", color: "var(--text-primary)" }}
-                onFocus={ev => { ev.currentTarget.style.borderColor = "rgba(79,106,255,0.5)"; }}
-                onBlur={ev => { ev.currentTarget.style.borderColor = "var(--border)"; }} />
+                className="w-full px-3 py-2 text-xs focus:outline-none border"
+                style={{
+                  background: "var(--bg-inset)",
+                  borderColor: "var(--border-default)",
+                  color: "var(--text-primary)",
+                  borderRadius: "var(--radius-md)",
+                }}
+                onFocus={ev => { ev.currentTarget.style.borderColor = "var(--border-focus)"; }}
+                onBlur={ev => { ev.currentTarget.style.borderColor = "var(--border-default)"; }} />
             </div>
             <DropdownContent />
           </div>
@@ -299,35 +335,51 @@ function EmpresaSelectorWidget({ token, topbar }: { token: string; topbar?: bool
   // Sidebar variant
   return (
     <div ref={ref} className="relative px-3 pb-3">
-      <button onClick={handleAbrir}
-        className={`w-full flex items-center gap-2 px-3 py-2 rounded-xl border text-xs transition-all ${
-          empresaSelecionada
-            ? "border-[#102a43]/30 text-slate-200"
-            : "text-slate-500 hover:border-[#102a43]/20"
-        }`}
-        style={{ background: "var(--bg-secondary)", borderColor: empresaSelecionada ? undefined : "var(--border)" }}>
-        <svg className="w-3.5 h-3.5 flex-shrink-0" style={{ color: empresaSelecionada ? "#3b6ea5" : undefined }}
+      <button
+        onClick={handleAbrir}
+        className="w-full flex items-center gap-2 px-3 py-2 border text-xs transition-colors"
+        style={{
+          background: "var(--bg-elevated)",
+          borderColor: "var(--border-default)",
+          color: empresaSelecionada ? "var(--text-primary)" : "var(--text-tertiary)",
+          borderRadius: "var(--radius-md)",
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--border-strong)"; }}
+        onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-default)"; }}
+      >
+        <svg className="w-3.5 h-3.5 flex-shrink-0" style={{ color: empresaSelecionada ? "var(--accent)" : "var(--text-tertiary)" }}
           fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2M10 6h4M10 10h4M10 14h4M10 18h4" />
         </svg>
         <div className="flex-1 text-left min-w-0 overflow-hidden">
-          <p className="truncate font-semibold leading-tight">{nomeExibido}</p>
-          {empresaSelecionada?.cnpj && <p className="text-[10px] text-slate-500 font-mono truncate">{empresaSelecionada.cnpj}</p>}
+          <p className="truncate font-medium leading-tight">{nomeExibido}</p>
+          {empresaSelecionada?.cnpj && <p className="text-[10px] font-mono truncate" style={{ color: "var(--text-tertiary)" }}>{empresaSelecionada.cnpj}</p>}
         </div>
-        <svg className="w-3 h-3 flex-shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        <svg className="w-3 h-3 flex-shrink-0" style={{ color: "var(--text-tertiary)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
         </svg>
       </button>
       {aberto && (
-        <div className="absolute left-3 right-3 top-full mt-1 z-50 rounded-xl overflow-hidden"
-          style={{ background: "var(--bg-card)", border: "1px solid var(--border)", boxShadow: "0 8px 24px rgba(0,0,0,0.25)" }}>
-          <div className="p-2" style={{ borderBottom: "1px solid var(--border)" }}>
+        <div className="absolute left-3 right-3 top-full mt-1 z-50 overflow-hidden"
+          style={{
+            background: "var(--bg-overlay)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-lg)",
+            boxShadow: "var(--shadow-md)",
+          }}>
+          <div className="p-2" style={{ borderBottom: "1px solid var(--border-subtle)" }}>
             <input autoFocus value={busca} onChange={e => setBusca(e.target.value)}
               placeholder="Buscar empresa..."
-              className="w-full px-3 py-1.5 rounded-lg text-xs focus:outline-none"
-              style={{ background: "var(--bg-secondary)", border: "1px solid var(--border)", color: "var(--text-primary)" }}
-              onFocus={ev => { ev.currentTarget.style.borderColor = "rgba(79,106,255,0.5)"; }}
-              onBlur={ev => { ev.currentTarget.style.borderColor = "var(--border)"; }} />
+              className="w-full px-3 py-1.5 text-xs focus:outline-none border"
+              style={{
+                background: "var(--bg-inset)",
+                borderColor: "var(--border-default)",
+                color: "var(--text-primary)",
+                borderRadius: "var(--radius-md)",
+              }}
+              onFocus={ev => { ev.currentTarget.style.borderColor = "var(--border-focus)"; }}
+              onBlur={ev => { ev.currentTarget.style.borderColor = "var(--border-default)"; }} />
           </div>
           <DropdownContent />
         </div>
@@ -343,7 +395,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
   const [carregando, setCarregando] = useState(true);
   const [atrasados, setAtrasados] = useState(0);
   const [tarefasPendentes, setTarefasPendentes] = useState(0);
-  const [perfilExtra, setPerfilExtra] = useState<{ nome_exibicao: string; cargo: string } | null>(null);
+  const [perfilExtra, setPerfilExtra] = useState<{ nome_exibicao: string; cargo: string; avatar_id?: string | null } | null>(null);
   const [sidebarAberta, setSidebarAberta] = useState(true);
   const [agora, setAgora] = useState(() => new Date());
   const pathname = usePathname();
@@ -385,11 +437,47 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
       }
       fetch(`${API_URL}/api/auth/me`, { headers: { Authorization: `Bearer ${t}` } })
         .then(r => r.ok ? r.json() : null)
-        .then(d => { if (d) setPerfilExtra({ nome_exibicao: d.nome_exibicao ?? "", cargo: d.cargo ?? "" }); })
+        .then(d => {
+          if (!d) return;
+          setPerfilExtra({ nome_exibicao: d.nome_exibicao ?? "", cargo: d.cargo ?? "", avatar_id: d.avatar_id ?? null });
+          // Sincroniza cache local do avatar com o backend (single-source-of-truth).
+          if (d.avatar_id && typeof window !== "undefined") {
+            localStorage.setItem("controllo_avatar", d.avatar_id);
+          }
+        })
         .catch(() => {});
     }
     setCarregando(false);
   }, [API_URL]);
+
+  // Propagacao cross-componente: /configuracoes dispara este evento ao salvar
+  // o avatar para que sidebar e topbar reflitam a mudanca sem F5.
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const ev = e as CustomEvent<{ avatar_id: string | null }>;
+      const novoAvatarId = ev.detail?.avatar_id;
+      setPerfilExtra((prev) => prev ? { ...prev, avatar_id: novoAvatarId ?? null } : prev);
+    };
+    window.addEventListener("controllo-avatar-change", handler);
+    return () => window.removeEventListener("controllo-avatar-change", handler);
+  }, []);
+
+  // Propagacao cross-componente do perfil (nome_exibicao, cargo, exibir_nome_social):
+  // /configuracoes dispara este evento ao salvar o form de perfil para que a
+  // saudacao do topbar reflita o novo nome sem F5.
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const ev = e as CustomEvent<{ nome_exibicao: string; cargo: string; exibir_nome_social: boolean }>;
+      const det = ev.detail;
+      if (!det) return;
+      setPerfilExtra((prev) => prev
+        ? { ...prev, nome_exibicao: det.nome_exibicao ?? "", cargo: det.cargo ?? "" }
+        : { nome_exibicao: det.nome_exibicao ?? "", cargo: det.cargo ?? "" }
+      );
+    };
+    window.addEventListener("controllo-perfil-change", handler);
+    return () => window.removeEventListener("controllo-perfil-change", handler);
+  }, []);
 
   // Tarefas pendentes (localStorage)
   useEffect(() => {
@@ -467,97 +555,55 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
   return (
     <ToastProvider>
     <EmpresaProvider>
-      <div className="flex flex-col h-screen overflow-hidden" style={{ background: "var(--bg-primary)" }}>
+      <div className="flex flex-col h-screen overflow-hidden" style={{ background: "var(--bg-canvas)" }}>
 
         {/* ════════════════════ TOPBAR ════════════════════ */}
         <header className="h-14 flex-shrink-0 flex items-center px-4 gap-3 z-30"
           style={{
-            background: "rgba(2,4,16,0.88)",
-            borderBottom: "1px solid rgba(79,106,255,0.14)",
-            backdropFilter: "blur(16px)",
-            WebkitBackdropFilter: "blur(16px)",
+            background: "var(--bg-surface)",
+            borderBottom: "1px solid var(--border-subtle)",
           }}>
 
-          {/* Toggle */}
-          <button onClick={toggleSidebar}
-            className="hidden md:flex w-8 h-8 items-center justify-center rounded-xl transition-all hover:bg-white/5 flex-shrink-0"
-            style={{ color: "#64748b", border: "1px solid rgba(79,106,255,0.15)" }}
-            title={sidebarAberta ? "Recolher menu" : "Expandir menu"}>
-            {sidebarAberta ? (
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7M18 19l-7-7 7-7" />
-              </svg>
-            ) : (
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
+          {/* Logo e botão collapse foram movidos para a sidebar (Fase 4 §5.2) */}
 
-          {/* Logo + Nome do app */}
-          <div className="flex items-center gap-2.5 flex-shrink-0">
-            <div className="w-7 h-7 flex items-center justify-center rounded-lg logo-box bg-navy-800 border border-navy-600/30 dark:bg-navy-800 dark:border-navy-600/30">
-              <svg className="w-4 h-4 text-navy-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round">
-                <circle cx="12" cy="12" r="9.5" strokeWidth="1.3" />
-                <path d="M12 2.5C9 5.8 7.8 9 7.8 12s1.2 6.2 4.2 9.5" strokeWidth="1" />
-                <path d="M12 2.5c3 3.3 4.2 6.5 4.2 9.5s-1.2 6.2-4.2 9.5" strokeWidth="1" />
-                <line x1="2.5" y1="12" x2="21.5" y2="12" strokeWidth="1" />
-                <path d="M5.2 7.5Q12 6.3 18.8 7.5" strokeWidth="0.75" />
-                <path d="M5.2 16.5Q12 17.7 18.8 16.5" strokeWidth="0.75" />
-              </svg>
-            </div>
-            <div className="hidden sm:block leading-none">
-              <div className="text-white font-black text-[11px] tracking-[0.08em] uppercase">CONTROLLO BPO</div>
-              <div className="text-[9px] font-semibold tracking-[0.24em] uppercase mt-[3px] text-[#3b6ea5]">Analytics</div>
-            </div>
-          </div>
-
-          {/* Divider */}
-          <div className="hidden sm:block w-px h-5 flex-shrink-0" style={{ background: "rgba(79,106,255,0.18)" }} />
-
-          {/* ── Saudação premium ── */}
+          {/* ── Avatar + Saudação ── */}
           <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
-            <div className="text-right leading-none">
-              <p className="text-[13px] font-bold" style={{ color: "var(--text-primary)" }}>
-                {saudacao},{" "}
-                <span className="font-extrabold greeting-name text-navy-600 dark:text-navy-400">
-                  {primeiroNome}
-                </span>
+            {/* Avatar 32px à ESQUERDA da saudação */}
+            <div className="relative flex-shrink-0">
+              <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" avatarIdOverride={perfilExtra?.avatar_id ?? undefined} />
+              {/* Status online dot */}
+              <span
+                className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full"
+                style={{
+                  background: "var(--success)",
+                  boxShadow: "0 0 0 2px var(--bg-surface)",
+                }}
+              />
+            </div>
+            <div className="leading-tight">
+              <p
+                className="text-base font-medium"
+                style={{ color: "var(--text-primary)" }}
+              >
+                {saudacao}, {primeiroNome}
               </p>
-              <p className="text-[10px] mt-1" style={{ color: "var(--text-muted)" }}>
+              <p className="text-xs mt-0.5" style={{ color: "var(--text-tertiary)" }}>
                 {diasPT[agora.getDay()]}, {String(agora.getDate()).padStart(2, "0")} de {mesesPT[agora.getMonth()]}
               </p>
             </div>
-            {/* Avatar */}
-            <div className="relative flex-shrink-0">
-              <div className="w-8 h-8 rounded-full overflow-hidden ring-2 ring-white/10 flex items-center justify-center bg-slate-200 text-slate-900 text-[11px] font-semibold select-none leading-none">
-                {iniciais}
-              </div>
-              {/* Status online dot */}
-              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-[rgba(2,4,16,0.9)]" />
-            </div>
-            {cargo && (
-              <span className="hidden lg:flex text-[10px] font-semibold px-2.5 py-1 rounded-full flex-shrink-0 text-[#9BB3FF]"
-                style={{ background: "rgba(79,106,255,0.12)", border: "1px solid rgba(79,106,255,0.22)" }}>
-                {cargo}
-              </span>
-            )}
-            {usuario?.is_ceo ? (
-              <span className="hidden lg:flex text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full flex-shrink-0 text-amber-400"
-                style={{ background: "rgba(234,179,8,0.12)", border: "1px solid rgba(234,179,8,0.25)" }}>
-                C.E.O.
-              </span>
-            ) : usuario?.is_admin ? (
-              <span className="hidden lg:flex text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full flex-shrink-0 text-emerald-400"
-                style={{ background: "rgba(16,185,129,0.12)", border: "1px solid rgba(16,185,129,0.2)" }}>
-                Admin
-              </span>
-            ) : usuario?.is_gestor ? (
-              <span className="hidden lg:flex text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full flex-shrink-0 text-indigo-400"
-                style={{ background: "rgba(139,92,246,0.12)", border: "1px solid rgba(139,92,246,0.2)" }}>
-                Gestor
-              </span>
-            ) : null}
+
+            {/* ── Pill consolidado de role (Q5: §5.3 consolida CEO + Admin) ── */}
+            <span
+              className="hidden lg:flex text-xs font-semibold tracking-wide px-2.5 py-1 flex-shrink-0 border"
+              style={{
+                background: "var(--accent-subtle)",
+                color: "var(--accent-text)",
+                borderColor: "var(--accent-border)",
+                borderRadius: "var(--radius-md)",
+              }}
+            >
+              {usuario?.is_ceo ? "C.E.O." : usuario?.is_admin ? "Administrador" : usuario?.is_gestor ? "Gestor" : "Analista"}
+            </span>
           </div>
 
           {/* Spacer */}
@@ -566,28 +612,33 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
           {/* Empresa selector */}
           {token && <EmpresaSelectorWidget token={token} topbar />}
 
-          {/* Divider */}
-          <div className="w-px h-5 flex-shrink-0" style={{ background: "rgba(79,106,255,0.18)" }} />
-
           {/* Bell icon — alertas da agenda */}
           <a
             href="/agenda"
-            className="relative flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-xl transition-all hover:bg-white/5"
-            style={{ color: atrasados > 0 ? "#f59e0b" : "#64748b", border: "1px solid rgba(79,106,255,0.15)" }}
+            className="relative flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-md transition-colors"
+            style={{
+              color: atrasados > 0 ? "var(--warning)" : "var(--text-tertiary)",
+            }}
+            onMouseEnter={(e) => {
+              if (atrasados === 0) e.currentTarget.style.color = "var(--text-secondary)";
+            }}
+            onMouseLeave={(e) => {
+              if (atrasados === 0) e.currentTarget.style.color = "var(--text-tertiary)";
+            }}
             title={atrasados > 0 ? `${atrasados} lembrete${atrasados !== 1 ? "s" : ""} atrasado${atrasados !== 1 ? "s" : ""}` : "Agenda"}
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
             </svg>
             {atrasados > 0 && (
-              <span className="absolute -top-1 -right-1 min-w-[16px] h-4 flex items-center justify-center rounded-full bg-red-500 text-white text-[9px] font-bold px-1 leading-none">
+              <span
+                className="absolute -top-1 -right-1 min-w-[16px] h-4 flex items-center justify-center rounded-full text-white text-[9px] font-bold px-1 leading-none"
+                style={{ background: "var(--danger)" }}
+              >
                 {atrasados > 99 ? "99+" : atrasados}
               </span>
             )}
           </a>
-
-          {/* Divider */}
-          <div className="w-px h-5 flex-shrink-0" style={{ background: "rgba(79,106,255,0.18)" }} />
 
           {/* Theme toggle */}
           <ThemeToggle />
@@ -600,17 +651,80 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
           <aside
             className="hidden md:flex flex-col flex-shrink-0 overflow-hidden z-20"
             style={{
-              width: sidebarAberta ? 224 : 56,
+              width: sidebarAberta ? 256 : 56,
               transition: "width 0.25s cubic-bezier(0.4,0,0.2,1)",
               background: "var(--sidebar-bg)",
               borderRight: "1px solid var(--sidebar-border)",
               boxShadow: "var(--sidebar-shadow)",
             }}
           >
-            <nav className="flex-1 overflow-y-auto overflow-x-hidden py-4 space-y-0.5"
+            {/* ── Header da sidebar: wordmark + botão collapse ── */}
+            {collapsed ? (
+              <div
+                className="flex items-center justify-center"
+                style={{ height: 56, borderBottom: "1px solid var(--border-subtle)" }}
+              >
+                <button
+                  onClick={toggleSidebar}
+                  className="w-7 h-7 flex items-center justify-center rounded-md transition-colors"
+                  style={{ color: "var(--text-tertiary)" }}
+                  aria-label="Expandir menu"
+                  title="Expandir menu"
+                  onMouseEnter={(e) => { e.currentTarget.style.color = "var(--text-secondary)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-tertiary)"; }}
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+              </div>
+            ) : (
+              <div
+                className="flex items-center justify-between"
+                style={{
+                  height: 56,
+                  padding: "0 16px",
+                  borderBottom: "1px solid var(--border-subtle)",
+                }}
+              >
+                <div className="flex flex-col gap-0.5 min-w-0">
+                  <span
+                    className="font-bold tracking-tight"
+                    style={{ color: "var(--text-primary)", fontSize: "var(--text-base)" }}
+                  >
+                    CONTROLLO
+                  </span>
+                  <span
+                    className="text-xs uppercase font-medium"
+                    style={{
+                      color: "var(--text-tertiary)",
+                      letterSpacing: "var(--tracking-widest)",
+                      lineHeight: 1,
+                    }}
+                  >
+                    BPO Analytics
+                  </span>
+                </div>
+                <button
+                  onClick={toggleSidebar}
+                  className="w-7 h-7 flex items-center justify-center rounded-md transition-colors flex-shrink-0"
+                  style={{ color: "var(--text-tertiary)" }}
+                  aria-label="Recolher menu"
+                  title="Recolher menu"
+                  onMouseEnter={(e) => { e.currentTarget.style.color = "var(--text-secondary)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-tertiary)"; }}
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7M18 19l-7-7 7-7" />
+                  </svg>
+                </button>
+              </div>
+            )}
+
+            <nav className="flex-1 overflow-y-auto overflow-x-hidden py-2 space-y-0.5"
               style={{
-                paddingLeft: collapsed ? 8 : 12,
-                paddingRight: collapsed ? 8 : 12,
+                paddingLeft: collapsed ? 0 : 12,
+                paddingRight: collapsed ? 0 : 12,
                 transition: "padding 0.25s cubic-bezier(0.4,0,0.2,1)",
               }}>
 
@@ -741,7 +855,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
               {/* ── Equipe (gestor + admin) ── */}
               {isGestorOrAdmin && (
                 <>
-                  <SectionLabel label="Equipe" color="#a78bfa" collapsed={collapsed} />
+                  <SectionLabel label="Equipe" collapsed={collapsed} />
                   <NavLink href="/gestor/equipe" label="Gestão de Equipe" collapsed={collapsed}
                     active={pathname === "/gestor/equipe"}
                     icon={<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>}
@@ -752,7 +866,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
               {/* ── Central de Controle (master only) ── */}
               {usuario?.is_master && (
                 <>
-                  <SectionLabel label="Controle" color="#818cf8" collapsed={collapsed} />
+                  <SectionLabel label="Controle" collapsed={collapsed} />
                   <NavLink href="/master" label="Central de Controle" collapsed={collapsed}
                     active={pathname === "/master"}
                     icon={<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>}
@@ -763,7 +877,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
               {/* ── Administração (admin only) ─�� */}
               {usuario?.is_admin && (
                 <>
-                  <SectionLabel label="Administração" color="#34d399" collapsed={collapsed} />
+                  <SectionLabel label="Administração" collapsed={collapsed} />
                   <NavLink href="/admin" label="Usuários" collapsed={collapsed}
                     active={pathname === "/admin"}
                     icon={<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>}
@@ -787,37 +901,58 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
             {/* ── Profile no rodapé ── */}
             <div
               className={collapsed ? "p-2" : "p-3"}
-              style={{ borderTop: "1px solid var(--sidebar-footer-border)" }}
+              style={{ borderTop: "1px solid var(--border-subtle)" }}
             >
               {collapsed ? (
                 <div className="flex flex-col items-center gap-2">
-                  <UserAvatar size={32} />
-                  <button onClick={fazerLogout} title="Sair"
-                    className="w-8 h-8 flex items-center justify-center rounded-xl text-slate-500 hover:text-rose-400 hover:bg-rose-400/10 transition-all">
+                  <div title={perfilExtra?.nome_exibicao || usuario?.nome}>
+                    <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" avatarIdOverride={perfilExtra?.avatar_id ?? undefined} />
+                  </div>
+                  <button
+                    onClick={fazerLogout}
+                    title="Sair"
+                    className="w-8 h-8 flex items-center justify-center rounded-md transition-colors"
+                    style={{ color: "var(--text-tertiary)" }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = "var(--danger)"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-tertiary)"; }}
+                  >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                     </svg>
                   </button>
                 </div>
               ) : (
-                <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl group transition-all"
+                <div
+                  className="flex items-center gap-3 px-3 py-2.5 transition-colors border"
                   style={{
-                    background: "var(--sidebar-profile-bg)",
-                    border: "1px solid var(--sidebar-profile-border)",
-                    boxShadow: "var(--sidebar-profile-shadow)",
+                    background: "var(--bg-elevated)",
+                    borderColor: "var(--border-subtle)",
+                    borderRadius: "var(--radius-md)",
                   }}
                 >
-                  <UserAvatar size={28} className="group-hover:scale-105 transition-transform" />
+                  <UserAvatar size={32} fallbackIniciais={iniciais} rounded="full" avatarIdOverride={perfilExtra?.avatar_id ?? undefined} />
                   <div className="overflow-hidden flex-1 min-w-0">
-                    <p className="font-semibold text-sm truncate leading-tight" style={{ color: "var(--nav-text-hover)" }}>{usuario?.nome}</p>
-                    <p className={`text-[10px] uppercase tracking-tight font-medium ${
-                        usuario?.is_ceo ? "text-amber-400" : usuario?.is_admin ? "text-emerald-400" : usuario?.is_gestor ? "text-indigo-400" : "text-slate-500"
-                      }`}>
-                      {usuario?.is_ceo ? "C.E.O." : usuario?.is_admin ? "Admin" : usuario?.is_gestor ? "Gestor" : "Analista"}
+                    <p
+                      className="font-medium text-sm truncate leading-tight"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      {perfilExtra?.nome_exibicao || usuario?.nome}
+                    </p>
+                    <p
+                      className="text-xs mt-0.5 truncate"
+                      style={{ color: "var(--text-tertiary)" }}
+                    >
+                      {usuario?.is_ceo ? "C.E.O." : usuario?.is_admin ? "Administrador" : usuario?.is_gestor ? "Gestor" : "Analista"}
                     </p>
                   </div>
-                  <button onClick={fazerLogout} title="Sair"
-                    className="p-1.5 text-slate-500 hover:text-rose-400 hover:bg-rose-400/10 rounded-lg transition-all flex-shrink-0">
+                  <button
+                    onClick={fazerLogout}
+                    title="Sair"
+                    className="p-1.5 rounded-md transition-colors flex-shrink-0"
+                    style={{ color: "var(--text-tertiary)" }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = "var(--danger)"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-tertiary)"; }}
+                  >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                     </svg>
@@ -828,8 +963,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
           </aside>
 
           {/* ════════════════════ MAIN ════════════════════ */}
-          <main className="flex-1 overflow-y-auto relative min-w-0" style={{ background: "var(--bg-primary)" }}>
-            <GlobeBackground />
+          <main className="flex-1 overflow-y-auto relative min-w-0" style={{ background: "var(--bg-canvas)" }}>
             <div className="relative min-h-full">
               {children}
             </div>

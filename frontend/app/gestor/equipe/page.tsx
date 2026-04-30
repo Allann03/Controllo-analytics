@@ -201,7 +201,7 @@ export default function GestorEquipePage() {
   const fieldCls = "w-full px-3 py-2 rounded-xl text-sm border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-navy-300 dark:focus:ring-navy-700 transition-all";
 
   return (
-    <div className="min-h-full bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+    <div className="min-h-full" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)" }}>
 
       {/* ── HEADER ── */}
       <header className="px-8 pt-6 pb-5 border-b border-slate-200 dark:border-slate-700">

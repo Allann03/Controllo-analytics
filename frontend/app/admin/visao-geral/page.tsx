@@ -100,7 +100,7 @@ export default function VisaoGeralAdminPage() {
   ];
 
   return (
-    <div className="min-h-full bg-[#f8f9fb] dark:bg-slate-900 text-[#102a43] dark:text-slate-100">
+    <div className="min-h-full" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)" }}>
 
       {/* ── HEADER ── */}
       <div className="px-6 pt-6 pb-5 bg-white dark:bg-slate-900 border-b border-[#e2e8f0] dark:border-slate-700">

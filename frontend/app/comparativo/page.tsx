@@ -52,6 +52,32 @@ const INDICADORES: { key: string; label: string; format: (v: number | null | und
   { key: "saldo_caixa", label: "Saldo de Caixa", format: formatBRL },
 ];
 
+// Dados ilustrativos exibidos quando nenhuma empresa esta selecionada.
+// Substituidos pelo dado real assim que o usuario seleciona 2+ empresas e clica Comparar.
+const DEMO_DADOS: ComparativoItem[] = [
+  {
+    empresa_id: -1, nome: "Empresa A",
+    score_saude: 82, classificacao_saude: "Saudável", cor_saude: "var(--success)",
+    receita_liquida: 2400000, lucro_liquido: 420000,
+    margem_liquida: 17.5, margem_bruta: 38.2, ebitda: 540000,
+    liquidez_corrente: 2.14, endividamento_geral: 40.0, roe: 13.4, saldo_caixa: 380000,
+  },
+  {
+    empresa_id: -2, nome: "Empresa B",
+    score_saude: 64, classificacao_saude: "Atenção", cor_saude: "var(--warning)",
+    receita_liquida: 1850000, lucro_liquido: 195000,
+    margem_liquida: 10.5, margem_bruta: 31.8, ebitda: 290000,
+    liquidez_corrente: 1.42, endividamento_geral: 58.7, roe: 8.1, saldo_caixa: 145000,
+  },
+  {
+    empresa_id: -3, nome: "Empresa C",
+    score_saude: 71, classificacao_saude: "Saudável", cor_saude: "var(--success)",
+    receita_liquida: 3120000, lucro_liquido: 380000,
+    margem_liquida: 12.2, margem_bruta: 34.5, ebitda: 460000,
+    liquidez_corrente: 1.78, endividamento_geral: 47.3, roe: 11.0, saldo_caixa: 510000,
+  },
+];
+
 function h() { return { Authorization: `Bearer ${localStorage.getItem("controllo_token") || ""}` }; }
 
 export default function ComparativoPage() {
@@ -97,12 +123,12 @@ export default function ComparativoPage() {
     );
   }
 
-  // Melhor valor por indicador (para highlight)
-  function melhorIdx(key: string, invertido?: boolean) {
-    if (dados.length < 2) return -1;
+  // Melhor valor por indicador (para highlight) — recebe array para reutilizar com demo.
+  function melhorIdxFor(arr: ComparativoItem[], key: string, invertido?: boolean) {
+    if (arr.length < 2) return -1;
     let best = -1;
     let bestVal = invertido ? Infinity : -Infinity;
-    dados.forEach((d, i) => {
+    arr.forEach((d, i) => {
       const v = (d as Record<string, unknown>)[key];
       if (v == null || d.sem_dados) return;
       const num = v as number;
@@ -110,6 +136,10 @@ export default function ComparativoPage() {
     });
     return best;
   }
+
+  // Estado demo: nenhuma empresa selecionada e nenhum dado real carregado.
+  const isDemo = selecionadas.length < 2 && dados.length === 0 && !carregando && !erro;
+  const dadosVis = dados.length > 0 ? dados : (isDemo ? DEMO_DADOS : []);
 
   return (
     <div className="min-h-full" style={{ background: "var(--bg-primary)", color: "var(--text-primary)" }}>
@@ -176,18 +206,38 @@ export default function ComparativoPage() {
           </div>
         )}
 
-        {/* Tabela comparativa */}
-        {dados.length > 0 && (
+        {/* Banner demo */}
+        {isDemo && (
+          <div
+            className="px-4 py-3 rounded-xl flex items-start gap-2.5"
+            style={{
+              background: "var(--warning-subtle)",
+              border: "1px solid var(--warning-border)",
+            }}
+          >
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: "var(--warning)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p className="text-sm" style={{ color: "var(--warning)" }}>
+              <span className="font-semibold">Dados de demonstração</span> — Selecione empresas reais no seletor acima para ver dados da sua carteira.
+            </p>
+          </div>
+        )}
+
+        {/* Tabela comparativa (real ou demo) */}
+        {dadosVis.length > 0 && (
           <div className="chart-container">
             <div className="chart-header">
-              <p className="section-title">Resultado — {MESES[mes - 1]}/{ano}</p>
+              <p className="section-title">
+                {isDemo ? "Demonstração" : `Resultado — ${MESES[mes - 1]}/${ano}`}
+              </p>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full table-premium">
                 <thead>
                   <tr>
                     <th className="text-left px-4 py-3 text-xs font-bold" style={{ minWidth: 180 }}>Indicador</th>
-                    {dados.map(d => (
+                    {dadosVis.map(d => (
                       <th key={d.empresa_id} className="text-center px-4 py-3 text-xs font-bold" style={{ minWidth: 150 }}>
                         <div>{d.nome}</div>
                         {d.score_saude != null && (
@@ -202,15 +252,15 @@ export default function ComparativoPage() {
                 </thead>
                 <tbody>
                   {INDICADORES.map(ind => {
-                    const best = melhorIdx(ind.key, ind.invertido);
+                    const best = melhorIdxFor(dadosVis, ind.key, ind.invertido);
                     return (
                       <tr key={ind.key}>
                         <td className="px-4 py-2.5 text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
                           {ind.label}
                         </td>
-                        {dados.map((d, i) => {
+                        {dadosVis.map((d, i) => {
                           const v = (d as Record<string, unknown>)[ind.key];
-                          const isBest = i === best && dados.length > 1;
+                          const isBest = i === best && dadosVis.length > 1;
                           return (
                             <td key={d.empresa_id} className={`px-4 py-2.5 text-center font-mono text-xs font-semibold ${
                               isBest ? "text-emerald-600 dark:text-emerald-400" : ""
@@ -238,12 +288,6 @@ export default function ComparativoPage() {
         {!carregando && dados.length === 0 && selecionadas.length >= 2 && !erro && (
           <div className="text-center py-16" style={{ color: "var(--text-muted)" }}>
             <p className="text-sm">Clique em &ldquo;Comparar&rdquo; para ver os resultados.</p>
-          </div>
-        )}
-
-        {!carregando && selecionadas.length < 2 && (
-          <div className="text-center py-16" style={{ color: "var(--text-muted)" }}>
-            <p className="text-sm">Selecione pelo menos 2 empresas para comparar.</p>
           </div>
         )}
       </div>

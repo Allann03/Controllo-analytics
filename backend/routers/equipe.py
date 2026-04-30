@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session
 
 from data.database.config import get_db
 from data.database import models
-from services.auth_utils import SECRET_KEY, ALGORITHM, verificar_tenant
+from services.auth_utils import SECRET_KEY, ALGORITHM, verificar_tenant, filtrar_nome_social
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
 
@@ -139,7 +139,7 @@ def listar_colaboradores(
         {
             "id": u.id,
             "nome": u.nome,
-            "nome_exibicao": u.nome_exibicao or "",
+            "nome_exibicao": filtrar_nome_social(u, current_user.id),
             "cargo": u.cargo or "",
             "is_admin": u.is_admin,
             "is_gestor": getattr(u, "is_gestor", False),

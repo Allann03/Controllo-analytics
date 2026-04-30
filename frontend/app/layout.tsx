@@ -38,7 +38,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${jakarta.variable} ${jetbrains.variable} font-jakarta antialiased`}
-        style={{ background: "var(--bg-primary)", color: "var(--text-primary)" }}
+        style={{ background: "var(--bg-canvas)", color: "var(--text-primary)" }}
       >
         <ClientWrapper>{children}</ClientWrapper>
       </body>

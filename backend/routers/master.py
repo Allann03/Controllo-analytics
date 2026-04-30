@@ -19,6 +19,7 @@ from sqlalchemy import func
 from data.database.config import get_db
 from data.database import models
 from services.auth_utils import get_current_user as _auth_user
+from services.auth_utils import filtrar_nome_social
 
 router = APIRouter(prefix="/api/master", tags=["master"])
 
@@ -97,13 +98,14 @@ def _esc_to_dict(esc: models.Escritorio, db: Session) -> dict:
     }
 
 
-def _user_to_dict(u: models.Usuario, slug: str = "") -> dict:
+def _user_to_dict(u: models.Usuario, slug: str = "", viewer_id: Optional[int] = None) -> dict:
     return {
         "id": u.id,
         "nome": u.nome,
         "login_completo": f"{u.nome}@{slug}" if slug else u.nome,
-        "nome_exibicao": u.nome_exibicao or "",
+        "nome_exibicao": filtrar_nome_social(u, viewer_id) if viewer_id is not None else (u.nome_exibicao or ""),
         "cargo": u.cargo or "",
+        "avatar_id": getattr(u, "avatar_id", None),
         "is_master": getattr(u, "is_master", False),
         "is_dono": getattr(u, "is_dono", False),
         "is_admin": u.is_admin,
@@ -389,7 +391,7 @@ def listar_usuarios_escritorio(
     return {
         "escritorio": esc.nome,
         "slug": esc.slug,
-        "usuarios": [_user_to_dict(u, esc.slug) for u in usuarios],
+        "usuarios": [_user_to_dict(u, esc.slug, viewer_id=_master.id) for u in usuarios],
     }
 
 
@@ -427,7 +429,7 @@ def listar_todos_usuarios(
 
     result = []
     for u in usuarios:
-        d = _user_to_dict(u, esc.slug)
+        d = _user_to_dict(u, esc.slug, viewer_id=_master.id)
         d["escritorio_nome"] = esc.nome
         d["escritorio_slug"] = esc.slug
         result.append(d)
@@ -452,7 +454,7 @@ def aprovar_usuario(
     user.is_aprovado = True
     db.commit()
     esc = db.query(models.Escritorio).filter(models.Escritorio.id == user.escritorio_id).first()
-    return {"mensagem": f"Usuário '{user.nome}' aprovado.", "usuario": _user_to_dict(user, esc.slug if esc else "")}
+    return {"mensagem": f"Usuário '{user.nome}' aprovado.", "usuario": _user_to_dict(user, esc.slug if esc else "", viewer_id=_master.id)}
 
 
 @router.patch("/usuarios/{user_id}/reprovar")
@@ -472,7 +474,7 @@ def reprovar_usuario(
     user.is_aprovado = False
     db.commit()
     esc = db.query(models.Escritorio).filter(models.Escritorio.id == user.escritorio_id).first()
-    return {"mensagem": f"Usuário '{user.nome}' reprovado/bloqueado.", "usuario": _user_to_dict(user, esc.slug if esc else "")}
+    return {"mensagem": f"Usuário '{user.nome}' reprovado/bloqueado.", "usuario": _user_to_dict(user, esc.slug if esc else "", viewer_id=_master.id)}
 
 
 @router.patch("/usuarios/{user_id}/role")
@@ -502,7 +504,7 @@ def alterar_role(
     esc = db.query(models.Escritorio).filter(models.Escritorio.id == user.escritorio_id).first()
     return {
         "mensagem": "Permissões atualizadas.",
-        "usuario": _user_to_dict(user, esc.slug if esc else ""),
+        "usuario": _user_to_dict(user, esc.slug if esc else "", viewer_id=_master.id),
     }
 
 

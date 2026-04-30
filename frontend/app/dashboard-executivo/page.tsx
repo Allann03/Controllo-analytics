@@ -74,8 +74,11 @@ const DADOS_PADRAO: DadosDashboard = {
   ],
 };
 
-// Cores para gráficos — array de hex aceito por Recharts Cell/linearGradient
-const CORES_PIE = ["#102a43","#3b82f6","#06b6d4","#10b981","#f59e0b","#f43f5e","#3b6ea5","#ec4899"];
+// Paleta de gráficos: lida via getComputedStyle dos tokens --chart-1..6
+// definidos em globals.css. Ver hook useChartTokens() abaixo na página.
+// Mapeamento semântico (§5.6): chart-1=accent (positivo principal),
+// chart-2=success (lucro/positivo derivado), chart-3=danger (negativo),
+// chart-4=warning (atenção), chart-5/6=extras quando 5+ séries.
 
 function formatBRL(v: number): string {
   if (v >= 1_000_000) return `R$ ${(v / 1_000_000).toFixed(1)}M`;
@@ -160,6 +163,34 @@ export default function DashboardExecutivoPage() {
     obs.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
     return () => obs.disconnect();
   }, []);
+
+  // Tokens de gráfico (--chart-1..6) lidos via getComputedStyle.
+  // Recharts não resolve var() em props SVG (fill/stroke), então passamos hex literal.
+  // Re-lê quando o tema muda (dark/light).
+  const [chartTokens, setChartTokens] = useState({
+    c1: "#4F8EFF", c2: "#34D399", c3: "#F87171",
+    c4: "#FBBF24", c5: "#A78BFA", c6: "#94A3B8",
+  });
+  useEffect(() => {
+    const update = () => {
+      const cs = getComputedStyle(document.documentElement);
+      setChartTokens({
+        c1: cs.getPropertyValue("--chart-1").trim() || "#4F8EFF",
+        c2: cs.getPropertyValue("--chart-2").trim() || "#34D399",
+        c3: cs.getPropertyValue("--chart-3").trim() || "#F87171",
+        c4: cs.getPropertyValue("--chart-4").trim() || "#FBBF24",
+        c5: cs.getPropertyValue("--chart-5").trim() || "#A78BFA",
+        c6: cs.getPropertyValue("--chart-6").trim() || "#94A3B8",
+      });
+    };
+    update();
+    const obs = new MutationObserver(update);
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    return () => obs.disconnect();
+  }, []);
+
+  // Paleta restrita do donut (Composição de Impostos): 6 cores semânticas.
+  const CORES_PIE = [chartTokens.c1, chartTokens.c2, chartTokens.c3, chartTokens.c4, chartTokens.c5, chartTokens.c6];
 
   useEffect(() => {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(dados)); } catch { /* ignore */ }
@@ -378,34 +409,61 @@ export default function DashboardExecutivoPage() {
     }
   }, [dados.nomeEmpresa, showError, showSuccess]);
 
+  // Botão secondary §5.8 — bg-elevated + border-default + text-primary, hover bg-overlay.
+  const SECONDARY_CLS = "flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors border";
+  const SECONDARY_STYLE: React.CSSProperties = {
+    background: "var(--bg-elevated)",
+    borderColor: "var(--border-default)",
+    color: "var(--text-primary)",
+    borderRadius: "var(--radius-md)",
+  };
+  const onSecondaryEnter = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.background = "var(--bg-overlay)"; };
+  const onSecondaryLeave = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.background = "var(--bg-elevated)"; };
+
   return (
-    <div className="min-h-full bg-white dark:bg-slate-900 p-6">
+    <div className="min-h-full p-6" style={{ background: "var(--bg-canvas)" }}>
 
       {/* ── BARRA DE CONTROLES (segue o tema) ── */}
       <div className="flex items-center justify-between mb-6 no-export">
         <div>
-          <p className="text-xs font-bold uppercase tracking-widest mb-1 text-navy-600 dark:text-navy-400">
+          <p
+            className="text-xs uppercase font-medium mb-1"
+            style={{
+              color: "var(--text-tertiary)",
+              letterSpacing: "var(--tracking-widest)",
+            }}
+          >
             Executivo
           </p>
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Dashboard <span className="text-navy-600 dark:text-navy-400">Executivo</span>
+          {/* §4.2: hierarquia por peso, sem destaque cromático em palavra */}
+          <h1 className="text-3xl tracking-tight" style={{ color: "var(--text-primary)" }}>
+            <span className="font-semibold">Dashboard</span>{" "}
+            <span className="font-normal" style={{ color: "var(--text-secondary)" }}>Executivo</span>
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
+          <p className="text-sm mt-1" style={{ color: "var(--text-tertiary)" }}>
             Relatório premium para apresentação ao cliente
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          {/* Baixar Planilha Modelo */}
+          {/* Baixar Planilha Modelo (secondary) */}
           <button
             onClick={baixarPlanilhaModelo}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
+            className={SECONDARY_CLS}
+            style={SECONDARY_STYLE}
+            onMouseEnter={onSecondaryEnter}
+            onMouseLeave={onSecondaryLeave}
           >
             <Download className="w-4 h-4" />
             Planilha Modelo
           </button>
 
-          {/* Importar planilha */}
-          <label className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors border cursor-pointer border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+          {/* Importar planilha (secondary) */}
+          <label
+            className={`${SECONDARY_CLS} cursor-pointer`}
+            style={SECONDARY_STYLE}
+            onMouseEnter={onSecondaryEnter}
+            onMouseLeave={onSecondaryLeave}
+          >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
             </svg>
@@ -416,14 +474,16 @@ export default function DashboardExecutivoPage() {
             />
           </label>
 
-          {/* Modo edição */}
+          {/* Modo edição (toggle visual: ativo = accent-subtle border) */}
           <button
             onClick={() => setEditando(v => !v)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors border ${
-              editando
-                ? "bg-blue-900 border-blue-800 text-white"
-                : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
-            }`}
+            className="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors border"
+            style={{
+              background: editando ? "var(--accent-subtle)" : "var(--bg-elevated)",
+              borderColor: editando ? "var(--accent-border)" : "var(--border-default)",
+              color: editando ? "var(--accent-text)" : "var(--text-primary)",
+              borderRadius: "var(--radius-md)",
+            }}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -431,25 +491,35 @@ export default function DashboardExecutivoPage() {
             {editando ? "Editando..." : "Editar"}
           </button>
 
-          {/* Exportar para Apresentação (fundo branco) */}
+          {/* Apresentação (secondary) */}
           <button
             onClick={exportarApresentacao}
             disabled={exportandoApres}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-60"
+            className={`${SECONDARY_CLS} disabled:opacity-60`}
+            style={SECONDARY_STYLE}
+            onMouseEnter={(e) => { if (!e.currentTarget.disabled) onSecondaryEnter(e); }}
+            onMouseLeave={onSecondaryLeave}
           >
             {exportandoApres ? (
-              <div className="w-4 h-4 border-2 border-slate-400 border-t-transparent rounded-full animate-spin" />
+              <div className="w-4 h-4 border-2 rounded-full animate-spin" style={{ borderColor: "var(--text-tertiary)", borderTopColor: "transparent" }} />
             ) : (
               <FileImage className="w-4 h-4" />
             )}
             Apresentação
           </button>
 
-          {/* Exportar PNG (fundo escuro, relatório executivo) */}
+          {/* Exportar PNG (PRIMARY — único da página) */}
           <button
             onClick={exportarImagem}
             disabled={exportando}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-900 hover:bg-blue-950 disabled:opacity-60 rounded-lg text-white text-sm font-semibold transition-colors"
+            className="flex items-center gap-2 px-4 py-2 disabled:opacity-60 text-sm font-semibold transition-colors"
+            style={{
+              background: "var(--accent)",
+              color: "var(--text-inverse)",
+              borderRadius: "var(--radius-md)",
+            }}
+            onMouseEnter={(e) => { if (!e.currentTarget.disabled) e.currentTarget.style.background = "var(--accent-hover)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "var(--accent)"; }}
           >
             {exportando ? (
               <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -481,10 +551,10 @@ export default function DashboardExecutivoPage() {
               <input
                 value={dados.nomeEmpresa}
                 onChange={e => setDados(p => ({ ...p, nomeEmpresa: e.target.value }))}
-                className="text-2xl font-black text-white rounded-md px-2 py-0.5 cursor-text bg-navy-900/40 border border-dashed border-navy-500/70 focus:outline-none focus:ring-2 focus:ring-navy-400/50"
+                className="text-2xl font-semibold text-white rounded-md px-2 py-0.5 cursor-text bg-navy-900/40 border border-dashed border-navy-500/70 focus:outline-none focus:ring-2 focus:ring-navy-400/50"
               />
             ) : (
-              <h2 className="text-2xl font-black text-white">{dados.nomeEmpresa}</h2>
+              <h2 className="text-2xl font-semibold text-white tracking-tight">{dados.nomeEmpresa}</h2>
             )}
             {editando ? (
               <input
@@ -497,27 +567,48 @@ export default function DashboardExecutivoPage() {
             )}
           </div>
           <div className="text-right">
-            <p className="text-xs text-slate-600 uppercase font-bold tracking-widest">Relatório Financeiro</p>
-            <p className="text-xs text-slate-600">Gerado por Controllo Analytics</p>
+            <p className="text-xs uppercase font-medium" style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}>Relatório Financeiro</p>
+            <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>Gerado por Controllo Analytics</p>
           </div>
         </div>
 
-        {/* KPIs */}
+        {/* KPIs (§5.4) */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {dados.kpis.map((kpi, i) => (
-            <div key={i} className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition-all">
-              <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">{kpi.label}</p>
-              <div className="text-xl font-black text-white font-mono mb-1">
+            <div
+              key={i}
+              className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition-colors"
+            >
+              {/* Eyebrow */}
+              <p
+                className="text-xs uppercase font-medium mb-2"
+                style={{
+                  color: "var(--text-tertiary)",
+                  letterSpacing: "var(--tracking-widest)",
+                }}
+              >
+                {kpi.label}
+              </p>
+              {/* Valor — font-mono tabular-nums weight-semibold */}
+              <div className="mb-1">
                 <EditVal
                   valor={kpi.valor} onChange={v => atualizarKpi(i, v)}
                   editando={editando} prefixo={kpi.prefixo} sufixo={kpi.sufixo}
-                  className="text-xl font-black text-white font-mono"
+                  className="text-2xl font-semibold text-white font-mono tabular-nums"
                 />
               </div>
-              <div className={`flex items-center gap-1 text-xs font-semibold ${kpi.variacao >= 0 ? "text-emerald-400" : "text-rose-400"}`}>
-                <span>{kpi.variacao >= 0 ? "▲" : "▼"}</span>
-                <span>{Math.abs(kpi.variacao).toFixed(1)}{kpi.sufixo === "%" ? " p.p." : "%"}</span>
-                <span className="text-slate-600 font-normal">vs ano ant.</span>
+              {/* Delta com cor semântica */}
+              <div className="flex items-center gap-1 text-xs font-medium">
+                <span style={{ color: kpi.variacao >= 0 ? chartTokens.c2 : chartTokens.c3 }}>
+                  {kpi.variacao >= 0 ? "▲" : "▼"}
+                </span>
+                <span
+                  className="font-mono tabular-nums"
+                  style={{ color: kpi.variacao >= 0 ? chartTokens.c2 : chartTokens.c3 }}
+                >
+                  {Math.abs(kpi.variacao).toFixed(1)}{kpi.sufixo === "%" ? " p.p." : "%"}
+                </span>
+                <span className="font-normal" style={{ color: "var(--text-tertiary)" }}>vs ano ant.</span>
               </div>
             </div>
           ))}
@@ -526,73 +617,99 @@ export default function DashboardExecutivoPage() {
         {/* Gráficos 2×2 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
 
-          {/* DRE Simplificada */}
+          {/* DRE Simplificada — mapeamento semântico (§5.6):
+                Receita / Rec. Líq. → chart-1 (azul, positivo principal)
+                Deduções → chart-3 (vermelho, dedução)
+                Lucro Bruto / EBITDA / Lucro Líq. → chart-2 (verde, lucro derivado) */}
           <GraficoComNome nome={dados.nomeEmpresa}>
             <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
-              <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">DRE Simplificada</p>
+              <p
+                className="text-xs uppercase font-medium mb-4"
+                style={{
+                  color: "var(--text-tertiary)",
+                  letterSpacing: "var(--tracking-widest)",
+                }}
+              >
+                DRE Simplificada
+              </p>
               <div className="h-52">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart
-                    data={[
-                      { nome: "Receita",    valor: totalReceita },
-                      { nome: "Deduções",   valor: -(totalReceita * 0.08) },
-                      { nome: "Rec. Líq.",  valor: totalReceita * 0.92 },
-                      { nome: "Lucro Bruto",valor: totalReceita * 0.45 },
-                      { nome: "EBITDA",     valor: totalLucro * 1.3 },
-                      { nome: "Lucro Líq.", valor: totalLucro },
-                    ]}
-                    layout="vertical"
-                    margin={{ left: 20, right: 10 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" stroke={ct.gridStroke} horizontal={false} />
-                    <XAxis type="number" hide />
-                    <YAxis dataKey="nome" type="category" tick={{ fill: ct.tickFill, fontSize: 10 }} tickLine={false} axisLine={false} width={60} />
-                    <Tooltip contentStyle={tooltipStyle} labelStyle={tooltipLabelStyle} itemStyle={tooltipItemStyle} formatter={(v) => formatFull(Math.abs(Number(v)))} />
-                    <Bar dataKey="valor" radius={[0, 4, 4, 0]} maxBarSize={20}>
-                      {[totalReceita, -(totalReceita * 0.08), totalReceita * 0.92, totalReceita * 0.45, totalLucro * 1.3, totalLucro].map((v, i) => (
-                        <Cell key={i} fill={v < 0 ? "#f43f5e" : `hsl(${220 + i * 15}, 80%, ${55 + i * 3}%)`} />
-                      ))}
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
+                {(() => {
+                  const dreData = [
+                    { nome: "Receita",     valor: totalReceita,                    cor: chartTokens.c1 },
+                    { nome: "Deduções",    valor: -(totalReceita * 0.08),          cor: chartTokens.c3 },
+                    { nome: "Rec. Líq.",   valor: totalReceita * 0.92,             cor: chartTokens.c1 },
+                    { nome: "Lucro Bruto", valor: totalReceita * 0.45,             cor: chartTokens.c2 },
+                    { nome: "EBITDA",      valor: totalLucro * 1.3,                cor: chartTokens.c2 },
+                    { nome: "Lucro Líq.",  valor: totalLucro,                      cor: chartTokens.c2 },
+                  ];
+                  return (
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={dreData} layout="vertical" margin={{ left: 20, right: 10 }}>
+                        <CartesianGrid strokeDasharray="3 3" stroke={ct.gridStroke} horizontal={false} />
+                        <XAxis type="number" hide />
+                        <YAxis dataKey="nome" type="category" tick={{ fill: ct.tickFill, fontSize: 10 }} tickLine={false} axisLine={false} width={60} />
+                        <Tooltip contentStyle={tooltipStyle} labelStyle={tooltipLabelStyle} itemStyle={tooltipItemStyle} formatter={(v) => formatFull(Math.abs(Number(v)))} />
+                        <Bar dataKey="valor" radius={[0, 4, 4, 0]} maxBarSize={20}>
+                          {dreData.map((d, i) => <Cell key={i} fill={d.cor} />)}
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  );
+                })()}
               </div>
             </div>
           </GraficoComNome>
 
-          {/* Fluxo de Caixa */}
+          {/* Fluxo de Caixa Mensal — receita=chart-2 (success), despesas=chart-3 (danger) */}
           <GraficoComNome nome={dados.nomeEmpresa}>
             <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
-              <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Fluxo de Caixa Mensal</p>
+              <p
+                className="text-xs uppercase font-medium mb-4"
+                style={{
+                  color: "var(--text-tertiary)",
+                  letterSpacing: "var(--tracking-widest)",
+                }}
+              >
+                Fluxo de Caixa Mensal
+              </p>
               <div className="h-52">
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={dados.meses} margin={{ left: -10, right: 5 }}>
                     <defs>
                       <linearGradient id="gradRec" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%"  stopColor="#10b981" stopOpacity={0.3} />
-                        <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
+                        <stop offset="5%"  stopColor={chartTokens.c2} stopOpacity={0.3} />
+                        <stop offset="95%" stopColor={chartTokens.c2} stopOpacity={0} />
                       </linearGradient>
                       <linearGradient id="gradDesp" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%"  stopColor="#f43f5e" stopOpacity={0.3} />
-                        <stop offset="95%" stopColor="#f43f5e" stopOpacity={0} />
+                        <stop offset="5%"  stopColor={chartTokens.c3} stopOpacity={0.3} />
+                        <stop offset="95%" stopColor={chartTokens.c3} stopOpacity={0} />
                       </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" stroke={ct.gridStroke} vertical={false} />
                     <XAxis dataKey="mes" tick={{ fill: ct.tickFill, fontSize: 10 }} tickLine={false} axisLine={false} />
                     <YAxis tick={{ fill: ct.tickFill, fontSize: 10 }} tickLine={false} axisLine={false} tickFormatter={v => `${(v/1000).toFixed(0)}k`} />
                     <Tooltip contentStyle={tooltipStyle} labelStyle={tooltipLabelStyle} itemStyle={tooltipItemStyle} formatter={(v) => formatFull(Number(v))} />
-                    <Area type="monotone" dataKey="receita"  stroke="#10b981" fill="url(#gradRec)"  strokeWidth={2} name="Receita" />
-                    <Area type="monotone" dataKey="despesas" stroke="#f43f5e" fill="url(#gradDesp)" strokeWidth={2} name="Despesas" />
-                    <Area type="monotone" dataKey="saldo"    stroke={ct.lineStroke} fill="none"           strokeWidth={2} strokeDasharray="4 2" name="Saldo" />
+                    <Area type="monotone" dataKey="receita"  stroke={chartTokens.c2} fill="url(#gradRec)"  strokeWidth={2} name="Receita" />
+                    <Area type="monotone" dataKey="despesas" stroke={chartTokens.c3} fill="url(#gradDesp)" strokeWidth={2} name="Despesas" />
+                    <Area type="monotone" dataKey="saldo"    stroke={chartTokens.c1} fill="none"          strokeWidth={2} strokeDasharray="4 2" name="Saldo" />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
             </div>
           </GraficoComNome>
 
-          {/* Composição de Impostos */}
+          {/* Composição de Impostos — paleta restrita de 6 cores via chart-* */}
           <GraficoComNome nome={dados.nomeEmpresa} className="self-start">
             <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
-              <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Composição de Impostos</p>
+              <p
+                className="text-xs uppercase font-medium mb-4"
+                style={{
+                  color: "var(--text-tertiary)",
+                  letterSpacing: "var(--tracking-widest)",
+                }}
+              >
+                Composição de Impostos
+              </p>
               <div className="flex items-center gap-4">
                 <div className="h-44 w-44 flex-shrink-0">
                   <ResponsiveContainer width="100%" height="100%">
@@ -607,14 +724,14 @@ export default function DashboardExecutivoPage() {
                   </ResponsiveContainer>
                 </div>
                 <div className="flex-1 space-y-2">
-                  <p className="text-xs text-slate-500 font-bold mb-1">
-                    Total: <span className="text-white">{formatBRL(totalImpostos)}</span>
+                  <p className="text-xs font-medium mb-1" style={{ color: "var(--text-tertiary)" }}>
+                    Total: <span className="font-mono tabular-nums" style={{ color: "#FFFFFF" }}>{formatBRL(totalImpostos)}</span>
                   </p>
                   {dados.impostos.map((imp, i) => (
                     <div key={i} className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: CORES_PIE[i % CORES_PIE.length] }} />
-                      <span className="text-xs text-slate-400 flex-1 truncate">{imp.nome}</span>
-                      <span className="text-xs font-mono text-slate-300">{((imp.valor / totalImpostos) * 100).toFixed(0)}%</span>
+                      <span className="text-xs flex-1 truncate" style={{ color: "var(--text-tertiary)" }}>{imp.nome}</span>
+                      <span className="text-xs font-mono tabular-nums" style={{ color: "var(--text-secondary)" }}>{((imp.valor / totalImpostos) * 100).toFixed(0)}%</span>
                     </div>
                   ))}
                 </div>
@@ -622,15 +739,31 @@ export default function DashboardExecutivoPage() {
             </div>
           </GraficoComNome>
 
-          {/* Indicadores */}
+          {/* Indicadores Financeiros (§5.4) */}
           <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
-            <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Indicadores Financeiros</p>
+            <p
+              className="text-xs uppercase font-medium mb-4"
+              style={{
+                color: "var(--text-tertiary)",
+                letterSpacing: "var(--tracking-widest)",
+              }}
+            >
+              Indicadores Financeiros
+            </p>
             <div className="grid grid-cols-2 gap-3">
               {dados.indicadores.map((ind, i) => (
                 <div key={i} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3">
-                  <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-1">{ind.label}</p>
-                  <p className="text-sm font-black text-white font-mono">{ind.valor}</p>
-                  <p className={`text-[10px] font-semibold mt-0.5 ${ind.variacao >= 0 ? "text-emerald-400" : "text-rose-400"}`}>
+                  <p
+                    className="text-xs uppercase font-medium mb-1"
+                    style={{
+                      color: "var(--text-tertiary)",
+                      letterSpacing: "var(--tracking-widest)",
+                    }}
+                  >
+                    {ind.label}
+                  </p>
+                  <p className="text-base font-semibold font-mono tabular-nums" style={{ color: "#FFFFFF" }}>{ind.valor}</p>
+                  <p className="text-xs font-medium font-mono tabular-nums mt-0.5" style={{ color: ind.variacao >= 0 ? chartTokens.c2 : chartTokens.c3 }}>
                     {ind.variacao >= 0 ? "▲" : "▼"} {Math.abs(ind.variacao).toFixed(1)}%
                   </p>
                 </div>
@@ -639,56 +772,69 @@ export default function DashboardExecutivoPage() {
           </div>
         </div>
 
-        {/* Tabela Anual */}
+        {/* Tabela Anual — cores das colunas via chart-* (semântico restrito) */}
         <div className="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden">
           <div className="px-5 py-4 border-b border-slate-800">
-            <p className="text-xs font-black text-slate-400 uppercase tracking-widest">Demonstrativo Anual Detalhado</p>
+            <p
+              className="text-xs uppercase font-medium"
+              style={{
+                color: "var(--text-tertiary)",
+                letterSpacing: "var(--tracking-widest)",
+              }}
+            >
+              Demonstrativo Anual Detalhado
+            </p>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-xs">
               <thead>
                 <tr className="bg-slate-800/60 border-b border-slate-800">
-                  <th className="px-4 py-3 text-left text-slate-500 font-bold uppercase tracking-wider">Mês</th>
-                  <th className="px-4 py-3 text-right text-emerald-500 font-bold uppercase tracking-wider">Receita</th>
-                  <th className="px-4 py-3 text-right text-rose-500 font-bold uppercase tracking-wider">Despesas</th>
-                  <th className="px-4 py-3 text-right text-blue-400 font-bold uppercase tracking-wider">Lucro</th>
-                  <th className="px-4 py-3 text-right text-amber-500 font-bold uppercase tracking-wider">Impostos</th>
-                  <th className="px-4 py-3 text-right text-navy-400 font-bold uppercase tracking-wider">Saldo</th>
+                  <th
+                    className="px-4 py-3 text-left uppercase font-medium"
+                    style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}
+                  >Mês</th>
+                  <th className="px-4 py-3 text-right uppercase font-medium" style={{ color: chartTokens.c2, letterSpacing: "var(--tracking-widest)" }}>Receita</th>
+                  <th className="px-4 py-3 text-right uppercase font-medium" style={{ color: chartTokens.c3, letterSpacing: "var(--tracking-widest)" }}>Despesas</th>
+                  <th className="px-4 py-3 text-right uppercase font-medium" style={{ color: chartTokens.c1, letterSpacing: "var(--tracking-widest)" }}>Lucro</th>
+                  <th className="px-4 py-3 text-right uppercase font-medium" style={{ color: chartTokens.c4, letterSpacing: "var(--tracking-widest)" }}>Impostos</th>
+                  <th className="px-4 py-3 text-right uppercase font-medium" style={{ color: "var(--text-tertiary)", letterSpacing: "var(--tracking-widest)" }}>Saldo</th>
                 </tr>
               </thead>
               <tbody>
-                {dados.meses.map((m, i) => (
-                  <tr key={i} className="border-b border-slate-800/50 last:border-0 hover:bg-slate-800/30 transition-colors">
-                    <td className="px-4 py-2.5 font-semibold text-slate-300">{m.mes}</td>
-                    {(["receita","despesas","lucro","impostos","saldo"] as (keyof DadosMes)[]).map((campo) => (
-                      <td key={campo} className={`px-4 py-2.5 text-right font-mono font-medium ${
-                        campo === "receita"  ? "text-emerald-400" :
-                        campo === "despesas" ? "text-rose-400" :
-                        campo === "lucro"    ? "text-blue-400" :
-                        campo === "impostos" ? "text-amber-400" :
-                        "text-navy-400"
-                      }`}>
-                        {editando ? (
-                          <input
-                            type="number"
-                            defaultValue={m[campo] as number}
-                            onBlur={e => atualizarMes(i, campo, Number(e.target.value))}
-                            className="bg-transparent border-b border-dashed border-navy-500/50 focus:outline-none text-right w-24"
-                          />
-                        ) : (
-                          formatBRL(m[campo] as number)
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-                <tr className="border-t-2 border-slate-700 bg-slate-800/60 font-black">
-                  <td className="px-4 py-3 text-white uppercase text-xs tracking-wider">TOTAL</td>
-                  <td className="px-4 py-3 text-right font-mono text-emerald-300">{formatBRL(totalReceita)}</td>
-                  <td className="px-4 py-3 text-right font-mono text-rose-300">{formatBRL(totalDespesas)}</td>
-                  <td className="px-4 py-3 text-right font-mono text-blue-300">{formatBRL(totalLucro)}</td>
-                  <td className="px-4 py-3 text-right font-mono text-amber-300">{formatBRL(dados.meses.reduce((s, m) => s + m.impostos, 0))}</td>
-                  <td className="px-4 py-3 text-right font-mono text-navy-300">{formatBRL(dados.meses.reduce((s, m) => s + m.saldo, 0))}</td>
+                {dados.meses.map((m, i) => {
+                  const colorByCampo = (campo: keyof DadosMes) =>
+                    campo === "receita"  ? chartTokens.c2 :
+                    campo === "despesas" ? chartTokens.c3 :
+                    campo === "lucro"    ? chartTokens.c1 :
+                    campo === "impostos" ? chartTokens.c4 :
+                                            "var(--text-secondary)";
+                  return (
+                    <tr key={i} className="border-b border-slate-800/50 last:border-0 hover:bg-slate-800/30 transition-colors">
+                      <td className="px-4 py-3 font-medium text-slate-300">{m.mes}</td>
+                      {(["receita","despesas","lucro","impostos","saldo"] as (keyof DadosMes)[]).map((campo) => (
+                        <td key={campo} className="px-4 py-3 text-right font-mono tabular-nums font-medium" style={{ color: colorByCampo(campo) }}>
+                          {editando ? (
+                            <input
+                              type="number"
+                              defaultValue={m[campo] as number}
+                              onBlur={e => atualizarMes(i, campo, Number(e.target.value))}
+                              className="bg-transparent border-b border-dashed border-navy-500/50 focus:outline-none text-right w-24"
+                            />
+                          ) : (
+                            formatBRL(m[campo] as number)
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })}
+                <tr className="border-t-2 border-slate-700 bg-slate-800/60">
+                  <td className="px-4 py-3 uppercase text-xs font-semibold tracking-widest" style={{ color: "#FFFFFF" }}>TOTAL</td>
+                  <td className="px-4 py-3 text-right font-mono tabular-nums font-semibold" style={{ color: chartTokens.c2 }}>{formatBRL(totalReceita)}</td>
+                  <td className="px-4 py-3 text-right font-mono tabular-nums font-semibold" style={{ color: chartTokens.c3 }}>{formatBRL(totalDespesas)}</td>
+                  <td className="px-4 py-3 text-right font-mono tabular-nums font-semibold" style={{ color: chartTokens.c1 }}>{formatBRL(totalLucro)}</td>
+                  <td className="px-4 py-3 text-right font-mono tabular-nums font-semibold" style={{ color: chartTokens.c4 }}>{formatBRL(dados.meses.reduce((s, m) => s + m.impostos, 0))}</td>
+                  <td className="px-4 py-3 text-right font-mono tabular-nums font-semibold" style={{ color: "var(--text-secondary)" }}>{formatBRL(dados.meses.reduce((s, m) => s + m.saldo, 0))}</td>
                 </tr>
               </tbody>
             </table>
@@ -697,15 +843,15 @@ export default function DashboardExecutivoPage() {
 
         {/* Rodapé */}
         <div className="flex items-center justify-between pt-2 border-t border-slate-800/50">
-          <p className="text-[10px] text-slate-700">Controllo BPO Analytics — Plataforma de Inteligência Financeira</p>
-          <p className="text-[10px] text-slate-700">
+          <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>Controllo BPO Analytics — Plataforma de Inteligência Financeira</p>
+          <p className="text-xs font-mono tabular-nums" style={{ color: "var(--text-tertiary)" }}>
             {new Date().toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}
           </p>
         </div>
       </div>
 
       {editando && (
-        <p className="text-center text-xs text-navy-400/60 mt-3">
+        <p className="text-center text-xs mt-3" style={{ color: "var(--text-tertiary)" }}>
           ✏️ Modo edição ativo — clique em qualquer valor numérico para editá-lo
         </p>
       )}

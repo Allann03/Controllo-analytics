@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import { useEmpresa } from "@/contexts/EmpresaContext";
+import { CopyCheck, Layers, Building2 } from "lucide-react";
 
 function exportarCSV(transacoes: Transacao[], nomeEmpresa: string) {
   const cabecalho = ["Data", "Descrição PDF", "Descrição Excel", "Valor PDF", "Valor Excel", "Tipo", "Banco", "Status"];
@@ -243,67 +244,96 @@ export default function ConciliacaoPage() {
   const ok    = pct === 100;
 
   return (
-    <div className="min-h-full bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+    <div className="min-h-full" style={{ background: "var(--bg-canvas)", color: "var(--text-primary)" }}>
 
       {/* Header */}
-      <header className="px-8 pt-8 pb-6 border-b border-slate-200 dark:border-slate-700">
-        <div className="flex items-start gap-4">
-          <div className="relative flex-shrink-0">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-emerald-50 border border-emerald-200 dark:bg-emerald-500/10 dark:border-emerald-500/25">
-              <svg className="w-6 h-6 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8}
-                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-              </svg>
-            </div>
-          </div>
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest mb-1 text-emerald-600 dark:text-emerald-400">Conciliação</p>
-            <h1 className="text-2xl font-extrabold tracking-tight">Conciliação Bancária</h1>
-            <p className="text-sm mt-0.5 text-slate-500 dark:text-slate-400">
-              <span className="text-navy-600 dark:text-navy-400 font-medium">{empresaSelecionada?.nome ?? "Selecione uma empresa"}</span>
-              <span className="mx-2 text-slate-400 dark:text-slate-600">·</span>
-              Compare o extrato PDF do banco com a planilha Excel
-            </p>
-          </div>
-        </div>
+      <header
+        className="px-8 pt-8 pb-6"
+        style={{ borderBottom: "1px solid var(--border-subtle)" }}
+      >
+        <p
+          className="text-xs uppercase font-medium mb-2"
+          style={{
+            color: "var(--text-tertiary)",
+            letterSpacing: "var(--tracking-widest)",
+          }}
+        >
+          Ferramenta
+        </p>
+        <h1 className="text-2xl font-extrabold tracking-tight" style={{ color: "var(--text-primary)" }}>
+          Conciliação Bancária
+        </h1>
+        <p className="text-sm mt-1" style={{ color: "var(--text-secondary)" }}>
+          <span style={{ color: "var(--text-primary)" }} className="font-medium">{empresaSelecionada?.nome ?? "Selecione uma empresa"}</span>
+          <span className="mx-2" style={{ color: "var(--text-tertiary)" }}>·</span>
+          Compare o extrato PDF do banco com a planilha Excel
+        </p>
       </header>
 
-      <div className="px-8 py-7 space-y-6 max-w-5xl mx-auto">
+      <div className="px-8 py-10 space-y-6 max-w-5xl mx-auto">
 
-        {/* Upload Section */}
-        <div className="rounded-2xl border border-[#E2E8F0] dark:border-slate-700/60 bg-white dark:bg-slate-800/40 p-6 space-y-5"
-          style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}>
-          {/* Section label */}
-          <div className="flex items-center gap-2 pb-1">
-            <div className="w-1 h-4 rounded-full bg-gradient-to-b from-[#102a43] to-[#3b6ea5]" />
-            <p className="text-xs font-bold text-[#0F2D4A] dark:text-slate-300 uppercase tracking-widest">Arquivos para Conciliação</p>
-          </div>
-
+        {/* Hero — Upload Section centralizado */}
+        <div
+          className="mx-auto rounded-2xl p-10 space-y-6"
+          style={{
+            maxWidth: 880,
+            background: "var(--bg-surface)",
+            border: "1px solid var(--border-subtle)",
+          }}
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <UploadZone label="Extrato PDF (banco)" accept=".pdf" files={pdfs} onChange={setPdfs} cor="indigo" />
             <UploadZone label="Planilha Excel (leitor de extrato)" accept=".xlsx,.xls" files={excels} onChange={setExcels} cor="emerald" />
           </div>
 
-          <p className="text-[11px] text-slate-600 leading-relaxed">
+          <p className="text-[11px] leading-relaxed" style={{ color: "var(--text-secondary)" }}>
             Arraste um ou mais PDFs + a planilha gerada pelo Leitor de Extrato do mesmo período. O sistema compara
             automaticamente cada transação por data · valor · tipo usando lógica específica de cada banco.
           </p>
 
+          {/* 3 mini-explicações — flex centralizado, mesmo eixo do hero */}
+          <div
+            className="pt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
+            style={{ borderTop: "1px solid var(--border-subtle)" }}
+          >
+            {[
+              { Icon: CopyCheck, text: "Detecção automática de duplicidades" },
+              { Icon: Layers, text: "Match por data + valor + descrição" },
+              { Icon: Building2, text: "Lógica específica por banco" },
+            ].map(({ Icon, text }) => (
+              <div key={text} className="flex items-center gap-2">
+                <Icon size={18} strokeWidth={1.75} style={{ color: "var(--text-tertiary)", flexShrink: 0 }} />
+                <span className="text-xs whitespace-nowrap" style={{ color: "var(--text-secondary)" }}>{text}</span>
+              </div>
+            ))}
+          </div>
+
           {erro && (
-            <div className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-500/20" style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}>
-              <svg className="w-4 h-4 text-rose-600 dark:text-rose-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div
+              className="flex items-center gap-2.5 px-4 py-3 rounded-xl"
+              style={{
+                background: "var(--danger-subtle)",
+                border: "1px solid var(--danger-border)",
+              }}
+            >
+              <svg className="w-4 h-4 flex-shrink-0" style={{ color: "var(--danger)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <p className="text-rose-700 dark:text-rose-400 text-sm">{erro}</p>
+              <p className="text-sm" style={{ color: "var(--danger)" }}>{erro}</p>
             </div>
           )}
 
           <button
             onClick={analisar}
             disabled={analisando || (pdfs.length === 0 && excels.length === 0)}
-            data-notheme
-            className="relative overflow-hidden font-bold px-7 py-2.5 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 text-sm text-white"
-            style={{ background: "linear-gradient(135deg, #102a43 0%, #3b6ea5 100%)", boxShadow: analisando ? "none" : "0 4px 16px rgba(79,106,255,0.35)" }}
+            className="font-semibold px-8 py-3 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 text-sm"
+            style={{
+              background: "var(--accent)",
+              color: "var(--text-inverse)",
+              borderRadius: "var(--radius-md)",
+            }}
+            onMouseEnter={(e) => { if (!e.currentTarget.disabled) e.currentTarget.style.background = "var(--accent-hover)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "var(--accent)"; }}
           >
             {analisando ? (
               <>
