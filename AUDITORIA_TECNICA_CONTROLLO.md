@@ -999,3 +999,61 @@ O Controllo e uma aplicacao SaaS funcional com ~50.200 linhas de codigo, cobrind
 
 **Pendente:**
 - Mis-routes de deteccao de banco diagnosticados na Sessao 14 (B2S->santander, SEOLIN->inter_n2, Santander_N1->mercado_pago): Sessao 17.
+
+## Sessao 17 — Fix mis-routes de deteccao de banco (assinaturas endurecidas)
+
+**Data**: 2026-04-30
+**Branch**: `fix/mis-routes-deteccao-banco` (a partir do tip da Sessao 16, commit `8330459`)
+**Commit**: <preencher apos commit>
+
+**Problema** (mapeado nas Sessoes 13 e 14): 3 PDFs caiam em parsers errados gerando dados invalidos:
+- `B2S.pdf` (PROMOVE BRASIL): `santander` em vez de `bs2`. Gap 47.748 em prod (Excel=129.696 vs Extrato=81.947). Causa: substring `'santander'` na assinatura `santander` casava em "Bco Santander SA" (descricao de TED).
+- `Bradesco_Net_Empresas.PDF` (SEOLIN IT TECNOLOGIA jan/2025): `bradesco` em vez de `bradesco_net_empresas`. Gap 7.085 (10.61%), 24/24 checkpoints divergentes em prod. Causa: a palavra `bradesco` nao aparece nas primeiras 3 paginas desse PDF; assinatura `bradesco_net_empresas` exigia `'bradesco' + 'total dispon'` — caia no fallback `bradesco` via `'dcto.'`.
+- `Santander_N1.pdf` (LEKE Consolidado Inteligente jan/2025): `mercado_pago` em vez de `santander_consolidado`. 0 transacoes em prod (silent failure agora bloqueado pelo `[GUARD]` da Sessao 14). Causa: substring `'mercadopago'` na assinatura `mercado_pago` casava em "MERCADOPAGO COM REPRESENT" (descricao de PIX).
+
+**Solucao (endurecimento conservador, sem inverter ordem)**:
+
+1. Assinatura `santander`: `[['contamax'], ['santander']]` -> `[['contamax'], ['santander.com.br'], ['banco santander']]`. O termo solto `'santander'` casava em descricoes de TED para Santander. Os qualifiers `santander.com.br` (rodape oficial) e `banco santander` (header IB DLS) sao robustos. 12 PDFs Santander reais validados; 0 falso positivo.
+
+2. Assinatura `bradesco_net_empresas`: adicionado set `['| conta total']` (cabecalho `Agencia | Conta Total Disponivel (R$)` exclusivo do formato Net Empresas). Cobre os 9 PDFs Net Empresas da fixture (CW TOUR, SEOLIN, TANIA dez/nov, Bradesco5, Bradesco_24..., Agosto 2025, Extrato dec25/nov25), incluindo casos onde `'bradesco'` nao aparece. 0 falso positivo cross-banco confirmado em todos os 92 PDFs da fixture.
+
+3. Assinatura `mercado_pago`: `['mercadopago']` -> `['mercadopago.com']`. O termo solto `'mercadopago'` casava em descricoes de PIX em PDFs Santander. O dominio `.com` aparece em rodape MP real e nao em descricoes. Os 3 outros sets (`['mercado pago', 'extrato de conta']`, `['mercado pago', 'detalhe dos movimentos']`, `['10.573.521', 'detalhe dos movimentos']`) cobrem MP real (validado contra `account_statement-e09135bc...pdf`).
+
+**Arquivos modificados:**
+| Arquivo | Alteracao |
+|---------|-----------|
+| backend/services/extrator_pdf.py | 3 sets em `_ASSINATURAS` endurecidos (santander, bradesco_net_empresas, mercado_pago). Funcao `detectar_banco` e fallback de filename hint inalterados. |
+| backend/tests/test_deteccao_banco.py | NOVO. 13 testes: 3 positivos (B2S->bs2, SEOLIN->bradesco_net_empresas, Santander N1->santander_consolidado), 4 regressoes (CW TOUR, TANIA dez/nov, Santander IB Novo), 6 cobertura inline (santander dominio vs descricao, MP dominio vs descricao, BNE sem palavra 'bradesco', BS2 com empresas.bs2). |
+| backend/tests/fixtures/b2s_raw.txt | NOVO. Texto raw do `B2S.pdf` via pdfplumber. 4770 chars / 77 linhas. |
+| backend/tests/fixtures/santander_consolidado_jan2025_raw.txt | NOVO. Texto raw do `Santander N1.pdf` via pdfplumber. 31632 chars / 704 linhas. |
+| AUDITORIA_TECNICA_CONTROLLO.md | Esta secao. |
+
+**Mudancas de roteamento (auditadas contra todos os 92 PDFs da fixture)**:
+| PDF | Antes | Depois |
+|-----|-------|--------|
+| B2S.pdf | santander | **bs2** |
+| Bradesco Net Empresas.PDF (SEOLIN) | bradesco | **bradesco_net_empresas** |
+| Santander N1.pdf (LEKE) | mercado_pago | **santander_consolidado** |
+| Bradesco net.pdf (TANIA dez) | bradesco | bradesco_net_empresas (colateral positivo) |
+| Bradesco net2.pdf (TANIA nov) | bradesco | bradesco_net_empresas (colateral positivo) |
+| Bradesco_24032026_085239.pdf | bradesco | bradesco_net_empresas (colateral positivo) |
+| Agosto 2025.pdf | bradesco | bradesco_net_empresas (colateral positivo) |
+| Extrato dec25.pdf, Extrato nov25.pdf | bradesco | bradesco_net_empresas (colateral positivo) |
+| pdf_gerado.pdf, pdf_gerado (1).pdf | mercado_pago | santander_consolidado (colateral positivo) |
+| Outros 80 PDFs | inalterados | inalterados |
+
+**Politica de fixtures respeitada**: zero PDFs binarios commitados; apenas fixtures `.txt` raw. PDFs reais permanecem em `backend/tests/fixtures/pdfs_reais/` (gitignored).
+
+**Testes:** 774 passou (+13 da Sessao 17 vs 761 da Sessao 16), 1 falha pre-existente (zxcvbn), 2 erros pre-existentes (pagbank scripts CLI). Diferenca exata = +13 (todos os novos passam, nenhuma regressao).
+
+**Nao tocados (R2):** parsers (`bs2.py`, `bradesco_*.py`, `santander_*.py`, `inter_n2.py`, `mercado_pago.py`), funcao `_extrair_saldos_pdf` (Sessao 16), funcao `detectar_banco`, fallback de filename hint, `pipeline_extracao.py`, `gerador_excel_*.py`, `main.py`, `requirements.txt`, Dockerfiles, frontend, `_PARSERS`, ordem geral das assinaturas (apenas adicao/troca de strings dentro de 3 entradas).
+
+**Validacao em prod (apos deploy)**:
+- `B2S.pdf`: 200 OK, banco=bs2, sem gap 47.748
+- `Bradesco_Net_Empresas.PDF` (SEOLIN): 200 OK, banco=bradesco_net_empresas, SI=89479.75 / SF=572.64 (Sessao 16 ativada), sem gap 7.085
+- `Santander_N1.pdf` (LEKE): 200 OK ou 422 com mensagem util, banco=santander_consolidado (nao mais silent failure mercado_pago)
+- TANIA dez/nov: 200 OK, banco=bradesco_net_empresas (Sessao 16 ativada com SI/SF corretos)
+- CW TOUR: 200 OK, diff=0 (Sessao 16 + 17)
+- Nubank, Itau padrao, demais: inalterados
+
+**Risco residual**: assinaturas mais restritas podem deixar PDFs raros sem deteccao (caem em filename hint ou desconhecido). Auditoria contra 92 PDFs da fixture mostrou 0 perda real (apenas account_statement de Mercado Pago real continua mis-routed para c6bank via filename hint frágil — bug pré-existente FORA do escopo da Sessao 17).

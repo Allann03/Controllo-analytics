@@ -658,8 +658,12 @@ _ASSINATURAS: list[tuple[str, list[list[str]]]] = [
     ('xp_posicao',   [['historico posicao consolidada'], ['histórico posição consolidada']]),
     # mercado_pago: exige termo + contexto exclusivo para evitar falso positivo
     # (PDFs de outros bancos mencionam "mercado pago" e "10.573.521" em transações Pix)
+    # Sessão 17: o set ['mercadopago'] sozinho era frágil — capturava extratos
+    # Santander Consolidado (caso LEKE jan/2025) que mencionam "MERCADOPAGO COM
+    # REPRESENT" em descrições de PIX. Agora exige domínio para evitar substring
+    # match em descrições.
     ('mercado_pago', [['mercado pago', 'extrato de conta'], ['mercado pago', 'detalhe dos movimentos'],
-                      ['mercadopago'], ['10.573.521', 'detalhe dos movimentos']]),
+                      ['mercadopago.com'], ['10.573.521', 'detalhe dos movimentos']]),
     # xp_extrato: 'xp investimentos' é único da XP — any XP file not matched above
     ('xp_extrato',   [['xp investimentos']]),
     # sumup: maquininha de pagamento — detecta pelo nome e pelo formato do extrato
@@ -684,6 +688,14 @@ _ASSINATURAS: list[tuple[str, list[list[str]]]] = [
         ['bradesco', 'total disponivel (r$)'],
         ['bradesco', 'net empresa'],
         ['bradesco', 'total dispon'],              # fallback encoding-safe
+        # Sessão 17: assinatura sem 'bradesco' — cabeçalho exclusivo do formato
+        # Net Empresas ("Agência | Conta Total Disponível (R$)"). Cobre casos
+        # onde "bradesco" não aparece nas primeiras 3 páginas (SEOLIN, TANIA
+        # dez/nov, Extrato dec25/nov25, Agosto 2025, Bradesco_24032026). 9 PDFs
+        # Bradesco Net Empresas validados, 0 falso positivo cross-banco. Tem que
+        # vir ANTES da regra 'bradesco' genérica (que tem 'dcto.' como atalho)
+        # para evitar que ParserBradesco PF capture o caso.
+        ['| conta total'],
     ]),
     # bradesco: 'dcto.' é o cabeçalho de coluna único do Bradesco;
     # 'bradesco' nem sempre está no texto visível do PDF
@@ -714,8 +726,14 @@ _ASSINATURAS: list[tuple[str, list[list[str]]]] = [
         ['santander', 'credito r$', 'debito r$'],
         ['contamax', 'credito r$'],
     ]),
-    # santander: 'contamax' é produto exclusivo Santander; fallback 'santander'
-    ('santander',    [['contamax'], ['santander']]),
+    # santander: 'contamax' é produto exclusivo Santander; fallback exige
+    # qualifier de domínio/nome próprio em vez de substring 'santander' solta.
+    # Sessão 17: a regra ['santander'] sozinha capturava B2S.pdf (PROMOVE BRASIL),
+    # que mencionava "Bco Santander SA" em descrição de TED, gerando mis-route
+    # para parser santander e gap 47.748 em produção. 'santander.com.br' está
+    # presente em rodapés Santander reais; 'banco santander' aparece em headers
+    # do IB N1 (DLS antigo). 12 PDFs Santander validados, 0 falso positivo.
+    ('santander',    [['contamax'], ['santander.com.br'], ['banco santander']]),
     # sicredi: termo único da cooperativa
     ('sicredi',      [['sicredi']]),
     # safra: Banco Safra S/A — CNPJ é super específico
