@@ -78,6 +78,54 @@ class ParserSantanderIBNovo(ParserBase):
     Parser para o layout novo do Internet Banking Empresarial Santander.
     """
 
+    def _extrair_saldos_intermediarios(self) -> list[dict]:
+        """Sessão 19 — extrai os 'DD/MM/YYYY Saldo do dia R$ X,XX' como
+        saldos diários (saldo de FECHAMENTO de cada dia). Útil para o
+        validador da Sessão 18 (Check 2 saldos diários, Check 3 continuidade).
+
+        Retorna lista [{data: 'DD/MM/YYYY', saldo: float}] em ordem
+        cronológica ASCENDENTE.
+        """
+        from decimal import Decimal as _D
+        saldos: list[dict] = []
+        try:
+            with pdfplumber.open(self.pdf_path, password=self.password or '') as pdf:
+                for pagina in pdf.pages:
+                    try:
+                        texto = pagina.extract_text() or ''
+                    except Exception:
+                        continue
+                    for raw in texto.splitlines():
+                        linha = _strip_prefix(raw).rstrip()
+                        if not linha:
+                            continue
+                        m = re.match(
+                            r'^(\d{2}/\d{2}/\d{4})\s+Saldo\s+do\s+dia\s+R\$\s*([\d.]+,\d{2})',
+                            linha, re.IGNORECASE,
+                        )
+                        if not m:
+                            continue
+                        data = m.group(1)
+                        valor_raw = m.group(2)
+                        try:
+                            v = float(_D(valor_raw.replace('.', '').replace(',', '.')))
+                        except Exception:
+                            continue
+                        saldos.append({'data': data, 'saldo': v})
+        except Exception:
+            return []
+
+        # Ordenar por data ASC (sort estável)
+        def _chave(s):
+            d = s['data']
+            return (int(d[6:10]), int(d[3:5]), int(d[0:2]))
+        saldos.sort(key=_chave)
+        # Dedup por data (preserva o último — útil se PDF repete a linha)
+        vistos = {}
+        for s in saldos:
+            vistos[s['data']] = s
+        return list(vistos.values())
+
     def extrair(self) -> list[dict]:
         partes_por_pagina: list[str] = []
         with pdfplumber.open(self.pdf_path, password=self.password or '') as pdf:

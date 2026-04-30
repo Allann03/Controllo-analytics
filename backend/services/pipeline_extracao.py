@@ -606,6 +606,7 @@ class PipelineExtracao:
                 saldos_diarios=saldos_diarios or None,
                 periodo_inicio=periodo_inicio,
                 periodo_fim=periodo_fim,
+                banco=getattr(r, 'banco', None),
             )
             nivel, diagnostico = classificar(resultado)
         except Exception as e:

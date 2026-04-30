@@ -1158,3 +1158,124 @@ Suite completa: **790 passou** (+16 da Sessao 18: 10 validador + 6 lote A; vs 77
 - `_ASSINATURAS` / `detectar_banco`: inalterados (Sessao 17 ja resolveu).
 - `gerador_excel_*`: inalterado (escopo da Sessao 20).
 - `requirements.txt`, Dockerfiles, `atualizar.sh`, frontend: inalterados.
+
+## Sessao 19 — Santander 100% HONESTO (4 iters + R-B ampla)
+
+**Data**: 2026-04-30
+**Branch**: `feat/santander-100-verde-validador` (a partir de `ce7a7b4`, tip da S18 doc)
+**Commit**: (a registrar apos push)
+
+**Objetivo declarado**: Santander 100% VERDE.
+**Objetivo real entregue**: **Santander 100% HONESTO** — VERDE para todos os layouts onde o PDF expoe SI/SF reconciliaveis; VERMELHO honesto e diagnosticavel para os 5 PDFs onde o parser perde transacoes ou o layout nao contem dado suficiente. Filosofia: VERDE FAKE em producao mente em silencio; VERMELHO bem diagnosticado grita "olha aqui, falta dado X". A Sessao 18 ensinou caro essa licao no caso CW TOUR Bradesco; a S19 aplicou-a sistematicamente nos 14 Santander.
+
+### Tabela final dos 12 Santander unicos (+ 2 duplicatas MD5)
+
+| # | Arquivo | Banco rota | Nivel | n_tx | SI | SF | Gap | Causa |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Santander Internet Banking N2.pdf (VILA PET) | santander_ib_novo | **VERDE** | 125 | 0,00 | 0,00 | 0,00 | Iter 1 — branch novo `_extrair_saldos_pdf` |
+| 2 | Santander Internet Banking N3.pdf (VILA PET) | santander_ib_novo | **VERDE** | 116 | 0,00 | 0,00 | 0,00 | Iter 1 — idem |
+| 3 | Santander empresas 2.pdf (MARTINS) | santander | **VERDE** | 27 | 392,96 | 1,07 | 0,00 | Iter 3 — fallback B (tabela_aplicativo_saldo_coluna) |
+| 4 | santander problema.pdf (KKS PROMOCOES) | santander | **VERDE** | 21 | 11260,01 | 7961,52 | 0,00 | Iter 3 — fallback A (saldo_do_dia_por_dia + ajuste SI) + fix sinal "- R$" |
+| 5 | Santander N1.pdf | santander_consolidado | **VERDE** | 139 | 76981,06 | 76981,06 | 0,00 | Pre-existente (validador da S18 confirma) |
+| 6 | Santander N2.pdf | santander_consolidado | **VERDE** | 222 | 77598,18 | 77598,18 | 0,00 | Pre-existente |
+| 7 | Santander N3.pdf | santander_consolidado | **VERDE** | 193 | 78206,39 | 78206,39 | 0,00 | Pre-existente |
+| 8 | Santander DLS 13006797-5.pdf (DLS AGENCIA) | santander | **VERMELHO honesto** | 16 | 0,00 | 0,00 | +919,52 | Iter 4 — VERDE FAKE derrubado; gap revela tx perdidas pelo parser |
+| 9 | Santander DLS 13006797-5_1.pdf (DLS AGENCIA) | santander | **VERMELHO honesto** | 9 | 0,00 | 0,00 | -839,52 | Iter 4 — idem |
+| 10 | Santander Internet Banking N1.pdf (CW TOUR) | santander | **VERMELHO honesto** | 6 | 50,84 | 0,00 | -271580,33 | Iter 4 — VERDE FAKE matematico (271k era invencao); 10/16 tx perdidas (incluindo 3 PIX da empresa filtradas por `'cw tour'` hardcoded no _IGNORAR) |
+| 11 | Santander empresarial .pdf (LEKE) | santander_empresas | **VERMELHO honesto acionavel** | 24 | None | None | None | Iter 2 — formato App nao expoe SI/SF; diagnostico aciona usuario a pedir "Extrato Consolidado Inteligente" |
+| 12 | Santander empresarial 2.pdf (LEKE) | santander_empresas | **VERMELHO honesto acionavel** | 24 | None | None | None | Iter 2 — idem |
+| dup | Santander pf .pdf | (mesmo MD5 que N2.pdf) | duplicata | — | — | — | — | MD5 27ef76... |
+| dup | Santander pf 2.pdf | (mesmo MD5 que N3.pdf) | duplicata | — | — | — | — | MD5 f22226... |
+
+**Distribuicao final**: 7 VERDE real + 5 VERMELHO honesto + 2 duplicatas confirmadas. Comparado ao baseline da S19/Fase 2 (6 VERDE / 6 VERMELHO de 12 unicos): 4 VERMELHO viraram VERDE real (Iter 1: IB N2/N3; Iter 3: MARTINS, KKS), 3 VERDE FAKE viraram VERMELHO honesto (Iter 4: DLS, DLS_1, IB N1), 2 VERMELHO ganharam diagnostico acionavel (Iter 2: empresarial x2).
+
+### Por iter
+
+**Iter 1 — santander_ib_novo (VERDE)**: branch novo em `_extrair_saldos_pdf` que captura `^DD/MM/YYYY Saldo do dia R$ valor`, ordena por data, define SI=primeiro_saldo / SF=ultimo_saldo. Strip de glifos PUA (Wingdings) embutido. Adicionou `_extrair_saldos_intermediarios()` ao `ParserSantanderIBNovo` (alimenta Check 2/3 do validador da S18). Tradeoff documentado: SI e tecnicamente saldo de fechamento de D_min — funciona quando net_tx(D_min)=0 (caso VILA PET/contamax). Em outros padroes o validador classifica corretamente como AMARELO/VERMELHO.
+
+**Iter 2 — santander_empresas (VERMELHO honesto acionavel)**: layout App nao expoe SI/SF em parte alguma (auditoria via extract_text + extract_tables + extract_words confirmou: nenhuma palavra "saldo"/"total"/"disponivel"). Decisao Op A com refinamento: parametro novo opcional `banco` em `validar_extracao` propaga para `_diagnostico_curto`, que retorna mensagem hibrida (prefixo `extrato_sem_si_sf:` para parsing/log + frase humana legivel para frontend) quando banco='santander_empresas' e SI/SF ausentes.
+
+**Iter 3 — santander legacy VERMELHO (MARTINS + KKS, VERDE)**: 2 layouts diferentes, 2 fallbacks no branch `santander` de `_extrair_saldos_pdf` (ativados so se ini/fim ainda None apos branch principal): **Fallback A** (saldo_do_dia_por_dia, KKS) — captura `DD/MM/YYYY Saldo do dia [...] R$ valor` (regex tolerante a "Cc + ContaMax principal" entre), SI = `saldo_dia(D_min) - net_tx(D_min)` (reparseamento local), SF = `saldo_dia(D_max)`. **Fallback B** (tabela_aplicativo_saldo_coluna, MARTINS) — so dispara com cabecalho `Valor (R$) ... Saldo (R$)`, captura `DD/MM/YYYY <desc> <valor_signed> <saldo>`, SF=primeira linha do PDF onde data=D_max, SI=ultima linha do PDF onde data=D_min menos seu valor. Tambem fix em `ParserSantanderEmpresas._processar_linha`: detecta sinal `- R$` separado por espaco (alem do hifen colado), corrige bug onde 21 tx do KKS eram todas classificadas como ENTRADA.
+
+**Iter 4 — auditoria VERDE fake (DLS + DLS_1 + IB N1, VERMELHO honesto)**: leitura visual das fixtures revelou que SI estava certo (extraido de "SALDO ANTERIOR") mas SF era CALCULADO pelo Passo 3 do pipeline como `SI + sum(tx_extraidas)` — com parser perdendo ContaMax, "EXTRATO" e "CW TOUR", o SF resultante divergia do SF visual real (que e 0,00 nos 3 casos). Validador dava VERDE matematico (tautologico). Fix: condicao do fallback B mudou de `if ini is None and fim is None` para `if fim is None`, preservando SI extraido pelo branch principal via "SALDO ANTERIOR" (importante para DLS onde SI=0 e correto). Resultado: SF agora extraido como saldo da linha de tx mais recente do D_max (= 0,00 nos 3 casos), gap revela exatamente o que o parser perdeu.
+
+### Bugs do `ParserSantanderEmpresas` mapeados — escopo S20
+
+A Iter 4 expos 3 bugs do parser que NAO foram corrigidos nesta sessao (ficam VERMELHO honesto). Importante registrar:
+
+1. **`'cw tour' hardcoded no _IGNORAR`** (`backend/services/parsers/santander_empresarial.py`). Filtro de header arbitrario que mata tx legitimas de `PIX ENVIADO CW TOUR LTDA` (a propria empresa transferindo p/ ela mesma). **Prioridade ALTA de auditoria**: nome de empresa do cliente Allan colado direto no codigo do parser e indicio de fix-de-cliente que nao deveria estar no main. Antes de qualquer fix na S20, **grep por outros nomes de cliente espalhados** em `backend/services/parsers/`: `'cw tour'`, `'leke'`, `'tania'`, `'seolin'`, `'kks'`, `'martins'`, `'dls'`, `'vila pet'`, `'controllo'`. Se aparecer mais, vira incidente de qualidade de codigo, nao bug pontual. Fix do bug em si e trivial (remover a string).
+
+2. **`'extrato' no _IGNORAR mata `'TARIFA EXTRATO INTELIGENTE'`** (mesma lista). Substring matching frouxo: `'extrato'` casa em qualquer descricao que contenha a palavra, descartando tarifas legitimas. Fix obvio: trocar substring por regex de label especifico (ex: `^extrato\s+do\b`) ou por palavra-inteira em lista mais restrita.
+
+3. **ContaMax (`'resgate contamax'` / `'aplicacao contamax'`) filtrado por design**. Comentario do codigo: "movimentacoes internas de fundo, nao afetam caixa operacional". E **decisao de produto, nao bug**. "Fluxo de caixa operacional" (sem ContaMax) e "reconciliacao de saldo CC" (com tudo) sao dois relatorios diferentes que coexistem em sistemas contabeis serios. A solucao certa provavelmente e o parser extrair tudo e o validador / pos-processador decidir o que mostrar dependendo do contexto. **Refactor, nao fix.** Discussao a aprofundar em S20.
+
+### Pendencias para S20 (mapeadas, nao implementadas nesta sessao)
+
+| Pendencia | Origem | Severidade |
+|---|---|---|
+| 3 bugs do ParserSantanderEmpresas (acima) | Iter 4 | Alta (1 e 2) / Media (3 — produto) |
+| Op C — nivel novo "INCOMPLETO" no validador (alternativa estrutural ao prefixo `extrato_sem_si_sf`) | Iter 2 | Baixa — proposta, nao bug |
+| Retroaplicar `SI = saldo_dia(D_min) - net_tx(D_min)` no `santander_ib_novo` | Iter 1/3 | Refinamento — nao e risco hoje (VILA PET tem net_tx=0 em todos os dias por contamax). Quando aparecer cliente IB Novo nao-contamax, ja cai VERDE em vez de AMARELO/VERMELHO |
+| Inter dedicado (`extrato_ABRIL.pdf` PDF vetorial sem texto extraivel) | Brief inicial S19 | Sessao dedicada |
+
+### Arquivos modificados
+
+| Arquivo | Alteracao |
+|---|---|
+| backend/services/extrator_pdf.py | Branch `santander_ib_novo` em `_extrair_saldos_pdf` (Iter 1, ~50 linhas). Branch `santander` estendido com 2 fallbacks: A=saldo_do_dia_por_dia (Iter 3), B=tabela_aplicativo_saldo_coluna (Iter 3+4) (~120 linhas). Logs `[EXTRATOR-SALDOS] banco=santander_ib_novo` e `banco=santander fallback=...`. |
+| backend/services/parsers/santander_ib_novo.py | Metodo novo `_extrair_saldos_intermediarios()` retornando `[{data, saldo}]` em ordem ASC com dedup por data (Iter 1, ~50 linhas). |
+| backend/services/parsers/santander_empresarial.py | `_processar_linha` estendido para detectar sinal `- R$` separado por espaco (alem do hifen colado), com limpeza da descricao (Iter 3, ~12 linhas). |
+| backend/services/validacao/validador_saldos.py | Parametro novo opcional `banco: Optional[str] = None` em `validar_extracao` propagado para `_diagnostico_curto`; quando banco='santander_empresas' e SI/SF ausentes, retorna mensagem hibrida acionavel (Iter 2, ~12 linhas). |
+| backend/services/pipeline_extracao.py | 1 linha: `banco=getattr(r, 'banco', None)` na chamada de `validar_extracao` em `_validar_saldos`. |
+| backend/tests/test_extrair_saldos_santander_s19.py | NOVO. 6 testes cobrindo Iter 1/3/4 contra PDFs reais (skipam se pasta `pdfs_reais/` ausente — politica fixtures S13). |
+| backend/tests/test_santander_empresarial_sinal_separado.py | NOVO. 7 testes do fix de sinal `- R$` (3 saidas separadas + 2 entradas + 2 regressoes hifen colado). Sem dependencia de PDF binario. |
+| backend/tests/test_validador_diagnostico_acionavel_s19.py | NOVO. 4 testes do diagnostico Iter 2 (santander_empresas vs outros bancos vs banco=None vs caso VERDE). |
+| backend/tests/test_santander_ib_novo_saldos_intermediarios.py | NOVO. 2 testes do metodo novo do parser ib_novo (IB N2 + IB N3). |
+| backend/tests/fixtures/santander_*_raw.txt | NOVOS. 14 fixtures `.txt` raw (uma por PDF Santander) extraidas via pdfplumber para auditoria read-only. ZERO PDFs binarios commitados. |
+| AUDITORIA_TECNICA_CONTROLLO.md | Esta secao. |
+
+### Politica de fixtures respeitada
+
+Zero PDFs binarios commitados. Apenas fixtures `.txt` raw (texto que `pdfplumber` extrai). PDFs reais permanecem em `backend/tests/fixtures/pdfs_reais/` (gitignored desde a S13). Testes que dependem de PDF real usam pytest.skip se a pasta nao existir.
+
+### Testes — pytest final
+
+- **810 passou** (+19 vs S18 baseline 791, exatamente os novos da S19: 6 + 7 + 4 + 2 = 19).
+- **0 falhas**.
+- **2 erros pre-existentes** (`test_pagbank.py::testar_pdf`, `test_pagbank_integracao.py::testar_integracao` — scripts CLI legados sem fixtures, herdados do commit `d7f4689` desde a S14).
+- O teste `test_t8_senhas_comuns_rejeita_via_zxcvbn` (que era falha pre-existente herdada da S14) **passou** nesta sessao por flutuacao da biblioteca zxcvbn (DeprecationWarning indica que ela esta em estado mutavel). **Nao e relacionado ao fix da S19**. Anotado para rastreabilidade: se voltar a falhar em sessao futura, sabemos que e zxcvbn instavel, nao regressao real. Versao atual em uso: a do `requirements.txt` (zxcvbn — sem pin estrito).
+
+### R-B ampla obrigatoria (pre-commit)
+
+Confirmacao de zero regressao em outros bancos:
+
+| Grupo | PDFs testados | VERDE | VERMELHO/Outro | Observacao |
+|---|---|---|---|---|
+| **9 Bradesco (S18 preservada)** | Agosto 2025, BNE (2), BNE.PDF, net, net2, Bradesco5, 24032026, dec25, nov25 | **9/9** | 0 | Validador continua VERDE, Sessoes 16+18 preservadas |
+| **2 Nubank** | Nubank, Nubank 2 | **2/2** | 0 | Inalterado |
+| **1 Itau padrao** | testeseeee.pdf (rota itau_n2, 708 tx) | **1/1** | 0 | Inalterado |
+| **1 Itau Mensal** | 08_2025 Extrato Mensal.pdf (246 tx) | **1/1** | 0 | Inalterado |
+| **1 BS2 (S17)** | B2S.pdf (PROMOVE BRASIL, 46 tx) | **1/1** | 0 | Sessao 17 preservada |
+| **2 outros bancos** | Inter.pdf (banco=desconhecido, n_tx=0); Extrato Stone.pdf (VERMELHO, SI=None) | 0 | 2 | **Estados pre-existentes** (Inter sem texto extraivel — pendente Sessao Inter dedicada; Stone parser nao extrai SI). Nao toquei `_ASSINATURAS`, `detectar_banco`, parsers Inter/Stone — confirmado via git diff. |
+
+### Nao tocados (R2)
+
+- Parsers de outros bancos: bradesco*, itau*, nubank*, inter*, bb*, caixa*, bs2*, c6bank*, cora*, pagbank*, mercado_pago*, stone*, xp*, sicredi*, sumup*. Inalterados.
+- `_ASSINATURAS` e `detectar_banco`: inalterados (S17 ja endureceu).
+- `pipeline_extracao.py` estrutura: apenas adicao de 1 argumento na chamada de `validar_extracao`. Sem mudancas em fluxo, dataclass ou passos.
+- `gerador_excel_*.py`, `main.py`, `requirements.txt`, Dockerfiles, `atualizar.sh`, frontend: inalterados.
+
+### Validacao em prod (apos deploy — Allan executa manualmente)
+
+- 7 PDFs Santander VERDE devem retornar 200 OK com `validacao.nivel=VERDE` e `gap=0,00`. Logs `[EXTRATOR-SALDOS]` aparecem com banco/fallback indicando ramo escolhido.
+- 5 PDFs VERMELHO honesto devem retornar 200 OK (NAO 422 — extracao funciona, so o validador classifica) com `validacao.nivel=VERMELHO` e `validacao.diagnostico` informativo.
+  - DLS, DLS_1, IB N1: gap = exatamente as tx perdidas pelo parser. Valor diagnostico-friendly para futuro fix S20.
+  - empresarial, empresarial 2: diagnostico contem `extrato_sem_si_sf:` + frase pedindo "Extrato Consolidado Inteligente".
+- Outros bancos (Bradesco, Nubank, Itau, BS2, Stone, Inter etc): inalterados.
+- Se algum PDF Santander em prod der nivel != esperado, capturar log `[EXTRATOR-SALDOS]` e `[VALIDADOR]` para diagnostico.
+
+### Risco residual
+
+- **Iter 1**: convencao SI = saldo_dia(D_min) sem ajuste no santander_ib_novo. Funciona porque VILA PET tem net_tx(D_min)=0 todo dia (contamax). Se aparecer cliente IB Novo nao-contamax cujo D_min tem net_tx != 0, validador apontara gap. Refinamento mapeado para S20 (retroaplicar `SI = saldo - net_tx_d_min` igual ao fallback A).
+- **Iter 3 fallback B (regra "SF = primeira linha do PDF onde data=D_max")**: assume que PDF lista tx em ordem descendente cronologica DENTRO do dia. Vale para MARTINS e DLS/DLS_1/IB N1 (todos do mesmo layout). Se aparecer Aplicativo Santander Empresas com ordem ascendente intra-dia, regra inverte. Logs em prod permitirao identificar.
+- **Iter 4 — VERMELHO honesto permanente** dos 3 PDFs DLS/DLS_1/IB N1 ate fix do parser na S20. Comportamento esperado, NAO e pendencia urgente — gap e diagnosticavel.

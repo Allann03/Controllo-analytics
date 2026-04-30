@@ -107,6 +107,7 @@ def validar_extracao(
     periodo_fim: Optional[object] = None,
     tolerancia_saldo: float = TOL_SALDO,
     tolerancia_continuidade: float = TOL_CONTINUIDADE,
+    banco: Optional[str] = None,
 ) -> ResultadoValidacao:
     """
     Args:
@@ -121,6 +122,9 @@ def validar_extracao(
         tolerancia_saldo: gap máx em R$ para Checks 1 e 2.
         tolerancia_continuidade: gap máx em R$ para Check 3 (rendimento
             overnight de fim de semana entra aqui).
+        banco: identificador do banco (ex: 'santander_empresas') para
+            personalizar o diagnóstico quando o layout do PDF não expõe SI/SF
+            (Sessão 19, Iter 2). Default None mantém comportamento genérico.
 
     Retorna ResultadoValidacao com flags + listas de divergências + nível
     preliminar (definitivo é decidido em classificador_confianca.classificar).
@@ -237,6 +241,7 @@ def validar_extracao(
         saldos_diarios_ok, dias_suspeitos,
         continuidade_ok, rupturas,
         datas_ok, datas_problematicas,
+        banco=banco,
     )
 
     return {
@@ -258,10 +263,29 @@ def _diagnostico_curto(
     saldos_diarios_ok, dias_suspeitos,
     continuidade_ok, rupturas,
     datas_ok, datas_problematicas,
+    banco: Optional[str] = None,
 ) -> str:
-    """Mensagem concisa em PT-BR descrevendo o resultado da validação."""
+    """Mensagem concisa em PT-BR descrevendo o resultado da validação.
+
+    Sessão 19, Iter 2: quando SI/SF ausentes E banco='santander_empresas',
+    retorna mensagem acionável distinguindo "PDF sem dado" de "bug do parser"
+    para que o usuário saiba pedir ao banco a versão correta. Não muda o
+    nivel (continua VERMELHO) — apenas enriquece o diagnóstico.
+    """
     if saldo_total_ok and saldos_diarios_ok and continuidade_ok and datas_ok:
         return 'Extração reconciliada: saldos e datas consistentes.'
+    # Caso especial Sessão 19 — santander_empresas (formato App): layout do PDF
+    # nunca expõe SI/SF, requer extrato Consolidado para reconciliação.
+    if (
+        not saldo_total_ok and saldo_total_gap == float('inf')
+        and banco == 'santander_empresas'
+    ):
+        return (
+            'extrato_sem_si_sf: este extrato (formato App do Santander '
+            'Empresas) não inclui saldo inicial nem final, então não é '
+            'possível reconciliar. Solicite ao banco o "Extrato Consolidado '
+            'Inteligente" para uma análise completa.'
+        )
     partes = []
     if not saldo_total_ok:
         if saldo_total_gap == float('inf'):

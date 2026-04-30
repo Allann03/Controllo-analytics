@@ -423,6 +423,63 @@ def _extrair_saldos_pdf(pdf_path: str, banco_key: str = '', password: str | None
                         fim = v
         return ini, fim
 
+    # ─── Santander IB Novo (Internet Banking Empresarial layout NOVO) ───────
+    # Sessão 19 — extrato não expõe "Saldo Anterior"/"Saldo Final" nominais;
+    # apenas linhas "DD/MM/YYYY Saldo do dia R$ X,XX" — saldo de FECHAMENTO
+    # de cada dia. Convenção:
+    #   SI (do período) = "Saldo do dia" do dia mais ANTIGO (menor data)
+    #   SF (do período) = "Saldo do dia" do dia mais RECENTE (maior data)
+    # Tradeoff: SI assim é tecnicamente o saldo de fechamento de D_min (não
+    # saldo de abertura do período). A equação SI+E-S=SF então só bate
+    # exatamente quando net_tx(D_min)=0 (caso típico do padrão "contamax
+    # com resgate automático" em que a conta corrente fica zerada e cada
+    # dia tem aplicação compensando movimentos). Em PDFs reais auditados
+    # (VILA PET, IB N2 e IB N3) essa condição se cumpre — gap=0. Em casos
+    # onde net_tx(D_min) != 0, o validador da Sessão 18 detecta via Check 1.
+    if banco == 'santander_ib_novo':
+        from datetime import datetime as _dt
+        _re_ibn_dia = re.compile(
+            r'^\s*(\d{2}/\d{2}/\d{4})\s+Saldo\s+do\s+dia\s+R\$\s*([\d.]+,\d{2})',
+            re.IGNORECASE,
+        )
+        # Strip de glifos da Private Use Area (bullet do Wingdings) para que
+        # o anchor `^` case mesmo se a linha começar com U+F12E/U+F131.
+        def _strip_pua_local(s: str) -> str:
+            return ''.join(ch for ch in s if not (0xF000 <= ord(ch) <= 0xF999))
+
+        saldos_dia: list[tuple[_dt, Decimal]] = []
+        for linha in linhas:
+            limpa = _strip_pua_local(linha).lstrip()
+            m = _re_ibn_dia.match(limpa)
+            if not m:
+                continue
+            try:
+                dt = _dt.strptime(m.group(1), '%d/%m/%Y')
+            except ValueError:
+                continue
+            v = _parse_valor_br(m.group(2))
+            if v is None:
+                continue
+            saldos_dia.append((dt, v))
+
+        if saldos_dia:
+            saldos_dia.sort(key=lambda x: x[0])
+            ini = saldos_dia[0][1]
+            fim = saldos_dia[-1][1]
+
+        try:
+            si_log = f'{float(ini):.2f}' if ini is not None else 'None'
+            sf_log = f'{float(fim):.2f}' if fim is not None else 'None'
+            print(
+                f'[EXTRATOR-SALDOS] banco=santander_ib_novo '
+                f'si={si_log} sf={sf_log} '
+                f'dias_com_saldo={len(saldos_dia)}'
+            )
+        except Exception:
+            pass
+
+        return ini, fim
+
     # ─── Santander Empresas: reutiliza lógica do Santander genérico ─────────
     if banco == 'santander_empresas':
         # Internet Banking Empresarial não expõe saldo do período de forma padronizada
@@ -598,6 +655,171 @@ def _extrair_saldos_pdf(pdf_path: str, banco_key: str = '', password: str | None
                 v = _r_num(linha) or _ultimo_num(linha)
                 if v is not None:
                     fim = v
+
+        # Sessão 19, Iter 3 — Fallbacks para variantes legacy sem
+        # "SALDO ANTERIOR"/"SALDO FINAL" nominais.
+        #
+        # Fallback A — "DD/MM/YYYY Saldo do dia [...] R$ valor" por dia
+        # (caso "santander problema.pdf" KKS PROMOCOES — IB Empresarial
+        # com "Saldo do dia Cc + ContaMax principal R$"). Mesma convenção
+        # da Iter 1: SI = saldo do dia mais antigo, SF = saldo do dia
+        # mais recente. Ativa só se ini/fim ainda None.
+        if ini is None and fim is None:
+            from datetime import datetime as _dt
+            _re_sant_saldo_dia = re.compile(
+                r'^\s*(\d{2}/\d{2}/\d{4})\s+Saldo\s+do\s+dia\b.*?R\$\s*([\d.]+,\d{2})',
+                re.IGNORECASE,
+            )
+            saldos_dia: list[tuple[_dt, Decimal]] = []
+            for linha in linhas:
+                m = _re_sant_saldo_dia.match(linha.lstrip())
+                if not m:
+                    continue
+                try:
+                    dt = _dt.strptime(m.group(1), '%d/%m/%Y')
+                except ValueError:
+                    continue
+                v = _parse_valor_br(m.group(2))
+                if v is None:
+                    continue
+                saldos_dia.append((dt, v))
+            if saldos_dia:
+                saldos_dia.sort(key=lambda x: x[0])
+                d_min_dt, saldo_d_min = saldos_dia[0]
+                _, saldo_d_max = saldos_dia[-1]
+                fim = saldo_d_max
+
+                # Sessão 19, Iter 3 — Ajuste do SI: o "Saldo do dia D_min" é
+                # saldo de FECHAMENTO de D_min, não de abertura do período.
+                # Para gap=0: SI_periodo = saldo_dia(D_min) - net_tx(D_min).
+                # Reparseamos tx do D_min localmente (formato KKS:
+                # "DD/MM/YYYY <desc> [- ]R$ valor"). Ignora linhas "Saldo do
+                # dia" para evitar contar saldo como tx.
+                d_min_str = d_min_dt.strftime('%d/%m/%Y')
+                _re_kks_tx = re.compile(
+                    r'^\s*' + re.escape(d_min_str) +
+                    r'\s+(.+?)(\s+-)?\s+R\$\s*([\d.]+,\d{2})\s*$',
+                    re.IGNORECASE,
+                )
+                net_d_min = Decimal('0')
+                tx_d_min_count = 0
+                for linha in linhas:
+                    m = _re_kks_tx.match(linha)
+                    if not m:
+                        continue
+                    desc_m = (m.group(1) or '').lower()
+                    if 'saldo do dia' in desc_m:
+                        continue
+                    is_saida = bool(m.group(2))
+                    v = _parse_valor_br(m.group(3))
+                    if v is None:
+                        continue
+                    if is_saida:
+                        net_d_min -= v
+                    else:
+                        net_d_min += v
+                    tx_d_min_count += 1
+                ini = saldo_d_min - net_d_min
+                try:
+                    print(
+                        f'[EXTRATOR-SALDOS] banco=santander '
+                        f'fallback=saldo_do_dia_por_dia '
+                        f'si={float(ini):.2f} sf={float(fim):.2f} '
+                        f'dias_com_saldo={len(saldos_dia)} '
+                        f'd_min={d_min_str} net_tx_d_min={float(net_d_min):.2f} '
+                        f'tx_d_min={tx_d_min_count}'
+                    )
+                except Exception:
+                    pass
+
+        # Fallback B — tabela com coluna Saldo (R$) por linha (casos
+        # "Santander empresas 2.pdf" MARTINS — Aplicativo Santander
+        # Empresas; e DLS / IB N1 — Internet Banking Empresarial layout
+        # antigo). Cabeçalho típico:
+        #   "Data Histórico Documento Valor (R$) Saldo (R$)"
+        # Cada linha tx: "DD/MM/YYYY <desc> [-]<valor> <saldo>".
+        # PDF lista tx em ordem DESCENDENTE cronológica dentro do dia,
+        # então:
+        #   SF = saldo da PRIMEIRA linha do PDF onde data == D_max
+        #        (saldo após a tx mais recente cronológica do D_max).
+        #   SI = saldo da ÚLTIMA linha do PDF onde data == D_min,
+        #        MENOS o valor dessa linha (saldo antes da tx mais
+        #        antiga cronológica do D_min = saldo de abertura).
+        #
+        # Sessão 19, Iter 4 — ativa quando `fim is None` mesmo se `ini`
+        # já foi extraído pelo branch principal (caso DLS/IB N1 que têm
+        # `SALDO ANTERIOR` no PDF dando SI correto, mas não têm "Saldo
+        # Final"/"Saldo Atual" — antes do fix, SF era calculado pelo
+        # pipeline como SI + sum(tx_extraídas), gerando VERDE fake quando
+        # o parser perdia transações). Preserva `ini` se já extraído.
+        if fim is None:
+            tem_cabecalho_tabela = any(
+                'valor (r$)' in linha.lower() and 'saldo (r$)' in linha.lower()
+                for linha in linhas
+            )
+            if tem_cabecalho_tabela:
+                from datetime import datetime as _dt
+                # Captura: data, valor (com sinal opcional), saldo
+                _re_sant_tab = re.compile(
+                    r'^\s*(\d{2}/\d{2}/\d{4})\s+.+?\s+(-?\d[\d.]*,\d{2})\s+(-?\d[\d.]*,\d{2})\s*$'
+                )
+                # Lista de (idx_linha, data_dt, valor_signed, saldo)
+                linhas_tx: list[tuple[int, _dt, Decimal, Decimal]] = []
+                for idx, linha in enumerate(linhas):
+                    m = _re_sant_tab.match(linha)
+                    if not m:
+                        continue
+                    try:
+                        dt = _dt.strptime(m.group(1), '%d/%m/%Y')
+                    except ValueError:
+                        continue
+                    # Preserva sinal do valor (entrada/saída)
+                    val_raw = m.group(2)
+                    saldo_raw = m.group(3)
+                    val_neg = val_raw.startswith('-')
+                    sal_neg = saldo_raw.startswith('-')
+                    val_abs = _parse_valor_br(val_raw.lstrip('-'))
+                    sal_abs = _parse_valor_br(saldo_raw.lstrip('-'))
+                    if val_abs is None or sal_abs is None:
+                        continue
+                    val = -val_abs if val_neg else val_abs
+                    sal = -sal_abs if sal_neg else sal_abs
+                    linhas_tx.append((idx, dt, val, sal))
+                if linhas_tx:
+                    # D_max = data mais recente; D_min = data mais antiga.
+                    datas = [t[1] for t in linhas_tx]
+                    d_max = max(datas)
+                    d_min = min(datas)
+                    # Primeira linha do PDF onde data == D_max → SF
+                    for _idx, dt, _val, sal in linhas_tx:
+                        if dt == d_max:
+                            fim = sal
+                            break
+                    # SI: só calcula se ainda não foi extraído pelo branch
+                    # principal (preserva `SALDO ANTERIOR` quando presente).
+                    if ini is None:
+                        # Última linha do PDF onde data == D_min → SI = saldo - valor
+                        ultima_d_min: tuple | None = None
+                        for t in linhas_tx:
+                            if t[1] == d_min:
+                                ultima_d_min = t
+                        if ultima_d_min is not None:
+                            _idx, _dt, val, sal = ultima_d_min
+                            ini = sal - val
+                    try:
+                        si_log = f'{float(ini):.2f}' if ini is not None else 'None'
+                        sf_log = f'{float(fim):.2f}' if fim is not None else 'None'
+                        print(
+                            f'[EXTRATOR-SALDOS] banco=santander '
+                            f'fallback=tabela_aplicativo_saldo_coluna '
+                            f'si={si_log} sf={sf_log} '
+                            f'd_min={d_min.strftime("%d/%m/%Y")} '
+                            f'd_max={d_max.strftime("%d/%m/%Y")} '
+                            f'linhas_tx={len(linhas_tx)}'
+                        )
+                    except Exception:
+                        pass
+
         return ini, fim
 
     # ─── XP: sem saldo do período ────────────────────────────────────────────

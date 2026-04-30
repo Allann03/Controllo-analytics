@@ -1,0 +1,61 @@
+Aplicativo Santander Empresas
+MARTINS COM DE PROD E ACESSORIOS VETERIN Agência: 3871 Conta: 130030480
+Períodos: 01/12/2025 a 31/12/2025 Data/Hora: 12/02/2026 as 15h49
+Saldo disponível para uso: R$ 1.653,48
+Data Histórico Documento Valor (R$) Saldo (R$)
+16/12/2025 Pagamento Cartao Credito Bce 0000210401 -300,00 1,07
+16/12/2025 Pix Recebido 300,00 301,07
+15/12/2025 Pix Enviado -10,00 1,07
+09/12/2025 Pagamento Cartao Credito Bce 0000113346 -400,00 11,07
+09/12/2025 Pix Enviado 11330402 -140,00 411,07
+09/12/2025 Pix Recebido 383,38 551,07
+08/12/2025 Pix Enviado 10424040 -80,00 167,69
+05/12/2025 Pagamento Cartao Credito Bce 0000102644 -150,00 247,69
+05/12/2025 Antecipacao Getnet 5296551749 256,64 397,69
+05/12/2025 Pagamento Cartao De Debito 0000145284 112,49 141,05
+05/12/2025 Tarifa Mensalidade Pacote Servicos -185,00 28,56
+04/12/2025 Antecipacao Getnet 5296457484 212,95 213,56
+03/12/2025 Pix Enviado -16,00 0,61
+03/12/2025 Pix Enviado -16,00 16,61
+03/12/2025 Pix Enviado -16,00 32,61
+02/12/2025 Pagamento Cartao Credito Bce 0000103528 -200,00 48,61
+02/12/2025 Pagamento Cartao De Debito 0000145284 88,29 248,61
+02/12/2025 Pagamento Cartao De Debito 0000145284 63,74 160,32
+02/12/2025 Tarifa Avulsa Envio Pix -1,75 96,58
+01/12/2025 Pix Recebido 40,00 98,33
+01/12/2025 Pix Recebido 20,00 58,33
+01/12/2025 Pix Enviado -89,00 38,33
+01/12/2025 Pagamento Cartao Credito Bce 0000104906 -250,00 127,33
+01/12/2025 Antecipacao Getnet 5296185811 217,03 377,33
+1/2
+01/12/2025 Pagamento Cartao De Debito 0000145284 65,70 160,30
+01/12/2025 Pagamento Cartao De Debito 0000145284 54,99 94,60
+01/12/2025 Pagamento De Boleto Outros Bancos 0000000000 -353,35 39,61
+Saldo de ContaMax 1.179,43
+Saldo Disponível 474,05
+Saldo
+Posição em: 12/02/2026
+Entenda a composição do seu saldo no quadro abaixo.
+A – Saldo de Conta Corrente 474,05
+B – Saldo Bloqueado 0,00
+Desbloqueio em 1 dia 0,00
+Desbloqueio em 2 dias 0,00
+Desbloqueio em mais de 2 dias 0,00
+C – Provisão de Encargos 0,00
+Juros acumulados até a data 0,00
+IOF Acumulado até a data 0,00
+D - Provisão de Seguro Cheque Empresa Protegido 0,00
+E – Saldo disponível de Conta Corrente (A-B) 474,05
+F – Saldo de Investimentos com Resgate Automático 1.179,43
+G – Saldo disponível de Conta Corrente + Saldo de investimentos (E+F) 1.653,48
+H – Limite Cheque Empresa 0,00
+I – Limite Cheque Investidor 0,00
+J - Saldo Disponível + Limite (G + H + I) 1.653,48
+Central de Atendimento Santander Empresarial SAC - Atendimento 24h por dia, todos os dias.
+4004-2125 (Regiões Metropolitanas) 0800 762 7777
+0800 726 2125 (Demais Localidades) 0800 771 0401 (Pessoas com deficiência auditiva ou de fala)
+0800 723 5007 (Pessoas com deficiência auditiva ou de fala)
+Ouvidoria - Das 9h às 18h, de segunda a sexta-feira, exceto feriado.
+0800 726 0322
+0800 771 0301 (Pessoas com deficiência auditiva ou de fala)
+2/2

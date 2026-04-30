@@ -1,0 +1,73 @@
+19/12/2025, 10:28 Internet Banking
+Internet Banking Empresarial
+DLS AGENCIA DE VIAGENS E TURISMO LTDA Agência: 3744 Conta: 130067975
+Conta Corrente > Extrato >
+Consultar
+Opção de Pesquisa:Todos
+Períodos:Sat Nov 01 00:00:00 GMT-03:00 2025aSun Nov 30 00:00:00 GMT- Data/Hora:19/12/2025às10h27
+03:00 2025
+Opção de Pesquisa:Todos
+Saldo disponível para uso:R$2.570,82
+Data Histórico Documento Valor (R$) Saldo (R$)
+03/11/2025 SALDO ANTERIOR 0,00
+03/11/2025 IOF IMPOSTO OPERACOES FINANCEIRAS PERIODO: 01/10 A 31/10/25 000000 -20,24
+03/11/2025 IOF ADICIONAL - AUTOMATICO PERIODO: 01/10 A 31/10/25 000000 -278,80
+03/11/2025 RESGATE CONTAMAX AUTOMATICO 000000 299,04 0,00
+14/11/2025 PIX RECEBIDO 74612839000117 000000 245.000,00
+14/11/2025 PAGAMENTO CARTAO CREDITO BCE 14/11 12:41 CARTAO MASTER 124147 -245.000,00 0,00
+17/11/2025 DEBITO AUT. FAT.CARTAO MASTER CARD FINAL 8875 000000 -16.321,39
+17/11/2025 TED RECEBIDA 74612839000117 000000 18.487,15
+17/11/2025 APLICACAO CONTAMAX 000000 -2.165,76 0,00
+21/11/2025 TARIFA MENSALIDADE PACOTE SERVICOS OUTUBRO / 2025 000000 -185,00
+21/11/2025 RESGATE CONTAMAX AUTOMATICO 000000 185,00 0,00
+25/11/2025 PIX ENVIADO ENIVALDO CARLIN 173852 -2.000,00
+25/11/2025 PIX RECEBIDO 19461208804 000000 1.157,80
+25/11/2025 RESGATE CONTAMAX AUTOMATICO 000000 842,20 0,00
+26/11/2025 TARIFA EXTRATO INTELIGENTE 24/11/2025 000000 -16,00
+26/11/2025 RESGATE CONTAMAX AUTOMATICO 000000 16,00 0,00
+Saldo em Investimentos com Resgate Automático 2.570,82
+Saldo Disponível 2.570,82
+a = Bloqueio Dia / ADM Entenda a composição do seu saldo no quadro abaixo.
+b = Bloqueado
+p = Lançamento Provisionado
+Saldo
+Posição em:19/12/2025
+Saldo Valor (R$)
+https://pj.santandernetibe.com.br/ibeweb/commons/pdf/pdfImprimir.xhtml 1/2
+19/12/2025, 10:28 Internet Banking
+A - Saldo de Conta Corrente 0,00
+B - Saldo Bloqueado 0,00
+Desbloqueio em 1 dia 0,00
+Desbloqueio em 2 dias 0,00
+Desbloqueio em mais de 2 dias 0,00
+C - Provisão de Encargos -313,83
+Juros Acumulados até a data 0,00
+IOF Acumulado até a data -313,83
+CPMF Acumulada 0,00
+CPMF Provisionada sobre saldo 0,00
+D - Saldo Disponível em Conta Corrente (A - B) 0,00
+E - Saldo em Investimentos com Resgate Automático 2.570,82
+F - Saldo Disponível (D + E) 2.570,82
+G - Limite Santander Master 110.000,00
+Vencimento 29/01/2026
+Taxa de Juros 16,20
+Limite 110.000,00
+Última Utilização 15/12/2025
+Juros Calculado 689,31
+Dias utilizados até a data 01
+Valor Utilizado 0,00
+Disponível 110.000,00
+H - Saldo Disponível Total (F + G) 112.570,82
+Central de Atendimento Santander Empresarial - Das 8h às 20h, de segunda a SAC - Atendimento 24h por dia, todos os dias.
+sexta-feira Reclamações cancelamentos e informações:
+4004-2125 (Capitais e Regiões Metropolitanas) 0800 762 7777
+0800 702 2125 (Demais Localidades)
+Ouvidoria - Disponível das 9h às 18h, de segunda a sexta-feira, exceto feriados.
+Central de Atendimento Getnet - Atendimento 24h por dia, todos os dias Se não ficar satisfeito com a solução apresentada:
+4002-4000 (Capitais e Regiões Metropolitanas) 0800 726 0322
+4003-4000 (Capitais e Regiões Metropolitanas) 55 (11) 3012 0322 (No exterior, ligue a cobrar)
+0800 648 8000 (Demais Localidades)
+Central de Vendas PJ - Das 8h às 20h, de segunda a sexta-feira, exceto
+feriados.
+0800 013 7333
+https://pj.santandernetibe.com.br/ibeweb/commons/pdf/pdfImprimir.xhtml 2/2

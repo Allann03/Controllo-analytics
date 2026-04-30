@@ -180,10 +180,28 @@ class ParserSantanderEmpresas(ParserBase):
             return None
 
         # Normaliza o valor preservando o sinal para determinar o tipo
-        negativo = valor_raw.lstrip().startswith('-')
+        negativo_colado = valor_raw.lstrip().startswith('-')
         valor = self._normalizar_valor(valor_raw)
 
         if valor < 0.01:
+            return None
+
+        # Sessão 19, Iter 3 — Detecção de sinal "- R$" separado.
+        # Layout IB Empresarial KKS PROMOCOES tem tx no formato:
+        #   "<desc> - R$ <valor>"  (hífen + espaço + R$ + valor positivo)
+        # O hífen colado (`-300,00`) já era detectado; agora também pega
+        # o "hífen + espaço + R$" antes do valor capturado.
+        # Pattern: na descrição (texto antes do valor), procura ' - R$' ou
+        # '- R$' no FINAL (imediatamente antes do número que veio).
+        negativo_separado = bool(re.search(r'\s-\s+R\$\s*$', desc, re.IGNORECASE))
+        negativo = negativo_colado or negativo_separado
+
+        # Limpa sinalizadores residuais da descrição
+        if negativo_separado:
+            desc = re.sub(r'\s-\s+R\$\s*$', '', desc, flags=re.IGNORECASE).strip()
+        # Limpa "R$" no final da desc se ficou (ex: "Pix Recebido R$" sem hífen)
+        desc = re.sub(r'\s+R\$\s*$', '', desc, flags=re.IGNORECASE).strip()
+        if not desc or len(desc) < 3:
             return None
 
         # Negativo = débito (saída), Positivo = crédito (entrada)
