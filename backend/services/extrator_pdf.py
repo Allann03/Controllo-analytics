@@ -853,12 +853,22 @@ def extrair_extrato(pdf_path: str, banco_id: str = '', password: str | None = No
         # Verifica se PDF está protegido e se a senha foi fornecida
         try:
             import pikepdf
+            import os as _os_prepipeline
             try:
                 pikepdf.open(pdf_path, password=password or '')
             except pikepdf.PasswordError:
                 resultado['erro'] = 'PDF protegido por senha. Informe a senha correta para processar este extrato.'
                 resultado['requer_senha'] = True
                 return resultado
+            except Exception as _e_prepipeline:
+                print(
+                    f"[PRE-PIPELINE-ERROR] arquivo={_os_prepipeline.path.basename(pdf_path)} "
+                    f"erro_tipo={type(_e_prepipeline).__name__} "
+                    f"erro_msg={str(_e_prepipeline)} "
+                    f"pikepdf_version={pikepdf.__version__}",
+                    flush=True,
+                )
+                raise
         except ImportError:
             pass  # pikepdf não instalado; prossegue com pdfplumber que lança erro similar
 

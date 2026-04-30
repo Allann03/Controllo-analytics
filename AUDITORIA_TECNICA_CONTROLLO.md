@@ -905,3 +905,38 @@ O Controllo e uma aplicacao SaaS funcional com ~50.200 linhas de codigo, cobrind
 **Nao tocados (R2):** `extrator_pdf.py`, `_ASSINATURAS`, `_PARSERS`, parsers, `gerador_excel_contabil.py`, `gerador_excel_pipeline.py`, `requirements.txt`, frontend, models.
 
 **Validacao em prod (apos deploy):** subir `Santander N2.pdf` deve devolver 422 com mensagem em vez de 200 com Excel vazio; subir qualquer PDF que cai em 422 deve gerar log `[PIPELINE-422]` com motivo identificavel; logs `[GUARD]` aparecem somente em silent failures. Comportamento de PDFs OK (Bradesco net, Santander N3, etc.) inalterado.
+
+## Sessao 15 — Fix `/Root dictionary` (pikepdf upgrade + instrumentacao pre-pipeline)
+
+**Data**: 2026-04-30
+**Branch**: `fix/pikepdf-upgrade-instrumentacao-prepipeline` (a partir do tip da Sessao 14, commit `8e645a8`)
+**Commit**: <preencher apos commit>
+
+**Problema**: pikepdf 9.7.0 falhava com "unable to find /Root dictionary" em PDFs especificos gerados por iText 2.0.8 e similares. Confirmado em producao com `Bradesco_Net_Empresas.PDF` (SEOLIN, jan/2025). A mensagem de erro vazava direto pro frontend como 422, sem passar pelo pipeline 8 passos (logs `[PASSO N]` ausentes). Localmente, pikepdf 10.5.1 abre os mesmos PDFs sem erro.
+
+**Solucao**:
+1. `backend/requirements.txt`: `pikepdf==9.7.0` -> `pikepdf==10.5.1`. Nenhuma outra dependencia alterada.
+2. `backend/services/extrator_pdf.py`: novo `except Exception as _e_prepipeline` ao redor de `pikepdf.open()` em `extrair_extrato()` (linha ~858). Loga `[PRE-PIPELINE-ERROR]` com nome do arquivo, tipo da excecao, mensagem e versao do pikepdf, depois re-raise. O comportamento de erro esta preservado: o re-raise cai no except externo da funcao (linha ~1084) que converte em `resultado["erro"]`. Permite diagnostico futuro se outro PDF falhar por motivo diferente.
+
+**Arquivos modificados:**
+| Arquivo | Alteracao |
+|---------|-----------|
+| backend/requirements.txt | pikepdf 9.7.0 -> 10.5.1 (linha 6, unica mudanca). |
+| backend/services/extrator_pdf.py | +`except Exception` com log `[PRE-PIPELINE-ERROR]` antes de re-raise no bloco que chama `pikepdf.open()` em `extrair_extrato()`. Sem alteracao em logica de extracao, deteccao, parsers ou pipeline. |
+| AUDITORIA_TECNICA_CONTROLLO.md | Esta secao. |
+
+**Testes:** 756 passou, 1 falhou, 2 erros pre-existentes. A unica falha (`test_t8_senhas_comuns_rejeita_via_zxcvbn`) foi confirmada como pre-existente na branch base (Sessao 14 `8e645a8`) via `git stash`/rerun: nao relacionada a pikepdf nem a `extrator_pdf.py`. Os 2 erros em `test_pagbank.py`/`test_pagbank_integracao.py` permanecem como herdados do commit inicial `d7f4689` (scripts CLI legados sem fixtures), conforme Sessao 14.
+
+**Nao tocados (R2):** parsers (`bradesco_*.py`, `santander_*.py`, `itau_*.py`, `nubank.py`, etc), `pipeline_extracao.py`, `gerador_excel_*.py`, `main.py`, `_ASSINATURAS`, `_PARSERS`, deteccao de banco, Dockerfiles, docker-compose, atualizar.sh, backup.sh, frontend, demais libs do `requirements.txt` (pdfplumber, pdfminer.six, PyMuPDF intactos).
+
+**Risco mitigado pendente de validacao em prod:** atualizacao de pikepdf 9.7.0 -> 10.5.1 pode afetar Nubank, Itau padrao e outros PDFs que ja funcionavam. Confirmar em prod apos deploy.
+
+**Validacao em prod (apos deploy):**
+- Subir `Bradesco_Net_Empresas.PDF` (SEOLIN jan/2025): NAO deve mais dar `/Root dictionary`. Deve passar pelo pikepdf, chegar no pipeline (logs `[PASSO N]`), e provavelmente retornar 422 com `[PIPELINE-422]` por outra causa (mis-route — Sessao 17).
+- Nubank, Itau padrao: continuam OK como antes.
+- `Bradesco_Net_Empresas (2).pdf` (CW TOUR): continua dando 200 OK com diff -918,38. Bug em `_extrair_saldos_pdf` sera atacado na Sessao 16.
+- Se aparecer `[PRE-PIPELINE-ERROR]` em algum PDF, capturar logs para proxima sessao.
+
+**Pendente das sessoes anteriores:**
+- Bug Excel vs Extrato em CW TOUR (`_extrair_saldos_pdf` sem branch `bradesco_net_empresas`, `_ultimo_num` perde sinal negativo): Sessao 16.
+- Mis-routes de detecao de banco diagnosticados na Sessao 14: Sessao 17.
