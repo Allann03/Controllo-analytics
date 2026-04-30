@@ -1004,7 +1004,7 @@ O Controllo e uma aplicacao SaaS funcional com ~50.200 linhas de codigo, cobrind
 
 **Data**: 2026-04-30
 **Branch**: `fix/mis-routes-deteccao-banco` (a partir do tip da Sessao 16, commit `8330459`)
-**Commit**: <preencher apos commit>
+**Commit**: `b1bf2f1`
 
 **Problema** (mapeado nas Sessoes 13 e 14): 3 PDFs caiam em parsers errados gerando dados invalidos:
 - `B2S.pdf` (PROMOVE BRASIL): `santander` em vez de `bs2`. Gap 47.748 em prod (Excel=129.696 vs Extrato=81.947). Causa: substring `'santander'` na assinatura `santander` casava em "Bco Santander SA" (descricao de TED).
