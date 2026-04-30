@@ -428,7 +428,111 @@ def _extrair_saldos_pdf(pdf_path: str, banco_key: str = '', password: str | None
         # Internet Banking Empresarial não expõe saldo do período de forma padronizada
         return None, None
 
-    # ─── Bradesco Net Empresas: mesma lógica do Bradesco ─────────────────────
+    # ─── Bradesco Net Empresas ──────────────────────────────────────────────
+    # Sessão 16: branch específica para preservar sinal negativo em SALDO ANTERIOR
+    # (caso CW TOUR EIRELI jan/2026, onde fallback genérico via _ultimo_num
+    # descartava o '-' e produzia SI=918.38 em vez de -918.38).
+    #
+    # Hipótese D: SF depende do formato do cabeçalho:
+    #   - Cabeçalho com coluna "Investimento sem Baixa" (3 valores na linha
+    #     "Ag|Conta") → SF = ÚLTIMO Total da seção principal (antes de
+    #     "Últimos Lançamentos"). Caso SEOLIN jan/2025: cabeçalho reflete
+    #     saldo de hoje + investimentos, não o saldo do fim do período.
+    #   - Cabeçalho com 2 valores → SF = primeiro valor da linha "Ag|Conta"
+    #     (Total Disponível). Casos CW TOUR, TANIA nov/dez.
+    if banco == 'bradesco_net_empresas':
+        def _parse_br_signed(s: str) -> Decimal | None:
+            """Converte '1.234,56' ou '-918,38' preservando sinal."""
+            if not s:
+                return None
+            s = s.strip().replace(' ', '')
+            negativo = s.startswith('-')
+            if negativo:
+                s = s[1:]
+            if ',' in s:
+                s = s.replace('.', '').replace(',', '.')
+            try:
+                v = Decimal(s)
+                return -v if negativo else v
+            except (InvalidOperation, ValueError, TypeError):
+                return None
+
+        # SI: primeira ocorrência de "[DD/MM/YYYY] SALDO ANTERIOR <valor>"
+        # com sinal preservado. PRIMEIRA = início do período pedido (não a
+        # da seção "Últimos Lançamentos", que usa SI = saldo final do período).
+        _re_bne_si = re.compile(
+            r'(?:\d{2}/\d{2}/\d{4}\s+)?SALDO\s+ANTERIOR\s+(-?\d[\d.]*,\d{2})',
+            re.IGNORECASE,
+        )
+        # Linha do cabeçalho "Ag|Conta" pode ter 2 ou 3 valores numéricos.
+        _re_bne_cab = re.compile(
+            r'^\d{4,5}\s*\|\s*\d{6,8}-\d\s+(-?\d[\d.]*,\d{2})'
+            r'(?:\s+(-?\d[\d.]*,\d{2}))?'
+            r'(?:\s+(-?\d[\d.]*,\d{2}))?\s*$'
+        )
+        # "Total <crédito> <débito> <saldo>" — pega o terceiro valor (saldo)
+        _re_bne_total = re.compile(
+            r'^total\s+-?\d[\d.,]*\s+-?\d[\d.,]*\s+(-?\d[\d.]*,\d{2})\s*$',
+            re.IGNORECASE,
+        )
+
+        # Detecta presença de coluna "Investimento" no cabeçalho.
+        tem_investimento = bool(
+            re.search(r'investiment[oa]s?\s+(sem|com)\s+baixa', texto_total, re.IGNORECASE)
+        )
+
+        # Captura SI (primeira ocorrência).
+        for linha in linhas:
+            m = _re_bne_si.search(linha)
+            if m:
+                v = _parse_br_signed(m.group(1))
+                if v is not None:
+                    ini = v
+                    break
+
+        usou_cabecalho = False
+        if not tem_investimento:
+            # Hipótese D — ramo "2 colunas": SF = primeiro valor da linha do cabeçalho.
+            for linha in linhas:
+                m = _re_bne_cab.match(linha.strip())
+                if m:
+                    v = _parse_br_signed(m.group(1))
+                    if v is not None:
+                        fim = v
+                        usou_cabecalho = True
+                        break
+
+        if fim is None:
+            # Hipótese D — ramo "3 colunas" OU fallback se cabeçalho não casou.
+            # SF = ÚLTIMO Total ANTES da seção "Últimos Lançamentos".
+            stop = False
+            for linha in linhas:
+                ll = linha.lower()
+                if 'últimos lançamentos' in ll or 'ultimos lancamentos' in ll:
+                    stop = True
+                if stop:
+                    continue
+                m = _re_bne_total.match(linha.strip())
+                if m:
+                    v = _parse_br_signed(m.group(1))
+                    if v is not None:
+                        fim = v
+
+        try:
+            si_log = f"{float(ini):.2f}" if ini is not None else "None"
+            sf_log = f"{float(fim):.2f}" if fim is not None else "None"
+            print(
+                f"[EXTRATOR-SALDOS] banco=bradesco_net_empresas "
+                f"si={si_log} sf={sf_log} "
+                f"regra_sf={'cabecalho_total_disponivel' if usou_cabecalho else 'ultimo_total_secao_principal'} "
+                f"tem_coluna_investimento={tem_investimento}"
+            )
+        except Exception:
+            pass
+
+        return ini, fim
+
+    # ─── Bradesco Net Empresas (alias legado): mesma lógica do Bradesco ─────
     if banco == 'bradesco_empresas':
         banco = 'bradesco'
         # re-executa o bloco Bradesco acima reutilizando o fallback genérico abaixo

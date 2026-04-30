@@ -940,3 +940,62 @@ O Controllo e uma aplicacao SaaS funcional com ~50.200 linhas de codigo, cobrind
 **Pendente das sessoes anteriores:**
 - Bug Excel vs Extrato em CW TOUR (`_extrair_saldos_pdf` sem branch `bradesco_net_empresas`, `_ultimo_num` perde sinal negativo): Sessao 16.
 - Mis-routes de detecao de banco diagnosticados na Sessao 14: Sessao 17.
+
+## Sessao 16 — Fix `_extrair_saldos_pdf` para `bradesco_net_empresas` (sinal negativo + Hipotese D)
+
+**Data**: 2026-04-30
+**Branch**: `fix/bradesco-net-empresas-saldoanterior-sinal` (a partir do tip da Sessao 15, commit `e3673c4`)
+**Commit**: <preencher apos commit>
+
+**Problema**: Pipeline calculava SI/SF com sinais invertidos no `Bradesco Net Empresas (2).pdf` (CW TOUR EIRELI jan/2026), gerando "Excel vs Extrato diff=-918,38" em producao mesmo com pipeline marcando como RECONCILIADO/ALTA porque a equacao `SI+E-S=SF` batia matematicamente.
+
+**Causa raiz** (mapeada na Sessao 14, analise read-only):
+- `_extrair_saldos_pdf` em `backend/services/extrator_pdf.py` nao tem branch para `banco='bradesco_net_empresas'` -> caia no fallback generico (linha 456-467).
+- Helper `_ultimo_num` (linha 39-42) usa regex `[\d.,]+` que descarta o sinal `-`. Para "26/12/2025 SALDO ANTERIOR -918,38", extraia 918.38 em vez de -918.38.
+- SF nao era extraido porque PDFs Bradesco Net Empresas usam label "Total" (nao "Saldo final"). Pipeline calculava SF a partir do SI errado.
+
+**Solucao (Hipotese D, aprovada pelo Allan)**:
+1. Branch nova em `_extrair_saldos_pdf` para `banco == 'bradesco_net_empresas'` que:
+   - Extrai SI da primeira ocorrencia de `[DD/MM/YYYY] SALDO ANTERIOR <valor>` preservando sinal negativo via helper local `_parse_br_signed`.
+   - SF depende do formato do cabecalho:
+     - Se ha coluna "Investimento sem/com Baixa" no PDF (formato "Mensal", 3 valores na linha `Ag|Conta`): SF = ULTIMO `Total <c> <d> <s>` antes da secao "Ultimos Lancamentos" (saldo do fim do periodo pedido).
+     - Caso contrario (formato "Consolidado", 2 valores na linha `Ag|Conta`): SF = primeiro valor da linha `Ag|Conta` (Total Disponivel).
+2. Log estruturado `[EXTRATOR-SALDOS] banco=bradesco_net_empresas si=... sf=... regra_sf=... tem_coluna_investimento=...` antes de retornar — permite auditoria em producao.
+3. Helper `_ultimo_num` NAO foi tocado (escopo cirurgico, evita regressao em outros bancos que dependem dele).
+4. O branch legado `if banco == 'bradesco_empresas'` (alias) foi mantido logicamente identico (so renomeado o comentario).
+
+**Arquivos modificados:**
+| Arquivo | Alteracao |
+|---------|-----------|
+| backend/services/extrator_pdf.py | +branch `bradesco_net_empresas` (~96 linhas) ANTES do alias `bradesco_empresas`. Inclui helper local `_parse_br_signed` (preserva sinal), regex SI/cabecalho/Total, deteccao Hipotese D e log `[EXTRATOR-SALDOS]`. |
+| backend/tests/test_extrair_saldos_bradesco_net_empresas.py | NOVO. 5 testes: SI/SF para CW TOUR, SEOLIN, TANIA dez, TANIA nov + regression `test_cw_tour_pipeline_diff_zero` que asserta `\|si+excel_liquido - sf\| < 0.01` para o caso original. |
+| backend/tests/fixtures/cw_tour_jan2026_raw.txt | NOVO. Texto raw extraido via pdfplumber do `Bradesco Net Empresas (2).pdf`. 1521 chars / 45 linhas. |
+| backend/tests/fixtures/seolin_jan2025_raw.txt | NOVO. Texto raw do `Bradesco Net Empresas.PDF` (SEOLIN). 2459 chars / 85 linhas. |
+| backend/tests/fixtures/tania_dez2025_raw.txt | NOVO. Texto raw do `Bradesco net.pdf`. 6713 chars / 214 linhas. |
+| backend/tests/fixtures/tania_nov2025_raw.txt | NOVO. Texto raw do `Bradesco net2.pdf`. 7108 chars / 237 linhas. |
+| AUDITORIA_TECNICA_CONTROLLO.md | Esta secao. |
+
+**Politica de fixtures respeitada**: zero PDFs binarios commitados; apenas fixtures `.txt` raw (texto que `pdfplumber` extrai). PDFs reais permanecem em `backend/tests/fixtures/pdfs_reais/` (gitignored desde a Sessao 13).
+
+**Testes:** 761 passou, 1 falha pre-existente (`test_t8_senhas_comuns_rejeita_via_zxcvbn`, herdada da Sessao 14), 2 erros pre-existentes (`test_pagbank.py`/`test_pagbank_integracao.py`, herdados do commit `d7f4689`). Os 5 novos testes da Sessao 16 passam isoladamente e na suite completa. Diferenca exata para a Sessao 15 = +5 (apenas os novos). Smoke test adicional rodando `_extrair_saldos_pdf` real contra os 4 PDFs em `pdfs_reais/` confirmou os SI/SF esperados em todos os 4 casos.
+
+**Validacao SI/SF nos 4 PDFs alvo:**
+| PDF | SI esperado | SI extraido | SF esperado | SF extraido | regra_sf | tem_invest |
+|-----|-------------|-------------|-------------|-------------|----------|------------|
+| CW TOUR jan/2026 | -918.38 | -918.38 | -1247.89 | -1247.89 | cabecalho_total_disponivel | False |
+| SEOLIN jan/2025 | 89479.75 | 89479.75 | 572.64 | 572.64 | ultimo_total_secao_principal | True |
+| TANIA dez/2025 | 78019.32 | 78019.32 | 70042.18 | 70042.18 | cabecalho_total_disponivel | False |
+| TANIA nov/2025 | 96735.73 | 96735.73 | 95043.32 | 95043.32 | cabecalho_total_disponivel | False |
+
+**Nao tocados (R2):** `_PARSERS`, `_ASSINATURAS`, deteccao de banco, helper `_ultimo_num`, parsers Bradesco/Santander/Itau/Nubank/etc, `pipeline_extracao.py`, `gerador_excel_*.py`, `main.py`, `requirements.txt`, Dockerfiles, frontend.
+
+**Validacao em prod (apos deploy)**:
+- `Bradesco_Net_Empresas (2).pdf` (CW TOUR): deve devolver Excel=-329.51 e Extrato=-329.51 (diff=0). Log `[EXTRATOR-SALDOS] regra_sf=cabecalho_total_disponivel tem_coluna_investimento=False`.
+- `Bradesco_Net_Empresas.PDF` (SEOLIN): se passar pela deteccao de banco corretamente (mis-route ja diagnosticado para Sessao 17), deve devolver SI=89479.75 / SF=572.64. Log com `regra_sf=ultimo_total_secao_principal tem_coluna_investimento=True`.
+- TANIA dez/nov: continuam OK (eram cobertos pelo fallback generico antes, embora com riscos sutis em casos com sinal negativo).
+- Outros bancos (Nubank, Itau, etc): inalterados — o fix e isolado ao branch `bradesco_net_empresas`.
+
+**Risco residual conhecido**: a regra "SF = Total Disponivel do cabecalho" assume que o periodo pedido e proximo da data de emissao. Se aparecer um PDF Bradesco Net Empresas formato "Consolidado" com janela longa entre periodo e emissao (ex: extrato pedido 6 meses atras), o `regra_sf=cabecalho_total_disponivel` pode nao bater com o "saldo do fim do periodo". O log estruturado em producao permitira identificar o caso e ajustar.
+
+**Pendente:**
+- Mis-routes de deteccao de banco diagnosticados na Sessao 14 (B2S->santander, SEOLIN->inter_n2, Santander_N1->mercado_pago): Sessao 17.
