@@ -910,7 +910,7 @@ O Controllo e uma aplicacao SaaS funcional com ~50.200 linhas de codigo, cobrind
 
 **Data**: 2026-04-30
 **Branch**: `fix/pikepdf-upgrade-instrumentacao-prepipeline` (a partir do tip da Sessao 14, commit `8e645a8`)
-**Commit**: <preencher apos commit>
+**Commit**: `a3ac70e`
 
 **Problema**: pikepdf 9.7.0 falhava com "unable to find /Root dictionary" em PDFs especificos gerados por iText 2.0.8 e similares. Confirmado em producao com `Bradesco_Net_Empresas.PDF` (SEOLIN, jan/2025). A mensagem de erro vazava direto pro frontend como 422, sem passar pelo pipeline 8 passos (logs `[PASSO N]` ausentes). Localmente, pikepdf 10.5.1 abre os mesmos PDFs sem erro.
 
