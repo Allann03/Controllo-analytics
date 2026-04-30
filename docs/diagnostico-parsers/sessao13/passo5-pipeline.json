@@ -1,0 +1,317 @@
+{
+  "_header": {
+    "executado_com": {
+      "python": "3.14.4",
+      "pikepdf": "10.5.1",
+      "pdfplumber": "0.11.9",
+      "pdfminer.six": "20251230",
+      "pymupdf": "1.27.2"
+    },
+    "ambiente": "local-allan-windows",
+    "obs": "ATENÇÃO: requirements.txt pina pikepdf==9.7.0; produção pode ter versão diferente. Output do Lightsail em versoes-producao.txt.",
+    "lib_version_sensitivity_geral": "ATENCAO: nenhum PDF reproduziu /Root dictionary localmente (pikepdf 10.5.1). O erro foi reportado em prod, onde requirements.txt fixa pikepdf==9.7.0. Diferenca de versao e candidato principal a causa raiz. Aguardando output do Lightsail para confirmar."
+  },
+  "pdfs": [
+    {
+      "filename": "B2S.pdf",
+      "banco_detectado": "santander",
+      "parser_class": "ParserSantander",
+      "n_transacoes": 46,
+      "saldo_inicial": null,
+      "saldo_final_informado": 81947.02,
+      "saldo_final_calculado": null,
+      "conferencia_ok": null,
+      "silent_failure": false,
+      "exception": null,
+      "primeiras_3_transacoes": [
+        {
+          "data": "02/01/2025",
+          "descricao": "Pgto Concess/Tributo Pagamento de Título - R$",
+          "valor": 117.37,
+          "tipo": "entrada"
+        },
+        {
+          "data": "02/01/2025",
+          "descricao": "Pagamento Boleto Pagamento de Título - R$",
+          "valor": 160.0,
+          "tipo": "entrada"
+        },
+        {
+          "data": "03/01/2025",
+          "descricao": "Remuneração Aplicação Aut Remuneração Aplicação Automática R$",
+          "valor": 0.21,
+          "tipo": "entrada"
+        }
+      ],
+      "avisos": [
+        "Santander: formato ContaMax não detectado — tentando parser Internet Banking Empresarial (N2)."
+      ],
+      "banco_detectado_pre_pipeline": "santander"
+    },
+    {
+      "filename": "Bradesco_net.pdf",
+      "banco_detectado": "bradesco",
+      "parser_class": "ParserBradesco",
+      "n_transacoes": 75,
+      "saldo_inicial": 78019.32,
+      "saldo_final_informado": 43612.02,
+      "saldo_final_calculado": null,
+      "conferencia_ok": null,
+      "silent_failure": false,
+      "exception": null,
+      "primeiras_3_transacoes": [
+        {
+          "data": "01/12/2025",
+          "descricao": "TED-TRANSF ELET DISPON",
+          "valor": 2146.58,
+          "tipo": "entrada"
+        },
+        {
+          "data": "01/12/2025",
+          "descricao": "REMET.TLA TRANSFERENCIA PIX",
+          "valor": 3790.5,
+          "tipo": "entrada"
+        },
+        {
+          "data": "01/12/2025",
+          "descricao": "REM: ANA BEATRIZ V LEME MA 01/12 TRANSFERENCIA PIX",
+          "valor": 2774.0,
+          "tipo": "entrada"
+        }
+      ],
+      "avisos": [],
+      "banco_detectado_pre_pipeline": "bradesco"
+    },
+    {
+      "filename": "Bradesco_net2.pdf",
+      "banco_detectado": "bradesco",
+      "parser_class": "ParserBradesco",
+      "n_transacoes": 73,
+      "saldo_inicial": 96735.73,
+      "saldo_final_informado": 78019.32,
+      "saldo_final_calculado": null,
+      "conferencia_ok": null,
+      "silent_failure": false,
+      "exception": null,
+      "primeiras_3_transacoes": [
+        {
+          "data": "03/11/2025",
+          "descricao": "TED-TRANSF ELET DISPON",
+          "valor": 6953.89,
+          "tipo": "entrada"
+        },
+        {
+          "data": "03/11/2025",
+          "descricao": "REMET.TLA TRANSFERENCIA PIX",
+          "valor": 2392.0,
+          "tipo": "entrada"
+        },
+        {
+          "data": "03/11/2025",
+          "descricao": "REM: RENATA VELASCO WICHMA 03/11 TRANSFERENCIA PIX",
+          "valor": 7950.0,
+          "tipo": "saida"
+        }
+      ],
+      "avisos": [],
+      "banco_detectado_pre_pipeline": "bradesco"
+    },
+    {
+      "filename": "Bradesco_Net_Empresas.PDF",
+      "banco_detectado": "bradesco",
+      "parser_class": "ParserBradesco",
+      "n_transacoes": 20,
+      "saldo_inicial": 89479.75,
+      "saldo_final_informado": 572.64,
+      "saldo_final_calculado": null,
+      "conferencia_ok": null,
+      "silent_failure": false,
+      "exception": null,
+      "primeiras_3_transacoes": [
+        {
+          "data": "02/01/2025",
+          "descricao": "TARIFA BANCARIA",
+          "valor": 2.65,
+          "tipo": "saida"
+        },
+        {
+          "data": "02/01/2025",
+          "descricao": "TRANSFER VIA NET TRANSF CC PARA CC PJ",
+          "valor": 9479.95,
+          "tipo": "saida"
+        },
+        {
+          "data": "07/01/2025",
+          "descricao": "EDUARDO RINDEIKA SEOLIN TARIFA BANCARIA",
+          "valor": 2.65,
+          "tipo": "saida"
+        }
+      ],
+      "avisos": [],
+      "banco_detectado_pre_pipeline": "bradesco"
+    },
+    {
+      "filename": "Bradesco_Net_Empresas__2_.pdf",
+      "banco_detectado": "bradesco_net_empresas",
+      "parser_class": "ParserBradescoNetEmpresas",
+      "n_transacoes": 13,
+      "saldo_inicial": 918.38,
+      "saldo_final_informado": 588.87,
+      "saldo_final_calculado": null,
+      "conferencia_ok": null,
+      "silent_failure": false,
+      "exception": null,
+      "primeiras_3_transacoes": [
+        {
+          "data": "05/01/2026",
+          "descricao": "ENCARGOS LIMITE DE CRED 7868963 ENCARGO - 16,49%",
+          "valor": 45.2,
+          "tipo": "saida"
+        },
+        {
+          "data": "05/01/2026",
+          "descricao": "IOF S/ UTILIZACAO LIMITE 7868963 TRANSFERENCIA PIX",
+          "valor": 4.12,
+          "tipo": "saida"
+        },
+        {
+          "data": "07/01/2026",
+          "descricao": "951320 REM: CW TOUR LTDA 07/01",
+          "valor": 1000.0,
+          "tipo": "entrada"
+        }
+      ],
+      "avisos": [],
+      "banco_detectado_pre_pipeline": "bradesco_net_empresas",
+      "lib_version_sensitivity": "MEDIA",
+      "lib_version_sensitivity_obs": "CW TOUR jan/2026, Producer Skia/PDF (mesmo motor PDF moderno do KKS). Local processa com 13 tx. Em prod, mesmo Skia gerou /Root dictionary noutro PDF Santander."
+    },
+    {
+      "filename": "Santander_Internet_Banking_N1.pdf",
+      "banco_detectado": "santander",
+      "parser_class": "ParserSantander",
+      "n_transacoes": 6,
+      "saldo_inicial": 50.84,
+      "saldo_final_informado": 271580.33,
+      "saldo_final_calculado": null,
+      "conferencia_ok": null,
+      "silent_failure": false,
+      "exception": null,
+      "primeiras_3_transacoes": [
+        {
+          "data": "03/02/2026",
+          "descricao": "CR COB COMPENSACAO - DISPONIVEL 0637/001850393",
+          "valor": 1609.41,
+          "tipo": "entrada"
+        },
+        {
+          "data": "05/02/2026",
+          "descricao": "CR COB COMPENSACAO - DISPONIVEL 0637/001850393",
+          "valor": 141499.18,
+          "tipo": "entrada"
+        },
+        {
+          "data": "06/02/2026",
+          "descricao": "TARIFA RENOVACAO AUTOMAT CONVENIO 12/01/2026",
+          "valor": 5.0,
+          "tipo": "saida"
+        }
+      ],
+      "avisos": [
+        "Santander: formato ContaMax não detectado — tentando parser Internet Banking Empresarial (N2)."
+      ],
+      "banco_detectado_pre_pipeline": "santander",
+      "lib_version_sensitivity": "MEDIA",
+      "lib_version_sensitivity_obs": "Mesmo layout IB que N3; KKS é dessa família. Local mis-routed para parser santander legacy (6 tx, saldo divergente). Comportamento em prod desconhecido — pode ser /Root dictionary lá também."
+    },
+    {
+      "filename": "Santander_Internet_Banking_N3.pdf",
+      "banco_detectado": "santander_ib_novo",
+      "parser_class": "ParserSantanderIBNovo",
+      "n_transacoes": 116,
+      "saldo_inicial": null,
+      "saldo_final_informado": null,
+      "saldo_final_calculado": null,
+      "conferencia_ok": null,
+      "silent_failure": false,
+      "exception": null,
+      "primeiras_3_transacoes": [
+        {
+          "data": "03/02/2025",
+          "descricao": "Resgate Contamax Automatico",
+          "valor": 2815.9,
+          "tipo": "entrada"
+        },
+        {
+          "data": "03/02/2025",
+          "descricao": "Pagamento De Boleto Outros Bancos ELEKTRO ELETRICIDADE E SE",
+          "valor": 572.22,
+          "tipo": "saida"
+        },
+        {
+          "data": "03/02/2025",
+          "descricao": "Pagamento De Boleto Outros Bancos RVT COM E DISTRIBUICAO LT",
+          "valor": 444.57,
+          "tipo": "saida"
+        }
+      ],
+      "avisos": [],
+      "banco_detectado_pre_pipeline": "santander_ib_novo",
+      "lib_version_sensitivity": "ALTA",
+      "lib_version_sensitivity_obs": "Proxy do santander_problema.pdf (KKS PROMOCOES) que reproduziu /Root dictionary em prod. Local processou normalmente com pikepdf 10.5.1 + 116 tx, sem qualquer exceção. Formato IB \"layout 2\" (Skia/PDF Producer no KKS, OpenPDF no N3 — ambos modernos). Comparar com prod no Passo 8."
+    },
+    {
+      "filename": "Santander_N1.pdf",
+      "banco_detectado": "mercado_pago",
+      "parser_class": "ParserMercadoPago",
+      "n_transacoes": 0,
+      "saldo_inicial": null,
+      "saldo_final_informado": null,
+      "saldo_final_calculado": null,
+      "conferencia_ok": null,
+      "silent_failure": true,
+      "exception": null,
+      "primeiras_3_transacoes": [],
+      "avisos": [
+        "Extrato com saldo zero — nenhuma transação encontrada."
+      ],
+      "banco_detectado_pre_pipeline": "mercado_pago",
+      "lib_version_sensitivity": "BAIXA",
+      "lib_version_sensitivity_obs": "Mis-route local conhecido (Compart Producer, formato Consolidado Inteligente). Provavelmente comportamento idêntico em prod."
+    },
+    {
+      "filename": "Santander_N3.pdf",
+      "banco_detectado": "santander_consolidado",
+      "parser_class": "ParserSantanderConsolidado",
+      "n_transacoes": 193,
+      "saldo_inicial": 78206.39,
+      "saldo_final_informado": 78206.39,
+      "saldo_final_calculado": null,
+      "conferencia_ok": null,
+      "silent_failure": false,
+      "exception": null,
+      "primeiras_3_transacoes": [
+        {
+          "data": "05/03/2025",
+          "descricao": "PIX ENVIADO Zara Brasil LTDA",
+          "valor": 1727.0,
+          "tipo": "saida"
+        },
+        {
+          "data": "05/03/2025",
+          "descricao": "PIX ENVIADO RENNER",
+          "valor": 325.9,
+          "tipo": "saida"
+        },
+        {
+          "data": "05/03/2025",
+          "descricao": "PIX ENVIADO SHOULDER INDUSTRIA E COME",
+          "valor": 626.05,
+          "tipo": "saida"
+        }
+      ],
+      "avisos": [],
+      "banco_detectado_pre_pipeline": "santander_consolidado"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+=== FIXTURE: Santander_Internet_Banking_N1.pdf ===
+=== EXTRAIDO EM: 2026-04-30 ===
+=== EXTRACTOR: pdfplumber 0.11.9 ===
+=== SHA256 DO PDF ORIGINAL: c0648182684ce8171f0a4b71ff18036084090efa412b22e0115a3c0ed89afd72 ===
+=== N_PAGINAS: 2 ===
+
+===== PAGE 1 =====
+04/03/2026, 10:31 Internet Banking
+Internet Banking Empresarial
+CW TOUR LTDA Agência: 0637 Conta: 130039675
+Conta Corrente > Extrato >
+Consultar
+Opção de Pesquisa:Todos
+Períodos:Sun Feb 01 00:00:00 GMT-03:00 2026aSat Feb 28 00:00:00 GMT- Data/Hora:04/03/2026às10h31
+03:00 2026
+Opção de Pesquisa:Todos
+Saldo disponível para uso:R$537,17
+Data Histórico Documento Valor (R$) Saldo (R$)
+03/02/2026 SALDO ANTERIOR 50,84
+03/02/2026 CR COB COMPENSACAO - DISPONIVEL 0637/001850393 000000 1.609,41
+03/02/2026 APLICACAO CONTAMAX 000000 -1.660,25 0,00
+05/02/2026 CR COB COMPENSACAO - DISPONIVEL 0637/001850393 000000 141.499,18
+05/02/2026 PIX ENVIADO CW TOUR 000000 -143.000,00
+05/02/2026 RESGATE CONTAMAX AUTOMATICO 000000 1.500,82 0,00
+06/02/2026 TARIFA RENOVACAO AUTOMAT CONVENIO 12/01/2026 000000 -5,00
+06/02/2026 CR COB COMPENSACAO - DISPONIVEL 0637/001850393 000000 2.234,60
+06/02/2026 APLICACAO CONTAMAX 000000 -2.229,60 0,00
+10/02/2026 TARIFA MENSALIDADE PACOTE SERVICOS JANEIRO / 2026 000000 -339,00
+10/02/2026 TARIFA EXTRATO INTELIGENTE 23/01/2026 000000 -16,00
+10/02/2026 RESGATE CONTAMAX AUTOMATICO 000000 355,00 0,00
+11/02/2026 PIX ENVIADO CW TOUR LTDA 000000 -2.000,00
+11/02/2026 RESGATE CONTAMAX AUTOMATICO 000000 2.000,00 0,00
+20/02/2026 CR COB COMPENSACAO - DISPONIVEL 0637/001850393 000000 126.530,30
+20/02/2026 PIX ENVIADO CW TOUR 000000 -126.299,97
+20/02/2026 APLICACAO CONTAMAX 000000 -230,33 0,00
+Saldo em Investimentos com Resgate Automático 500,02
+Saldo Disponível 537,17
+a = Bloqueio Dia / ADM Entenda a composição do seu saldo no quadro abaixo.
+b = Bloqueado
+p = Lançamento Provisionado
+Saldo
+Posição em:04/03/2026
+https://pj.santandernetibe.com.br/ibeweb/commons/pdf/pdfImprimir.xhtml 1/2
+
+===== PAGE 2 =====
+04/03/2026, 10:31 Internet Banking
+Saldo Valor (R$)
+A - Saldo de Conta Corrente 37,15
+B - Saldo Bloqueado 0,00
+Desbloqueio em 1 dia 0,00
+Desbloqueio em 2 dias 0,00
+Desbloqueio em mais de 2 dias 0,00
+C - Saldo Disponível em Conta Corrente (A - B) 37,15
+D - Saldo em Investimentos com Resgate Automático 500,02
+E - Saldo Disponível (C + D) 537,17
+F - Limite Cheque Empresa 70.000,00
+Vencimento 29/04/2026
+Taxa de Juros 16,20
+Limite 70.000,00
+Última Utilização 10/11/2025
+Valor Utilizado 0,00
+Disponível 70.000,00
+G - Saldo Disponível Total (E + F) 70.537,17
+Central de Atendimento Santander Empresarial - Das 8h às 20h, de segunda a SAC - Atendimento 24h por dia, todos os dias.
+sexta-feira Reclamações cancelamentos e informações:
+4004-2125 (Capitais e Regiões Metropolitanas) 0800 762 7777
+0800 702 2125 (Demais Localidades)
+Ouvidoria - Disponível das 9h às 18h, de segunda a sexta-feira, exceto feriados.
+Central de Atendimento Getnet - Atendimento 24h por dia, todos os dias Se não ficar satisfeito com a solução apresentada:
+4002-4000 (Capitais e Regiões Metropolitanas) 0800 726 0322
+4003-4000 (Capitais e Regiões Metropolitanas) 55 (11) 3012 0322 (No exterior, ligue a cobrar)
+0800 648 8000 (Demais Localidades)
+Central de Vendas PJ - Das 8h às 20h, de segunda a sexta-feira, exceto
+feriados.
+0800 013 7333
+https://pj.santandernetibe.com.br/ibeweb/commons/pdf/pdfImprimir.xhtml 2/2
+

@@ -1,0 +1,27 @@
+=== Versões locais (ambiente diag) ===
+Data: 2026-04-30
+Host: Windows 10 (working tree do Allan)
+Python interpreter: ./backend/venv/Scripts/python.exe (venv versionado em backend/venv/)
+
+python: 3.14.4
+pikepdf: 10.5.1   <-- DIVERGE de requirements.txt (==9.7.0)
+pdfplumber: 0.11.9
+pdfminer.six: 20251230
+PyMuPDF (fitz): 1.27.2
+pypdf: NOT INSTALLED
+
+
+=== Versões declaradas em backend/requirements.txt ===
+
+pdfplumber==0.11.9
+pikepdf==9.7.0       <-- venv local está em 10.5.1 (provavelmente atualização manual ou lockfile diferente)
+pdfminer.six==20251230
+PyMuPDF==1.27.2
+
+(Sem entrada para pypdf — não usado no projeto)
+
+
+=== Versões em produção (Lightsail) ===
+
+Pendente. Allan vai rodar comandos em docs/diagnostico-parsers/sessao13/comandos-allan-lightsail.md
+e colar output em docs/diagnostico-parsers/sessao13/versoes-producao.txt.

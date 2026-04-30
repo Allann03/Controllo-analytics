@@ -1,0 +1,366 @@
+{
+  "_header": {
+    "executado_com": {
+      "python": "3.14.4",
+      "pikepdf": "10.5.1",
+      "pdfplumber": "0.11.9",
+      "pdfminer.six": "20251230",
+      "pymupdf": "1.27.2"
+    },
+    "ambiente": "local-allan-windows",
+    "obs": "ATENÇÃO: requirements.txt pina pikepdf==9.7.0; produção pode ter versão diferente. Output do Lightsail em versoes-producao.txt."
+  },
+  "pdfs": [
+    {
+      "filename": "B2S.pdf",
+      "size_bytes": 72067,
+      "sha256": "cf781b936d6c1e827cbfe26cfed3a2ff1c03daa0cab8770bd58d8a69c0a6014b",
+      "pikepdf": {
+        "abre": true,
+        "erro": null,
+        "n_pages": 2,
+        "pdf_version": "1.4",
+        "producer": null,
+        "creator": null,
+        "encrypted": false
+      },
+      "pdfplumber": {
+        "abre": true,
+        "chars_extraidos": 4756,
+        "preview_first_200": "Extrato Bancário - Empresas\nExtraído em 08/03/2025\nPROMOVE BRASIL DESENVOLVIMENTO E NEGOCIOS\nSaldo atual:\nLTDA\nR$ 21.686,32\n10.175.617/0001-00\nPeríodo 01/01/2025 - 31/01/2025\nAg: 0001 Conta: 584410-0\n",
+        "erro": null,
+        "n_pages": 2
+      },
+      "linhas_DD_MM_YYYY": 51,
+      "linhas_DD_MM_curto": 0,
+      "assinaturas_detectadas": {
+        "santander": 1,
+        "internet banking empresarial": 0,
+        "extrato consolidado inteligente": 0,
+        "cr cob compensacao": 0,
+        "saldo do dia": 0,
+        "aplicacao contamax": 0,
+        "rendimento liquido de contamax": 0,
+        "mercado pago": 0,
+        "bradesco": 0,
+        "extrato mensal": 0,
+        "extrato consolidado": 0,
+        "itau": 0,
+        "sispag": 0,
+        "bs2": 12
+      }
+    },
+    {
+      "filename": "Bradesco_net.pdf",
+      "size_bytes": 30950,
+      "sha256": "2a2f114e4034848841de7bc74d8b4ad1704b79f320ba272eda4647989abcfe9d",
+      "pikepdf": {
+        "abre": true,
+        "erro": null,
+        "n_pages": 3,
+        "pdf_version": "1.4",
+        "producer": "iText 2.0.8 (by lowagie.com)",
+        "creator": null,
+        "encrypted": false
+      },
+      "pdfplumber": {
+        "abre": true,
+        "chars_extraidos": 6705,
+        "preview_first_200": "Agência | Conta Total Disponível (R$) Total (R$)\n00197 | 0784756-4 70.042,18 70.042,18\nExtrato de: Ag: 197 | CC: 0784756-4 | Entre 01/12/2025 e 31/12/2025\nData Lançamento Dcto. Crédito (R$) Débito (R$",
+        "erro": null,
+        "n_pages": 3
+      },
+      "linhas_DD_MM_YYYY": 44,
+      "linhas_DD_MM_curto": 32,
+      "assinaturas_detectadas": {
+        "santander": 0,
+        "internet banking empresarial": 0,
+        "extrato consolidado inteligente": 0,
+        "cr cob compensacao": 0,
+        "saldo do dia": 0,
+        "aplicacao contamax": 0,
+        "rendimento liquido de contamax": 0,
+        "mercado pago": 0,
+        "bradesco": 0,
+        "extrato mensal": 0,
+        "extrato consolidado": 0,
+        "itau": 0,
+        "sispag": 0,
+        "bs2": 0
+      }
+    },
+    {
+      "filename": "Bradesco_net2.pdf",
+      "size_bytes": 31992,
+      "sha256": "d75820f5eb6d16e6857a91f3151b5a85e5f797756f1a57f92a1cebb3eb95e876",
+      "pikepdf": {
+        "abre": true,
+        "erro": null,
+        "n_pages": 3,
+        "pdf_version": "1.4",
+        "producer": "iText 2.0.8 (by lowagie.com)",
+        "creator": null,
+        "encrypted": false
+      },
+      "pdfplumber": {
+        "abre": true,
+        "chars_extraidos": 7100,
+        "preview_first_200": "Agência | Conta Total Disponível (R$) Total (R$)\n00197 | 0784756-4 95.043,32 95.043,32\nExtrato de: Ag: 197 | CC: 0784756-4 | Entre 01/11/2025 e 30/11/2025\nData Lançamento Dcto. Crédito (R$) Débito (R$",
+        "erro": null,
+        "n_pages": 3
+      },
+      "linhas_DD_MM_YYYY": 44,
+      "linhas_DD_MM_curto": 45,
+      "assinaturas_detectadas": {
+        "santander": 0,
+        "internet banking empresarial": 0,
+        "extrato consolidado inteligente": 0,
+        "cr cob compensacao": 0,
+        "saldo do dia": 0,
+        "aplicacao contamax": 0,
+        "rendimento liquido de contamax": 0,
+        "mercado pago": 0,
+        "bradesco": 0,
+        "extrato mensal": 0,
+        "extrato consolidado": 0,
+        "itau": 0,
+        "sispag": 0,
+        "bs2": 0
+      }
+    },
+    {
+      "filename": "Bradesco_Net_Empresas.PDF",
+      "size_bytes": 14101,
+      "sha256": "f1a29e33b65b91b38b8cf843dd6d4d71111c34b9e7b98dc3e4ca59dcf169514f",
+      "pikepdf": {
+        "abre": true,
+        "erro": null,
+        "n_pages": 1,
+        "pdf_version": "1.4",
+        "producer": "iText 2.0.8 (by lowagie.com)",
+        "creator": null,
+        "encrypted": false
+      },
+      "pdfplumber": {
+        "abre": true,
+        "chars_extraidos": 2439,
+        "preview_first_200": "Investimento sem Baixa automática (R$) Total (R$)\nAgência | Conta Total Disponível (R$)\n(B) (A+B)\n00504 | 0482282-0 2.063,86 325.621,99 327.685,85\nExtrato de: Ag: 504 | CC: 0482282-0 | Entre 01/01/202",
+        "erro": null,
+        "n_pages": 1
+      },
+      "linhas_DD_MM_YYYY": 19,
+      "linhas_DD_MM_curto": 5,
+      "assinaturas_detectadas": {
+        "santander": 0,
+        "internet banking empresarial": 0,
+        "extrato consolidado inteligente": 0,
+        "cr cob compensacao": 0,
+        "saldo do dia": 0,
+        "aplicacao contamax": 0,
+        "rendimento liquido de contamax": 0,
+        "mercado pago": 0,
+        "bradesco": 0,
+        "extrato mensal": 0,
+        "extrato consolidado": 0,
+        "itau": 0,
+        "sispag": 0,
+        "bs2": 0
+      }
+    },
+    {
+      "filename": "Bradesco_Net_Empresas__2_.pdf",
+      "size_bytes": 156284,
+      "sha256": "26e6ada3d856f858337a2e15fcf5552a07bde2fc57491899144658077064525f",
+      "pikepdf": {
+        "abre": true,
+        "erro": null,
+        "n_pages": 1,
+        "pdf_version": "1.4",
+        "producer": "Skia/PDF m143",
+        "creator": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+        "encrypted": false
+      },
+      "pdfplumber": {
+        "abre": true,
+        "chars_extraidos": 1501,
+        "preview_first_200": "Extrato Consolidado / Por Período\nCW TOUR EIRELI | CNPJ: 004.699.574/0001-50\nNome do usuário: GLAUCIA F V FONSECA\nData da operação: 11/02/2026 - 16h58\nAgência | Conta Total Disponível (R$) Total (R$)\n",
+        "erro": null,
+        "n_pages": 1
+      },
+      "linhas_DD_MM_YYYY": 12,
+      "linhas_DD_MM_curto": 2,
+      "assinaturas_detectadas": {
+        "santander": 0,
+        "internet banking empresarial": 0,
+        "extrato consolidado inteligente": 0,
+        "cr cob compensacao": 0,
+        "saldo do dia": 0,
+        "aplicacao contamax": 0,
+        "rendimento liquido de contamax": 0,
+        "mercado pago": 0,
+        "bradesco": 3,
+        "extrato mensal": 0,
+        "extrato consolidado": 1,
+        "itau": 0,
+        "sispag": 0,
+        "bs2": 0
+      }
+    },
+    {
+      "filename": "Santander_Internet_Banking_N1.pdf",
+      "size_bytes": 160345,
+      "sha256": "c0648182684ce8171f0a4b71ff18036084090efa412b22e0115a3c0ed89afd72",
+      "pikepdf": {
+        "abre": true,
+        "erro": null,
+        "n_pages": 2,
+        "pdf_version": "1.4",
+        "producer": "Skia/PDF m145",
+        "creator": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
+        "encrypted": false
+      },
+      "pdfplumber": {
+        "abre": true,
+        "chars_extraidos": 3116,
+        "preview_first_200": "04/03/2026, 10:31 Internet Banking\nInternet Banking Empresarial\nCW TOUR LTDA Agência: 0637 Conta: 130039675\nConta Corrente > Extrato >\nConsultar\nOpção de Pesquisa:Todos\nPeríodos:Sun Feb 01 00:00:00 GM",
+        "erro": null,
+        "n_pages": 2
+      },
+      "linhas_DD_MM_YYYY": 24,
+      "linhas_DD_MM_curto": 0,
+      "assinaturas_detectadas": {
+        "santander": 3,
+        "internet banking empresarial": 1,
+        "extrato consolidado inteligente": 0,
+        "cr cob compensacao": 4,
+        "saldo do dia": 0,
+        "aplicacao contamax": 3,
+        "rendimento liquido de contamax": 0,
+        "mercado pago": 0,
+        "bradesco": 0,
+        "extrato mensal": 0,
+        "extrato consolidado": 0,
+        "itau": 0,
+        "sispag": 0,
+        "bs2": 0
+      }
+    },
+    {
+      "filename": "Santander_Internet_Banking_N3.pdf",
+      "size_bytes": 113633,
+      "sha256": "5b908f8416529f56f704b6654374175a0578be266f54867c06e7dc36dd221dcf",
+      "pikepdf": {
+        "abre": true,
+        "erro": null,
+        "n_pages": 4,
+        "pdf_version": "1.5",
+        "producer": "OpenPDF 1.3.30",
+        "creator": null,
+        "encrypted": false
+      },
+      "pdfplumber": {
+        "abre": true,
+        "chars_extraidos": 9002,
+        "preview_first_200": "Internet Banking Empresarial\nVILA PET CLINICA VETERINARIA E PET - SHO Agência: 0013 Conta: 130116305\nData Histórico Valor\n28/02/2025 Saldo do dia R$ 0,00\n 28/02/2025 Aplicacao Contamax - R$ 720,00",
+        "erro": null,
+        "n_pages": 4
+      },
+      "linhas_DD_MM_YYYY": 142,
+      "linhas_DD_MM_curto": 9,
+      "assinaturas_detectadas": {
+        "santander": 2,
+        "internet banking empresarial": 1,
+        "extrato consolidado inteligente": 0,
+        "cr cob compensacao": 0,
+        "saldo do dia": 20,
+        "aplicacao contamax": 14,
+        "rendimento liquido de contamax": 0,
+        "mercado pago": 0,
+        "bradesco": 0,
+        "extrato mensal": 0,
+        "extrato consolidado": 0,
+        "itau": 0,
+        "sispag": 0,
+        "bs2": 0
+      }
+    },
+    {
+      "filename": "Santander_N1.pdf",
+      "size_bytes": 218182,
+      "sha256": "2e6d2aa1eea8da8fe3af9442024c07a1ef525f7171b57e805eab710cd1ae5419",
+      "pikepdf": {
+        "abre": true,
+        "erro": null,
+        "n_pages": 14,
+        "pdf_version": "1.3",
+        "producer": "Compart MFFPDF I/O Filter 2023-01-26 19:02:47",
+        "creator": "Compart Docponent API (202302-STABLE)",
+        "encrypted": false
+      },
+      "pdfplumber": {
+        "abre": true,
+        "chars_extraidos": 31685,
+        "preview_first_200": "EXTRATO CONSOLIDADO INTELIGENTE\njaneiro/2025\nPrezado Cliente,\nSoluções em pagamentos e recebimentos para o seu negócio.\nO Santander tem soluções financeiras para simplificar o cotidiano da sua empresa",
+        "erro": null,
+        "n_pages": 14
+      },
+      "linhas_DD_MM_YYYY": 4,
+      "linhas_DD_MM_curto": 149,
+      "assinaturas_detectadas": {
+        "santander": 16,
+        "internet banking empresarial": 3,
+        "extrato consolidado inteligente": 7,
+        "cr cob compensacao": 0,
+        "saldo do dia": 0,
+        "aplicacao contamax": 6,
+        "rendimento liquido de contamax": 0,
+        "mercado pago": 0,
+        "bradesco": 0,
+        "extrato mensal": 0,
+        "extrato consolidado": 7,
+        "itau": 0,
+        "sispag": 0,
+        "bs2": 0
+      }
+    },
+    {
+      "filename": "Santander_N3.pdf",
+      "size_bytes": 236629,
+      "sha256": "2b5ee2dded038ccbc5a2914165dd4347271bc480a227c774fb72f8bf7b6304ae",
+      "pikepdf": {
+        "abre": true,
+        "erro": null,
+        "n_pages": 17,
+        "pdf_version": "1.3",
+        "producer": "Compart MFFPDF I/O Filter 2023-01-26 19:02:47",
+        "creator": "Compart Docponent API (202302-STABLE)",
+        "encrypted": false
+      },
+      "pdfplumber": {
+        "abre": true,
+        "chars_extraidos": 41574,
+        "preview_first_200": "EXTRATO CONSOLIDADO INTELIGENTE\nmarço/2025\nPrezado Cliente,\nSoluções em pagamentos e recebimentos para o seu negócio.\nO Santander tem soluções financeiras para simplificar o cotidiano da sua empresa. ",
+        "erro": null,
+        "n_pages": 17
+      },
+      "linhas_DD_MM_YYYY": 61,
+      "linhas_DD_MM_curto": 212,
+      "assinaturas_detectadas": {
+        "santander": 27,
+        "internet banking empresarial": 2,
+        "extrato consolidado inteligente": 9,
+        "cr cob compensacao": 0,
+        "saldo do dia": 0,
+        "aplicacao contamax": 7,
+        "rendimento liquido de contamax": 0,
+        "mercado pago": 0,
+        "bradesco": 0,
+        "extrato mensal": 0,
+        "extrato consolidado": 9,
+        "itau": 0,
+        "sispag": 0,
+        "bs2": 0
+      }
+    }
+  ]
+}

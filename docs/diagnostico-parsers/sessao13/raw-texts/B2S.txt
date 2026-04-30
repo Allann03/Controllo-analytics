@@ -1,0 +1,85 @@
+=== FIXTURE: B2S.pdf ===
+=== EXTRAIDO EM: 2026-04-30 ===
+=== EXTRACTOR: pdfplumber 0.11.9 ===
+=== SHA256 DO PDF ORIGINAL: cf781b936d6c1e827cbfe26cfed3a2ff1c03daa0cab8770bd58d8a69c0a6014b ===
+=== N_PAGINAS: 2 ===
+
+===== PAGE 1 =====
+Extrato Bancário - Empresas
+Extraído em 08/03/2025
+PROMOVE BRASIL DESENVOLVIMENTO E NEGOCIOS
+Saldo atual:
+LTDA
+R$ 21.686,32
+10.175.617/0001-00
+Período 01/01/2025 - 31/01/2025
+Ag: 0001 Conta: 584410-0
+Data Tipo Descrição Valor
+Saldo Inicial R$ 72.500,88
+02/01/2025 Pgto Concess/Tributo Pagamento de Título - R$ 117,37
+02/01/2025 Pagamento Boleto Pagamento de Título - R$ 160,00
+03/01/2025 Remuneração Aplicação Aut Remuneração Aplicação Automática R$ 0,21
+03/01/2025 Recebiment Cartao Credito Receb.Cartao Credito - Adiqplus Instituicao de Pagamento Ltd R$ 1.329,08
+04/01/2025 Pix Recebido Chave Crédito Pix Chave - Aparecida Erica Monteiro Noberto Barbosa R$ 5.900,00
+04/01/2025 Pix Recebido Chave Crédito Pix Chave - Augusto Roberto Rodrigues Goncalves R$ 2.756,00
+06/01/2025 Pix Recebido Chave Crédito Pix Chave - Ana Elizabeth de Freitas Argolo R$ 600,00
+07/01/2025 Pix Enviado Débito Pix - R$ 260,00
+07/01/2025 Ted Enviada Outra Tit Ib Itaú Unibanco SA - Mary Fatima Dos Santos Terra de Sousa - R$ 13.457,89
+07/01/2025 Tarifa Ted Bs2.Emp Tarifa Ted Bs2.Emp - R$ 3,50
+07/01/2025 Pix Enviado Débito Pix - R$ 20.000,00
+08/01/2025 Remuneração Aplicação Aut Remuneração Aplicação Automática R$ 1,89
+08/01/2025 Remuneração Aplicação Aut Remuneração Aplicação Automática R$ 1,01
+08/01/2025 Remuneração Aplicação Aut Remuneração Aplicação Automática R$ 7,72
+08/01/2025 Remuneração Aplicação Aut Remuneração Aplicação Automática R$ 10,32
+08/01/2025 Remuneração Aplicação Aut Remuneração Aplicação Automática R$ 4,55
+08/01/2025 Recebiment Cartao Credito Receb.Cartao Credito - Getnet S/A R$ 2.600,98
+08/01/2025 Pix Recebido Chave Crédito Pix Chave - Camila Bruno Batista R$ 1.504,00
+08/01/2025 Pix Recebido Chave Crédito Pix Chave - Gabriel Calegari Matos R$ 2.756,00
+09/01/2025 Ted Enviada Outra Tit Ib Bco Santander SA - Karla Pinto Varasquim - R$ 3.811,97
+09/01/2025 Tarifa Ted Bs2.Emp Tarifa Ted Bs2.Emp - R$ 3,50
+10/01/2025 Remuneração Aplicação Aut Remuneração Aplicação Automática R$ 0,89
+Os dados acima têm como base 08/03/2025 e estão sujeitos a alterações. Página 1 - 2
+empresas.bs2.com
+(Atendimento de segunda a sexta, exceto feriados, das 8h às 20h)
+Capitais e Regiões Metropolitanas: 3003-5202
+Demais localidades: 0800 545 5200
+Atendimento ao deficiente auditivo: 0800 970 6993
+Ouvidoria: 0800 726 8889
+E-mail: empresas@bancobs2.com.br
+
+===== PAGE 2 =====
+Data Tipo Descrição Valor
+10/01/2025 Remuneração Aplicação Aut Remuneração Aplicação Automática R$ 0,69
+10/01/2025 Remuneração Aplicação Aut Remuneração Aplicação Automática R$ 0,42
+10/01/2025 Recebiment Cartao Credito Receb.Cartao Credito - Getnet S/A R$ 5.410,70
+13/01/2025 Pix Recebido Chave Crédito Pix Chave - Natalia Lopes Stopato R$ 5.800,00
+13/01/2025 Pix Recebido Chave Crédito Pix Chave - Diego Aires Senra R$ 6.590,00
+14/01/2025 Recebiment Cartao Credito Receb.Cartao Credito - Adiqplus Instituicao de Pagamento Ltd R$ 1.496,42
+14/01/2025 Pix Recebido Chave Crédito Pix Chave - Isleide da Trindade Jesus R$ 3.103,00
+17/01/2025 Recebiment Cartao Credito Receb.Cartao Credito - Adiqplus Instituicao de Pagamento Ltd R$ 1.496,90
+20/01/2025 Ted Enviada Outra Tit Ib Itaú Unibanco SA - Controllo Bpo - R$ 1.635,99
+20/01/2025 Tarifa Ted Bs2.Emp Tarifa Ted Bs2.Emp - R$ 3,50
+20/01/2025 Pix Recebido Manual Crédito Pix Manual - Elen Araujo Sodré R$ 702,40
+20/01/2025 Pgto Concess/Tributo Pagamento de Título - R$ 3.411,31
+21/01/2025 Remuneração Aplicação Aut Remuneração Aplicação Automática R$ 3,38
+22/01/2025 Recebiment Cartao Credito Receb.Cartao Credito - Adiqplus Instituicao de Pagamento Ltd R$ 1.472,79
+24/01/2025 Pix Recebido Chave Crédito Pix Chave - Laryssa Matos de Aquino Soares R$ 5.275,00
+24/01/2025 Pix Enviado Débito Pix - R$ 15.000,00
+25/01/2025 Pix Recebido Chave Crédito Pix Chave - Monica da Silva Carvalho R$ 700,00
+27/01/2025 Remuneração Aplicação Aut Remuneração Aplicação Automática R$ 8,93
+29/01/2025 Ted Enviada Outra Tit Ib Itaú Unibanco SA - Controllo Bpo - R$ 2.256,40
+29/01/2025 Tarifa Ted Bs2.Emp Tarifa Ted Bs2.Emp - R$ 3,50
+30/01/2025 Remuneração Aplicação Aut Remuneração Aplicação Automática R$ 1,59
+30/01/2025 Pix Recebido Chave Crédito Pix Chave - Jessica Andreza Alves Pinto R$ 4.685,00
+30/01/2025 Pix Recebido Chave Crédito Pix Chave - 53.876.920 Vanessa Correia Ribeiro R$ 4.685,00
+31/01/2025 Pix Recebido Chave Crédito Pix Chave - Jessica Lacerda Gusmao R$ 10.666,20
+Saldo Final R$ 81.947,02
+Os dados acima têm como base 08/03/2025 e estão sujeitos a alterações. Página 2 - 2
+empresas.bs2.com
+(Atendimento de segunda a sexta, exceto feriados, das 8h às 20h)
+Capitais e Regiões Metropolitanas: 3003-5202
+Demais localidades: 0800 545 5200
+Atendimento ao deficiente auditivo: 0800 970 6993
+Ouvidoria: 0800 726 8889
+E-mail: empresas@bancobs2.com.br
+
