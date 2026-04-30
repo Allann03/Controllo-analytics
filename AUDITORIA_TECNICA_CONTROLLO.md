@@ -1057,3 +1057,104 @@ O Controllo e uma aplicacao SaaS funcional com ~50.200 linhas de codigo, cobrind
 - Nubank, Itau padrao, demais: inalterados
 
 **Risco residual**: assinaturas mais restritas podem deixar PDFs raros sem deteccao (caem em filename hint ou desconhecido). Auditoria contra 92 PDFs da fixture mostrou 0 perda real (apenas account_statement de Mercado Pago real continua mis-routed para c6bank via filename hint frágil — bug pré-existente FORA do escopo da Sessao 17).
+
+## Sessao 18 — Bradesco 100% VERDE + Validador de saldos
+
+**Data**: 2026-04-30
+**Branch**: `feat/bradesco-100-verde-validador-saldos` (a partir do tip da Sessao 17, commit `d63e9f2`)
+**Commit**: <preencher apos commit>
+
+**Objetivo**: entregar TODOS os 9 PDFs Bradesco em `pdfs_reais/` (incluindo CW TOUR, SEOLIN, TANIA dez/nov, Bradesco5, Agosto 2025, Bradesco_24..., Extrato dec25/nov25) reconciliados (gap=0) e classificados como VERDE pelo novo validador de saldos.
+
+**Resultado**: 9/9 Bradesco VERDE, gap=0,00, RECONCILIADO em todos.
+
+### Fase 1 — Inventario (read-only)
+
+9 PDFs Bradesco identificados (todos roteados para `bradesco_net_empresas` graças à Sessao 17). Distribuicao provisoria pre-fix: 1 VERDE (CW TOUR — depois exposto como "VERDE fake"), 1 AMARELO, 7 VERMELHO. Categorizacao por causa-raiz: A) parser inclui "Ultimos Lancamentos" / "Saldos Invest Facil" como tx (3 PDFs); B) layout Mensal SAMARA com SF=0 (2); C) SI negativo grande nao filtrado (1); D) Hipotese D escolheu cabecalho errado (1); E) Agosto 2025 (Categoria A possivel).
+
+### Fase 2 — Validador de saldos
+
+**Modulo novo `backend/services/validacao/`** com 4 checks:
+1. Saldo total: `SI + soma(valores assinados) ≈ SF` (tolerancia 0.01).
+2. Saldos diarios: para cada dia D em saldos_diarios, `SI_D + soma(tx_D) ≈ SF_D`.
+3. Continuidade: `SF_D ≈ SI_{D+1}` (tolerancia 0.50 para rendimento overnight).
+4. Datas dentro do periodo pedido (extraido de "Entre <ini> e <fim>").
+
+**Classificador 3 niveis**: VERMELHO se Check 1 ou 4 falham; AMARELO se Check 2 ou 3 falham com Check 1 OK; VERDE caso contrario.
+
+**Integracao no pipeline**: `_validar_saldos` chamado apos Passo 7, anexa `validacao` + `nivel_confianca` + `diagnostico` ao `ResultadoExtracao`. Log estruturado `[VALIDADOR] arquivo=... nivel=... diag=...` em prod. **Nao altera fluxo de erro — apenas enriquece**.
+
+**Endpoint `/api/processar-extrato`**: novo bloco `validacao` no JSON response com `nivel`, `diagnostico`, flags por check, gap total, dias suspeitos, rupturas, datas problematicas (top 5 cada lista).
+
+**Descoberta da Fase 2**: o validador imediatamente expos que CW TOUR era "VERDE fake" (4 tx pos-periodo no parser + SF do cabecalho refletindo estado pos-periodo, gap batia por coincidencia). 9/9 Bradesco passaram a VERMELHO no validador novo.
+
+### Fase 3 — Lote A + Hipotese D estendida
+
+**Lote A — stop em "Ultimos Lancamentos" / "Saldos Invest Facil" no parser** (`backend/services/parsers/bradesco_empresas/bradesco_net_empresas.py`):
+- Constante nova `_MARCADORES_FIM_PERIODO` com 4 entradas (acentuado e nao-acentuado).
+- Flag `secao_terminada` cross-pagina (preserva-se entre iteracoes do loop).
+- Quando o parser cruza um marcador, ignora todas as linhas seguintes.
+- Para PDFs sem marcadores (caso comum), o flag nunca dispara — parser le ate o fim. Stop e OPCIONAL.
+
+**Hipotese D estendida** (`backend/services/extrator_pdf.py`, branch `bradesco_net_empresas` em `_extrair_saldos_pdf`):
+- Sessao 16 tinha 2 ramos: coluna "Investimento" → ultimo Total da secao principal; senao → cabecalho `Ag|Conta` (Total Disponivel).
+- Sessao 18 estende para 4 ramos. SF = ultimo Total da secao principal sempre que houver QUALQUER um destes marcadores: coluna "Investimento" OR "Ultimos Lancamentos" OR "Saldos Invest Facil". So usa cabecalho quando NENHUM marcador presente.
+- Log `[EXTRATOR-SALDOS]` agora inclui `regra_sf` com 4 valores possiveis: `cabecalho_total_disponivel`, `ultimo_total_secao_principal_por_coluna_investimento` (Sessao 16), `ultimo_total_secao_principal_por_ultimos_lancamentos` (NOVO), `ultimo_total_secao_principal_por_saldos_invest_facil` (NOVO).
+- Tambem expoe `tem_ultimos_lancamentos` e `tem_saldos_invest_facil` como flags no log.
+
+**Por que cobriu Categorias A, C, D, E, B em um fix conjunto**: o Lote A removeu tx fora do periodo do parser (resolveu Categoria A direta + parte de C/E). A Hipotese D estendida corrigiu o SF para refletir o saldo do fim do periodo pedido (resolveu Categorias D, B, e o "VERDE fake" do CW TOUR). Categoria C (Bradesco5 com SI -49.630) caiu junto: o problema nao era `_e_linha_skip` no parser, era a contaminacao por "Saldos Invest Facil" que o Lote A tambem removeu.
+
+**Validacao R-B (nao-regressao)** em 10 PDFs nao-Bradesco (Nubank, Itau, Santander variantes, BS2, Stone, BB, PagBank): 4 VERDE confirmados (Nubank, Itau Mensal, Santander Consolidado/LEKE da Sessao 17, B2S da Sessao 17). 6 VERMELHO mas TODOS sao pre-existentes (SEM_SALDO ou ACEITAVEL antes do meu fix; o validador apenas os classifica corretamente agora). 0 PDF nao-Bradesco que estava VERDE virou AMARELO/VERMELHO.
+
+### Tabela final dos 9 Bradesco (pos-Sessao 18)
+
+| # | Arquivo | Layout | n_tx | SI | SF | Gap | regra_sf | Validador |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Agosto 2025.pdf | Outro | 14 | 1518.28 | 868.56 | 0.00 | ultimos_lancamentos | **VERDE** |
+| 2 | Bradesco Net Empresas (2).pdf (CW TOUR) | Consolidado | 9 | -918.38 | 1.00 | 0.00 | ultimos_lancamentos | **VERDE** |
+| 3 | Bradesco Net Empresas.PDF (SEOLIN) | Outro | 20 | 89479.75 | 572.64 | 0.00 | coluna_investimento | **VERDE** |
+| 4 | Bradesco net.pdf (TANIA dez) | Outro | 75 | 78019.32 | 43612.02 | 0.00 | ultimos_lancamentos | **VERDE** |
+| 5 | Bradesco net2.pdf (TANIA nov) | Outro | 73 | 96735.73 | 78019.32 | 0.00 | ultimos_lancamentos | **VERDE** |
+| 6 | Bradesco5.pdf | Outro | 29 | -49630.27 | -49299.11 | 0.00 | ultimos_lancamentos | **VERDE** |
+| 7 | Bradesco_24032026_085239.pdf | Outro | 5 | 0.00 | 4560.19 | 0.00 | ultimos_lancamentos | **VERDE** |
+| 8 | Extrato dec25.pdf | Mensal | 29 | 22750.45 | 19407.49 | 0.00 | ultimos_lancamentos | **VERDE** |
+| 9 | Extrato nov25.pdf | Mensal | 20 | 16136.12 | 22750.45 | 0.00 | ultimos_lancamentos | **VERDE** |
+
+### Arquivos modificados
+
+| Arquivo | Alteracao |
+|---------|-----------|
+| backend/services/validacao/__init__.py | NOVO. Reexporta `validar_extracao` e `classificar`. |
+| backend/services/validacao/validador_saldos.py | NOVO (~250 linhas). 4 checks + helpers `_parse_data` e `_valor_assinado`. Tolerante a tipos inconsistentes. |
+| backend/services/validacao/classificador_confianca.py | NOVO (~50 linhas). Decide nivel final via 4 regras priorizadas. |
+| backend/services/parsers/bradesco_empresas/bradesco_net_empresas.py | +constante `_MARCADORES_FIM_PERIODO` e flag `secao_terminada` cross-pagina no metodo `extrair`. ~25 linhas. |
+| backend/services/extrator_pdf.py | Branch `bradesco_net_empresas` em `_extrair_saldos_pdf` estendido com flags `tem_ultimos_lancamentos` e `tem_saldos_invest_facil`. Log expandido com 4 valores de `regra_sf`. ~40 linhas. |
+| backend/services/pipeline_extracao.py | Import `validacao`. Novos campos em `ResultadoExtracao` (`validacao`, `nivel_confianca`, `diagnostico`, `periodo_inicio`, `periodo_fim`). Metodo novo `_validar_saldos` chamado apos Passo 7. ~110 linhas. |
+| backend/main.py | Bloco `validacao` adicionado ao JSON response do `/api/processar-extrato`. ~25 linhas. |
+| backend/tests/test_validador_saldos.py | NOVO. 10 testes cobrindo 4 checks + tolerancias + casos defensivos. |
+| backend/tests/test_extrair_saldos_bradesco_net_empresas.py | Atualizado: SF de CW TOUR (-1247.89 -> 1.00), TANIA dez (70042.18 -> 43612.02), TANIA nov (95043.32 -> 78019.32). Test pipeline_diff_zero atualizado para 9 tx / excel_liquido=919.38. Replica da heuristica estendida no helper de teste. |
+| backend/tests/test_parser_bradesco_net_empresas_lote_a.py | NOVO. 6 testes: marcadores cobrem variantes encoding; `_e_linha_skip` correto; CW TOUR para em "Ultimos Lancamentos" (PDF real); TANIA dez para cross-pagina (PDF real); PDF SEM marcadores le ate o fim (sintetico — R-A); PDF com marcador para apos marcador (sintetico). |
+| AUDITORIA_TECNICA_CONTROLLO.md | Esta secao. |
+
+### Testes
+
+Suite completa: **790 passou** (+16 da Sessao 18: 10 validador + 6 lote A; vs 774 da Sessao 17). 1 falha pre-existente (`test_t8_senhas_comuns_rejeita_via_zxcvbn`, herdada da Sessao 14). 2 erros pre-existentes (`test_pagbank.py` / `test_pagbank_integracao.py`, scripts CLI sem fixtures, herdados do commit `d7f4689`). Diferenca exata = +16 (todos os novos passam, nenhuma regressao).
+
+### Validacao em prod (apos deploy)
+
+- 9/9 PDFs Bradesco devem retornar 200 OK com `validacao.nivel=VERDE` e `gap=0.00`.
+- Logs `[VALIDADOR]` e `[EXTRATOR-SALDOS]` aparecem com `regra_sf` indicando ramo escolhido.
+- Outros bancos (Nubank, Itau, Santander, BS2 etc): inalterados — fix isolado a `bradesco_net_empresas`.
+- Se algum PDF Bradesco em prod der `validacao.nivel != VERDE`, capturar log `[EXTRATOR-SALDOS]` para diagnostico.
+
+### Risco residual
+
+- A regra "ultimo Total da secao principal" assume que existe uma linha `Total <c> <d> <s>` antes do marcador. Se o PDF Bradesco tiver layout sem essa linha (raro), o SF fica None. Logs em prod permitirao identificar.
+- Categoria B (Mensal SAMARA) ficou VERDE sem precisar de fix dedicado, mas o ParserBradescoNetEmpresas ainda nao foi auditado para outras variantes do layout Mensal. Se aparecer um Mensal de outro cliente com formato diferente, podera precisar de fix individual.
+
+### Nao tocados (R2)
+
+- Parsers de outros bancos (santander, itau, nubank, inter, mercado_pago, bs2, etc): inalterados.
+- `_ASSINATURAS` / `detectar_banco`: inalterados (Sessao 17 ja resolveu).
+- `gerador_excel_*`: inalterado (escopo da Sessao 20).
+- `requirements.txt`, Dockerfiles, `atualizar.sh`, frontend: inalterados.

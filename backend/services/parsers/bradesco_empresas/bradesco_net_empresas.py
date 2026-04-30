@@ -44,6 +44,20 @@ _SKIP_LOWER = [
     'últimos lançamentos', 'ultimos lancamentos',
 ]
 
+# Sessão 18 — Marcadores que indicam INÍCIO de seção pós-período pedido.
+# A partir dessas linhas, todas as transações pertencem a um momento posterior
+# ao período do extrato (ex: "Últimos Lançamentos" = movimentações entre fim
+# do período e data de emissão; "Saldos Invest Fácil / Plus" = saldos de
+# investimento por dia, não são transações de conta corrente). O parser deve
+# IGNORAR todas as linhas após encontrar um desses títulos. Marcadores são
+# substring-based e tolerantes a encoding (sem acento opcional).
+_MARCADORES_FIM_PERIODO = [
+    'últimos lançamentos',
+    'ultimos lancamentos',
+    'saldos invest fácil',
+    'saldos invest facil',
+]
+
 # Sequência de inteiros no final da descrição (números de documento)
 _RE_TRAILING_INTS = re.compile(r'(\s+\d+)+\s*$')
 
@@ -144,14 +158,34 @@ class ParserBradescoNetEmpresas(ParserBase):
         #   Linha N+2: descricao parte 2 (continuacao, texto puro)
         # O reagrupamento junta as 3 partes antes de emitir a transacao.
 
+        # Sessão 18 — Flag de fim de período. Quando a leitura cruza um
+        # marcador como "Últimos Lançamentos" ou "Saldos Invest Fácil / Plus",
+        # tudo o que vem depois pertence a momento posterior ao período pedido
+        # e NÃO deve ser extraído como transação. O flag é cross-página
+        # (preserva-se entre iterações de página). Para PDFs sem essas seções
+        # (caso comum), o flag nunca dispara e o parser lê até o fim.
+        secao_terminada = False
+
         i = 0
         while i < len(linhas_raw):
             linha = linhas_raw[i]
             i += 1
 
-            # "Total" line marks end of a period section
+            # Detecta entrada em seção pós-período (Últimos Lançamentos /
+            # Saldos Invest Fácil). Uma vez setado, ignora resto do PDF.
+            if not secao_terminada:
+                ll_strip = linha.lower().strip()
+                if any(marker in ll_strip for marker in _MARCADORES_FIM_PERIODO):
+                    secao_terminada = True
+                    desc_buffer = []
+                    continue
+            if secao_terminada:
+                continue
+
+            # "Total" line marks end of a period section (mas pode ser o
+            # Total do bloco principal, antes de "Últimos Lançamentos").
+            # Apenas drena o buffer de descrição e segue.
             if linha.strip().lower().startswith('total ') and _extrair_valores(linha):
-                # Flush buffer and continue (don't stop — there may be "Últimos Lançamentos")
                 desc_buffer = []
                 continue
 

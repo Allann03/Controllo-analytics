@@ -34,6 +34,8 @@ from .extrator_pdf import (
     aplicar_categorias,
     MAX_PAGINAS_PDF,
 )
+# Sessão 18: validador de saldos (4 checks) + classificador de confiança.
+from .validacao import validar_extracao, classificar
 
 _logger = logging.getLogger(__name__)
 
@@ -91,6 +93,13 @@ class ResultadoExtracao:
     avisos_parser: list[str] = field(default_factory=list)
     requer_ocr: bool = False
     num_paginas: int = 0
+    # Sessão 18 — Validador de saldos
+    validacao: dict = field(default_factory=dict)
+    nivel_confianca: str = ''   # 'VERDE' | 'AMARELO' | 'VERMELHO' | ''
+    diagnostico: str = ''
+    # Período pedido (extraído do PDF para Check 4 do validador)
+    periodo_inicio: Optional[str] = None
+    periodo_fim: Optional[str] = None
 
 
 # -- Pipeline ------------------------------------------------------------------
@@ -143,6 +152,10 @@ class PipelineExtracao:
 
             # ── PASSO 7: Verificar Completude ───────────────────────
             self._passo7_completude(pdf_path, senha)
+
+            # Sessão 18 — Validador de saldos (não altera fluxo de erro;
+            # apenas anexa metadados de qualidade ao resultado).
+            self._validar_saldos(pdf_path)
 
             # Calcular confianca final
             r.confianca = self._calcular_confianca()
@@ -558,6 +571,111 @@ class PipelineExtracao:
             self._log(7, 'Verificar Completude', True,
                       f'Completude OK | {r.paginas_processadas} paginas, '
                       f'{len(r.transacoes)} transacoes', detalhes)
+
+    # -- Validador (Sessão 18) -------------------------------------------------
+
+    def _validar_saldos(self, pdf_path: str):
+        """Aplica os 4 checks do validador (saldo total, saldos diários,
+        continuidade, datas) e popula `r.validacao`, `r.nivel_confianca` e
+        `r.diagnostico`. Não altera o fluxo do pipeline — apenas anexa
+        metadados de qualidade.
+
+        - `saldos_diarios`: convertido a partir de `r.saldos_intermediarios`
+          (cada item já tem `data` + `saldo`; assume saldo é fechamento do
+          dia, então si_calc do dia seguinte = sf do dia atual quando
+          adjacentes — mas aqui só popula sf por dia; o validador detecta
+          ruptura entre dias com sf+si).
+        - `periodo_inicio`/`periodo_fim`: lidos do texto via regex "Entre
+          DD/MM/YYYY e DD/MM/YYYY" (formato Bradesco/Itaú/Santander).
+        """
+        r = self._resultado
+
+        # Constrói saldos_diarios a partir dos saldos_intermediarios
+        saldos_diarios = self._construir_saldos_diarios()
+
+        # Tenta extrair periodo do PDF para Check 4
+        periodo_inicio, periodo_fim = self._extrair_periodo(pdf_path)
+        r.periodo_inicio = periodo_inicio
+        r.periodo_fim = periodo_fim
+
+        try:
+            resultado = validar_extracao(
+                transacoes=r.transacoes or [],
+                saldo_inicial=r.saldo_inicial,
+                saldo_final=r.saldo_final,
+                saldos_diarios=saldos_diarios or None,
+                periodo_inicio=periodo_inicio,
+                periodo_fim=periodo_fim,
+            )
+            nivel, diagnostico = classificar(resultado)
+        except Exception as e:
+            resultado = {'erro_validador': str(e)[:120]}
+            nivel = 'VERMELHO'
+            diagnostico = f'erro no validador: {str(e)[:80]}'
+
+        r.validacao = resultado
+        r.nivel_confianca = nivel
+        r.diagnostico = diagnostico
+
+        try:
+            arquivo = os.path.basename(pdf_path)
+            print(f'[VALIDADOR] arquivo={arquivo} nivel={nivel} diag={diagnostico}')
+        except Exception:
+            pass
+
+    def _construir_saldos_diarios(self) -> dict:
+        """Converte `r.saldos_intermediarios` (lista) para dict por data.
+        Cada item da lista tem `data` (str ou date) e `saldo` (float)."""
+        from datetime import datetime as _dt
+        r = self._resultado
+        out: dict = {}
+        for item in r.saldos_intermediarios or []:
+            d = item.get('data') if isinstance(item, dict) else None
+            sf = item.get('saldo') if isinstance(item, dict) else None
+            if d is None or sf is None:
+                continue
+            # Parse data
+            if isinstance(d, str):
+                parsed = None
+                for fmt in ('%Y-%m-%d', '%d/%m/%Y', '%d/%m/%y'):
+                    try:
+                        parsed = _dt.strptime(d, fmt).date()
+                        break
+                    except ValueError:
+                        continue
+                if parsed is None:
+                    continue
+                d = parsed
+            try:
+                sf = float(sf)
+            except (TypeError, ValueError):
+                continue
+            # Sem si do dia explícito; deixa só sf — o validador detecta
+            # rupturas entre dias adjacentes mesmo sem si.
+            out[d] = {'sf': sf, 'si': out.get(d, {}).get('si')}
+        return out
+
+    def _extrair_periodo(self, pdf_path: str) -> tuple[Optional[str], Optional[str]]:
+        """Extrai `Entre <DD/MM/YYYY> e <DD/MM/YYYY>` das primeiras 2 páginas.
+        Formato comum em Bradesco, Itaú, Santander. Retorna (None, None) se
+        não encontrar."""
+        try:
+            with pdfplumber.open(pdf_path) as pdf:
+                texto = ''
+                for pg in pdf.pages[:2]:
+                    try:
+                        texto += (pg.extract_text() or '') + '\n'
+                    except Exception:
+                        pass
+        except Exception:
+            return None, None
+        m = re.search(
+            r'entre\s+(\d{2}/\d{2}/\d{4})\s+e\s+(\d{2}/\d{2}/\d{4})',
+            texto, re.IGNORECASE,
+        )
+        if not m:
+            return None, None
+        return m.group(1), m.group(2)
 
     # -- Passo 8 ---------------------------------------------------------------
 

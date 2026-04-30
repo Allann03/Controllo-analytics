@@ -480,6 +480,20 @@ def _extrair_saldos_pdf(pdf_path: str, banco_key: str = '', password: str | None
         tem_investimento = bool(
             re.search(r'investiment[oa]s?\s+(sem|com)\s+baixa', texto_total, re.IGNORECASE)
         )
+        # Sessão 18 — heurística de SF estendida para Bradesco com 'Últimos
+        # Lançamentos' / 'Saldos Invest Fácil' (caso CW TOUR jan/2026, TANIA
+        # nov/dez 2025, Agosto 2025). Quando o PDF tem essas seções pós-período,
+        # o cabeçalho `Ag|Conta` reflete o saldo APÓS a seção pós-período, não
+        # o saldo do fim do período pedido. SF correto = último Total da
+        # seção principal (antes do marcador). Sem esses marcadores, mantém a
+        # regra original da Sessão 16 (cabeçalho).
+        _tlow = texto_total.lower()
+        tem_ultimos_lancamentos = (
+            'últimos lançamentos' in _tlow or 'ultimos lancamentos' in _tlow
+        )
+        tem_saldos_invest = (
+            'saldos invest fácil' in _tlow or 'saldos invest facil' in _tlow
+        )
 
         # Captura SI (primeira ocorrência).
         for linha in linhas:
@@ -490,25 +504,43 @@ def _extrair_saldos_pdf(pdf_path: str, banco_key: str = '', password: str | None
                     ini = v
                     break
 
-        usou_cabecalho = False
-        if not tem_investimento:
-            # Hipótese D — ramo "2 colunas": SF = primeiro valor da linha do cabeçalho.
+        # Sessão 18 — escolha do ramo de SF (4 valores possíveis para regra_sf).
+        regra_sf = None  # será preenchida abaixo
+
+        # Ramo 1 — coluna "Investimento" no cabeçalho (Sessão 16 / SEOLIN):
+        # SF = último Total da seção principal antes de "Últimos Lançamentos".
+        # Ramo 2 — Sessão 18 — sem coluna Investimento mas COM "Últimos
+        # Lançamentos": SF = último Total da seção principal antes do marcador.
+        # Ramo 3 — Sessão 18 — sem "Últimos Lançamentos" mas COM "Saldos
+        # Invest Fácil": SF = último Total antes desse marcador.
+        # Ramo 4 — fallback (CW TOUR-like sem nenhum desses): SF = primeiro
+        # valor da linha "Ag|Conta" (Total Disponível). Caso raro pós-Sessão 18.
+        usar_total_secao_principal = (
+            tem_investimento or tem_ultimos_lancamentos or tem_saldos_invest
+        )
+
+        if not usar_total_secao_principal:
+            # Ramo 4 — Total Disponível do cabeçalho (mantido só quando o PDF
+            # NÃO tem nenhum marcador de seção pós-período).
             for linha in linhas:
                 m = _re_bne_cab.match(linha.strip())
                 if m:
                     v = _parse_br_signed(m.group(1))
                     if v is not None:
                         fim = v
-                        usou_cabecalho = True
+                        regra_sf = 'cabecalho_total_disponivel'
                         break
 
         if fim is None:
-            # Hipótese D — ramo "3 colunas" OU fallback se cabeçalho não casou.
-            # SF = ÚLTIMO Total ANTES da seção "Últimos Lançamentos".
+            # Ramos 1/2/3 — SF = ÚLTIMO Total ANTES de qualquer marcador
+            # pós-período (Últimos Lançamentos OU Saldos Invest Fácil).
             stop = False
             for linha in linhas:
                 ll = linha.lower()
-                if 'últimos lançamentos' in ll or 'ultimos lancamentos' in ll:
+                if (
+                    'últimos lançamentos' in ll or 'ultimos lancamentos' in ll
+                    or 'saldos invest fácil' in ll or 'saldos invest facil' in ll
+                ):
                     stop = True
                 if stop:
                     continue
@@ -517,6 +549,19 @@ def _extrair_saldos_pdf(pdf_path: str, banco_key: str = '', password: str | None
                     v = _parse_br_signed(m.group(1))
                     if v is not None:
                         fim = v
+            # Define regra_sf de acordo com o gatilho mais específico que se
+            # aplicou (precedência: investimento > últimos lançamentos > invest fácil).
+            if regra_sf is None:
+                if tem_investimento:
+                    regra_sf = 'ultimo_total_secao_principal_por_coluna_investimento'
+                elif tem_ultimos_lancamentos:
+                    regra_sf = 'ultimo_total_secao_principal_por_ultimos_lancamentos'
+                elif tem_saldos_invest:
+                    regra_sf = 'ultimo_total_secao_principal_por_saldos_invest_facil'
+                else:
+                    # Caso o cabeçalho não case e nenhum marcador presente —
+                    # caiu aqui via fim==None apenas se o regex de cabeçalho falhou.
+                    regra_sf = 'ultimo_total_secao_principal'
 
         try:
             si_log = f"{float(ini):.2f}" if ini is not None else "None"
@@ -524,8 +569,10 @@ def _extrair_saldos_pdf(pdf_path: str, banco_key: str = '', password: str | None
             print(
                 f"[EXTRATOR-SALDOS] banco=bradesco_net_empresas "
                 f"si={si_log} sf={sf_log} "
-                f"regra_sf={'cabecalho_total_disponivel' if usou_cabecalho else 'ultimo_total_secao_principal'} "
-                f"tem_coluna_investimento={tem_investimento}"
+                f"regra_sf={regra_sf} "
+                f"tem_coluna_investimento={tem_investimento} "
+                f"tem_ultimos_lancamentos={tem_ultimos_lancamentos} "
+                f"tem_saldos_invest_facil={tem_saldos_invest}"
             )
         except Exception:
             pass

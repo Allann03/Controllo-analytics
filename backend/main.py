@@ -1578,6 +1578,32 @@ async def rota_processar_extrato(
                     for l in _pipeline_result.log
                 ],
             },
+            # Sessão 18 — Validador de saldos (4 checks, 3 níveis).
+            "validacao": {
+                "nivel": _pipeline_result.nivel_confianca,
+                "diagnostico": _pipeline_result.diagnostico,
+                "checks": {
+                    "saldo_total_ok": _pipeline_result.validacao.get("saldo_total_ok"),
+                    "saldos_diarios_ok": _pipeline_result.validacao.get("saldos_diarios_ok"),
+                    "continuidade_ok": _pipeline_result.validacao.get("continuidade_ok"),
+                    "datas_ok": _pipeline_result.validacao.get("datas_ok"),
+                },
+                "saldo_total_gap": _pipeline_result.validacao.get("saldo_total_gap"),
+                "dias_suspeitos": [
+                    {**ds, "data": str(ds.get("data"))}
+                    for ds in (_pipeline_result.validacao.get("dias_suspeitos") or [])[:5]
+                ],
+                "rupturas_continuidade": [
+                    {**rc,
+                     "data_anterior": str(rc.get("data_anterior")),
+                     "data_seguinte": str(rc.get("data_seguinte"))}
+                    for rc in (_pipeline_result.validacao.get("rupturas_continuidade") or [])[:5]
+                ],
+                "datas_problematicas": [
+                    {**dp, "data": str(dp.get("data"))}
+                    for dp in (_pipeline_result.validacao.get("datas_problematicas") or [])[:5]
+                ],
+            },
         })
 
     except HTTPException:
