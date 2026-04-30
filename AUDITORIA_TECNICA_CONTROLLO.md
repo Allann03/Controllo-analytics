@@ -1390,3 +1390,30 @@ Apos validacao visual da S22 base, Allan pediu indicadores de cor para facilitar
 **Validacao visual humana:** Allan abriu `C:\Users\Allan\AppData\Local\Temp\s22_extensao_teste.xlsx` (gerado a partir de `Extrato Bradesco TLA - 11.25.pdf`, 73 tx — 45 entradas + 28 saidas) no Excel real e confirmou que cores aparecem corretamente.
 
 **Pytest:** 820 → 823 collected (+3 da extensao). Zero regressao. R-B `gerador_excel_contabil.py` continua intocado.
+
+### Extensao 2: alinhamento + Title Case + bordas (padrao Contmatic)
+
+Apos validacao das cores, Allan pediu refinamento para alinhar com padrao visual Contmatic. Mudanca aditiva sobre extensao de cor — mesma branch, novo commit.
+
+**Alinhamento (linha de dados):** A=Lancamento esquerda | B=Data centro | C=Debito centro | D=Credito centro | E=Valor direita | F=Historico esquerda | G=Complemento esquerda. Vertical sempre `center`. Cabecalho centralizado horizontalmente.
+
+**Bordas:** linhas de dados recebem `Border(thin, #000000)` nos 4 lados em A:G (incluindo colunas vazias C/D/F — formam a grade visual). Cabecalho permanece **sem borda**.
+
+**Title Case na coluna G:** aplicado via `str.title()` antes de escrever o complemento. Exemplos:
+- `"PIX ENVIADO MARIA APARECIDA MENEGHIN"` -> `"Pix Enviado Maria Aparecida Meneghin"`
+- `"PAGAMENTO DE BOLETO"` -> `"Pagamento De Boleto"`
+- `"TARIFA EXTRATO INTELIGENTE"` -> `"Tarifa Extrato Inteligente"`
+
+**Trade-off aceito por Allan:** siglas como PIX/TED/DOC/NF viram `Pix`/`Ted`/`Doc`/`Nf`. Decisao consciente — pode ser revisitada em sessao futura com lista de siglas conhecidas se houver desconforto visual em producao.
+
+**Conflito com teste S22 base resolvido:** `test_data_como_tipo_excel_e_complemento_descricao` assertava `"Pagamento NF 123"` no col G; com Title Case, valor vira `"Pagamento Nf 123"`. Decisao "A" do brief: atualizar o `expected` do teste existente (manutencao sob evolucao de contrato, nao regressao). Mudanca de 1 linha + comentario explicativo.
+
+**4 novos testes em `test_gerador_excel_spec_allan.py` (15/15 total passando):**
+- `test_alinhamento_por_coluna_dados` — valida horizontal + vertical em A:G linha 2.
+- `test_cabecalho_centralizado` — todas as 7 colunas do cabecalho com `horizontal=center`.
+- `test_bordas_em_todas_celulas_de_dados` — linhas dados com border thin nos 4 lados; cabecalho SEM borda.
+- `test_complemento_em_title_case` — 3 strings reais transformadas corretamente.
+
+**Pytest:** 823 → 827 collected (+4). 879 passed, 1 falha pre-existente (zxcvbn), 2 erros pre-existentes (pagbank). Zero regressao. R-B `gerador_excel_contabil.py` continua intocado (`git diff` vazio, 6/6 testes contabil OK).
+
+**Validacao visual humana:** Excel gerado em `C:\Users\Allan\AppData\Local\Temp\s22_ext2_teste.xlsx` a partir de `Extrato Bradesco TLA - 11.25.pdf` (73 tx — 45 entradas verde + 28 saidas rosa). Allan confirmou visualmente: cabecalho centralizado azul/branco sem borda; linhas com bordas finas em todas as 7 colunas; alinhamento por coluna correto; coluna G em Title Case; cores preservadas; numeracao 1..N OK.

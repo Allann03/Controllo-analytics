@@ -100,7 +100,8 @@ def test_data_como_tipo_excel_e_complemento_descricao(excel_path):
     assert isinstance(data_cell.value, (date, datetime)), "Data deve ser tipo date/datetime"
     assert data_cell.value.day == 15 and data_cell.value.month == 3 and data_cell.value.year == 2026
     assert data_cell.number_format == "DD/MM/YYYY"
-    assert ws.cell(row=2, column=7).value == "Pagamento NF 123"
+    # Title Case aplicado a partir da S22 ext.2 — "NF" vira "Nf" (trade-off aceito).
+    assert ws.cell(row=2, column=7).value == "Pagamento Nf 123"
 
 
 def test_lista_vazia_gera_excel_com_so_cabecalho(excel_path):
@@ -210,3 +211,90 @@ def test_linha_saida_tem_fundo_rosa_em_todas_colunas(excel_path):
         assert _cor_fill(ws.cell(row=3, column=col)) == COR_SAIDA_BG, (
             f"linha saida col {col}: fundo deve ser rosa {COR_SAIDA_BG}"
         )
+
+
+# ---------------------------------------------------------------------------
+# Extensão 2 S22: alinhamento por coluna + bordas + Title Case (padrão Contmatic).
+# ---------------------------------------------------------------------------
+
+ALINHAMENTO_ESPERADO_DADOS = {
+    1: "left",    # Lançamento
+    2: "center",  # Data
+    3: "center",  # Débito
+    4: "center",  # Crédito
+    5: "right",   # Valor
+    6: "left",    # Histórico
+    7: "left",    # Complemento
+}
+
+
+def test_alinhamento_por_coluna_dados(excel_path):
+    txs = [_tx("01/01/2026", "PIX MARIA", Decimal("100.00"), tipo="entrada")]
+    gerar_excel(txs, excel_path)
+
+    ws = load_workbook(excel_path).active
+    for col, esperado in ALINHAMENTO_ESPERADO_DADOS.items():
+        cell = ws.cell(row=2, column=col)
+        assert cell.alignment.horizontal == esperado, (
+            f"col {col}: alinhamento horizontal esperado {esperado!r}, encontrado {cell.alignment.horizontal!r}"
+        )
+        assert cell.alignment.vertical == "center", f"col {col}: alinhamento vertical deve ser center"
+
+
+def test_cabecalho_centralizado(excel_path):
+    txs = [_tx("01/01/2026", "X", Decimal("10.00"), tipo="entrada")]
+    gerar_excel(txs, excel_path)
+
+    ws = load_workbook(excel_path).active
+    for col in range(1, 8):
+        cell = ws.cell(row=1, column=col)
+        assert cell.alignment.horizontal == "center", f"cabeçalho col {col}: deve estar centralizado"
+
+
+def _tem_borda_nos_4_lados(cell):
+    b = cell.border
+    return (
+        b.left and b.left.style == "thin"
+        and b.right and b.right.style == "thin"
+        and b.top and b.top.style == "thin"
+        and b.bottom and b.bottom.style == "thin"
+    )
+
+
+def test_bordas_em_todas_celulas_de_dados(excel_path):
+    txs = [
+        _tx("01/01/2026", "Receita", Decimal("100.00"), tipo="entrada"),
+        _tx("02/01/2026", "Despesa", Decimal("-50.00"), tipo="saida"),
+    ]
+    gerar_excel(txs, excel_path)
+
+    ws = load_workbook(excel_path).active
+    # Linhas 2 e 3 (dados): borda thin nos 4 lados em A:G, inclusive vazias C/D/F.
+    for row in (2, 3):
+        for col in range(1, 8):
+            assert _tem_borda_nos_4_lados(ws.cell(row=row, column=col)), (
+                f"linha {row} col {col}: deveria ter borda thin nos 4 lados"
+            )
+    # Linha 1 (cabeçalho): SEM borda.
+    for col in range(1, 8):
+        cell = ws.cell(row=1, column=col)
+        b = cell.border
+        # Border vazio: nenhum side com style definido
+        assert not (b.left and b.left.style), f"cabeçalho col {col}: não deve ter borda esquerda"
+        assert not (b.right and b.right.style), f"cabeçalho col {col}: não deve ter borda direita"
+        assert not (b.top and b.top.style), f"cabeçalho col {col}: não deve ter borda topo"
+        assert not (b.bottom and b.bottom.style), f"cabeçalho col {col}: não deve ter borda inferior"
+
+
+def test_complemento_em_title_case(excel_path):
+    txs = [
+        _tx("01/01/2026", "PIX ENVIADO MARIA APARECIDA MENEGHIN", Decimal("100.00"), tipo="entrada"),
+        _tx("02/01/2026", "PAGAMENTO DE BOLETO",                 Decimal("-50.00"), tipo="saida"),
+        _tx("03/01/2026", "TARIFA EXTRATO INTELIGENTE",          Decimal("-9.90"), tipo="saida"),
+    ]
+    gerar_excel(txs, excel_path)
+
+    ws = load_workbook(excel_path).active
+    assert ws.cell(row=2, column=7).value == "Pix Enviado Maria Aparecida Meneghin"
+    assert ws.cell(row=3, column=7).value == "Pagamento De Boleto"
+    assert ws.cell(row=4, column=7).value == "Tarifa Extrato Inteligente"
