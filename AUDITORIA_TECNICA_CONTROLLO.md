@@ -1279,3 +1279,91 @@ Confirmacao de zero regressao em outros bancos:
 - **Iter 1**: convencao SI = saldo_dia(D_min) sem ajuste no santander_ib_novo. Funciona porque VILA PET tem net_tx(D_min)=0 todo dia (contamax). Se aparecer cliente IB Novo nao-contamax cujo D_min tem net_tx != 0, validador apontara gap. Refinamento mapeado para S20 (retroaplicar `SI = saldo - net_tx_d_min` igual ao fallback A).
 - **Iter 3 fallback B (regra "SF = primeira linha do PDF onde data=D_max")**: assume que PDF lista tx em ordem descendente cronologica DENTRO do dia. Vale para MARTINS e DLS/DLS_1/IB N1 (todos do mesmo layout). Se aparecer Aplicativo Santander Empresas com ordem ascendente intra-dia, regra inverte. Logs em prod permitirao identificar.
 - **Iter 4 — VERMELHO honesto permanente** dos 3 PDFs DLS/DLS_1/IB N1 ate fix do parser na S20. Comportamento esperado, NAO e pendencia urgente — gap e diagnosticavel.
+
+---
+
+## Sessao 22 — Excel basico reformatado conforme spec Allan (7 colunas contabeis)
+
+**Branch:** `feat/excel-reformatado-spec-allan` (de `3740e6e`).
+**Escopo:** cosmetico — so toca o gerador de Excel basico. Zero impacto em parsers, validador, pipeline ou Excel contabil.
+
+### O que mudou
+
+`backend/services/gerador_excel.py` foi reescrito (233 -> 78 linhas) para o layout fixo destinado a importacao em sistema contabil:
+
+| Coluna | Cabecalho | Conteudo |
+|---|---|---|
+| A | Lancamento | Numeracao crescente 1..N |
+| B | Data | datetime, formato `DD/MM/YYYY` |
+| C | Debito | **Vazia** (so titulo no cabecalho) |
+| D | Credito | **Vazia** (so titulo no cabecalho) |
+| E | Valor | Float **sempre positivo** (`abs()`), formato `#,##0.00` |
+| F | Historico | **Vazia** (so titulo no cabecalho) |
+| G | Complemento | Campo `descricao` da transacao |
+
+**Removido vs versao anterior:** abas `Resumo por Banco` e `Resumo Diario`; linha de TOTAIS (Saldo Inicial / Entradas / Saidas / Saldo Final com formula); cores condicionais por tipo (verde/vermelho/roxo); coluna `Banco` / `Categoria` / `Tipo`.
+
+**Assinatura preservada:** `gerar_excel(transacoes, caminho_saida, saldo_inicial=None)`. O parametro `saldo_inicial` continua aceito por compatibilidade com chamadas legadas em `main.py:1497`, `main.py:1790`, `main.py:1862`, mas nao e mais usado no Excel basico (deprecation explicita no docstring da funcao). O Excel contabil (`gerador_excel_contabil.py`) ainda usa `saldo_inicial`.
+
+### Decisao: filtrar `tipo='posicao'` no Excel basico
+
+Saldos de carteira de investimento (XP `xp_posicao`, categoria "Posicao de Investimentos") **nao sao lancamentos de caixa** — sao fotografias de saldo. Incluir no Excel destinado a importacao contabil corromperia o objetivo (Debito/Credito/Historico/Complemento e vocabulario de plano de contas, nao de extrato bruto).
+
+Filtro aplicado no inicio de `gerar_excel()`:
+```python
+transacoes_filtradas = [t for t in (transacoes or []) if t.get("tipo") != "posicao"]
+```
+
+Coberto pelo teste `test_filtra_tipo_posicao` — barreira contra regressao se alguem remover o filtro futuramente. **Excel contabil (`gerador_excel_contabil.py`) intocado** — se algum dia precisar de "Excel de posicoes XP", e gerador novo, nao esse.
+
+### Testes
+
+`backend/tests/test_gerador_excel_spec_allan.py` — 8/8 passando:
+1. `test_cabecalhos_e_ordem_de_colunas` — 7 colunas exatas, 1 aba, cabecalho em negrito.
+2. `test_colunas_debito_credito_historico_vazias` — C/D/F sempre vazias.
+3. `test_valor_sempre_positivo_inclusive_para_saida_negativa` — `Decimal('-300.00')` -> `300.00`, formato `#,##0.00`. Pega regressao se alguem remover `abs()`.
+4. `test_lancamento_numeracao_crescente` — 1, 2, 3, ...
+5. `test_data_como_tipo_excel_e_complemento_descricao` — data tipo `datetime.date`, formato `DD/MM/YYYY`, complemento = descricao.
+6. `test_lista_vazia_gera_excel_com_so_cabecalho` — borda: 0 transacoes ainda gera Excel valido.
+7. `test_filtra_tipo_posicao` — XP `posicao` filtrado, numeracao mantem sequencia.
+8. `test_sem_abas_extras_sem_totalizadores` — sheetnames == `["Lancamentos"]`, sem TOTAIS embedded.
+
+### Validacao ponta-a-ponta
+
+Smoke E2E rodando `processar_extrato` + `gerar_excel` em 4 PDFs reais:
+- **Bradesco** (`Extrato Bradesco TLA - 11.25.pdf`): 73 tx OK, 7 colunas, valores positivos, formato OK.
+- **Itau** (`2026 08 - Itau.pdf`): 9 tx OK.
+- **XP** (`XP Investimentos - extrato de conta corrente.pdf`): 34 tx OK (parser detectou `xp_extrato`, sem `posicao` neste PDF).
+- **Santander** (`EXTRATO SANTANDER CONTA MAX.pdf`): 0 tx (parser nao extrai esse layout — limitacao pre-existente, fora do escopo S22; Excel gerado corretamente com so o cabecalho).
+
+### Pytest baseline vs S22
+
+| Metrica | Baseline `3740e6e` (S19) | Apos S22 | Delta |
+|---|---|---|---|
+| Coletados | 812 | 820 | +8 (novos S22) |
+| Passados | 809 | 817 | +8 |
+| Falhas | 1 (`test_t8_senhas_comuns_rejeita_via_zxcvbn` — pre-existente) | 1 (mesma) | 0 |
+| Erros | 2 (pagbank, pre-existentes) | 2 (mesmos) | 0 |
+
+Zero regressao atribuivel a S22.
+
+### R-B Excel contabil
+
+`git diff feat/santander-100-verde-validador..HEAD -- backend/services/gerador_excel_contabil.py` retorna **vazio**. Os 6 testes em `tests/test_excel_contabil.py` continuam passando (6/6).
+
+### Dead code mapeado (NAO removido nesta sessao)
+
+`backend/services/gerador_excel_pipeline.py` — refatoracao antiga do "pipeline 8 passos" (commit `9bf50a5`). Nenhum import em todo o repositorio (`grep -r "gerador_excel_pipeline" backend/` so encontra a propria docstring do arquivo). **Candidato a remocao em sessao futura** apos confirmacao explicita do Allan. Fora do R1 da S22.
+
+### Nao tocados (R2)
+
+- `gerador_excel_contabil.py` (Excel contabil partida dobrada — usado quando `empresa_id` e fornecido em `/api/processar-extrato`).
+- Parsers (`backend/services/parsers/*.py`), `extrator_pdf.py`, `pipeline_extracao.py`, validador.
+- `_ASSINATURAS`, `detectar_banco`.
+- `requirements.txt`, Dockerfiles, frontend.
+- Endpoint `/api/processar-extrato` em `main.py` — assinatura de `gerar_excel` preservada, nada mudou na rota.
+
+### Risco residual
+
+- **`saldo_inicial=None` no-op:** se algum dev futuro reintroduzir uso de `saldo_inicial` no Excel basico sem revisar a spec, perde-se o layout contabil. Mitigado por: docstring deprecation explicita + 8 testes blindando o layout.
+- **Filtro `posicao`:** se cliente XP usar especificamente o Excel basico esperando ver posicoes da carteira, perde isso. Decisao consciente — spec contabil prevalece. Caso algum cliente reclame, gerador novo dedicado a posicoes.
