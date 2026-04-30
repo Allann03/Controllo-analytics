@@ -1426,6 +1426,45 @@ async def rota_processar_extrato(
         if resultado.get("erro"):
             raise HTTPException(status_code=422, detail=resultado["erro"])
 
+        # >>> GUARD silent failure (Sessão 14) <<<
+        # Se o parser retornou 0 tx mas o pipeline detectou movimento entre SI e SF,
+        # o usuário receberia sucesso=True + Excel vazio. Detectar e devolver 422.
+        _extrato_total = 0.0
+        if (_pipeline_result.saldo_inicial is not None
+                and _pipeline_result.saldo_final is not None):
+            _extrato_total = abs(
+                float(_pipeline_result.saldo_final)
+                - float(_pipeline_result.saldo_inicial)
+            )
+        _excel_total = (
+            float(resultado.get("total_entradas") or 0)
+            + float(resultado.get("total_saidas") or 0)
+        )
+        _n_tx = len(resultado.get("transacoes") or [])
+        if _n_tx == 0 and _excel_total < 0.01 and _extrato_total > 1.0:
+            _banco_det = (
+                resultado.get("banco") or _pipeline_result.banco or "desconhecido"
+            )
+            print(
+                f"[GUARD] Silent failure detectado: banco={_banco_det} "
+                f"excel_total={_excel_total} extrato_total={_extrato_total} "
+                f"arquivo={arquivo.filename}"
+            )
+            raise HTTPException(
+                status_code=422,
+                detail={
+                    "erro": "extracao_vazia",
+                    "mensagem": (
+                        f"O extrato indica movimentação de R$ {_extrato_total:,.2f} "
+                        f"(SI={_pipeline_result.saldo_inicial} -> "
+                        f"SF={_pipeline_result.saldo_final}) "
+                        f"mas o parser extraiu 0 transações. Provavelmente o parser "
+                        f"desse formato não está implementado ou houve erro silencioso. "
+                        f"Banco detectado: {_banco_det}"
+                    ),
+                },
+            )
+
         # Extrai número de conta antes de apagar o PDF temporário
         numero_conta = _extrair_numero_conta(pdf_path)
 

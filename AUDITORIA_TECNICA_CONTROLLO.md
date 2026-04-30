@@ -881,3 +881,27 @@ O Controllo e uma aplicacao SaaS funcional com ~50.200 linhas de codigo, cobrind
 | Arquivos backend modificados | 13 (main.py, extrator_pdf.py, master.py, base.py, 7 parsers, gerador_excel_contabil.py, xp_posicao.py) |
 | Arquivos frontend modificados | 1 (master/page.tsx) |
 | Arquivos NAO alterados | models.py, config.py, auth_utils.py, financeiro_service.py, importacao_service.py, insights_engine.py, simulacao_tributaria_service.py, motor_classificacao.py, conciliacao/*, tributario/*, todos os demais routers, todos os demais parsers |
+
+## Sessao 14 — Guard Silent Failure + Log 422 + Investigacao Excel vs Extrato
+
+**Branch:** `fix/bradesco-saldoanterior-silentfail-log422` (a partir de main `3f7c0dd`)
+**Escopo final:** reduzido apos analise inicial (fix bradesco-saldoanterior abandonado por estar fora de R2).
+
+**Arquivos modificados:**
+| Arquivo | Alteracao |
+|---------|-----------|
+| backend/main.py | Guard silent failure no endpoint POST /api/processar-extrato. Quando parser retorna 0 transacoes mas pipeline detecta movimento (`abs(SF - SI) > 1.0`), retorna HTTP 422 com `detail.erro="extracao_vazia"` em vez de 200 OK com Excel vazio. Log `[GUARD]` precede o raise para diagnostico. |
+| backend/services/pipeline_extracao.py | Logs estruturados `[PIPELINE-422]` em 6 pontos onde `r.passo_falha` e setado: arquivo nao encontrado (passo 1), excede limite de paginas (1), erro de senha/abertura (1), PDF imagem/vetorial (1), banco nao identificado (1), parser nao implementado (passo 2). Sem alteracao na logica do pipeline. |
+| AUDITORIA_TECNICA_CONTROLLO.md | Esta secao. |
+
+**Bugs cobertos:**
+- bug-silent-failure: caso `Santander N2.pdf` (e similares) retornava 200 OK com Excel=0 quando o extrato tem movimento. Fix detecta divergencia via `_pipeline_result.saldo_inicial/saldo_final` vs `resultado["transacoes"]`.
+
+**Bugs investigados read-only (nao corrigidos nesta sessao, materia para Sessao 15):**
+- bug-saldoanterior CW TOUR: o parser `bradesco_net_empresas` ja filtra "SALDO ANTERIOR" corretamente (linha 33 de `_SKIP_LOWER`). O problema reportado ("Excel=-329.51 vs Extrato=588.87, diff=-918.38") e na funcao `_extrair_saldos_pdf()` em `extrator_pdf.py`: nao tem branch para `bradesco_net_empresas` (cai no fallback generico) e o helper `_ultimo_num()` perde o sinal negativo do "26/12/2025 SALDO ANTERIOR -918,38". Resultado: SI=918.38 (positivo errado), SF=None (PDF usa "Total" nao "Saldo final"), e Passo 3 do pipeline calcula SF=918.38+E-S=588.87 (errado). Excel=-329.51 esta CERTO. Documentacao completa em `/tmp/sessao14/analise-bug-extrato-total.md` (scratch, nao versionado).
+
+**Testes:** 757 passou, 0 falhou. 2 erros pre-existentes em `test_pagbank.py` e `test_pagbank_integracao.py` (scripts CLI legados sem fixtures, herdados do commit inicial `d7f4689`).
+
+**Nao tocados (R2):** `extrator_pdf.py`, `_ASSINATURAS`, `_PARSERS`, parsers, `gerador_excel_contabil.py`, `gerador_excel_pipeline.py`, `requirements.txt`, frontend, models.
+
+**Validacao em prod (apos deploy):** subir `Santander N2.pdf` deve devolver 422 com mensagem em vez de 200 com Excel vazio; subir qualquer PDF que cai em 422 deve gerar log `[PIPELINE-422]` com motivo identificavel; logs `[GUARD]` aparecem somente em silent failures. Comportamento de PDFs OK (Bradesco net, Santander N3, etc.) inalterado.

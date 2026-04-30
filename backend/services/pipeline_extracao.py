@@ -169,10 +169,14 @@ class PipelineExtracao:
                             senha: str | None) -> bool:
         r = self._resultado
 
+        _arquivo = os.path.basename(pdf_path)
+
         # Verificar se PDF existe
         if not os.path.isfile(pdf_path):
             r.erro = f'Arquivo nao encontrado: {pdf_path}'
             r.passo_falha = 1
+            print(f'[PIPELINE-422] passo=1 arquivo={_arquivo} banco=N/A '
+                  f'motivo=arquivo_nao_encontrado gap=N/A')
             self._log(1, 'Identificar Banco', False, r.erro)
             return False
 
@@ -186,6 +190,9 @@ class PipelineExtracao:
                 if num_paginas > MAX_PAGINAS_PDF:
                     r.erro = f'PDF com {num_paginas} paginas excede limite de {MAX_PAGINAS_PDF}'
                     r.passo_falha = 1
+                    print(f'[PIPELINE-422] passo=1 arquivo={_arquivo} banco=N/A '
+                          f'motivo=excede_limite_paginas gap=N/A '
+                          f'paginas={num_paginas}/{MAX_PAGINAS_PDF}')
                     self._log(1, 'Identificar Banco', False, r.erro)
                     return False
                 for page in pdf.pages[:3]:
@@ -197,9 +204,13 @@ class PipelineExtracao:
             err = str(e).lower()
             if 'password' in err or 'encrypted' in err:
                 r.erro = 'PDF protegido por senha'
+                _motivo = 'pdf_protegido_senha'
             else:
                 r.erro = f'Erro ao abrir PDF: {str(e)[:100]}'
+                _motivo = 'erro_abertura_pdf'
             r.passo_falha = 1
+            print(f'[PIPELINE-422] passo=1 arquivo={_arquivo} banco=N/A '
+                  f'motivo={_motivo} gap=N/A erro_short={str(e)[:80]!r}')
             self._log(1, 'Identificar Banco', False, r.erro)
             return False
 
@@ -208,6 +219,9 @@ class PipelineExtracao:
             r.requer_ocr = True
             r.erro = 'PDF vetorial/imagem — texto insuficiente para leitura automatica'
             r.passo_falha = 1
+            print(f'[PIPELINE-422] passo=1 arquivo={_arquivo} banco=N/A '
+                  f'motivo=pdf_imagem_requer_ocr gap=N/A '
+                  f'chars_extraidos={len(texto.strip())}')
             self._log(1, 'Identificar Banco', False,
                       f'Texto extraido: {len(texto.strip())} chars (< 50). Requer OCR.',
                       [f'Primeiros 200 chars: {texto[:200]}'])
@@ -219,6 +233,8 @@ class PipelineExtracao:
             r.banco = 'desconhecido'
             r.erro = 'Banco nao identificado'
             r.passo_falha = 1
+            print(f'[PIPELINE-422] passo=1 arquivo={_arquivo} banco=desconhecido '
+                  f'motivo=banco_nao_identificado gap=N/A')
             self._log(1, 'Identificar Banco', False,
                       'Banco nao identificado',
                       [f'Primeiras 500 chars: {texto[:500]}'])
@@ -241,6 +257,8 @@ class PipelineExtracao:
         if not parser_cls:
             r.erro = f'Parser nao implementado para: {banco_key}'
             r.passo_falha = 2
+            print(f'[PIPELINE-422] passo=2 arquivo={os.path.basename(pdf_path)} '
+                  f'banco={banco_key} motivo=parser_nao_implementado gap=N/A')
             self._log(2, 'Interpretar Valores', False, r.erro)
             return False
 
