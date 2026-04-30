@@ -1062,7 +1062,7 @@ O Controllo e uma aplicacao SaaS funcional com ~50.200 linhas de codigo, cobrind
 
 **Data**: 2026-04-30
 **Branch**: `feat/bradesco-100-verde-validador-saldos` (a partir do tip da Sessao 17, commit `d63e9f2`)
-**Commit**: <preencher apos commit>
+**Commit**: `984cc2d`
 
 **Objetivo**: entregar TODOS os 9 PDFs Bradesco em `pdfs_reais/` (incluindo CW TOUR, SEOLIN, TANIA dez/nov, Bradesco5, Agosto 2025, Bradesco_24..., Extrato dec25/nov25) reconciliados (gap=0) e classificados como VERDE pelo novo validador de saldos.
 
