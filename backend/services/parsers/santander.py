@@ -33,8 +33,12 @@ _RE_ULTIMO_VALOR = re.compile(r'([\d.]+,\d{2})\s*$')
 _IGNORAR = [
     'acumulado', 'data do', 'data da', 'n° da', 'n? da', 'aplica',
     'rendimento', 'resgates', 'total das', 'valor l', 'internet banking',
-    'cw tour', 'agência', 'extrato do', 'central de', 'ouvidoria',
+    'agência', 'extrato do', 'central de', 'ouvidoria',
     'sac ', '4004', '4003', '4002', '0800', 'https://',
+    # S21: filtros de "razão social na capa" foram removidos — nomes de cliente
+    # hardcoded (ex.: 'cw tour') é antipattern. Se aparecer regressão de cabeçalho
+    # com nome de cliente sendo confundido com transação, resolver via regex de
+    # header (não substring).
 ]
 
 

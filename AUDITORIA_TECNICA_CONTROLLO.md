@@ -1282,6 +1282,117 @@ Confirmacao de zero regressao em outros bancos:
 
 ---
 
+## Sessao 21 — Remocao do filtro ContaMax (DLS/DLS_1/IB N1 viram VERDE honesto)
+
+**Branch:** `fix/santander-empresas-bugs-e-auditoria-hardcoded` (de `7f960da`).
+**Escopo:** remover hardcode `'resgate contamax'` / `'aplicacao contamax'` / `'contamax empresarial'` dos 3 parsers Santander que filtravam essas tx. Decisao OK B (Allan, 2026-04-30).
+
+### Contexto
+
+Na S19 Iter 4, os 3 PDFs DLS/DLS_1/IB N1 ficaram VERMELHO honesto. O comentario do filtro dizia "movimentacoes internas, nao afetam caixa operacional" — premissa de "fluxo de caixa operacional". Mas o sistema entrega **Excel contabil** (S22, 7 colunas para importacao em sistema de contabilidade); ContaMax (resgate/aplicacao automatica) afeta saldo da conta-corrente e e movimentacao legitima na conciliacao bancaria.
+
+Analise numerica pre-fix: gap residual dos 3 PDFs alvo era exatamente o **liquido ContaMax filtrado** (resgates - aplicacoes do periodo). Removendo o filtro, gap → 0,00.
+
+### Sites modificados (5 parsers)
+
+S21 cobre tres bugs derivados de hardcode em parsers:
+
+| Bug | Arquivo | Antes | Depois |
+|---|---|---|---|
+| 1 (cw tour) | [santander.py](backend/services/parsers/santander.py) `_IGNORAR` | `'cw tour'` | removido; comentario S21 |
+| 1 (cw tour, empresarial) | [santander_empresarial.py](backend/services/parsers/santander_empresarial.py) `_IGNORAR` (Fase 2 anterior) | `'cw tour'` | removido; comentario S21 |
+| 1 (nina pet) | [safra.py](backend/services/parsers/safra.py) `_IGNORAR_PREFIX` | `'nina pet'` | removido; comentario S21 |
+| 2/5 (extrato/saldo solto) | [santander_empresas_v1.py](backend/services/parsers/santander_empresas/santander_empresas_v1.py) `_SKIP_DESC_LOWER` | substrings `'extrato'`, `'saldo'` soltas | removidas, mantido `'saldo anterior'` |
+| 3 (ContaMax) | [santander_empresarial.py](backend/services/parsers/santander_empresarial.py#L51) `_IGNORAR` | `'resgate contamax', 'aplicacao contamax', 'aplicação contamax', 'aplic contamax', 'aplic. contamax'` | removidos |
+| 3 (ContaMax) | [santander_empresas_v1.py](backend/services/parsers/santander_empresas/santander_empresas_v1.py#L47) `_SKIP_DESC_LOWER` | `'resgate contamax', 'aplicacao contamax', 'aplicação contamax'` | removidos |
+| 3 (ContaMax) | [santander_consolidado.py](backend/services/parsers/santander_consolidado.py#L76) `_IGNORAR_CONTEM` | substring `'contamax empresarial'` | removida |
+
+Nota safra.py — **remocao do `'nina pet'` e provadamente no-op**: `_IGNORAR_PREFIX` e checado via `.startswith(p)` (linha 206), e zero linhas em qualquer PDF Safra do `pdfs_reais/` comecam com `'nina pet'`. As 2 ocorrencias de linhas iniciando com `'Nina Pet'` em todo o corpus estao em `Extrato da Conta - Julho.2025.pdf` e `Junho.2025.pdf`, ambos roteados para o **parser PagBank** (que nao usa `_IGNORAR_PREFIX` do Safra). A remocao corrige o antipattern sem alterar comportamento.
+
+### Antes/depois — 3 PDFs alvo
+
+| PDF | Pre-S21 | Pos-S21 (gap, #tx) |
+|---|---|---|
+| `Santander DLS 13006797-5.pdf` | VERMELHO honesto, gap = liquido ContaMax | VERDE, gap=0,00, 27 tx |
+| `Santander DLS 13006797-5_1.pdf` | VERMELHO honesto, gap = liquido ContaMax | VERDE, gap=0,00, 15 tx |
+| `Santander Internet Banking N1.pdf` (CW TOUR) | VERMELHO honesto, gap = liquido ContaMax | VERDE, gap=0,00, 16 tx (SI=50,84 SF=0,00) |
+
+### R-B nos 7 Santander VERDE pre-existentes da S19
+
+| PDF | Pos-S21 |
+|---|---|
+| `Santander Internet Banking N2.pdf` | VERDE, gap=0,00, 125 tx |
+| `Santander Internet Banking N3.pdf` | VERDE, gap=0,00, 116 tx |
+| `Santander empresas 2.pdf` (MARTINS) | VERDE, gap=0,00, 27 tx |
+| `santander problema.pdf` (KKS) | VERDE, gap=0,00, 21 tx |
+| `Santander N1.pdf` (consolidado) | VERDE, gap=0,00, 139 tx |
+| `Santander N2.pdf` (consolidado) | VERDE, gap=0,00, 222 tx |
+| `Santander N3.pdf` (consolidado) | VERDE, gap=0,00, 193 tx |
+
+10/10 VERDE com gap exato 0,00. Zero regressao em outros bancos da suite (831 passed, 0 falhas — os 2 erros `test_pagbank*` sao pre-existentes desde commit base `d7f4689`, fixture mal nomeada, nao relacionados a S21).
+
+### R-B ampla — Fase 3 (96 PDFs reais)
+
+Pipeline executado em todos `backend/tests/fixtures/pdfs_reais/*.pdf`. Resumo por banco (status pre-existente preservado):
+
+| Banco | PDFs VERDE / total | Comentario |
+|---|---|---|
+| bradesco_net_empresas | 9 / 9 | Preserva S18 (Bradesco 100% VERDE) |
+| nubank | 7 / 7 | Todos VERDE gap=0 |
+| itau (mensal) | 8 / 11 | 3 VERMELHO pre-existentes (Out/Nov/Set 2025 Consolidado, gap N/A — SEM_SALDO; e `Ita� 2.pdf` com gap -48k pre-existente) |
+| itau_n2 | 8 / 8 | Todos VERDE gap=0 |
+| santander* | 13 / 17 | 10 VERDE confirmados na sessao; 4 VERMELHO pre-existentes em `Empresarial 3`, `empresarial`, `empresarial 2`, `junho 2025` (santander_empresas) — fora do escopo desta sessao |
+| bs2 | 1 / 1 | B2S.pdf VERDE gap=0 (preserva S17) |
+| nubank | 7 / 7 | Todos VERDE |
+| bb | 1 / 7 | 6 VERMELHO pre-existentes |
+| btg | 0 / 2 | 2 VERMELHO pre-existentes (gap < 0,30 — borderline tolerancia) |
+| c6bank, stone, pagbank, sicredi, safra | varios VERMELHO | **todos pre-existentes**, fora do escopo S21 |
+| desconhecido | 7 PDFs | Banco nao identificado (formato/OCR — pre-existente) |
+
+**Confirmacao Safra**: `Safra.pdf` (unico PDF Safra) continua VERMELHO gap=N/A com 721 tx — comportamento **identico** ao baseline pre-S21. Como o filtro `'nina pet'` era no-op (provado acima), e matematicamente impossivel ter regressao Safra.
+
+**Confirmacao Bradesco / Nubank / Itau N2 / BS2**: 100% VERDE preservados, gap exato 0,00 em todos os PDFs.
+
+Zero regressao atribuivel a S21.
+
+### Pendencia de auditoria visual (importante)
+
+Para os 3 PDFs alvo (DLS/DLS_1/IB N1), o pipeline reporta SI=0,00 e SF=0,00 (DLS, DLS_1) ou SI=50,84 SF=0,00 (IB N1). Como o gap calculado e `SF - (SI + E - S)`, nesses casos gap=0 implica `E ≈ S` (entradas = saidas dentro do PDF), e nao SF != 0. A confianca no VERDE pos-S21 vem da reducao monotonica do gap pre-existente (que era exatamente o liquido ContaMax filtrado) — mas a auditoria visual definitiva (comparar SI/SF visuais com extraidos, igual Iter 4 da S19) so pode ser feita pelo Allan abrindo os PDFs.
+
+Acao recomendada: Allan abrir os 3 PDFs e confirmar SI/SF visuais antes do commit final.
+
+### Testes pytest novos
+
+`backend/tests/test_santander_empresas_bugs_s21.py` — 6/6 passando:
+1. `test_contamax_resgate_nao_filtrado_empresarial` — `Resgate Contamax Automatico ...` vira tx no parser empresarial.
+2. `test_contamax_aplicacao_nao_filtrada_empresarial` — `Aplicacao Contamax ... -2.000,00 ...` vira tx tipo=saida.
+3. `test_contamax_resgate_nao_filtrado_v1` — `_desc_deve_ignorar('RESGATE CONTAMAX AUTOMATICO')` is False.
+4. `test_contamax_aplicacao_nao_filtrada_v1` — `_desc_deve_ignorar('APLICACAO CONTAMAX')` is False.
+5. `test_v1_saldo_anterior_continua_filtrado` — sanidade: `_desc_deve_ignorar('SALDO ANTERIOR')` continua True.
+6. `test_contamax_consolidado_nao_filtrado` — verifica que `_IGNORAR_CONTEM` nao contem mais nenhum padrao com `'contamax'`.
+
+### Excel basico (S22) e UI
+
+Diagnostico colateral nesta sessao: usuario reportou Excel sem cor/borda/Title Case. Causa: processo `uvicorn.exe` local (WINPID 17156) iniciado em **2026-04-30 18:43:24**, antes dos commits S22 ext.1 e ext.2 (`8a0c70b` cores, `7f960da` bordas+Title Case). Modulo `gerador_excel` ficou cacheado em memoria na versao pre-extensao — Python nao recarrega modulos sem `--reload`. Resolvido reiniciando o uvicorn com `--reload`. **Nao e regressao do codigo**; e processo velho. Disco esta correto desde `7f960da`.
+
+### Licao — antipattern de hardcode em parsers
+
+Nomes de cliente (S19 Iter 1-2: 'cw tour', 'extrato_2025', 'demonstrativo de movimentacao'), siglas de produto bancario (S21: 'contamax', 'aplicacao contamax') e quaisquer strings de dominio especifico hardcoded em filtros de parser sao **fonte recorrente de VERMELHO honesto e fragilidade**. O parser deve extrair tudo e o validador / pos-processador / camada de negocio decide o que mostrar dependendo do contexto (Excel contabil vs fluxo de caixa operacional vs reconciliacao).
+
+Em qualquer auditoria futura, **buscar `_IGNORAR`, `_SKIP_*`, `_BLOCKLIST_*` em todos os parsers** e questionar cada entrada que parece "regra de produto" e nao "regra de layout/cabecalho/rodape de PDF".
+
+### Nao tocados (R2)
+
+- `gerador_excel.py` (correto desde S22 ext.2)
+- Parsers de outros bancos (apenas 3 sites Santander modificados)
+- `pipeline_extracao.py`, `validador_saldos.py`, `extrator_pdf.py`
+
+### Status do commit
+
+Fase 3 (R-B ampla) concluida com zero regressao. Commit final realizado nesta branch; deploy acumulado S22 + S21 manual.
+
+---
+
 ## Sessao 22 — Excel basico reformatado conforme spec Allan (7 colunas contabeis)
 
 **Branch:** `feat/excel-reformatado-spec-allan` (de `3740e6e`).

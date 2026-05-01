@@ -44,12 +44,16 @@ _MESES = {
 }
 
 # Descrições a ignorar (CREDITO automático do próprio banco)
+# ContaMax (resgate/aplicação automática) NÃO é mais filtrado — Sessão 21.
+# Sistema é Excel contábil, movimentações ContaMax afetam saldo da conta-corrente
+# e devem aparecer na conciliação. Filtrar aqui causava VERMELHO honesto nos PDFs
+# DLS, DLS_1 e IB N1 (gap = exatamente o líquido ContaMax filtrado).
 _SKIP_DESC_LOWER = [
-    'resgate contamax',
-    'aplicacao contamax',
-    'aplicação contamax',
     'saldo anterior',
-    'saldo',
+    # S21: substring 'saldo' solta foi removida — match frouxo descartava
+    # qualquer descrição com a palavra "saldo" no meio (ex.: "PIX BENEFICIARIO
+    # SALDO POSITIVO LTDA"). Os termos de saldo cabíveis estão acima ou são
+    # capturados pelos parsers de cabeçalho do extrato consolidado.
 ]
 
 

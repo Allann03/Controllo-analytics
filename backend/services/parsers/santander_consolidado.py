@@ -73,7 +73,11 @@ _IGNORAR_CONTEM = [
     'débito automático', 'debito automatico',
     'compras com cartão de débito', 'comprovantes de pagamento',
     'transferências entre contas', 'transferencias entre contas',
-    'investimentos', 'contamax empresarial',
+    # ContaMax (resgate/aplicação automática) NÃO é mais filtrado — Sessão 21.
+    # Sistema é Excel contábil, movimentações ContaMax afetam saldo da conta-corrente
+    # e devem aparecer na conciliação. Filtrar aqui causava VERMELHO honesto nos PDFs
+    # DLS, DLS_1 e IB N1 (gap = exatamente o líquido ContaMax filtrado).
+    'investimentos',
     'posição consolidada', 'posicao consolidada',
     'pacote de serviços', 'pacote de servicos',
     'programa de relacionamento',

@@ -51,14 +51,19 @@ _RE_VALOR_BR = re.compile(r'(-?(?:\d{1,3}(?:\.\d{3})*|\d+),\d{2})')
 _IGNORAR = [
     # Saldos contábeis — não são transações
     'saldo anterior', 'saldo do dia', 'saldo final', 'saldo inicial',
-    # Movimentações internas ContaMax (aparecem no CC mas não afetam caixa operacional)
-    'resgate contamax', 'aplicacao contamax', 'aplicação contamax',
-    'aplic contamax', 'aplic. contamax',
+    # ContaMax (resgate/aplicação automática) NÃO é mais filtrado — Sessão 21.
+    # Sistema é Excel contábil, movimentações ContaMax afetam saldo da conta-corrente
+    # e devem aparecer na conciliação. Filtrar aqui causava VERMELHO honesto nos PDFs
+    # DLS, DLS_1 e IB N1 (gap = exatamente o líquido ContaMax filtrado).
     # Cabeçalhos e rodapés
     'internet banking', 'banco santander', 'conta corrente', 'historico',
-    'histórico', 'documento', 'data', 'extrato', 'agência', 'agencia',
+    'histórico', 'documento', 'data', '> extrato >', 'agência', 'agencia',
     'ouvidoria', 'sac ', '4004', '4003', '0800', 'https://', 'acesso',
-    'central de atendimento', 'cw tour',
+    'central de atendimento',
+    # S21: filtros de "razão social na capa" foram removidos — nomes de cliente
+    # hardcoded (ex.: 'cw tour') é antipattern. Se aparecer regressão de cabeçalho
+    # com nome de cliente sendo confundido com transação, resolver via regex de
+    # header (não substring).
 ]
 
 

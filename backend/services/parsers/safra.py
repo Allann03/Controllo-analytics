@@ -27,7 +27,10 @@ _IGNORAR_PREFIX = (
     'a 6ª feira', '19h, exceto', '18h, exceto', 'por semana',
     'saldo bloqueado', 'limite cheque', 'cobrança d0', 'cobranca d0',
     'nº documento', 'n° documento', 'valor (r$)', 'complemento',
-    'nina pet',  # razão social na capa — não é transação
+    # S21: filtros de "razão social na capa" foram removidos — nomes de cliente
+    # hardcoded (ex.: 'nina pet') é antipattern. Se aparecer regressão de
+    # cabeçalho com nome de cliente sendo confundido com transação, resolver
+    # via regex de header (não substring).
 )
 
 _IGNORAR_CONTAINS = ('página', 'pagina',)
