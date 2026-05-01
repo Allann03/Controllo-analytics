@@ -1389,7 +1389,7 @@ Em qualquer auditoria futura, **buscar `_IGNORAR`, `_SKIP_*`, `_BLOCKLIST_*` em 
 
 ### Status do commit
 
-Fase 3 (R-B ampla) concluida com zero regressao. Commit final realizado nesta branch; deploy acumulado S22 + S21 manual.
+Fase 3 (R-B ampla) concluida com zero regressao. Commit final `472d3f0` na branch `fix/santander-empresas-bugs-e-auditoria-hardcoded`; deploy acumulado S22 + S21 manual.
 
 ---
 
