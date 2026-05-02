@@ -1,34 +1,29 @@
 """
-Testes BLOCO 3J — Comparador + Indicadores FP&A + Score.
+Testes BLOCO 3J -- Indicadores FP&A + Score de saude.
 
-80 testes:
-  T1-T20:   Comparador de regimes
+Origem: split de test_comparador_indicadores_score.py durante S26
+(refator de dead code). Remoacao do modulo services/contabil/comparador
+exigia separar os 55 testes que sobreviveram (indicadores + score) dos
+25 testes de comparador, que foram deletados junto com o modulo.
+
+55 testes:
   T21-T50:  Indicadores (22 + divisao por zero + Decimal)
   T51-T70:  Score de saude
-  T71-T77:  Invariantes
-  T78-T80:  Edge cases
+  T74-T77:  Invariantes (sem t71-t73 de comparador)
+  T79:      Edge cases (sem t78, t80 de comparador)
 """
 
 import pytest
 from decimal import Decimal
-from typing import Optional
 
-from services.contabil.core import money, rate, to_decimal, money_fiscal
+from services.contabil.core import money
 from services.contabil import indicadores as ind
 from services.contabil.score_saude import calcular_score, ResultadoScore, PESOS
-from services.contabil.comparador import comparar_regimes, PerfilEmpresa, ComparativoRegimes
 
 _ZERO = Decimal("0")
 
 
 # -- Helpers -------------------------------------------------------------------
-
-def _perfil(receita=1200000, ativ="servicos", folha=300000, margem="0.40",
-            creditos=0, indedutiveis=0):
-    return PerfilEmpresa(
-        Decimal(str(receita)), ativ, Decimal(str(folha)),
-        Decimal(str(margem)), Decimal(str(creditos)), Decimal(str(indedutiveis)),
-    )
 
 def _dados_score(**overrides):
     base = {
@@ -42,112 +37,6 @@ def _dados_score(**overrides):
     }
     base.update(overrides)
     return base
-
-
-# ============================================================
-# T1-T20 -- Comparador
-# ============================================================
-
-class TestComparador:
-
-    def test_t1_servicos_retorna_comparativo(self):
-        r = comparar_regimes(_perfil())
-        assert isinstance(r.valor, ComparativoRegimes)
-
-    def test_t2_comercio_4_regimes(self):
-        r = comparar_regimes(_perfil(ativ="comercio"))
-        assert r.valor.simples is not None  # 1.2M < 4.8M
-        assert r.valor.presumido > _ZERO
-        assert r.valor.real > _ZERO
-        assert r.valor.reforma > _ZERO
-
-    def test_t3_receita_acima_teto_sem_simples(self):
-        """Receita > 4.8M: Simples None."""
-        r = comparar_regimes(_perfil(receita=5000000))
-        assert r.valor.simples is None
-
-    def test_t4_regime_otimo_menor_carga(self):
-        """Regime otimo = menor total."""
-        r = comparar_regimes(_perfil())
-        vals = {}
-        if r.valor.simples is not None:
-            vals["simples"] = r.valor.simples
-        vals["presumido"] = r.valor.presumido
-        vals["real"] = r.valor.real
-        vals["reforma"] = r.valor.reforma
-        assert r.valor.regime_otimo == min(vals, key=lambda k: vals[k])
-
-    def test_t5_economia_positiva(self):
-        r = comparar_regimes(_perfil())
-        assert r.valor.economia_vs_pior >= _ZERO
-
-    def test_t6_industria(self):
-        r = comparar_regimes(_perfil(ativ="industria"))
-        assert r.valor.presumido > _ZERO
-
-    def test_t7_combustiveis(self):
-        r = comparar_regimes(_perfil(ativ="combustiveis", receita=3000000))
-        assert r.valor.presumido > _ZERO
-
-    def test_t8_transporte_passageiros(self):
-        r = comparar_regimes(_perfil(ativ="transporte_passageiros"))
-        assert r.valor.presumido > _ZERO
-
-    def test_t9_saude(self):
-        r = comparar_regimes(_perfil(ativ="saude"))
-        assert r.valor.reforma > _ZERO  # regime especifico com reducao
-
-    def test_t10_educacao(self):
-        r = comparar_regimes(_perfil(ativ="educacao"))
-        assert isinstance(r.valor, ComparativoRegimes)
-
-    def test_t11_alerta_proximo_sublimite(self):
-        r = comparar_regimes(_perfil(receita=3700000))
-        assert any("sublimite" in a.lower() for a in r.avisos)
-
-    def test_t12_alerta_proximo_teto(self):
-        r = comparar_regimes(_perfil(receita=4500000))
-        assert any("teto" in a.lower() or "4.8M" in a for a in r.avisos)
-
-    def test_t13_com_creditos_pis_cofins(self):
-        r_sem = comparar_regimes(_perfil())
-        r_com = comparar_regimes(_perfil(creditos=200000))
-        assert r_com.valor.real <= r_sem.valor.real
-
-    def test_t14_com_despesas_indedutiveis(self):
-        r = comparar_regimes(_perfil(indedutiveis=50000))
-        assert r.valor.real > _ZERO
-
-    def test_t15_memoria_presente(self):
-        r = comparar_regimes(_perfil())
-        assert r.memoria is not None
-        assert r.memoria.versao == "3.0.0"
-
-    def test_t16_atividade_invalida(self):
-        with pytest.raises(ValueError, match="invalida"):
-            _perfil(ativ="varejo")
-
-    def test_t17_receita_negativa(self):
-        with pytest.raises(ValueError, match="negativa"):
-            _perfil(receita=-100)
-
-    def test_t18_fator_r_aplicado(self):
-        """Servicos com folha >= 28%: alerta Fator R."""
-        r = comparar_regimes(_perfil(receita=500000, folha=200000, ativ="servicos"))
-        # 200k/500k = 40% >= 28%
-        # Simples usa Anexo III, mas alerta pode ou nao aparecer dependendo do fluxo
-        assert isinstance(r.valor, ComparativoRegimes)
-
-    def test_t19_reforma_ano_especifico(self):
-        r = comparar_regimes(_perfil(), ano_reforma=2026)
-        assert r.valor.reforma > _ZERO  # mesmo que pequeno em 2026
-
-    def test_t20_todos_regimes_decimal(self):
-        r = comparar_regimes(_perfil())
-        if r.valor.simples is not None:
-            assert isinstance(r.valor.simples, Decimal)
-        assert isinstance(r.valor.presumido, Decimal)
-        assert isinstance(r.valor.real, Decimal)
 
 
 # ============================================================
@@ -395,35 +284,10 @@ class TestScore:
 
 
 # ============================================================
-# T71-T77 -- Invariantes
+# T74-T77 -- Invariantes (sem t71-t73 que dependiam de comparador)
 # ============================================================
 
 class TestInvariantes:
-
-    def test_t71_comp1_4_regimes(self):
-        """Comparador calcula 4 regimes quando elegivel."""
-        r = comparar_regimes(_perfil(receita=1000000))
-        assert r.valor.simples is not None
-        assert r.valor.presumido > _ZERO
-        assert r.valor.real > _ZERO
-        assert r.valor.reforma > _ZERO
-
-    def test_t72_comp1_sem_simples(self):
-        """Receita > 4.8M: Simples None."""
-        r = comparar_regimes(_perfil(receita=5000000))
-        assert r.valor.simples is None
-
-    def test_t73_comp2_regime_otimo(self):
-        """Regime otimo == menor carga."""
-        r = comparar_regimes(_perfil())
-        vals = {}
-        if r.valor.simples is not None:
-            vals["simples"] = r.valor.simples
-        vals["presumido"] = r.valor.presumido
-        vals["real"] = r.valor.real
-        vals["reforma"] = r.valor.reforma
-        menor = min(vals, key=lambda k: vals[k])
-        assert r.valor.regime_otimo == menor
 
     def test_t74_ind1_div_zero(self):
         r = ind.liquidez_corrente(Decimal("100"), _ZERO)
@@ -451,25 +315,12 @@ class TestInvariantes:
 
 
 # ============================================================
-# T78-T80 -- Edge cases
+# T79 -- Edge case (sem t78, t80 que dependiam de comparador)
 # ============================================================
 
 class TestEdgeCases:
-
-    def test_t78_receita_zero(self):
-        p = PerfilEmpresa(Decimal("0"), "servicos", Decimal("0"),
-                           Decimal("0.40"))
-        r = comparar_regimes(p)
-        assert isinstance(r.valor, ComparativoRegimes)
 
     def test_t79_todos_zeros_score(self):
         d = {k: 0 for k in _dados_score()}
         r = calcular_score(d)
         assert 0 <= r.valor.total <= 100
-
-    def test_t80_perfil_extremo(self):
-        p = PerfilEmpresa(Decimal("100000000"), "industria",
-                           Decimal("50000000"), Decimal("0.10"))
-        r = comparar_regimes(p)
-        assert r.valor.simples is None  # 100M > 4.8M
-        assert r.valor.presumido > _ZERO
