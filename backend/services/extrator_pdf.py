@@ -57,6 +57,12 @@ def _extrair_saldos_pdf(pdf_path: str, banco_key: str = '', password: str | None
     except Exception:
         return None, None
 
+    # Sessao 20: PDFs vetoriais (Inter via Microsoft Print To PDF) → 0 chars.
+    # Cair no OCR fallback. Cache evita custo repetido.
+    if len(texto_total.strip()) < 50:
+        from .ocr_fallback import extrair_texto_via_ocr
+        texto_total = extrair_texto_via_ocr(pdf_path, senha=password)
+
     linhas = texto_total.splitlines()
     banco = banco_key.lower()
     ini: Decimal | None = None
@@ -205,7 +211,11 @@ def _extrair_saldos_pdf(pdf_path: str, banco_key: str = '', password: str | None
             m = _re_dia_inter.search(linha)
             if m:
                 v = _parse_valor_br(m.group(1))
-                if v is not None and v > 0:
+                # Sessao 20: aceitar saldos zero ("Saldo do dia: R$ 0,00") —
+                # contas Inter zeram com aplicacoes automaticas, similar ao
+                # mecanismo ContaMax do Santander. Pular zero descartava o SI
+                # legitimo do extrato_ABRIL.pdf (16/01/2026 começa em 0,00).
+                if v is not None:
                     if ini is None:
                         ini = v
                     fim = v
@@ -1065,7 +1075,8 @@ _ASSINATURAS: list[tuple[str, list[list[str]]]] = [
 ]
 
 
-def detectar_banco(pdf_path: str, password: str | None = None) -> str:
+def detectar_banco(pdf_path: str, password: str | None = None,
+                   texto_pre_extraido: str | None = None) -> str:
     """
     Detecta o banco do extrato lendo o texto das primeiras 3 páginas.
 
@@ -1074,21 +1085,26 @@ def detectar_banco(pdf_path: str, password: str | None = None) -> str:
 
     Args:
         pdf_path: Caminho para o arquivo PDF.
+        texto_pre_extraido: opcional. Se fornecido (ex.: vindo do OCR
+            fallback para PDFs vetoriais), pula a leitura via pdfplumber.
 
     Returns:
         Chave do banco (ex: 'itau', 'inter') ou 'desconhecido'.
     """
-    texto = ''
-    try:
-        with pdfplumber.open(pdf_path, password=password or '') as pdf:
-            for pagina in pdf.pages[:3]:
-                try:
-                    t = pagina.extract_text() or ''
-                    texto += t.lower() + ' '
-                except Exception:
-                    pass
-    except Exception:
-        return 'desconhecido'
+    if texto_pre_extraido is not None:
+        texto = texto_pre_extraido.lower() + ' '
+    else:
+        texto = ''
+        try:
+            with pdfplumber.open(pdf_path, password=password or '') as pdf:
+                for pagina in pdf.pages[:3]:
+                    try:
+                        t = pagina.extract_text() or ''
+                        texto += t.lower() + ' '
+                    except Exception:
+                        pass
+        except Exception:
+            return 'desconhecido'
 
     for banco_key, term_sets in _ASSINATURAS:
         for terms in term_sets:

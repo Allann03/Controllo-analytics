@@ -1282,6 +1282,119 @@ Confirmacao de zero regressao em outros bancos:
 
 ---
 
+## Sessao 20 — OCR fallback para PDFs vetoriais (Banco Inter via "Microsoft Print To PDF")
+
+**Branch:** `feat/inter-ocr-fallback` (de `95e68d2`).
+**Escopo:** adicionar OCR como ultimo recurso quando pdfplumber retorna ~0 chars de uma pagina inteira (PDFs vetoriais puros, sem texto embarcado, gerados por "Microsoft Print To PDF" e similares). Antes da S20, esses PDFs caiam no Passo 1 com `requer_ocr=True` e retornavam 422 — silencio total.
+
+### Stack
+
+- **Tesseract via pytesseract** (nao easyocr) — leve, rapido, padrao indus tria. `pytesseract==0.3.13` adicionado em `requirements.txt`.
+- **PyMuPDF (fitz)** ja estava no stack — usado para renderizar paginas em 200 DPI.
+- Idioma `por` (portugues). Dockerfiles `Dockerfile` e `Dockerfile.prod` ja tinham `tesseract-ocr` + `tesseract-ocr-por` (legado de tentativas anteriores) — nada a alterar.
+- Localmente (Windows dev): Tesseract instalado via `winget install --id UB-Mannheim.TesseractOCR`. Idioma `por` baixado para `%USERPROFILE%\tessdata\` (sem admin) com `TESSDATA_PREFIX` apontando pra la.
+
+### Onde o OCR ativa
+
+Gate cirurgico em **dois pontos** do fluxo:
+
+1. [pipeline_extracao.py](backend/services/pipeline_extracao.py) Passo 1 (`_passo1_identificar`): se texto pdfplumber `< 50` chars, tenta `extrair_texto_via_ocr()`. Se OCR retornar `>= 50` chars, segue normalmente; se OCR tambem falhar, retorna 422 honesto. Detector de banco recebe o texto OCR via parametro novo `texto_pre_extraido`.
+2. [extrator_pdf.py](backend/services/extrator_pdf.py) `_extrair_saldos_pdf`: mesma logica de fallback. Garantia de que SI/SF tambem sao tirados do OCR quando o branch banco-especifico (Inter, Cora, etc.) for executado.
+
+### Modulo novo — [ocr_fallback.py](backend/services/ocr_fallback.py)
+
+API minima:
+- `extrair_texto_via_ocr(pdf_path, senha=None, dpi=200) -> str` — renderiza paginas e roda Tesseract com `lang='por'`. **Cache em memoria por (path, mtime)**: pipeline e parser pedem texto separadamente sem custo redundante.
+- `normalizar_texto_ocr(texto) -> str` — substitui aspas curvas (`"`/`"`) por aspas retas, apostrofes (`'`/`'`), e espaco nao-quebravel (NBSP) por espaco normal. Antes era ruido OCR comum.
+- `tesseract_disponivel() -> bool` — flag para skip de testes E2E em ambientes sem o binario.
+
+Imports lazy: se `pytesseract`/`fitz`/`PIL` ausentes, modulo carrega mas funcoes retornam `''` graciosamente.
+
+### Parser Inter — ajustes
+
+[inter.py](backend/services/parsers/inter.py):
+1. Metodo novo `_obter_paginas_texto()`: tenta pdfplumber primeiro; se total `< 50` chars, cai no `extrair_texto_via_ocr()` + `normalizar_texto_ocr()`. Reutilizado em `extrair()` e `_extrair_saldos_intermediarios()`.
+2. Em `_processar_linha`, rejeita pseudo-tx onde a "descricao" e apenas mais um `R$ X,XX` — caso classico do header do extrato OCR'd `R$ 9.903,89 R$ 9.903,89 R$ 0,00` (Saldo total | disponivel | bloqueado).
+3. `_extrair_saldos_pdf` branch `inter`/`inter_n2`: aceita `Saldo do dia: R$ 0,00`. Antes filtrava `if v > 0`, descartando o SI legitimo do `extrato ABRIL.pdf` (16/01/2026 fechou em zero). Justificativa: contas Inter zeram com aplicacoes automaticas, similar ao mecanismo ContaMax do Santander.
+
+### Resultado — `extrato ABRIL.pdf` (alvo S20)
+
+| Metrica | Valor |
+|---|---|
+| Banco detectado | `inter_n2` (alias de `inter`) |
+| OCR disparou | si (2 paginas, 2.677 chars, 2,55s) |
+| #tx | 20 (≈ 13 dias × 1-3 tx/dia) |
+| SI extraido | R$ 0,00 ✅ bate com `Saldo do dia 16/01: R$ 0,00` |
+| SF extraido | R$ 9.903,89 ✅ bate com `Saldo do dia 13/04` |
+| gap | R$ 0,96 (< R$ 1,00 — tolerancia OCR aceita por Allan) |
+| Reconciliacao | `ACEITAVEL` (passo 5) |
+| nivel | `VERMELHO` (passo 6 — checkpoints diarios refletem o gap residual) |
+| Tempo total pipeline | ~13s primeira vez, ~11s com cache |
+
+### R-B ampla — 96 PDFs (zero regressao)
+
+| Banco | VERDE / total | OCR uso | Nota |
+|---|---|---|---|
+| **bradesco_net_empresas** | **9 / 9** | 0 | Preserva S18 |
+| **nubank** | **7 / 7** | 0 | Preserva S21 |
+| **santander*** (todos layouts) | **28 / 33** | 0 | Preserva S19+S21; 5 VERMELHO pre-existente em layouts `santander_empresas` |
+| **itau_n2** | **9 / 9** | 0 | Preserva S21 |
+| **bs2** | **1 / 1** | 0 | Preserva S17 |
+| **caixa** | **1 / 1** | 0 | OK |
+| **bb** | **1 / 7** | 0 | 6 VERMELHO pre-existentes |
+| **itau (mensal)** | **9 / 16** | **3** | 7 VERMELHO pre-existentes; 3 vetoriais (Itau 07828-5/_1/09089-2) detectados via OCR — antes eram `desconhecido` |
+| **inter_n2** | **0 / 4** | **4** | Inter.pdf + extrato ABRIL.pdf + extrato 01.07.25 + Extrato Jan a Jul — todos 4 vetoriais; 1 e o alvo (gap=0,96), 3 sao VERMELHO honesto novo (ver baixo) |
+| btg, c6, stone, pagbank, sicredi, safra, itau_empresas | varios VERMELHO | 0 | **todos pre-existentes**, fora do escopo |
+
+**OCR disparou em 7 PDFs** (vs S21 onde os mesmos 7 eram `desconhecido`). 89 PDFs com texto extraivel **NAO dispararam OCR** — gate cirurgico funcionando.
+
+### Descobertas colaterais (debito tecnico para S24+)
+
+3 PDFs novos cairam em VERMELHO honesto pos-S20:
+- `Inter.pdf` (Eos Intermediacao, Jul-Fev) — layout Inter MULTI-COLUNA: OCR linealiza descricoes e valores em blocos separados, parser perde a relacao desc↔valor. Gap=-1573,43.
+- `extrato 01.07.25 ate 11.02.26.pdf` — mesmo layout multi-coluna que Inter.pdf. Gap=-1573,43.
+- `Extrato Jan a Jul.pdf` — Inter, layout tambem multi-coluna. Gap=5234,95.
+
+Padrao igual ao da S19 (Iter 4): **`desconhecido` (silencio) → VERMELHO honesto > silencio**. NAO e regressao. Documentado para S24 — sessao dedicada a "Inter Layout 2 (multi-coluna OCR'd)".
+
+### Risco residual — semantica do SI Inter
+
+Mesmo trade-off da Iter 1 da S19 (`santander_ib_novo`): `_extrair_saldos_pdf` extrai "primeiro Saldo do dia" como SI, mas semanticamente isso e SF do primeiro dia. O SI verdadeiro do periodo seria `saldo_dia(D_min) - net_tx(D_min)`. No `extrato ABRIL.pdf` esse off-by-one custou 0,96 reais (gap residual). Aceito por estar < R$ 1,00. **Pendencia para sessao futura de refinamento**: retroaplicar formula `SI = saldo_dia(D_min) - net_tx(D_min)` em ambos parsers (Inter + Santander IB Novo).
+
+### Testes pytest novos
+
+[backend/tests/test_inter_ocr_fallback.py](backend/tests/test_inter_ocr_fallback.py) — **11 passing + 1 skip** (E2E so roda se Tesseract estiver instalado e detectado por `pytesseract.get_tesseract_version()`):
+1-3. Normalizacao de aspas curvas, apostrofes, NBSP.
+4-7. Conversao "DD de Mes de YYYY" → "DD/MM/YYYY" (4 cenarios + 2 casos invalidos).
+8. Parser Inter extrai 18-25 tx do texto OCR fixture (sem chamar pdfplumber).
+9. Tx fantasma do header de saldo NAO e capturada.
+10. Saldos intermediarios extraidos corretamente (>=10, com 16/01/2026 e 13/04/2026 incluindo SF=9.903,89).
+11. (skip condicional) Pipeline E2E em `extrato ABRIL.pdf` real.
+
+Fixture pre-gerada: [extrato_abril_ocr_raw.txt](backend/tests/fixtures/extrato_abril_ocr_raw.txt) — 2.677 chars. Permite testar parser sem depender do binario Tesseract.
+
+### Pytest baseline
+
+| Metrica | S21 (`95e68d2`) | S20 final | Delta |
+|---|---|---|---|
+| Coletados | 833 | 844 | +11 |
+| Passados | 831 | 842 | +11 |
+| Skip | 0 | 1 | +1 (E2E condicional) |
+| Falhas | 0 | 0 | 0 |
+| Erros | 2 (pagbank pre-existentes) | 2 (mesmos) | 0 |
+
+Zero regressao atribuivel a S20.
+
+### Cache OCR — invalidacao
+
+Cache em memoria do processo (`dict[path] = (mtime, texto)` em `ocr_fallback._CACHE`). NAO persiste em disco. Pytest reinicia processo Python a cada execucao → cache zera entre runs. Mtime invalida cache se o PDF for substituido. Risco de mascarar regressao = **zero**.
+
+### Status do commit
+
+Pendente apos revisao deste relatorio. Commit acumulara com S22 + S21 no proximo deploy manual.
+
+---
+
 ## Sessao 21 — Remocao do filtro ContaMax (DLS/DLS_1/IB N1 viram VERDE honesto)
 
 **Branch:** `fix/santander-empresas-bugs-e-auditoria-hardcoded` (de `7f960da`).

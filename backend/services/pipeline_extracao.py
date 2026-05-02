@@ -227,21 +227,34 @@ class PipelineExtracao:
             self._log(1, 'Identificar Banco', False, r.erro)
             return False
 
-        # PDF vetorial/imagem?
+        # PDF vetorial/imagem? Tentar OCR fallback antes de desistir.
         if len(texto.strip()) < 50:
-            r.requer_ocr = True
-            r.erro = 'PDF vetorial/imagem — texto insuficiente para leitura automatica'
-            r.passo_falha = 1
-            print(f'[PIPELINE-422] passo=1 arquivo={_arquivo} banco=N/A '
-                  f'motivo=pdf_imagem_requer_ocr gap=N/A '
-                  f'chars_extraidos={len(texto.strip())}')
-            self._log(1, 'Identificar Banco', False,
-                      f'Texto extraido: {len(texto.strip())} chars (< 50). Requer OCR.',
-                      [f'Primeiros 200 chars: {texto[:200]}'])
-            return False
+            from .ocr_fallback import extrair_texto_via_ocr
+            texto_ocr = extrair_texto_via_ocr(pdf_path, senha=senha)
+            if len(texto_ocr.strip()) >= 50:
+                texto = texto_ocr  # detector de banco usa este texto
+                r.requer_ocr = True  # marca que veio via OCR (informativo)
+            else:
+                r.requer_ocr = True
+                r.erro = 'PDF vetorial/imagem — texto insuficiente para leitura automatica'
+                r.passo_falha = 1
+                print(f'[PIPELINE-422] passo=1 arquivo={_arquivo} banco=N/A '
+                      f'motivo=pdf_imagem_requer_ocr gap=N/A '
+                      f'chars_extraidos={len(texto.strip())} chars_ocr={len(texto_ocr.strip())}')
+                self._log(1, 'Identificar Banco', False,
+                          f'Texto extraido: {len(texto.strip())} chars (< 50). OCR tambem falhou.',
+                          [f'Primeiros 200 chars: {texto[:200]}'])
+                return False
 
-        # Detectar banco
-        banco = banco_id.strip().lower() if banco_id else detectar_banco(pdf_path, password=senha)
+        # Detectar banco. Quando OCR fallback foi usado, passar o texto
+        # OCR direto (pdfplumber retornaria vazio nesse caso).
+        if banco_id:
+            banco = banco_id.strip().lower()
+        elif r.requer_ocr:
+            banco = detectar_banco(pdf_path, password=senha,
+                                   texto_pre_extraido=texto)
+        else:
+            banco = detectar_banco(pdf_path, password=senha)
         if banco == 'desconhecido':
             r.banco = 'desconhecido'
             r.erro = 'Banco nao identificado'

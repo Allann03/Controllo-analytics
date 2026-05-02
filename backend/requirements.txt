@@ -8,6 +8,9 @@ pdfminer.six==20251230
 openpyxl==3.1.5
 pillow==12.1.1
 PyMuPDF==1.27.2
+# Sessão 20: OCR fallback para PDFs vetoriais (Inter "Microsoft Print To PDF").
+# Requer tesseract-ocr + tesseract-ocr-por instalados no SO (ver Dockerfile).
+pytesseract==0.3.13
 # easyocr, torch, torchvision e opencv são opcionais (OCR de PDFs escaneados Sicredi).
 # Instale separadamente em ambientes com GPU/memória suficiente se necessário:
 #   pip install easyocr==1.7.2 torch==2.10.0 torchvision==0.25.0 opencv-python-headless==4.13.0.92
