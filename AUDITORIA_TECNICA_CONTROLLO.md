@@ -1391,7 +1391,7 @@ Cache em memoria do processo (`dict[path] = (mtime, texto)` em `ocr_fallback._CA
 
 ### Status do commit
 
-Pendente apos revisao deste relatorio. Commit acumulara com S22 + S21 no proximo deploy manual.
+Commit final `67e25c6` na branch `feat/inter-ocr-fallback`. Cadeia acumulada para deploy manual: `7f960da` (S22) → `472d3f0` (S21) → `95e68d2` (docs S21) → `67e25c6` (S20).
 
 ---
 
