@@ -1,0 +1,119 @@
+[
+  {
+    "indice": "1/6",
+    "arquivo": "backend/core/config.py",
+    "pre_check": "LIMPO (referencias todas falsos positivos genericos em docs)",
+    "acao": "VALIDADO",
+    "pytest_pos_disabled": "1 failed, 912 passed, 1 skipped, 1 warning, 2 errors in 308.18s",
+    "pytest_pos_disabled_ok": true,
+    "pytest_pos_revert": "(implicita via pytest do [2/6] que foi interrompido)",
+    "pytest_pos_revert_ok": null,
+    "veredito": "DEAD CONFIRMED",
+    "elapsed": 310.6
+  },
+  {
+    "indice": "2/6",
+    "arquivo": "backend/services/parsers/itau_extrato_mensal.py",
+    "pre_check": "LIMPO",
+    "pre_check_detalhes": [
+      "nome_arquivo `itau_extrato_mensal`: 0 hits (0 nao-triviais)",
+      "classe `ParserItauExtratoMensal`: 0 hits (0 nao-triviais)",
+      "extrator_pdf — classes referenciadas: 0"
+    ],
+    "acao": "VALIDADO",
+    "pytest_pos_disabled": "1 failed, 912 passed, 1 skipped, 1 warning, 2 errors in 305.19s (0:05:05)",
+    "pytest_pos_disabled_ok": true,
+    "pytest_pos_disabled_elapsed": 307.5,
+    "pytest_pos_revert": "1 failed, 912 passed, 1 skipped, 1 warning, 2 errors in 309.35s (0:05:09)",
+    "pytest_pos_revert_ok": true,
+    "pytest_pos_revert_elapsed": 311.6,
+    "veredito": "DEAD CONFIRMED"
+  },
+  {
+    "indice": "3/6",
+    "arquivo": "backend/services/parsers/parser_generico.py",
+    "pre_check": "LIMPO",
+    "pre_check_detalhes": [
+      "nome_arquivo `parser_generico`: 1 hits (0 nao-triviais)",
+      "classe `ParserGenerico`: 0 hits (0 nao-triviais)",
+      "extrator_pdf — classes referenciadas: 0"
+    ],
+    "acao": "VALIDADO",
+    "pytest_pos_disabled": "1 failed, 912 passed, 1 skipped, 1 warning, 2 errors in 305.06s (0:05:05)",
+    "pytest_pos_disabled_ok": true,
+    "pytest_pos_disabled_elapsed": 307.1,
+    "pytest_pos_revert": "1 failed, 912 passed, 1 skipped, 1 warning, 2 errors in 302.97s (0:05:02)",
+    "pytest_pos_revert_ok": true,
+    "pytest_pos_revert_elapsed": 304.9,
+    "veredito": "DEAD CONFIRMED"
+  },
+  {
+    "indice": "4/6",
+    "arquivo": "backend/services/parsers/parser_itau_mensal.py",
+    "pre_check": "LIMPO",
+    "pre_check_detalhes": [
+      "nome_arquivo `parser_itau_mensal`: 3 hits (0 nao-triviais)",
+      "classe `ParserItauMensal`: 0 hits (0 nao-triviais)",
+      "extrator_pdf — classes referenciadas: 0"
+    ],
+    "acao": "VALIDADO",
+    "pytest_pos_disabled": "1 failed, 912 passed, 1 skipped, 1 warning, 2 errors in 301.76s (0:05:01)",
+    "pytest_pos_disabled_ok": true,
+    "pytest_pos_disabled_elapsed": 303.7,
+    "pytest_pos_revert": "1 failed, 912 passed, 1 skipped, 1 warning, 2 errors in 303.44s (0:05:03)",
+    "pytest_pos_revert_ok": true,
+    "pytest_pos_revert_elapsed": 305.4,
+    "veredito": "DEAD CONFIRMED"
+  },
+  {
+    "indice": "5/6",
+    "arquivo": "backend/services/parsers/parser_stone.py",
+    "pre_check": "INVESTIGAR",
+    "pre_check_detalhes": [
+      "nome_arquivo `parser_stone`: 1 hits (0 nao-triviais)",
+      "classe `ParserStone`: 17 hits (16 nao-triviais)",
+      "extrator_pdf — classes referenciadas: 1"
+    ],
+    "hits_nome_nt": [],
+    "hits_classes_nt": {
+      "ParserStone": [
+        "backend/services/extrator_pdf.py:862 — from .parsers.stone import ParserStone",
+        "backend/services/extrator_pdf.py:896 — 'stone': ParserStone,",
+        "backend/tests/test_stone_saldos_s24.py:26 — from services.parsers.stone import ParserStone",
+        "backend/tests/test_stone_saldos_s24.py:27 — from services.parsers.stone_n2 import ParserStoneN2",
+        "backend/tests/test_stone_saldos_s24.py:73 — parser = ParserStone(_path(nome))",
+        "backend/tests/test_stone_saldos_s24.py:90 — parser = ParserStone(_path(nome))",
+        "backend/tests/test_stone_saldos_s24.py:111 — parser = ParserStone(_path(nome))",
+        "backend/services/parsers/stone.py:78 — class ParserStone(ParserBase):",
+        "backend/services/parsers/stone.py:111 — from .stone_n2 import ParserStoneN2",
+        "backend/services/parsers/stone.py:117 — n2 = ParserStoneN2(self.pdf_path, password=self.password)"
+      ]
+    },
+    "hits_funcs_nt": {},
+    "hits_extrator": [
+      "backend/services/extrator_pdf.py:862 — `from .parsers.stone import ParserStone`"
+    ],
+    "acao": "BLOQUEADO",
+    "veredito": "INVESTIGAR"
+  },
+  {
+    "indice": "6/6",
+    "arquivo": "backend/test_parsers.py",
+    "pre_check": "LIMPO",
+    "pre_check_detalhes": [
+      "nome_arquivo `test_parsers`: 5 hits (0 nao-triviais)",
+      "funcao `formatar_brl`: 0 hits (0 nao-triviais)",
+      "funcao `formatar_brl_linha`: 0 hits (0 nao-triviais)",
+      "funcao `main`: 30 hits (0 nao-triviais)",
+      "extrator_pdf — classes referenciadas: 0"
+    ],
+    "acao": "VALIDADO",
+    "pytest_pos_disabled": "1 failed, 912 passed, 1 skipped, 1 warning, 2 errors in 303.71s (0:05:03)",
+    "pytest_pos_disabled_ok": true,
+    "pytest_pos_disabled_elapsed": 305.9,
+    "pytest_pos_revert": "1 failed, 912 passed, 1 skipped, 1 warning, 2 errors in 302.72s (0:05:02)",
+    "pytest_pos_revert_ok": true,
+    "pytest_pos_revert_elapsed": 304.7,
+    "veredito": "DEAD CONFIRMED"
+  }
+]

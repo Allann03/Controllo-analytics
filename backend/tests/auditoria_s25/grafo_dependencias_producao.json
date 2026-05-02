@@ -1,0 +1,1582 @@
+{
+  "recorte": "producao",
+  "nos": [
+    "backend/core/config.py",
+    "backend/data/database/__init__.py",
+    "backend/data/database/config.py",
+    "backend/data/database/models.py",
+    "backend/main.py",
+    "backend/routers/__init__.py",
+    "backend/routers/alertas.py",
+    "backend/routers/auditoria.py",
+    "backend/routers/classificacao.py",
+    "backend/routers/conciliacao.py",
+    "backend/routers/empresas.py",
+    "backend/routers/equipe.py",
+    "backend/routers/financeiro.py",
+    "backend/routers/importacao.py",
+    "backend/routers/master.py",
+    "backend/routers/orcamento.py",
+    "backend/routers/relatorios.py",
+    "backend/scripts/seed_empresas_validacao_paralela.py",
+    "backend/scripts/validacao_paralela_dre.py",
+    "backend/services/__init__.py",
+    "backend/services/auth_utils.py",
+    "backend/services/backup_service.py",
+    "backend/services/categorias.py",
+    "backend/services/categorizacao_extrato.py",
+    "backend/services/cnpj_validator.py",
+    "backend/services/conciliacao/__init__.py",
+    "backend/services/conciliacao/engine.py",
+    "backend/services/conciliacao/excel_reader.py",
+    "backend/services/conciliacao/matchers/__init__.py",
+    "backend/services/conciliacao/matchers/base.py",
+    "backend/services/conciliacao/matchers/bb.py",
+    "backend/services/conciliacao/matchers/bradesco.py",
+    "backend/services/conciliacao/matchers/c6bank.py",
+    "backend/services/conciliacao/matchers/caixa.py",
+    "backend/services/conciliacao/matchers/inter.py",
+    "backend/services/conciliacao/matchers/itau.py",
+    "backend/services/conciliacao/matchers/mercado_pago.py",
+    "backend/services/conciliacao/matchers/nubank.py",
+    "backend/services/conciliacao/matchers/pagbank.py",
+    "backend/services/conciliacao/matchers/santander.py",
+    "backend/services/conciliacao/matchers/sicredi.py",
+    "backend/services/conciliacao/matchers/stone.py",
+    "backend/services/conciliacao/matchers/universal.py",
+    "backend/services/contabil/__init__.py",
+    "backend/services/contabil/balanco.py",
+    "backend/services/contabil/cnae_presuncao.py",
+    "backend/services/contabil/comparador.py",
+    "backend/services/contabil/core.py",
+    "backend/services/contabil/dfc.py",
+    "backend/services/contabil/difal.py",
+    "backend/services/contabil/dre.py",
+    "backend/services/contabil/icms_st.py",
+    "backend/services/contabil/indicadores.py",
+    "backend/services/contabil/lucro_presumido.py",
+    "backend/services/contabil/lucro_real.py",
+    "backend/services/contabil/reforma.py",
+    "backend/services/contabil/retencoes.py",
+    "backend/services/contabil/score_saude.py",
+    "backend/services/contabil/simples_nacional.py",
+    "backend/services/contabil/tabelas/__init__.py",
+    "backend/services/contabil/tabelas/aliquotas_icms.py",
+    "backend/services/contabil/tabelas/reforma_tributaria.py",
+    "backend/services/contabil/tabelas/servicos_retencao.py",
+    "backend/services/email_service.py",
+    "backend/services/extrator_pdf.py",
+    "backend/services/financeiro_service.py",
+    "backend/services/gerador_excel.py",
+    "backend/services/gerador_excel_contabil.py",
+    "backend/services/gerador_excel_pipeline.py",
+    "backend/services/importacao_service.py",
+    "backend/services/insights_engine.py",
+    "backend/services/leitor_excel.py",
+    "backend/services/motor_classificacao.py",
+    "backend/services/motor_narrativa.py",
+    "backend/services/ocr_fallback.py",
+    "backend/services/parsers/__init__.py",
+    "backend/services/parsers/base.py",
+    "backend/services/parsers/bb.py",
+    "backend/services/parsers/bradesco.py",
+    "backend/services/parsers/bradesco_empresas/__init__.py",
+    "backend/services/parsers/bradesco_empresas/bradesco_net_empresas.py",
+    "backend/services/parsers/bs2.py",
+    "backend/services/parsers/btg.py",
+    "backend/services/parsers/c6bank.py",
+    "backend/services/parsers/caixa.py",
+    "backend/services/parsers/cora.py",
+    "backend/services/parsers/inter.py",
+    "backend/services/parsers/itau.py",
+    "backend/services/parsers/itau_empresas.py",
+    "backend/services/parsers/itau_extrato_mensal.py",
+    "backend/services/parsers/mercado_pago.py",
+    "backend/services/parsers/n2/__init__.py",
+    "backend/services/parsers/n2/inter_n2.py",
+    "backend/services/parsers/n2/itau_empresas_n2.py",
+    "backend/services/parsers/n2/itau_n2.py",
+    "backend/services/parsers/nubank.py",
+    "backend/services/parsers/pagbank.py",
+    "backend/services/parsers/parser_generico.py",
+    "backend/services/parsers/parser_itau_mensal.py",
+    "backend/services/parsers/parser_stone.py",
+    "backend/services/parsers/safra.py",
+    "backend/services/parsers/santander.py",
+    "backend/services/parsers/santander_consolidado.py",
+    "backend/services/parsers/santander_empresarial.py",
+    "backend/services/parsers/santander_empresas/__init__.py",
+    "backend/services/parsers/santander_empresas/santander_empresas_v1.py",
+    "backend/services/parsers/santander_empresas/santander_empresas_v2.py",
+    "backend/services/parsers/santander_ib_novo.py",
+    "backend/services/parsers/sicredi.py",
+    "backend/services/parsers/stone.py",
+    "backend/services/parsers/stone_n2.py",
+    "backend/services/parsers/sumup.py",
+    "backend/services/parsers/xp_extrato.py",
+    "backend/services/parsers/xp_posicao.py",
+    "backend/services/pipeline_extracao.py",
+    "backend/services/score_saude.py",
+    "backend/services/simulacao_tributaria_service.py",
+    "backend/services/storage.py",
+    "backend/services/template_dashboard.py",
+    "backend/services/tributario/__init__.py",
+    "backend/services/tributario/constantes.py",
+    "backend/services/tributario/lucro_presumido.py",
+    "backend/services/tributario/lucro_real.py",
+    "backend/services/tributario/reforma.py",
+    "backend/services/tributario/simples_nacional.py",
+    "backend/services/validacao/__init__.py",
+    "backend/services/validacao/classificador_confianca.py",
+    "backend/services/validacao/validador_saldos.py",
+    "backend/services/verification/__init__.py",
+    "backend/services/verification/base.py",
+    "backend/services/verification/models.py",
+    "backend/services/verification/orchestrator.py",
+    "backend/services/verification/verifiers.py"
+  ],
+  "todos_nos_referenciados": [
+    "backend/core/config.py",
+    "backend/data/database/__init__.py",
+    "backend/data/database/config.py",
+    "backend/data/database/models.py",
+    "backend/main.py",
+    "backend/routers/__init__.py",
+    "backend/routers/alertas.py",
+    "backend/routers/auditoria.py",
+    "backend/routers/classificacao.py",
+    "backend/routers/conciliacao.py",
+    "backend/routers/empresas.py",
+    "backend/routers/equipe.py",
+    "backend/routers/financeiro.py",
+    "backend/routers/importacao.py",
+    "backend/routers/master.py",
+    "backend/routers/orcamento.py",
+    "backend/routers/relatorios.py",
+    "backend/scripts/seed_empresas_validacao_paralela.py",
+    "backend/scripts/validacao_paralela_dre.py",
+    "backend/services/__init__.py",
+    "backend/services/auth_utils.py",
+    "backend/services/backup_service.py",
+    "backend/services/categorias.py",
+    "backend/services/categorizacao_extrato.py",
+    "backend/services/cnpj_validator.py",
+    "backend/services/conciliacao/__init__.py",
+    "backend/services/conciliacao/engine.py",
+    "backend/services/conciliacao/excel_reader.py",
+    "backend/services/conciliacao/matchers/__init__.py",
+    "backend/services/conciliacao/matchers/base.py",
+    "backend/services/conciliacao/matchers/bb.py",
+    "backend/services/conciliacao/matchers/bradesco.py",
+    "backend/services/conciliacao/matchers/c6bank.py",
+    "backend/services/conciliacao/matchers/caixa.py",
+    "backend/services/conciliacao/matchers/inter.py",
+    "backend/services/conciliacao/matchers/itau.py",
+    "backend/services/conciliacao/matchers/mercado_pago.py",
+    "backend/services/conciliacao/matchers/nubank.py",
+    "backend/services/conciliacao/matchers/pagbank.py",
+    "backend/services/conciliacao/matchers/santander.py",
+    "backend/services/conciliacao/matchers/sicredi.py",
+    "backend/services/conciliacao/matchers/stone.py",
+    "backend/services/conciliacao/matchers/universal.py",
+    "backend/services/contabil/__init__.py",
+    "backend/services/contabil/balanco.py",
+    "backend/services/contabil/cnae_presuncao.py",
+    "backend/services/contabil/comparador.py",
+    "backend/services/contabil/core.py",
+    "backend/services/contabil/dfc.py",
+    "backend/services/contabil/difal.py",
+    "backend/services/contabil/dre.py",
+    "backend/services/contabil/icms_st.py",
+    "backend/services/contabil/indicadores.py",
+    "backend/services/contabil/lucro_presumido.py",
+    "backend/services/contabil/lucro_real.py",
+    "backend/services/contabil/reforma.py",
+    "backend/services/contabil/retencoes.py",
+    "backend/services/contabil/score_saude.py",
+    "backend/services/contabil/simples_nacional.py",
+    "backend/services/contabil/tabelas/__init__.py",
+    "backend/services/contabil/tabelas/aliquotas_icms.py",
+    "backend/services/contabil/tabelas/reforma_tributaria.py",
+    "backend/services/contabil/tabelas/servicos_retencao.py",
+    "backend/services/email_service.py",
+    "backend/services/extrator_pdf.py",
+    "backend/services/financeiro_service.py",
+    "backend/services/gerador_excel.py",
+    "backend/services/gerador_excel_contabil.py",
+    "backend/services/gerador_excel_pipeline.py",
+    "backend/services/importacao_service.py",
+    "backend/services/insights_engine.py",
+    "backend/services/leitor_excel.py",
+    "backend/services/motor_classificacao.py",
+    "backend/services/motor_narrativa.py",
+    "backend/services/ocr_fallback.py",
+    "backend/services/parsers/__init__.py",
+    "backend/services/parsers/base.py",
+    "backend/services/parsers/bb.py",
+    "backend/services/parsers/bradesco.py",
+    "backend/services/parsers/bradesco_empresas/__init__.py",
+    "backend/services/parsers/bradesco_empresas/bradesco_net_empresas.py",
+    "backend/services/parsers/bs2.py",
+    "backend/services/parsers/btg.py",
+    "backend/services/parsers/c6bank.py",
+    "backend/services/parsers/caixa.py",
+    "backend/services/parsers/cora.py",
+    "backend/services/parsers/inter.py",
+    "backend/services/parsers/itau.py",
+    "backend/services/parsers/itau_empresas.py",
+    "backend/services/parsers/itau_extrato_mensal.py",
+    "backend/services/parsers/mercado_pago.py",
+    "backend/services/parsers/n2/__init__.py",
+    "backend/services/parsers/n2/inter_n2.py",
+    "backend/services/parsers/n2/itau_empresas_n2.py",
+    "backend/services/parsers/n2/itau_n2.py",
+    "backend/services/parsers/nubank.py",
+    "backend/services/parsers/pagbank.py",
+    "backend/services/parsers/parser_generico.py",
+    "backend/services/parsers/parser_itau_mensal.py",
+    "backend/services/parsers/parser_stone.py",
+    "backend/services/parsers/safra.py",
+    "backend/services/parsers/santander.py",
+    "backend/services/parsers/santander_consolidado.py",
+    "backend/services/parsers/santander_empresarial.py",
+    "backend/services/parsers/santander_empresas/__init__.py",
+    "backend/services/parsers/santander_empresas/santander_empresas_v1.py",
+    "backend/services/parsers/santander_empresas/santander_empresas_v2.py",
+    "backend/services/parsers/santander_ib_novo.py",
+    "backend/services/parsers/sicredi.py",
+    "backend/services/parsers/stone.py",
+    "backend/services/parsers/stone_n2.py",
+    "backend/services/parsers/sumup.py",
+    "backend/services/parsers/xp_extrato.py",
+    "backend/services/parsers/xp_posicao.py",
+    "backend/services/pipeline_extracao.py",
+    "backend/services/score_saude.py",
+    "backend/services/simulacao_tributaria_service.py",
+    "backend/services/storage.py",
+    "backend/services/template_dashboard.py",
+    "backend/services/tributario/__init__.py",
+    "backend/services/tributario/constantes.py",
+    "backend/services/tributario/lucro_presumido.py",
+    "backend/services/tributario/lucro_real.py",
+    "backend/services/tributario/reforma.py",
+    "backend/services/tributario/simples_nacional.py",
+    "backend/services/validacao/__init__.py",
+    "backend/services/validacao/classificador_confianca.py",
+    "backend/services/validacao/validador_saldos.py",
+    "backend/services/verification/__init__.py",
+    "backend/services/verification/base.py",
+    "backend/services/verification/models.py",
+    "backend/services/verification/orchestrator.py",
+    "backend/services/verification/verifiers.py"
+  ],
+  "arestas": [
+    {
+      "de": "backend/data/database/models.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/routers/alertas.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/routers/auditoria.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/routers/classificacao.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/routers/conciliacao.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/routers/empresas.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/routers/equipe.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/routers/financeiro.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/routers/importacao.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/routers/master.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/routers/orcamento.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/routers/relatorios.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/services/__init__.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/services/auth_utils.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/services/backup_service.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/services/categorizacao_extrato.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/services/cnpj_validator.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/services/extrator_pdf.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/services/financeiro_service.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/services/gerador_excel.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/services/gerador_excel_contabil.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/services/leitor_excel.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/services/pipeline_extracao.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/services/score_saude.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/services/storage.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/services/template_dashboard.py"
+    },
+    {
+      "de": "backend/main.py",
+      "para": "backend/services/verification/__init__.py"
+    },
+    {
+      "de": "backend/routers/alertas.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/routers/alertas.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/routers/alertas.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/routers/alertas.py",
+      "para": "backend/services/auth_utils.py"
+    },
+    {
+      "de": "backend/routers/alertas.py",
+      "para": "backend/services/email_service.py"
+    },
+    {
+      "de": "backend/routers/auditoria.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/routers/auditoria.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/routers/auditoria.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/routers/auditoria.py",
+      "para": "backend/services/auth_utils.py"
+    },
+    {
+      "de": "backend/routers/classificacao.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/routers/classificacao.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/routers/classificacao.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/routers/classificacao.py",
+      "para": "backend/routers/auditoria.py"
+    },
+    {
+      "de": "backend/routers/classificacao.py",
+      "para": "backend/services/auth_utils.py"
+    },
+    {
+      "de": "backend/routers/classificacao.py",
+      "para": "backend/services/motor_classificacao.py"
+    },
+    {
+      "de": "backend/routers/conciliacao.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/routers/conciliacao.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/routers/conciliacao.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/routers/conciliacao.py",
+      "para": "backend/routers/auditoria.py"
+    },
+    {
+      "de": "backend/routers/conciliacao.py",
+      "para": "backend/services/auth_utils.py"
+    },
+    {
+      "de": "backend/routers/conciliacao.py",
+      "para": "backend/services/conciliacao/__init__.py"
+    },
+    {
+      "de": "backend/routers/conciliacao.py",
+      "para": "backend/services/extrator_pdf.py"
+    },
+    {
+      "de": "backend/routers/empresas.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/routers/empresas.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/routers/empresas.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/routers/empresas.py",
+      "para": "backend/routers/auditoria.py"
+    },
+    {
+      "de": "backend/routers/empresas.py",
+      "para": "backend/services/auth_utils.py"
+    },
+    {
+      "de": "backend/routers/equipe.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/routers/equipe.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/routers/equipe.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/routers/equipe.py",
+      "para": "backend/services/auth_utils.py"
+    },
+    {
+      "de": "backend/routers/financeiro.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/routers/financeiro.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/routers/financeiro.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/routers/financeiro.py",
+      "para": "backend/services/__init__.py"
+    },
+    {
+      "de": "backend/routers/financeiro.py",
+      "para": "backend/services/auth_utils.py"
+    },
+    {
+      "de": "backend/routers/financeiro.py",
+      "para": "backend/services/financeiro_service.py"
+    },
+    {
+      "de": "backend/routers/financeiro.py",
+      "para": "backend/services/motor_narrativa.py"
+    },
+    {
+      "de": "backend/routers/financeiro.py",
+      "para": "backend/services/score_saude.py"
+    },
+    {
+      "de": "backend/routers/financeiro.py",
+      "para": "backend/services/simulacao_tributaria_service.py"
+    },
+    {
+      "de": "backend/routers/importacao.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/routers/importacao.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/routers/importacao.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/routers/importacao.py",
+      "para": "backend/routers/auditoria.py"
+    },
+    {
+      "de": "backend/routers/importacao.py",
+      "para": "backend/services/__init__.py"
+    },
+    {
+      "de": "backend/routers/importacao.py",
+      "para": "backend/services/auth_utils.py"
+    },
+    {
+      "de": "backend/routers/importacao.py",
+      "para": "backend/services/importacao_service.py"
+    },
+    {
+      "de": "backend/routers/master.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/routers/master.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/routers/master.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/routers/master.py",
+      "para": "backend/services/auth_utils.py"
+    },
+    {
+      "de": "backend/routers/orcamento.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/routers/orcamento.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/routers/orcamento.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/routers/orcamento.py",
+      "para": "backend/services/auth_utils.py"
+    },
+    {
+      "de": "backend/routers/relatorios.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/routers/relatorios.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/routers/relatorios.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/routers/relatorios.py",
+      "para": "backend/services/auth_utils.py"
+    },
+    {
+      "de": "backend/scripts/seed_empresas_validacao_paralela.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/scripts/seed_empresas_validacao_paralela.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/scripts/seed_empresas_validacao_paralela.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/scripts/validacao_paralela_dre.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/scripts/validacao_paralela_dre.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/scripts/validacao_paralela_dre.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/scripts/validacao_paralela_dre.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/scripts/validacao_paralela_dre.py",
+      "para": "backend/services/contabil/dre.py"
+    },
+    {
+      "de": "backend/services/auth_utils.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/services/auth_utils.py",
+      "para": "backend/data/database/config.py"
+    },
+    {
+      "de": "backend/services/auth_utils.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/services/conciliacao/__init__.py",
+      "para": "backend/services/conciliacao/engine.py"
+    },
+    {
+      "de": "backend/services/conciliacao/__init__.py",
+      "para": "backend/services/conciliacao/excel_reader.py"
+    },
+    {
+      "de": "backend/services/conciliacao/engine.py",
+      "para": "backend/services/conciliacao/matchers/__init__.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/__init__.py",
+      "para": "backend/services/conciliacao/matchers/bb.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/__init__.py",
+      "para": "backend/services/conciliacao/matchers/bradesco.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/__init__.py",
+      "para": "backend/services/conciliacao/matchers/c6bank.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/__init__.py",
+      "para": "backend/services/conciliacao/matchers/caixa.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/__init__.py",
+      "para": "backend/services/conciliacao/matchers/inter.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/__init__.py",
+      "para": "backend/services/conciliacao/matchers/itau.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/__init__.py",
+      "para": "backend/services/conciliacao/matchers/mercado_pago.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/__init__.py",
+      "para": "backend/services/conciliacao/matchers/nubank.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/__init__.py",
+      "para": "backend/services/conciliacao/matchers/pagbank.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/__init__.py",
+      "para": "backend/services/conciliacao/matchers/santander.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/__init__.py",
+      "para": "backend/services/conciliacao/matchers/sicredi.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/__init__.py",
+      "para": "backend/services/conciliacao/matchers/stone.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/__init__.py",
+      "para": "backend/services/conciliacao/matchers/universal.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/bb.py",
+      "para": "backend/services/conciliacao/matchers/base.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/bradesco.py",
+      "para": "backend/services/conciliacao/matchers/base.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/c6bank.py",
+      "para": "backend/services/conciliacao/matchers/base.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/caixa.py",
+      "para": "backend/services/conciliacao/matchers/base.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/inter.py",
+      "para": "backend/services/conciliacao/matchers/base.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/itau.py",
+      "para": "backend/services/conciliacao/matchers/base.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/mercado_pago.py",
+      "para": "backend/services/conciliacao/matchers/base.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/nubank.py",
+      "para": "backend/services/conciliacao/matchers/base.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/pagbank.py",
+      "para": "backend/services/conciliacao/matchers/base.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/santander.py",
+      "para": "backend/services/conciliacao/matchers/base.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/sicredi.py",
+      "para": "backend/services/conciliacao/matchers/base.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/stone.py",
+      "para": "backend/services/conciliacao/matchers/base.py"
+    },
+    {
+      "de": "backend/services/conciliacao/matchers/universal.py",
+      "para": "backend/services/conciliacao/matchers/base.py"
+    },
+    {
+      "de": "backend/services/contabil/balanco.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/contabil/comparador.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/contabil/comparador.py",
+      "para": "backend/services/contabil/lucro_presumido.py"
+    },
+    {
+      "de": "backend/services/contabil/comparador.py",
+      "para": "backend/services/contabil/lucro_real.py"
+    },
+    {
+      "de": "backend/services/contabil/comparador.py",
+      "para": "backend/services/contabil/reforma.py"
+    },
+    {
+      "de": "backend/services/contabil/comparador.py",
+      "para": "backend/services/contabil/simples_nacional.py"
+    },
+    {
+      "de": "backend/services/contabil/dfc.py",
+      "para": "backend/services/contabil/balanco.py"
+    },
+    {
+      "de": "backend/services/contabil/dfc.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/contabil/dfc.py",
+      "para": "backend/services/contabil/dre.py"
+    },
+    {
+      "de": "backend/services/contabil/difal.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/contabil/difal.py",
+      "para": "backend/services/contabil/tabelas/aliquotas_icms.py"
+    },
+    {
+      "de": "backend/services/contabil/dre.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/contabil/icms_st.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/contabil/indicadores.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/contabil/lucro_presumido.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/contabil/lucro_real.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/contabil/reforma.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/contabil/reforma.py",
+      "para": "backend/services/contabil/tabelas/reforma_tributaria.py"
+    },
+    {
+      "de": "backend/services/contabil/retencoes.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/contabil/retencoes.py",
+      "para": "backend/services/contabil/tabelas/servicos_retencao.py"
+    },
+    {
+      "de": "backend/services/contabil/score_saude.py",
+      "para": "backend/services/contabil/__init__.py"
+    },
+    {
+      "de": "backend/services/contabil/score_saude.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/contabil/score_saude.py",
+      "para": "backend/services/contabil/indicadores.py"
+    },
+    {
+      "de": "backend/services/contabil/simples_nacional.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/contabil/simples_nacional.py",
+      "para": "backend/services/tributario/constantes.py"
+    },
+    {
+      "de": "backend/services/contabil/tabelas/aliquotas_icms.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/contabil/tabelas/reforma_tributaria.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/ocr_fallback.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/bb.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/bradesco.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/bradesco_empresas/bradesco_net_empresas.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/bs2.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/btg.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/c6bank.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/caixa.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/cora.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/inter.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/itau.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/itau_empresas.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/mercado_pago.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/n2/inter_n2.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/n2/itau_empresas_n2.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/n2/itau_n2.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/nubank.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/pagbank.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/safra.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/santander.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/santander_consolidado.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/santander_empresarial.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/santander_empresas/santander_empresas_v1.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/santander_empresas/santander_empresas_v2.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/santander_ib_novo.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/sicredi.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/stone.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/sumup.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/xp_extrato.py"
+    },
+    {
+      "de": "backend/services/extrator_pdf.py",
+      "para": "backend/services/parsers/xp_posicao.py"
+    },
+    {
+      "de": "backend/services/financeiro_service.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/services/financeiro_service.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/services/financeiro_service.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/financeiro_service.py",
+      "para": "backend/services/contabil/dre.py"
+    },
+    {
+      "de": "backend/services/financeiro_service.py",
+      "para": "backend/services/insights_engine.py"
+    },
+    {
+      "de": "backend/services/financeiro_service.py",
+      "para": "backend/services/motor_narrativa.py"
+    },
+    {
+      "de": "backend/services/gerador_excel_contabil.py",
+      "para": "backend/services/motor_classificacao.py"
+    },
+    {
+      "de": "backend/services/importacao_service.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/services/parsers/bb.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/bradesco.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/bradesco_empresas/bradesco_net_empresas.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/bs2.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/btg.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/c6bank.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/caixa.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/cora.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/inter.py",
+      "para": "backend/services/ocr_fallback.py"
+    },
+    {
+      "de": "backend/services/parsers/inter.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/itau.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/itau_empresas.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/itau_extrato_mensal.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/mercado_pago.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/n2/inter_n2.py",
+      "para": "backend/services/parsers/inter.py"
+    },
+    {
+      "de": "backend/services/parsers/n2/itau_empresas_n2.py",
+      "para": "backend/services/parsers/itau_empresas.py"
+    },
+    {
+      "de": "backend/services/parsers/n2/itau_n2.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/nubank.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/pagbank.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/safra.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/santander.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/santander.py",
+      "para": "backend/services/parsers/santander_consolidado.py"
+    },
+    {
+      "de": "backend/services/parsers/santander.py",
+      "para": "backend/services/parsers/santander_empresarial.py"
+    },
+    {
+      "de": "backend/services/parsers/santander_consolidado.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/santander_empresarial.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/santander_empresas/santander_empresas_v1.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/santander_empresas/santander_empresas_v2.py",
+      "para": "backend/services/parsers/santander_consolidado.py"
+    },
+    {
+      "de": "backend/services/parsers/santander_ib_novo.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/sicredi.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/stone.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/stone.py",
+      "para": "backend/services/parsers/stone_n2.py"
+    },
+    {
+      "de": "backend/services/parsers/stone_n2.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/sumup.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/xp_extrato.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/parsers/xp_posicao.py",
+      "para": "backend/services/parsers/base.py"
+    },
+    {
+      "de": "backend/services/pipeline_extracao.py",
+      "para": "backend/services/extrator_pdf.py"
+    },
+    {
+      "de": "backend/services/pipeline_extracao.py",
+      "para": "backend/services/gerador_excel_pipeline.py"
+    },
+    {
+      "de": "backend/services/pipeline_extracao.py",
+      "para": "backend/services/ocr_fallback.py"
+    },
+    {
+      "de": "backend/services/pipeline_extracao.py",
+      "para": "backend/services/validacao/__init__.py"
+    },
+    {
+      "de": "backend/services/simulacao_tributaria_service.py",
+      "para": "backend/data/database/__init__.py"
+    },
+    {
+      "de": "backend/services/simulacao_tributaria_service.py",
+      "para": "backend/data/database/models.py"
+    },
+    {
+      "de": "backend/services/simulacao_tributaria_service.py",
+      "para": "backend/services/contabil/cnae_presuncao.py"
+    },
+    {
+      "de": "backend/services/simulacao_tributaria_service.py",
+      "para": "backend/services/contabil/core.py"
+    },
+    {
+      "de": "backend/services/simulacao_tributaria_service.py",
+      "para": "backend/services/contabil/lucro_presumido.py"
+    },
+    {
+      "de": "backend/services/simulacao_tributaria_service.py",
+      "para": "backend/services/tributario/__init__.py"
+    },
+    {
+      "de": "backend/services/tributario/__init__.py",
+      "para": "backend/services/tributario/constantes.py"
+    },
+    {
+      "de": "backend/services/tributario/__init__.py",
+      "para": "backend/services/tributario/lucro_presumido.py"
+    },
+    {
+      "de": "backend/services/tributario/__init__.py",
+      "para": "backend/services/tributario/lucro_real.py"
+    },
+    {
+      "de": "backend/services/tributario/__init__.py",
+      "para": "backend/services/tributario/reforma.py"
+    },
+    {
+      "de": "backend/services/tributario/__init__.py",
+      "para": "backend/services/tributario/simples_nacional.py"
+    },
+    {
+      "de": "backend/services/tributario/lucro_presumido.py",
+      "para": "backend/services/tributario/constantes.py"
+    },
+    {
+      "de": "backend/services/tributario/lucro_real.py",
+      "para": "backend/services/tributario/constantes.py"
+    },
+    {
+      "de": "backend/services/tributario/reforma.py",
+      "para": "backend/services/tributario/constantes.py"
+    },
+    {
+      "de": "backend/services/tributario/simples_nacional.py",
+      "para": "backend/services/tributario/constantes.py"
+    },
+    {
+      "de": "backend/services/validacao/__init__.py",
+      "para": "backend/services/validacao/classificador_confianca.py"
+    },
+    {
+      "de": "backend/services/validacao/__init__.py",
+      "para": "backend/services/validacao/validador_saldos.py"
+    },
+    {
+      "de": "backend/services/verification/__init__.py",
+      "para": "backend/services/verification/models.py"
+    },
+    {
+      "de": "backend/services/verification/__init__.py",
+      "para": "backend/services/verification/orchestrator.py"
+    },
+    {
+      "de": "backend/services/verification/base.py",
+      "para": "backend/services/verification/models.py"
+    },
+    {
+      "de": "backend/services/verification/orchestrator.py",
+      "para": "backend/services/extrator_pdf.py"
+    },
+    {
+      "de": "backend/services/verification/orchestrator.py",
+      "para": "backend/services/verification/models.py"
+    },
+    {
+      "de": "backend/services/verification/orchestrator.py",
+      "para": "backend/services/verification/verifiers.py"
+    },
+    {
+      "de": "backend/services/verification/verifiers.py",
+      "para": "backend/services/verification/base.py"
+    }
+  ],
+  "estatisticas": {
+    "total_arquivos": 133,
+    "total_arestas": 257,
+    "in_degree": {
+      "backend/core/config.py": 0,
+      "backend/data/database/__init__.py": 17,
+      "backend/data/database/config.py": 16,
+      "backend/data/database/models.py": 18,
+      "backend/main.py": 0,
+      "backend/routers/__init__.py": 0,
+      "backend/routers/alertas.py": 1,
+      "backend/routers/auditoria.py": 5,
+      "backend/routers/classificacao.py": 1,
+      "backend/routers/conciliacao.py": 1,
+      "backend/routers/empresas.py": 1,
+      "backend/routers/equipe.py": 1,
+      "backend/routers/financeiro.py": 1,
+      "backend/routers/importacao.py": 1,
+      "backend/routers/master.py": 1,
+      "backend/routers/orcamento.py": 1,
+      "backend/routers/relatorios.py": 1,
+      "backend/scripts/seed_empresas_validacao_paralela.py": 0,
+      "backend/scripts/validacao_paralela_dre.py": 0,
+      "backend/services/__init__.py": 3,
+      "backend/services/auth_utils.py": 12,
+      "backend/services/backup_service.py": 1,
+      "backend/services/categorias.py": 0,
+      "backend/services/categorizacao_extrato.py": 1,
+      "backend/services/cnpj_validator.py": 1,
+      "backend/services/conciliacao/__init__.py": 1,
+      "backend/services/conciliacao/engine.py": 1,
+      "backend/services/conciliacao/excel_reader.py": 1,
+      "backend/services/conciliacao/matchers/__init__.py": 1,
+      "backend/services/conciliacao/matchers/base.py": 13,
+      "backend/services/conciliacao/matchers/bb.py": 1,
+      "backend/services/conciliacao/matchers/bradesco.py": 1,
+      "backend/services/conciliacao/matchers/c6bank.py": 1,
+      "backend/services/conciliacao/matchers/caixa.py": 1,
+      "backend/services/conciliacao/matchers/inter.py": 1,
+      "backend/services/conciliacao/matchers/itau.py": 1,
+      "backend/services/conciliacao/matchers/mercado_pago.py": 1,
+      "backend/services/conciliacao/matchers/nubank.py": 1,
+      "backend/services/conciliacao/matchers/pagbank.py": 1,
+      "backend/services/conciliacao/matchers/santander.py": 1,
+      "backend/services/conciliacao/matchers/sicredi.py": 1,
+      "backend/services/conciliacao/matchers/stone.py": 1,
+      "backend/services/conciliacao/matchers/universal.py": 1,
+      "backend/services/contabil/__init__.py": 1,
+      "backend/services/contabil/balanco.py": 1,
+      "backend/services/contabil/cnae_presuncao.py": 1,
+      "backend/services/contabil/comparador.py": 0,
+      "backend/services/contabil/core.py": 18,
+      "backend/services/contabil/dfc.py": 0,
+      "backend/services/contabil/difal.py": 0,
+      "backend/services/contabil/dre.py": 3,
+      "backend/services/contabil/icms_st.py": 0,
+      "backend/services/contabil/indicadores.py": 1,
+      "backend/services/contabil/lucro_presumido.py": 2,
+      "backend/services/contabil/lucro_real.py": 1,
+      "backend/services/contabil/reforma.py": 1,
+      "backend/services/contabil/retencoes.py": 0,
+      "backend/services/contabil/score_saude.py": 0,
+      "backend/services/contabil/simples_nacional.py": 1,
+      "backend/services/contabil/tabelas/__init__.py": 0,
+      "backend/services/contabil/tabelas/aliquotas_icms.py": 1,
+      "backend/services/contabil/tabelas/reforma_tributaria.py": 1,
+      "backend/services/contabil/tabelas/servicos_retencao.py": 1,
+      "backend/services/email_service.py": 1,
+      "backend/services/extrator_pdf.py": 4,
+      "backend/services/financeiro_service.py": 2,
+      "backend/services/gerador_excel.py": 1,
+      "backend/services/gerador_excel_contabil.py": 1,
+      "backend/services/gerador_excel_pipeline.py": 1,
+      "backend/services/importacao_service.py": 1,
+      "backend/services/insights_engine.py": 1,
+      "backend/services/leitor_excel.py": 1,
+      "backend/services/motor_classificacao.py": 2,
+      "backend/services/motor_narrativa.py": 2,
+      "backend/services/ocr_fallback.py": 3,
+      "backend/services/parsers/__init__.py": 0,
+      "backend/services/parsers/base.py": 28,
+      "backend/services/parsers/bb.py": 1,
+      "backend/services/parsers/bradesco.py": 1,
+      "backend/services/parsers/bradesco_empresas/__init__.py": 0,
+      "backend/services/parsers/bradesco_empresas/bradesco_net_empresas.py": 1,
+      "backend/services/parsers/bs2.py": 1,
+      "backend/services/parsers/btg.py": 1,
+      "backend/services/parsers/c6bank.py": 1,
+      "backend/services/parsers/caixa.py": 1,
+      "backend/services/parsers/cora.py": 1,
+      "backend/services/parsers/inter.py": 2,
+      "backend/services/parsers/itau.py": 1,
+      "backend/services/parsers/itau_empresas.py": 2,
+      "backend/services/parsers/itau_extrato_mensal.py": 0,
+      "backend/services/parsers/mercado_pago.py": 1,
+      "backend/services/parsers/n2/__init__.py": 0,
+      "backend/services/parsers/n2/inter_n2.py": 1,
+      "backend/services/parsers/n2/itau_empresas_n2.py": 1,
+      "backend/services/parsers/n2/itau_n2.py": 1,
+      "backend/services/parsers/nubank.py": 1,
+      "backend/services/parsers/pagbank.py": 1,
+      "backend/services/parsers/parser_generico.py": 0,
+      "backend/services/parsers/parser_itau_mensal.py": 0,
+      "backend/services/parsers/parser_stone.py": 0,
+      "backend/services/parsers/safra.py": 1,
+      "backend/services/parsers/santander.py": 1,
+      "backend/services/parsers/santander_consolidado.py": 3,
+      "backend/services/parsers/santander_empresarial.py": 2,
+      "backend/services/parsers/santander_empresas/__init__.py": 0,
+      "backend/services/parsers/santander_empresas/santander_empresas_v1.py": 1,
+      "backend/services/parsers/santander_empresas/santander_empresas_v2.py": 1,
+      "backend/services/parsers/santander_ib_novo.py": 1,
+      "backend/services/parsers/sicredi.py": 1,
+      "backend/services/parsers/stone.py": 1,
+      "backend/services/parsers/stone_n2.py": 1,
+      "backend/services/parsers/sumup.py": 1,
+      "backend/services/parsers/xp_extrato.py": 1,
+      "backend/services/parsers/xp_posicao.py": 1,
+      "backend/services/pipeline_extracao.py": 1,
+      "backend/services/score_saude.py": 2,
+      "backend/services/simulacao_tributaria_service.py": 1,
+      "backend/services/storage.py": 1,
+      "backend/services/template_dashboard.py": 1,
+      "backend/services/tributario/__init__.py": 1,
+      "backend/services/tributario/constantes.py": 6,
+      "backend/services/tributario/lucro_presumido.py": 1,
+      "backend/services/tributario/lucro_real.py": 1,
+      "backend/services/tributario/reforma.py": 1,
+      "backend/services/tributario/simples_nacional.py": 1,
+      "backend/services/validacao/__init__.py": 1,
+      "backend/services/validacao/classificador_confianca.py": 1,
+      "backend/services/validacao/validador_saldos.py": 1,
+      "backend/services/verification/__init__.py": 1,
+      "backend/services/verification/base.py": 1,
+      "backend/services/verification/models.py": 3,
+      "backend/services/verification/orchestrator.py": 1,
+      "backend/services/verification/verifiers.py": 1
+    },
+    "out_degree": {
+      "backend/core/config.py": 0,
+      "backend/data/database/__init__.py": 0,
+      "backend/data/database/config.py": 0,
+      "backend/data/database/models.py": 1,
+      "backend/main.py": 29,
+      "backend/routers/__init__.py": 0,
+      "backend/routers/alertas.py": 5,
+      "backend/routers/auditoria.py": 4,
+      "backend/routers/classificacao.py": 6,
+      "backend/routers/conciliacao.py": 7,
+      "backend/routers/empresas.py": 5,
+      "backend/routers/equipe.py": 4,
+      "backend/routers/financeiro.py": 9,
+      "backend/routers/importacao.py": 7,
+      "backend/routers/master.py": 4,
+      "backend/routers/orcamento.py": 4,
+      "backend/routers/relatorios.py": 4,
+      "backend/scripts/seed_empresas_validacao_paralela.py": 3,
+      "backend/scripts/validacao_paralela_dre.py": 5,
+      "backend/services/__init__.py": 0,
+      "backend/services/auth_utils.py": 3,
+      "backend/services/backup_service.py": 0,
+      "backend/services/categorias.py": 0,
+      "backend/services/categorizacao_extrato.py": 0,
+      "backend/services/cnpj_validator.py": 0,
+      "backend/services/conciliacao/__init__.py": 2,
+      "backend/services/conciliacao/engine.py": 1,
+      "backend/services/conciliacao/excel_reader.py": 0,
+      "backend/services/conciliacao/matchers/__init__.py": 13,
+      "backend/services/conciliacao/matchers/base.py": 0,
+      "backend/services/conciliacao/matchers/bb.py": 1,
+      "backend/services/conciliacao/matchers/bradesco.py": 1,
+      "backend/services/conciliacao/matchers/c6bank.py": 1,
+      "backend/services/conciliacao/matchers/caixa.py": 1,
+      "backend/services/conciliacao/matchers/inter.py": 1,
+      "backend/services/conciliacao/matchers/itau.py": 1,
+      "backend/services/conciliacao/matchers/mercado_pago.py": 1,
+      "backend/services/conciliacao/matchers/nubank.py": 1,
+      "backend/services/conciliacao/matchers/pagbank.py": 1,
+      "backend/services/conciliacao/matchers/santander.py": 1,
+      "backend/services/conciliacao/matchers/sicredi.py": 1,
+      "backend/services/conciliacao/matchers/stone.py": 1,
+      "backend/services/conciliacao/matchers/universal.py": 1,
+      "backend/services/contabil/__init__.py": 0,
+      "backend/services/contabil/balanco.py": 1,
+      "backend/services/contabil/cnae_presuncao.py": 0,
+      "backend/services/contabil/comparador.py": 5,
+      "backend/services/contabil/core.py": 0,
+      "backend/services/contabil/dfc.py": 3,
+      "backend/services/contabil/difal.py": 2,
+      "backend/services/contabil/dre.py": 1,
+      "backend/services/contabil/icms_st.py": 1,
+      "backend/services/contabil/indicadores.py": 1,
+      "backend/services/contabil/lucro_presumido.py": 1,
+      "backend/services/contabil/lucro_real.py": 1,
+      "backend/services/contabil/reforma.py": 2,
+      "backend/services/contabil/retencoes.py": 2,
+      "backend/services/contabil/score_saude.py": 3,
+      "backend/services/contabil/simples_nacional.py": 2,
+      "backend/services/contabil/tabelas/__init__.py": 0,
+      "backend/services/contabil/tabelas/aliquotas_icms.py": 1,
+      "backend/services/contabil/tabelas/reforma_tributaria.py": 1,
+      "backend/services/contabil/tabelas/servicos_retencao.py": 0,
+      "backend/services/email_service.py": 0,
+      "backend/services/extrator_pdf.py": 30,
+      "backend/services/financeiro_service.py": 6,
+      "backend/services/gerador_excel.py": 0,
+      "backend/services/gerador_excel_contabil.py": 1,
+      "backend/services/gerador_excel_pipeline.py": 0,
+      "backend/services/importacao_service.py": 1,
+      "backend/services/insights_engine.py": 0,
+      "backend/services/leitor_excel.py": 0,
+      "backend/services/motor_classificacao.py": 0,
+      "backend/services/motor_narrativa.py": 0,
+      "backend/services/ocr_fallback.py": 0,
+      "backend/services/parsers/__init__.py": 0,
+      "backend/services/parsers/base.py": 0,
+      "backend/services/parsers/bb.py": 1,
+      "backend/services/parsers/bradesco.py": 1,
+      "backend/services/parsers/bradesco_empresas/__init__.py": 0,
+      "backend/services/parsers/bradesco_empresas/bradesco_net_empresas.py": 1,
+      "backend/services/parsers/bs2.py": 1,
+      "backend/services/parsers/btg.py": 1,
+      "backend/services/parsers/c6bank.py": 1,
+      "backend/services/parsers/caixa.py": 1,
+      "backend/services/parsers/cora.py": 1,
+      "backend/services/parsers/inter.py": 2,
+      "backend/services/parsers/itau.py": 1,
+      "backend/services/parsers/itau_empresas.py": 1,
+      "backend/services/parsers/itau_extrato_mensal.py": 1,
+      "backend/services/parsers/mercado_pago.py": 1,
+      "backend/services/parsers/n2/__init__.py": 0,
+      "backend/services/parsers/n2/inter_n2.py": 1,
+      "backend/services/parsers/n2/itau_empresas_n2.py": 1,
+      "backend/services/parsers/n2/itau_n2.py": 1,
+      "backend/services/parsers/nubank.py": 1,
+      "backend/services/parsers/pagbank.py": 1,
+      "backend/services/parsers/parser_generico.py": 0,
+      "backend/services/parsers/parser_itau_mensal.py": 0,
+      "backend/services/parsers/parser_stone.py": 0,
+      "backend/services/parsers/safra.py": 1,
+      "backend/services/parsers/santander.py": 3,
+      "backend/services/parsers/santander_consolidado.py": 1,
+      "backend/services/parsers/santander_empresarial.py": 1,
+      "backend/services/parsers/santander_empresas/__init__.py": 0,
+      "backend/services/parsers/santander_empresas/santander_empresas_v1.py": 1,
+      "backend/services/parsers/santander_empresas/santander_empresas_v2.py": 1,
+      "backend/services/parsers/santander_ib_novo.py": 1,
+      "backend/services/parsers/sicredi.py": 1,
+      "backend/services/parsers/stone.py": 2,
+      "backend/services/parsers/stone_n2.py": 1,
+      "backend/services/parsers/sumup.py": 1,
+      "backend/services/parsers/xp_extrato.py": 1,
+      "backend/services/parsers/xp_posicao.py": 1,
+      "backend/services/pipeline_extracao.py": 4,
+      "backend/services/score_saude.py": 0,
+      "backend/services/simulacao_tributaria_service.py": 6,
+      "backend/services/storage.py": 0,
+      "backend/services/template_dashboard.py": 0,
+      "backend/services/tributario/__init__.py": 5,
+      "backend/services/tributario/constantes.py": 0,
+      "backend/services/tributario/lucro_presumido.py": 1,
+      "backend/services/tributario/lucro_real.py": 1,
+      "backend/services/tributario/reforma.py": 1,
+      "backend/services/tributario/simples_nacional.py": 1,
+      "backend/services/validacao/__init__.py": 2,
+      "backend/services/validacao/classificador_confianca.py": 0,
+      "backend/services/validacao/validador_saldos.py": 0,
+      "backend/services/verification/__init__.py": 2,
+      "backend/services/verification/base.py": 1,
+      "backend/services/verification/models.py": 0,
+      "backend/services/verification/orchestrator.py": 3,
+      "backend/services/verification/verifiers.py": 1
+    }
+  },
+  "entry_points": [
+    "backend/main.py",
+    "backend/scripts/seed_empresas_validacao_paralela.py",
+    "backend/scripts/validacao_paralela_dre.py"
+  ]
+}
