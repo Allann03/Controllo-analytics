@@ -1,0 +1,1707 @@
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 1 de 34
+Dados da conta
+Nome Documento
+MARTINS COMERCIO DE PRODUTOS E ACESSORIOS VETERINARIOS LTDA 53.690.127/000146
+Instituição Agência Conta
+Stone Instituição de Pagamento S.A. 0001 67085456
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+31/10/25 Saída Tarifa - R$ 0,26 R$ 187,30
+William Silveira Russo
+31/10/25 Entrada R$ 35,00 R$ 187,30
+Pix | Maquininha
+THAIS DE SOUSA DIAS
+31/10/25 Entrada R$ 64,00 R$ 152,56
+Transferência | Pix
+Claro
+31/10/25 Saída - R$ 163,05 R$ 88,56
+Transferência | Pix
+31/10/25 Saída Tarifa - R$ 0,62 R$ 251,61
+SANDRA ALCANTARA RODRIGUES
+31/10/25 Entrada OSORIO R$ 82,80 R$ 251,61
+Pix | Maquininha
+RPI DISTRIBUICAO DE PRODUTOS V RPI DISTRIBUICAO DE
+31/10/25 Saída - R$ 335,15 R$ 169,43
+Pagamento PRODUTOS V
+31/10/25 Saída Tarifa - R$ 0,40 R$ 504,58
+ISAMARA DA SILVA LADEIRA
+31/10/25 Entrada R$ 54,30 R$ 504,58
+Pix | Maquininha
+AGROLIFE ESPIRITO SANTO PRODUT AGROLIFE ESPIRITO SANTO
+31/10/25 Saída - R$ 173,39 R$ 450,68
+Pagamento PRODUT
+CARTORIO MONICA DANTAS
+CARTORIO MONICA DANTAS
+31/10/25 Saída FERREIRA - R$ 1.192,75 R$ 624,07
+FERREIRA
+Pagamento
+Recebimento vendas
+31/10/25 Entrada R$ 500,81 R$ 1.816,82
+Maestro | Débito
+Recebimento vendas
+31/10/25 Entrada R$ 17,60 R$ 1.316,01
+Elo | Débito
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 2 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+Recebimento vendas
+31/10/25 Entrada R$ 91,91 R$ 1.298,41
+Visa Electron | Débito
+JOAO LUIS ANTUNES PIRES
+31/10/25 Entrada R$ 165,80 R$ 1.206,50
+Transferência | Pix
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+31/10/25 Entrada R$ 738,54 R$ 1.040,70 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+31/10/25 Entrada R$ 6,66 R$ 302,16 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+31/10/25 Entrada R$ 263,43 R$ 295,50 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+30/10/25 Saída Tarifa - R$ 0,15 R$ 32,07
+ALEX SANDER CORREIA DE ARAUJO
+30/10/25 Entrada R$ 20,00 R$ 32,07
+Pix | Maquininha
+30/10/25 Saída Tarifa - R$ 0,07 R$ 12,22
+AUGUSTO MATOS DE OLIVEIRA
+30/10/25 Entrada R$ 10,00 R$ 12,22
+Pix | Maquininha
+CHATELET PARTICIPACOES LTDA
+30/10/25 Saída - R$ 5.500,00 R$ 2,29
+Transferência | Pix
+MARTINS COM DE PROD E
+30/10/25 Entrada ACESSORIOS VETERINARIOS LTDA R$ 70,00 R$ 5.502,29
+Transferência | Pix
+LUCIANA DE SOUZA ALMEIDA
+30/10/25 Entrada R$ 2.000,00 R$ 5.432,29
+Transferência | Pix
+AUTO CENTER VALE DO PAN 2007
+30/10/25 Saída LTDA. - R$ 50,00 R$ 3.432,29
+Transferência | Pix
+30/10/25 Saída Tarifa - R$ 0,67 R$ 3.482,29
+SERGIO MARCOS SILVA JR
+30/10/25 Entrada R$ 89,90 R$ 3.482,29
+Pix | Maquininha
+NUTRISANTOS ALIMENTACAO
+30/10/25 Saída ANIMAL LTDA - R$ 787,97 R$ 3.393,06
+Transferência | Pix
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 3 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+RPI DISTRIBUICAO DE PRODUTOS V RPI DISTRIBUICAO DE
+30/10/25 Saída - R$ 341,57 R$ 4.181,03
+Pagamento PRODUTOS V
+MIXPET COMERCIO E DISTRIBUICAO MIXPET COMERCIO E
+30/10/25 Saída DE ALIMENTOS E ARTI - R$ 1.466,45 R$ 4.522,60 DISTRIBUICAO DE ALIMENTOS E
+Pagamento ARTI
+30/10/25 Saída Tarifa - R$ 0,23 R$ 5.989,05
+JEANE ELISABETH GOMES OLIVEIRA
+30/10/25 Entrada R$ 31,60 R$ 5.989,05
+Pix | Maquininha
+Recebimento vendas
+30/10/25 Entrada R$ 160,31 R$ 5.957,68
+Visa Electron | Débito
+Recebimento vendas
+30/10/25 Entrada R$ 286,15 R$ 5.797,37
+Maestro | Débito
+Recebimento vendas
+30/10/25 Entrada R$ 10,75 R$ 5.511,22
+Elo | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+30/10/25 Entrada R$ 150,98 R$ 5.500,47 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+30/10/25 Entrada R$ 249,39 R$ 5.349,49 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+29/10/25 Saída Tarifa - R$ 0,10 R$ 5.100,10
+LUCIANO DE LIMA CASAGRANDE
+29/10/25 Entrada R$ 14,00 R$ 5.100,10
+Pix | Maquininha
+29/10/25 Saída Tarifa - R$ 0,33 R$ 5.086,20
+Natashe Garcia Freitas
+29/10/25 Entrada R$ 44,90 R$ 5.086,20
+Pix | Maquininha
+29/10/25 Saída Tarifa - R$ 0,37 R$ 5.041,63
+ALEXANDER DE MATTOS FRAGA
+29/10/25 Entrada R$ 49,90 R$ 5.041,63
+Pix | Maquininha
+29/10/25 Saída Tarifa - R$ 0,23 R$ 4.992,10
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 4 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+CAROLINE MARIA SILVA DA CRUZ
+29/10/25 Entrada R$ 31,20 R$ 4.992,10
+Pix | Maquininha
+GUSTAVO DE OLIVEIRA DE PAULO
+29/10/25 Entrada R$ 65,00 R$ 4.961,13
+Transferência | Pix
+Recebimento vendas
+29/10/25 Entrada R$ 100,61 R$ 4.896,13
+Maestro | Débito
+Recebimento vendas
+29/10/25 Entrada R$ 9,78 R$ 4.795,52
+Elo | Débito
+Recebimento vendas
+29/10/25 Entrada R$ 158,48 R$ 4.785,74
+Visa Electron | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+29/10/25 Entrada R$ 86,58 R$ 4.627,26 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+28/10/25 Saída Tarifa - R$ 0,59 R$ 4.540,68
+CLAUDIO MENDES RODRIGUES
+28/10/25 Entrada R$ 79,50 R$ 4.540,68
+Pix | Maquininha
+28/10/25 Saída Tarifa - R$ 0,13 R$ 4.461,77
+Ana Cristina Dantas Soares
+28/10/25 Entrada R$ 17,70 R$ 4.461,77
+Pix | Maquininha
+DROGARIA ROSAS DE VALQUEIRE
+28/10/25 Entrada LTDA R$ 87,00 R$ 4.444,20
+Transferência | Pix
+28/10/25 Saída Tarifa - R$ 0,16 R$ 4.357,20
+KLAYTON LOURENCO DO
+28/10/25 Entrada NASCIMENTO R$ 22,00 R$ 4.357,20
+Pix | Maquininha
+BX AGRONEGOCIO LTDA.
+28/10/25 Saída - R$ 387,50 R$ 4.335,36
+Transferência | Pix
+Recebimento vendas
+28/10/25 Entrada R$ 117,82 R$ 4.722,86
+Visa Electron | Débito
+Recebimento vendas
+28/10/25 Entrada R$ 232,79 R$ 4.605,04
+Maestro | Débito
+Recebimento vendas
+28/10/25 Entrada R$ 56,41 R$ 4.372,25
+Elo | Débito
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 5 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+28/10/25 Entrada R$ 387,30 R$ 4.315,84 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+28/10/25 Entrada R$ 66,07 R$ 3.928,54 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+27/10/25 Saída Tarifa - R$ 1,92 R$ 3.862,47
+THAYS BARBOSA RAPOSO REIS
+27/10/25 Entrada R$ 256,80 R$ 3.862,47
+Pix | Maquininha
+27/10/25 Saída Tarifa - R$ 0,78 R$ 3.607,59
+VIVIANE C CERQUEIRA PANSINI
+27/10/25 Entrada R$ 104,40 R$ 3.607,59
+Pix | Maquininha
+FLAVIA DE MORAES FORAIN BASTOS
+27/10/25 Entrada DE SOUZA R$ 30,00 R$ 3.503,97
+Transferência | Pix
+Recebimento vendas
+27/10/25 Entrada R$ 359,17 R$ 3.473,97
+Maestro | Débito
+Recebimento vendas
+27/10/25 Entrada R$ 29,01 R$ 3.114,80
+Visa Electron | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+27/10/25 Entrada R$ 266,30 R$ 3.085,79 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+27/10/25 Entrada R$ 229,68 R$ 2.819,49 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+CASAS GUANABARA COMESTIVEIS
+26/10/25 Saída LTDA - R$ 13,79 R$ 2.589,81
+Transferência | Pix
+AUTO POSTO DOS AFONSOS LTDA
+26/10/25 Saída - R$ 51,59 R$ 2.603,60
+Transferência | Pix
+ANTONIO GUERRA A MELO
+26/10/25 Entrada R$ 262,00 R$ 2.655,19
+Transferência | Pix
+26/10/25 Saída Tarifa - R$ 0,07 R$ 2.393,19
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 6 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+CLAUDIA BARCELLOS ARAUJO
+26/10/25 Entrada RAFAEL DE AGUIAR R$ 10,00 R$ 2.393,19
+Pix | Maquininha
+Marília Trindade Pinto
+26/10/25 Entrada R$ 35,00 R$ 2.383,26
+Transferência | Pix
+26/10/25 Saída Tarifa - R$ 0,07 R$ 2.348,26
+Roberto Garcia da Silva
+26/10/25 Entrada R$ 10,00 R$ 2.348,26
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/10/25 Entrada R$ 115,03 R$ 2.338,33 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/10/25 Entrada R$ 407,41 R$ 2.223,30 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/10/25 Entrada R$ 212,39 R$ 1.815,89 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/10/25 Entrada R$ 80,62 R$ 1.603,50 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/10/25 Entrada R$ 24,70 R$ 1.522,88 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/10/25 Entrada R$ 20,92 R$ 1.498,18 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+Maria José Maciel Rocha
+25/10/25 Entrada R$ 43,00 R$ 1.477,26
+Transferência | Pix
+PHF COMERCIO E SOLUCOES
+25/10/25 Saída TECNOLOGICAS LTDA - R$ 183,60 R$ 1.434,26
+Transferência | Pix
+Fabiana Santos Rodrigues da Silva
+25/10/25 Entrada R$ 189,90 R$ 1.617,86
+Transferência | Pix
+25/10/25 Saída Tarifa - R$ 0,37 R$ 1.427,96
+ANDREA DE CARVALHO CERNE
+25/10/25 Entrada R$ 49,90 R$ 1.427,96
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 7 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+25/10/25 Entrada R$ 186,87 R$ 1.378,43 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+25/10/25 Entrada R$ 63,96 R$ 1.191,56 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+25/10/25 Entrada R$ 257,69 R$ 1.127,60 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+25/10/25 Entrada R$ 382,88 R$ 869,91 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+25/10/25 Entrada R$ 105,07 R$ 487,03 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+25/10/25 Entrada R$ 202,33 R$ 381,96 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+LEDIANE DE OLIVEIRA DE
+24/10/25 Entrada ALBUQUERQUE R$ 30,00 R$ 179,63
+Transferência | Pix
+24/10/25 Saída Tarifa - R$ 0,08 R$ 149,63
+DALMO ALENCAR LARRATE
+24/10/25 Entrada R$ 11,00 R$ 149,63
+Pix | Maquininha
+NUTRISANTOS ALIMENTACAO
+24/10/25 Saída ANIMAL LTDA - R$ 791,06 R$ 138,71
+Transferência | Pix
+DEIVERSON SILVA CUNHA
+24/10/25 Entrada R$ 36,00 R$ 929,77
+Transferência | Pix
+KARINA PEIXOTO DE SIQUEIRA
+24/10/25 Entrada R$ 103,90 R$ 893,77
+Transferência | Pix
+FERNANDA UBAT BERN CARVALHO
+24/10/25 Entrada R$ 162,00 R$ 789,87
+Transferência | Pix
+24/10/25 Saída Tarifa - R$ 0,05 R$ 627,87
+DIANA PAULINO DAMASCENO
+24/10/25 Entrada R$ 7,00 R$ 627,87
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 8 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+Recebimento vendas
+24/10/25 Entrada R$ 189,42 R$ 620,92
+Maestro | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+24/10/25 Entrada R$ 300,28 R$ 431,50 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+24/10/25 Entrada R$ 76,78 R$ 131,22 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+23/10/25 Saída Tarifa - R$ 0,09 R$ 54,44
+VICTOR COSTA DE OLIVEIRA
+23/10/25 Entrada R$ 13,20 R$ 54,44
+Pix | Maquininha
+23/10/25 Saída Tarifa - R$ 0,30 R$ 41,33
+60.426.151 BRUNA REGINA SANTOS
+23/10/25 Entrada ARAUJO R$ 41,00 R$ 41,33
+Pix | Maquininha
+TABELIONATO DE 1 OFICIO
+23/10/25 Saída - R$ 1.192,75 R$ 0,63 TABELIONATO DE 1 OFICIO
+Pagamento
+Thayna Almeida Maia Cardoso
+23/10/25 Entrada R$ 30,00 R$ 1.193,38
+Transferência | Pix
+Telma Quintino dos Santos
+23/10/25 Entrada R$ 52,00 R$ 1.163,38
+Transferência | Pix
+23/10/25 Saída Tarifa - R$ 0,32 R$ 1.111,38
+MARY HELEN VIDAL MATTOS
+23/10/25 Entrada BARCELLOS R$ 43,90 R$ 1.111,38
+Pix | Maquininha
+23/10/25 Saída Tarifa - R$ 0,10 R$ 1.067,80
+Myrian Mello de Moura
+23/10/25 Entrada R$ 14,50 R$ 1.067,80
+Pix | Maquininha
+23/10/25 Saída Tarifa - R$ 0,37 R$ 1.053,40
+ISAMARA DA SILVA LADEIRA
+23/10/25 Entrada R$ 49,90 R$ 1.053,40
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 9 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+23/10/25 Saída Tarifa - R$ 0,03 R$ 1.003,87
+REGIO SANTOS AGUIAR
+23/10/25 Entrada R$ 4,58 R$ 1.003,87
+Pix | Maquininha
+Recebimento vendas
+23/10/25 Entrada R$ 339,06 R$ 999,32
+Maestro | Débito
+Recebimento vendas
+23/10/25 Entrada R$ 247,55 R$ 660,26
+Visa Electron | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+23/10/25 Entrada R$ 29,36 R$ 412,71 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+23/10/25 Entrada R$ 321,66 R$ 383,35 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+22/10/25 Saída Tarifa - R$ 0,33 R$ 61,69
+Luiz Gustavo Figueiredo da Silva
+22/10/25 Entrada R$ 44,00 R$ 61,69
+Pix | Maquininha
+MARTINS COMERCIO DE PRODUTOS
+22/10/25 Saída E ACESSORIOS VETERINARIOS LTDA - R$ 100,00 R$ 18,02
+Transferência | Pix
+FERNANDA UBAT BERN CARVALHO
+22/10/25 Entrada R$ 79,90 R$ 118,02
+Transferência | Pix
+22/10/25 Saída Tarifa - R$ 0,17 R$ 38,12
+MONIQUE PRISC FERREIRA JUSTINO
+22/10/25 Entrada R$ 22,90 R$ 38,12
+Pix | Maquininha
+22/10/25 Saída Tarifa - R$ 0,10 R$ 15,39
+RAFAEL FERREIRA LIMA
+22/10/25 Entrada R$ 14,50 R$ 15,39
+Pix | Maquininha
+Naiara Ingrid Brum de Paiva
+22/10/25 Saída - R$ 165,00 R$ 0,99
+Transferência | Pix
+BRUNO FERREIRA DOS SANTOS
+22/10/25 Entrada R$ 62,90 R$ 165,99
+Transferência | Pix
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 10 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+IDE PET SHOP LTDA
+22/10/25 Saída - R$ 473,28 R$ 103,09 IDE PET SHOP LTDA
+Pagamento
+2 OFICIO DE PROTESTO DE TITULOS
+2 OFICIO DE PROTESTO DE
+22/10/25 Saída DA CAPIT - R$ 1.192,75 R$ 576,37
+TITULOS DA CAPIT
+Pagamento
+BIOIDEAL ES INDUSTRIA E COMERC BIOIDEAL ES INDUSTRIA E
+22/10/25 Saída - R$ 268,02 R$ 1.769,12
+Pagamento COMERC
+Recebimento vendas
+22/10/25 Entrada R$ 196,71 R$ 2.037,14
+Elo | Débito
+Recebimento vendas
+22/10/25 Entrada R$ 105,99 R$ 1.840,43
+Visa Electron | Débito
+Recebimento vendas
+22/10/25 Entrada R$ 762,51 R$ 1.734,44
+Maestro | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+22/10/25 Entrada R$ 345,00 R$ 971,93 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+22/10/25 Entrada R$ 607,32 R$ 626,93 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+21/10/25 Saída Tarifa - R$ 0,06 R$ 19,61
+Denise Braga Medeiros
+21/10/25 Entrada R$ 8,90 R$ 19,61
+Pix | Maquininha
+RPI DISTRIBUICAO DE PRODUTOS V RPI DISTRIBUICAO DE
+21/10/25 Saída - R$ 339,43 R$ 10,77
+Pagamento PRODUTOS V
+21/10/25 Saída Tarifa - R$ 0,48 R$ 350,20
+Lays Nunes Neves Amorim
+21/10/25 Entrada R$ 64,80 R$ 350,20
+Pix | Maquininha
+21/10/25 Saída Tarifa - R$ 0,30 R$ 285,88
+RAQUEL LOPES DE SOUZA
+21/10/25 Entrada R$ 40,00 R$ 285,88
+Pix | Maquininha
+21/10/25 Saída Tarifa - R$ 0,37 R$ 246,18
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 11 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+ANA LUCIA DO AMARAL BARCELLOS
+21/10/25 Entrada MATTOS R$ 49,90 R$ 246,18
+Pix | Maquininha
+21/10/25 Saída Tarifa - R$ 0,04 R$ 196,65
+PETERSON SACRAMENTO
+21/10/25 Entrada CONSTANCIO R$ 5,90 R$ 196,65
+Pix | Maquininha
+21/10/25 Saída Tarifa - R$ 0,15 R$ 190,79
+GABRIEL TULLIO CENTURIONE
+21/10/25 Entrada SCOTTO R$ 20,00 R$ 190,79
+Pix | Maquininha
+21/10/25 Saída Tarifa - R$ 0,36 R$ 170,94
+RICARDO JOSE HOTTUM DA SILVA
+21/10/25 Entrada JUNIOR R$ 48,00 R$ 170,94
+Pix | Maquininha
+VETTEC PRODUTOS A LTDA
+21/10/25 Saída - R$ 437,82 R$ 123,30 VETTEC PRODUTOS A LTDA
+Pagamento
+AGROLIFE ESPIRITO SANTO PRODUT AGROLIFE ESPIRITO SANTO
+21/10/25 Saída - R$ 173,21 R$ 561,12
+Pagamento PRODUT
+BX AGRONEGOCIO LTDA.
+21/10/25 Saída - R$ 364,00 R$ 734,33
+Transferência | Pix
+21/10/25 Saída Tarifa - R$ 0,22 R$ 1.098,33
+Renato dos Santos e Silva
+21/10/25 Entrada R$ 30,00 R$ 1.098,33
+Pix | Maquininha
+21/10/25 Saída Tarifa - R$ 0,05 R$ 1.068,55
+KARIN PINHEIRO DANIEL DE OLIVEIRA
+21/10/25 Entrada R$ 7,80 R$ 1.068,55
+Pix | Maquininha
+21/10/25 Saída Tarifa - R$ 0,10 R$ 1.060,80
+VIVIANE LESSA RODRIGUES
+21/10/25 Entrada R$ 13,50 R$ 1.060,80
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 12 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+Recebimento vendas
+21/10/25 Entrada R$ 47,50 R$ 1.047,40
+Visa Electron | Débito
+Recebimento vendas
+21/10/25 Entrada R$ 134,15 R$ 999,90
+Maestro | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+21/10/25 Entrada R$ 374,03 R$ 865,75 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+21/10/25 Entrada R$ 465,55 R$ 491,72 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+DAS  SIMPLES NACIONAL
+20/10/25 Saída - R$ 3.017,55 R$ 26,17 DAS  SIMPLES NACIONAL
+Pagamento
+20/10/25 Saída Tarifa - R$ 0,29 R$ 3.043,72
+ZAIRA MENEZES DE LIMA DUQUE
+20/10/25 Entrada LAURENTINO R$ 39,00 R$ 3.043,72
+Pix | Maquininha
+20/10/25 Saída Tarifa - R$ 0,37 R$ 3.005,01
+DANIEL MARQUES BRANDAO
+20/10/25 Entrada R$ 50,00 R$ 3.005,01
+Pix | Maquininha
+Recebimento vendas
+20/10/25 Entrada R$ 135,92 R$ 2.955,38
+Visa Electron | Débito
+Recebimento vendas
+20/10/25 Entrada R$ 261,34 R$ 2.819,46
+Maestro | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+20/10/25 Entrada R$ 192,29 R$ 2.558,12 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+20/10/25 Entrada R$ 19,02 R$ 2.365,83 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+20/10/25 Entrada R$ 268,88 R$ 2.346,81 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+João Mario Costa de Almeida
+19/10/25 Entrada R$ 90,00 R$ 2.077,93
+Transferência | Pix
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 13 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/10/25 Entrada R$ 142,19 R$ 1.987,93 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/10/25 Entrada R$ 6,94 R$ 1.845,74 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/10/25 Entrada R$ 9,84 R$ 1.838,80 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/10/25 Entrada R$ 26,54 R$ 1.828,96 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/10/25 Entrada R$ 105,28 R$ 1.802,42 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+18/10/25 Saída Tarifa - R$ 0,10 R$ 1.697,14
+MATHEUS LUCAS FERREIRA SILVA
+18/10/25 Entrada R$ 14,50 R$ 1.697,14
+Pix | Maquininha
+Antônio Carlos Lopes Dantas
+18/10/25 Entrada R$ 29,90 R$ 1.682,74
+Transferência | Pix
+18/10/25 Saída Tarifa - R$ 0,24 R$ 1.652,84
+JANAINA MARQUES PAIVA DA SILVA
+18/10/25 Entrada R$ 32,00 R$ 1.652,84
+Pix | Maquininha
+ZEIR DO VALE
+18/10/25 Entrada R$ 233,91 R$ 1.621,08
+Transferência | Pix
+18/10/25 Saída Tarifa - R$ 0,26 R$ 1.387,17
+ALEVA
+18/10/25 Entrada R$ 34,90 R$ 1.387,17
+Pix | Maquininha
+18/10/25 Saída Tarifa - R$ 0,10 R$ 1.352,53
+DIANA PAULINO DAMASCENO
+18/10/25 Entrada R$ 14,50 R$ 1.352,53
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 14 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+18/10/25 Entrada R$ 105,09 R$ 1.338,13 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+18/10/25 Entrada R$ 322,62 R$ 1.233,04 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+18/10/25 Entrada R$ 352,18 R$ 910,42 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+18/10/25 Entrada R$ 251,09 R$ 558,24 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+17/10/25 Saída Tarifa - R$ 0,07 R$ 307,15
+Marco Antonio Leite de Lima
+17/10/25 Entrada R$ 10,00 R$ 307,15
+Pix | Maquininha
+17/10/25 Saída Tarifa - R$ 0,02 R$ 297,22
+Bruno Fernandes Ferreira
+17/10/25 Entrada R$ 3,00 R$ 297,22
+Pix | Maquininha
+MINAS NUTRI DO BRASIL LTDA
+17/10/25 Saída - R$ 248,23 R$ 294,24 MINAS NUTRI DO BRASIL LTDA
+Pagamento
+KATIENE FIGUEIREDO ROSESTOLATO
+17/10/25 Entrada DE OLIVEIRA R$ 34,60 R$ 542,47
+Transferência | Pix
+Recebimento vendas
+17/10/25 Entrada R$ 71,30 R$ 507,87
+Maestro | Débito
+Recebimento vendas
+17/10/25 Entrada R$ 108,48 R$ 436,57
+Visa Electron | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+17/10/25 Entrada R$ 100,31 R$ 328,09 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+17/10/25 Entrada R$ 117,52 R$ 227,78 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+16/10/25 Saída Tarifa - R$ 0,23 R$ 110,26
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 15 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+MARCIA TAVARES DE SOUZA SALLES
+16/10/25 Entrada R$ 31,20 R$ 110,26
+Pix | Maquininha
+16/10/25 Saída Tarifa - R$ 0,41 R$ 79,29
+LARA DE ARAUJO BARBOZA
+16/10/25 Entrada R$ 55,20 R$ 79,29
+Pix | Maquininha
+16/10/25 Saída Tarifa - R$ 0,02 R$ 24,50
+TRES PROTECOES E CORRETORA DE
+16/10/25 Entrada SEGUROS LTDA R$ 3,50 R$ 24,50
+Pix | Maquininha
+16/10/25 Saída Tarifa - R$ 0,10 R$ 21,02
+MARIA GILDIVAN DOMINGOS
+16/10/25 Entrada R$ 13,90 R$ 21,02
+Pix | Maquininha
+Elaine Cristina da Silva
+16/10/25 Saída - R$ 800,00 R$ 7,22
+Transferência | Pix
+MARTINS COM DE PROD E
+16/10/25 Entrada ACESSORIOS VETERINARIOS LTDA R$ 700,00 R$ 807,22
+Transferência | Pix
+16/10/25 Saída Tarifa - R$ 0,37 R$ 107,22
+MARGARETE TORRES OLIVEIRA
+16/10/25 Entrada NIZZO R$ 49,90 R$ 107,22
+Pix | Maquininha
+16/10/25 Saída Tarifa - R$ 0,43 R$ 57,69
+ISAMARA DA SILVA LADEIRA
+16/10/25 Entrada R$ 57,50 R$ 57,69
+Pix | Maquininha
+RIO CITAVET PRODUTOS VETERINAR RIO CITAVET PRODUTOS
+16/10/25 Saída - R$ 470,86 R$ 0,62
+Pagamento VETERINAR
+MARTINS COM DE PROD E
+16/10/25 Entrada ACESSORIOS VETERINARIOS LTDA R$ 10,00 R$ 471,48
+Transferência | Pix
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 16 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+RIO CITAVET PRODUTOS VETERINAR RIO CITAVET PRODUTOS
+16/10/25 Saída - R$ 482,90 R$ 461,48
+Pagamento VETERINAR
+RIO CITAVET PRODUTOS VETERINAR RIO CITAVET PRODUTOS
+16/10/25 Saída - R$ 495,08 R$ 944,38
+Pagamento VETERINAR
+Recebimento vendas
+16/10/25 Entrada R$ 444,64 R$ 1.439,46
+Maestro | Débito
+Recebimento vendas
+16/10/25 Entrada R$ 87,33 R$ 994,82
+Visa Electron | Débito
+Recebimento vendas
+16/10/25 Entrada R$ 54,26 R$ 907,49
+Elo | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/10/25 Entrada R$ 249,02 R$ 853,23 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/10/25 Entrada R$ 136,26 R$ 604,21 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/10/25 Entrada R$ 36,01 R$ 467,95 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+15/10/25 Saída Tarifa - R$ 1,94 R$ 431,94
+JANAINA CONCEICAO PINTO
+15/10/25 Entrada R$ 259,90 R$ 431,94
+Pix | Maquininha
+15/10/25 Saída Tarifa - R$ 0,14 R$ 173,98
+ISABELE HENRIQUES B OLIVEIRA
+15/10/25 Entrada R$ 19,90 R$ 173,98
+Pix | Maquininha
+15/10/25 Saída Tarifa - R$ 0,10 R$ 154,22
+CAROLINA CASAS PROENCA
+15/10/25 Entrada R$ 14,50 R$ 154,22
+Pix | Maquininha
+15/10/25 Saída Tarifa - R$ 0,15 R$ 139,82
+ALANE STEFANY MARY PEREIRA
+15/10/25 Entrada R$ 20,00 R$ 139,82
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 17 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+MIXPET COMERCIO E DISTRIBUICAO MIXPET COMERCIO E
+15/10/25 Saída DE ALIMENTOS E ARTI - R$ 1.428,37 R$ 119,97 DISTRIBUICAO DE ALIMENTOS E
+Pagamento ARTI
+15/10/25 Saída Tarifa - R$ 0,90 R$ 1.548,34
+RAPHAEL RAMIRES LOPES
+15/10/25 Entrada R$ 120,93 R$ 1.548,34
+Pix | Maquininha
+Recebimento vendas
+15/10/25 Entrada R$ 136,78 R$ 1.428,31
+Elo | Débito
+Recebimento vendas
+15/10/25 Entrada R$ 275,89 R$ 1.291,53
+Maestro | Débito
+Recebimento vendas
+15/10/25 Entrada R$ 101,20 R$ 1.015,64
+Visa Electron | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+15/10/25 Entrada R$ 240,18 R$ 914,44 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+15/10/25 Entrada R$ 68,66 R$ 674,26 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+15/10/25 Entrada R$ 121,89 R$ 605,60 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+14/10/25 Saída Tarifa - R$ 0,09 R$ 483,71
+GABRIEL DA SILVA VALENTE
+14/10/25 Entrada R$ 12,30 R$ 483,71
+Pix | Maquininha
+14/10/25 Saída Tarifa - R$ 0,05 R$ 471,50
+José Roberto Bastos Pires
+14/10/25 Entrada R$ 7,25 R$ 471,50
+Pix | Maquininha
+14/10/25 Saída Tarifa - R$ 0,57 R$ 464,30
+WILLIAM ROBERTO F OLIVEIRA
+14/10/25 Entrada R$ 76,00 R$ 464,30
+Pix | Maquininha
+DIEGO MADEIRA ARANHA
+14/10/25 Saída - R$ 506,00 R$ 388,87
+Transferência | Pix
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 18 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+14/10/25 Saída Tarifa - R$ 1,68 R$ 894,87
+RODRIGO LUCIO DA SILVA
+14/10/25 Entrada R$ 224,80 R$ 894,87
+Pix | Maquininha
+14/10/25 Saída Tarifa - R$ 0,48 R$ 671,75
+EMANUELLA REGINA M SANTOS
+14/10/25 Entrada R$ 64,90 R$ 671,75
+Pix | Maquininha
+14/10/25 Saída Tarifa - R$ 0,38 R$ 607,33
+EMANUELLA REGINA M SANTOS
+14/10/25 Entrada R$ 51,80 R$ 607,33
+Pix | Maquininha
+AV2L CORINGAO COMERCIO E
+DISTRIBUIDORA DE RACOES E
+14/10/25 Saída - R$ 336,26 R$ 555,91
+LOGISTICA LTDA
+Transferência | Pix
+Recebimento vendas
+14/10/25 Entrada R$ 23,90 R$ 892,17
+Visa Electron | Débito
+Recebimento vendas
+14/10/25 Entrada R$ 381,11 R$ 868,27
+Maestro | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+14/10/25 Entrada R$ 86,25 R$ 487,16 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+14/10/25 Entrada R$ 21,40 R$ 400,91 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+14/10/25 Entrada R$ 200,45 R$ 379,51 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+13/10/25 Saída Tarifa - R$ 0,65 R$ 179,06
+RODRIGO AZEVEDO VALENCA
+13/10/25 Entrada R$ 87,90 R$ 179,06
+Pix | Maquininha
+BAZAR EMBALAR DO VALQUEIRE
+13/10/25 Saída LTDA. - R$ 99,95 R$ 91,81
+Transferência | Pix
+13/10/25 Saída Tarifa - R$ 0,37 R$ 191,76
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 19 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+MARIA FERNANDA RAMOS DE FARIAS
+13/10/25 Entrada R$ 49,90 R$ 191,76
+Pix | Maquininha
+13/10/25 Saída Tarifa - R$ 0,82 R$ 142,23
+Luciana Pantoja Pinto
+13/10/25 Entrada R$ 109,90 R$ 142,23
+Pix | Maquininha
+ROYAL CANIN DISTRIBUIDORA LTDA ROYAL CANIN DISTRIBUIDORA
+13/10/25 Saída - R$ 1.001,11 R$ 33,15
+Pagamento LTDA
+CANDY PARTY DA BETA COMERCIO
+13/10/25 Entrada VAREJISTA LTDA R$ 96,23 R$ 1.034,26
+Transferência | Pix
+Recebimento vendas
+13/10/25 Entrada R$ 123,04 R$ 938,03
+Maestro | Débito
+Recebimento vendas
+13/10/25 Entrada R$ 194,54 R$ 814,99
+Visa Electron | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+13/10/25 Entrada R$ 344,89 R$ 620,45 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+13/10/25 Entrada R$ 32,91 R$ 275,56 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+13/10/25 Entrada R$ 47,41 R$ 242,65 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+13/10/25 Entrada R$ 193,57 R$ 195,24 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+Stefany Ribeiro Bellam
+12/10/25 Saída - R$ 27,00 R$ 1,67
+Transferência | Pix
+MARTINS COM DE PROD E
+12/10/25 Entrada ACESSORIOS VETERINARIOS LTDA R$ 5,00 R$ 28,67
+Transferência | Pix
+12/10/25 Saída Tarifa - R$ 0,07 R$ 23,67
+LORAINNE ALVARENGA DA SILVA
+12/10/25 Entrada RIBEIRO R$ 10,00 R$ 23,67
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 20 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+12/10/25 Saída Tarifa - R$ 0,09 R$ 13,74
+Anny Damares Dos Santos Vital
+12/10/25 Entrada R$ 12,90 R$ 13,74
+Pix | Maquininha
+Naiara Ingrid Brum de Paiva
+12/10/25 Saída - R$ 759,00 R$ 0,93
+Transferência | Pix
+Elaine Cristina da Silva
+12/10/25 Saída - R$ 30,00 R$ 759,93
+Transferência | Pix
+DIEGO MADEIRA ARANHA
+12/10/25 Saída - R$ 50,00 R$ 789,93
+Transferência | Pix
+12/10/25 Saída Tarifa - R$ 0,69 R$ 839,93
+JACQUELINE ROBERTA SOARES
+12/10/25 Entrada SALGADO R$ 92,00 R$ 839,93
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+12/10/25 Entrada R$ 85,66 R$ 748,62 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+12/10/25 Entrada R$ 97,57 R$ 662,96 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+12/10/25 Entrada R$ 179,57 R$ 565,39 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+12/10/25 Entrada R$ 72,38 R$ 385,82 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+12/10/25 Entrada R$ 227,19 R$ 313,44 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+AGROLIFE ESPIRITO SANTO PRODUT AGROLIFE ESPIRITO SANTO
+12/10/25 Saída - R$ 173,16 R$ 86,25
+Pagamento PRODUT
+CASAS GUANABARA COMESTIVEIS
+11/10/25 Saída LTDA - R$ 25,59 R$ 259,41
+Transferência | Pix
+11/10/25 Saída Tarifa - R$ 0,15 R$ 285,00
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 21 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+ELAINE GOMES ABREU MARCOVISTZ
+11/10/25 Entrada R$ 21,00 R$ 285,00
+Pix | Maquininha
+11/10/25 Saída Tarifa - R$ 0,17 R$ 264,15
+ESTEVAM JANUARIO DE MORAIS
+11/10/25 Entrada R$ 23,40 R$ 264,15
+Pix | Maquininha
+PARCELA EXPRESS SERVICOS
+11/10/25 Saída DIGITAIS S.A. - R$ 578,48 R$ 240,92
+Transferência | Pix
+LOJA DE FABRICA AUMIAU LTDA
+11/10/25 Saída - R$ 314,65 R$ 819,40 LOJA DE FABRICA AUMIAU LTDA
+Pagamento
+11/10/25 Saída Tarifa - R$ 0,20 R$ 1.134,05
+Laís Ribeiro da Silva
+11/10/25 Entrada R$ 27,00 R$ 1.134,05
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+11/10/25 Entrada R$ 194,44 R$ 1.107,25 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+11/10/25 Entrada R$ 18,29 R$ 912,81 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+11/10/25 Entrada R$ 476,62 R$ 894,52 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+11/10/25 Entrada R$ 190,67 R$ 417,90 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+11/10/25 Entrada R$ 63,84 R$ 227,23 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+Stefany Ribeiro Bellam
+10/10/25 Saída - R$ 27,00 R$ 163,39
+Transferência | Pix
+10/10/25 Saída Tarifa - R$ 0,15 R$ 190,39
+ISAMARA DA SILVA LADEIRA
+10/10/25 Entrada R$ 20,00 R$ 190,39
+Pix | Maquininha
+10/10/25 Saída Tarifa - R$ 0,41 R$ 170,54
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 22 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+VIVIANE GOMES DA SILVA
+10/10/25 Entrada R$ 55,70 R$ 170,54
+Pix | Maquininha
+IDE PET SHOP LTDA
+10/10/25 Saída - R$ 469,76 R$ 115,25 IDE PET SHOP LTDA
+Pagamento
+10/10/25 Saída Tarifa - R$ 0,61 R$ 585,01
+Filipe Jorge Camelo da Silva
+10/10/25 Entrada R$ 81,50 R$ 585,01
+Pix | Maquininha
+10/10/25 Saída Tarifa - R$ 0,79 R$ 504,12
+LEANDRO SEBASTIAO RISTICH
+10/10/25 Entrada R$ 105,90 R$ 504,12
+Pix | Maquininha
+10/10/25 Saída Tarifa - R$ 0,07 R$ 399,01
+Paulo Cesar Mendes Rodrigues
+10/10/25 Entrada R$ 9,90 R$ 399,01
+Pix | Maquininha
+NACIONAL PET INDUSTRIA E
+COMERCIO DE ACESSORIOS PARA
+10/10/25 Saída - R$ 511,15 R$ 389,18
+ANIMAIS DOMESTICOS LTDA
+Transferência | Pix
+10/10/25 Saída Tarifa - R$ 0,14 R$ 900,33
+ELIANE MARIA DE JESUS ARAUJO
+10/10/25 Entrada MARINHO R$ 19,99 R$ 900,33
+Pix | Maquininha
+Gabriella Nunes Baptista
+10/10/25 Entrada R$ 82,80 R$ 880,48
+Transferência | Pix
+KARINA PEIXOTO DE SIQUEIRA
+10/10/25 Entrada R$ 67,00 R$ 797,68
+Transferência | Pix
+RPI DISTRIBUICAO DE PRODUTOS V RPI DISTRIBUICAO DE
+10/10/25 Saída - R$ 409,67 R$ 730,68
+Pagamento PRODUTOS V
+10/10/25 Saída Tarifa - R$ 0,20 R$ 1.140,35
+Marcio Cunha dos Santos
+10/10/25 Entrada R$ 26,90 R$ 1.140,35
+Pix | Maquininha
+Recebimento vendas
+10/10/25 Entrada R$ 402,55 R$ 1.113,65
+Visa Electron | Débito
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 23 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+Recebimento vendas
+10/10/25 Entrada R$ 109,71 R$ 711,10
+Maestro | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+10/10/25 Entrada R$ 35,38 R$ 601,39 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+10/10/25 Entrada R$ 321,01 R$ 566,01 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+09/10/25 Saída Tarifa - R$ 0,78 R$ 245,00
+LUCIANE XAVIER PAES
+09/10/25 Entrada R$ 104,80 R$ 245,00
+Pix | Maquininha
+09/10/25 Saída Tarifa - R$ 0,34 R$ 140,98
+José Antônio Nani Bonfadini
+09/10/25 Entrada R$ 45,90 R$ 140,98
+Pix | Maquininha
+09/10/25 Saída Tarifa - R$ 0,15 R$ 95,42
+Vítor Galm de Lima Almeida
+09/10/25 Entrada R$ 20,00 R$ 95,42
+Pix | Maquininha
+ERIKA DA CRUZ LIMA LOBATO
+09/10/25 Entrada R$ 40,00 R$ 75,57
+Transferência | Pix
+CAIXA ECONOMICA FEDERAL
+09/10/25 Saída - R$ 328,45 R$ 35,57
+Transferência | Pix
+09/10/25 Saída Tarifa - R$ 0,09 R$ 364,02
+LILIAN ALVES DOMINGOS
+09/10/25 Entrada R$ 12,80 R$ 364,02
+Pix | Maquininha
+Thayna Almeida Maia Cardoso
+09/10/25 Entrada R$ 350,00 R$ 351,31
+Transferência | Pix
+MIXPET COMERCIO E DISTRIBUICAO MIXPET COMERCIO E
+09/10/25 Saída DE ALIMENTOS E ARTI - R$ 1.433,13 R$ 1,31 DISTRIBUICAO DE ALIMENTOS E
+Pagamento ARTI
+MARTINS COM DE PROD E
+09/10/25 Entrada ACESSORIOS VETERINARIOS LTDA R$ 173,00 R$ 1.434,44
+Transferência | Pix
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 24 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+AGROLIFE ESPIRITO SANTO PRODUT AGROLIFE ESPIRITO SANTO
+09/10/25 Saída - R$ 340,01 R$ 1.261,44
+Pagamento PRODUT
+Recebimento vendas
+09/10/25 Entrada R$ 432,74 R$ 1.601,45
+Visa Electron | Débito
+Recebimento vendas
+09/10/25 Entrada R$ 280,89 R$ 1.168,71
+Maestro | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+09/10/25 Entrada R$ 220,78 R$ 887,82 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+09/10/25 Entrada R$ 348,73 R$ 667,04 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+08/10/25 Saída Tarifa - R$ 0,14 R$ 318,31
+PEDRO DANTAS SAMPAIO
+08/10/25 Entrada R$ 19,90 R$ 318,31
+Pix | Maquininha
+08/10/25 Saída Tarifa - R$ 0,04 R$ 298,55
+RAFAEL DE SOUZA COLARES
+08/10/25 Entrada R$ 6,00 R$ 298,55
+Pix | Maquininha
+MONICA RIBEIRO PEREIRA
+08/10/25 Entrada CASANOVA R$ 39,90 R$ 292,59
+Transferência | Pix
+GUSTAVO DE OLIVEIRA DE PAULO
+08/10/25 Entrada R$ 92,00 R$ 252,69
+Transferência | Pix
+Stefany Ribeiro Bellam
+08/10/25 Saída - R$ 30,00 R$ 160,69
+Transferência | Pix
+08/10/25 Saída Tarifa - R$ 0,02 R$ 190,69
+Jhayne Lopes Victer
+08/10/25 Entrada R$ 3,50 R$ 190,69
+Pix | Maquininha
+08/10/25 Saída Tarifa - R$ 0,74 R$ 187,21
+AMANDA DO CARMO DOMINGUES
+08/10/25 Entrada R$ 99,90 R$ 187,21
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 25 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+CONTROLLO BPO ASSESSORIA
+08/10/25 Saída EMPRESARIAL E CONTABIL LTDA. - R$ 300,00 R$ 88,05
+Transferência | Pix
+08/10/25 Saída Tarifa - R$ 0,02 R$ 388,05
+Pedro Henrique Torqueti Benac
+08/10/25 Entrada R$ 3,90 R$ 388,05
+Pix | Maquininha
+MARIA DOS SANTOS COSTA
+08/10/25 Entrada GONCALVES VITORIO R$ 36,30 R$ 384,17
+Transferência | Pix
+NUTRISANTOS ALIMENTACAO
+08/10/25 Saída ANIMAL LTDA - R$ 501,01 R$ 347,87
+Transferência | Pix
+RENATA MACHADO NUNES MIRANDA
+08/10/25 Entrada R$ 115,80 R$ 848,88
+Transferência | Pix
+08/10/25 Saída Tarifa - R$ 0,41 R$ 733,08
+Fernanda Esteves Paes
+08/10/25 Entrada R$ 55,50 R$ 733,08
+Pix | Maquininha
+Recebimento vendas
+08/10/25 Entrada R$ 155,88 R$ 677,99
+Visa Electron | Débito
+Recebimento vendas
+08/10/25 Entrada R$ 84,48 R$ 522,11
+Maestro | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+08/10/25 Entrada R$ 48,77 R$ 437,63 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+08/10/25 Entrada R$ 360,21 R$ 388,86 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+SELECTA PET CARE INDUSTRIA E
+08/10/25 Saída COMERCIO LTDA - R$ 259,32 R$ 28,65
+Transferência | Pix
+07/10/25 Saída Tarifa - R$ 0,23 R$ 287,97
+Nayana Cordeiro
+07/10/25 Entrada R$ 31,90 R$ 287,97
+Pix | Maquininha
+07/10/25 Saída Tarifa - R$ 0,29 R$ 256,30
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 26 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+MILENE CRISTINA DE SOUZA DOS
+07/10/25 Entrada SANTOS R$ 39,90 R$ 256,30
+Pix | Maquininha
+07/10/25 Saída Tarifa - R$ 0,05 R$ 216,69
+Marco Antonio Leite de Lima
+07/10/25 Entrada R$ 7,50 R$ 216,69
+Pix | Maquininha
+Stefany Ribeiro Bellam
+07/10/25 Saída - R$ 54,00 R$ 209,24
+Transferência | Pix
+07/10/25 Saída Tarifa - R$ 0,19 R$ 263,24
+ROBERTO ARAUJO LIRA
+07/10/25 Entrada R$ 26,50 R$ 263,24
+Pix | Maquininha
+Gabriel de Lima Coelho Lopes
+07/10/25 Entrada R$ 77,30 R$ 236,93
+Transferência | Pix
+Tania Maria Lopes de Lyra
+07/10/25 Entrada R$ 28,90 R$ 159,63
+Transferência | Pix
+SUPRAMIX
+07/10/25 Saída - R$ 404,42 R$ 130,73 SUPRAMIX
+Pagamento
+IDE PET SHOP LTDA
+07/10/25 Saída - R$ 472,56 R$ 535,15 IDE PET SHOP LTDA
+Pagamento
+SUPRIMAX VET
+07/10/25 Saída - R$ 302,71 R$ 1.007,71 SUPRIMAX VET
+Pagamento
+GABRIELLA M S VASCONCELOS
+07/10/25 Entrada R$ 97,00 R$ 1.310,42
+Transferência | Pix
+LIGHT SERVICOS DE ELETRICIDADE S
+07/10/25 Saída A - R$ 594,34 R$ 1.213,42
+Transferência | Pix
+Recebimento vendas
+07/10/25 Entrada R$ 96,37 R$ 1.807,76
+Maestro | Débito
+Recebimento vendas
+07/10/25 Entrada R$ 107,45 R$ 1.711,39
+Elo | Débito
+Recebimento vendas
+07/10/25 Entrada R$ 23,60 R$ 1.603,94
+Visa Electron | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+07/10/25 Entrada R$ 178,14 R$ 1.580,34 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 27 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+07/10/25 Entrada R$ 1.038,61 R$ 1.402,20 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+07/10/25 Entrada R$ 175,88 R$ 363,59 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+IDE PET SHOP LTDA
+06/10/25 Saída - R$ 476,76 R$ 187,71 IDE PET SHOP LTDA
+Pagamento
+06/10/25 Saída Tarifa - R$ 0,58 R$ 664,47
+Marilene Gomes Dos Santos
+06/10/25 Entrada R$ 78,00 R$ 664,47
+Pix | Maquininha
+ROSANGELA SILVA CARDOSO
+06/10/25 Entrada R$ 124,90 R$ 587,05
+Transferência | Pix
+ROSANGELA SILVA CARDOSO
+06/10/25 Entrada R$ 134,89 R$ 462,15
+Transferência | Pix
+06/10/25 Saída Tarifa - R$ 0,09 R$ 327,26
+Sandra de Araujo Lavradas
+06/10/25 Entrada R$ 13,00 R$ 327,26
+Pix | Maquininha
+SULAMITA FERREIRA DOS SANTOS
+06/10/25 Entrada FRIEB R$ 77,99 R$ 314,35
+Transferência | Pix
+LATIMIA ESCOLHA DOS BICHOS
+06/10/25 Saída LTDA - R$ 232,54 R$ 236,36
+Transferência | Pix
+LATIMIA ESCOLHA DOS BICHOS
+06/10/25 Saída LTDA - R$ 236,59 R$ 468,90
+Transferência | Pix
+LATIMIA ESCOLHA DOS BICHOS
+06/10/25 Saída LTDA - R$ 240,66 R$ 705,49
+Transferência | Pix
+LATIMIA ESCOLHA DOS BICHOS
+06/10/25 Saída LTDA - R$ 244,72 R$ 946,15
+Transferência | Pix
+LATIMIA ESCOLHA DOS BICHOS
+06/10/25 Saída LTDA - R$ 248,79 R$ 1.190,87
+Transferência | Pix
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 28 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+Mayara Cicera Torres
+06/10/25 Entrada R$ 108,49 R$ 1.439,66
+Transferência | Pix
+Recebimento vendas
+06/10/25 Entrada R$ 142,12 R$ 1.331,17
+Visa Electron | Débito
+Recebimento vendas
+06/10/25 Entrada R$ 43,02 R$ 1.189,05
+Elo | Débito
+Recebimento vendas
+06/10/25 Entrada R$ 200,54 R$ 1.146,03
+Maestro | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+06/10/25 Entrada R$ 663,18 R$ 945,49 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+06/10/25 Entrada R$ 100,80 R$ 282,31 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+Elaine Cristina da Silva
+05/10/25 Saída - R$ 605,01 R$ 181,51
+Transferência | Pix
+LATIMIA ESCOLHA DOS BICHOS
+05/10/25 Saída LTDA - R$ 308,71 R$ 786,52
+Transferência | Pix
+05/10/25 Saída Tarifa - R$ 0,07 R$ 1.095,23
+VANESSA DE ARAUJO FREITAS
+05/10/25 Entrada R$ 10,50 R$ 1.095,23
+Pix | Maquininha
+CLARE VET DISTRIBUIDORA LTDA
+05/10/25 Saída - R$ 301,34 R$ 1.084,80
+Transferência | Pix
+CARTORIO MONICA DANTAS
+CARTORIO MONICA DANTAS
+05/10/25 Saída FERREIRA - R$ 409,51 R$ 1.386,14
+FERREIRA
+Pagamento
+05/10/25 Saída Tarifa - R$ 0,03 R$ 1.795,65
+ALEXANDER ALMEIDA MAGALHAES
+05/10/25 Entrada COELHO R$ 4,30 R$ 1.795,65
+Pix | Maquininha
+05/10/25 Saída Tarifa - R$ 0,14 R$ 1.791,38
+Laís Ribeiro da Silva
+05/10/25 Entrada R$ 18,72 R$ 1.791,38
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 29 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/10/25 Entrada R$ 2,30 R$ 1.772,80 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/10/25 Entrada R$ 462,11 R$ 1.770,50 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/10/25 Entrada R$ 229,40 R$ 1.308,39 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/10/25 Entrada R$ 77,45 R$ 1.078,99 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+LEITURA NEW YORK BARRA
+04/10/25 Saída COMERCIO DE LIVROS LTDA - R$ 40,40 R$ 1.001,54
+Transferência | Pix
+TABELIONATO DE 1 OFICIO
+04/10/25 Saída - R$ 1.192,75 R$ 1.041,94 TABELIONATO DE 1 OFICIO
+Pagamento
+04/10/25 Saída Tarifa - R$ 0,10 R$ 2.234,69
+FELIX TED GONZAGA COSTA
+04/10/25 Entrada R$ 14,40 R$ 2.234,69
+Pix | Maquininha
+04/10/25 Saída Tarifa - R$ 0,63 R$ 2.220,39
+Ana Carla Ferreira de Souza
+04/10/25 Entrada R$ 84,90 R$ 2.220,39
+Pix | Maquininha
+04/10/25 Saída Tarifa - R$ 0,35 R$ 2.136,12
+D DA SILVA SERV
+04/10/25 Entrada R$ 46,80 R$ 2.136,12
+Pix | Maquininha
+04/10/25 Saída Tarifa - R$ 0,07 R$ 2.089,67
+LETICIA VICTORIA SILVA PEREIRA
+04/10/25 Entrada R$ 10,00 R$ 2.089,67
+Pix | Maquininha
+04/10/25 Saída Tarifa - R$ 0,08 R$ 2.079,74
+DIANA PAULINO DAMASCENO
+04/10/25 Entrada R$ 11,00 R$ 2.079,74
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 30 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+04/10/25 Saída Tarifa - R$ 0,37 R$ 2.068,82
+GABRIEL FERNANDES CHACON
+04/10/25 Entrada R$ 49,90 R$ 2.068,82
+Pix | Maquininha
+Maria José Maciel Rocha
+04/10/25 Entrada R$ 43,00 R$ 2.019,29
+Transferência | Pix
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/10/25 Entrada R$ 537,90 R$ 1.976,29 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/10/25 Entrada R$ 324,91 R$ 1.438,39 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/10/25 Entrada R$ 451,33 R$ 1.113,48 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/10/25 Entrada R$ 91,17 R$ 662,15 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/10/25 Entrada R$ 44,49 R$ 570,98 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+03/10/25 Saída Tarifa - R$ 0,25 R$ 526,49
+Aroldo Evangelista Da Silva Junior
+03/10/25 Entrada R$ 33,40 R$ 526,49
+Pix | Maquininha
+LULUS SORVETES LTDA
+03/10/25 Entrada R$ 379,18 R$ 493,34
+Transferência | Pix
+Naiara Ingrid Brum de Paiva
+03/10/25 Saída - R$ 759,00 R$ 114,16
+Transferência | Pix
+KARINA PEIXOTO DE SIQUEIRA
+03/10/25 Entrada R$ 174,80 R$ 873,16
+Transferência | Pix
+03/10/25 Saída Tarifa - R$ 0,11 R$ 698,36
+Raphael Emílio DAnil Peçanha
+03/10/25 Entrada R$ 14,90 R$ 698,36
+Pix | Maquininha
+03/10/25 Saída Tarifa - R$ 1,26 R$ 683,57
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 31 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+Raphael Emílio DAnil Peçanha
+03/10/25 Entrada R$ 168,00 R$ 683,57
+Pix | Maquininha
+Claro
+03/10/25 Saída - R$ 156,52 R$ 516,83
+Transferência | Pix
+Recebimento vendas
+03/10/25 Entrada R$ 238,40 R$ 673,35
+Maestro | Débito
+Recebimento vendas
+03/10/25 Entrada R$ 140,84 R$ 434,95
+Visa Electron | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+03/10/25 Entrada R$ 186,46 R$ 294,11 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+03/10/25 Entrada R$ 39,59 R$ 107,65 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+02/10/25 Saída Tarifa - R$ 0,30 R$ 68,06
+Marco Antonio Leite de Lima
+02/10/25 Entrada R$ 40,00 R$ 68,06
+Pix | Maquininha
+02/10/25 Saída Tarifa - R$ 0,09 R$ 28,36
+GILBERTO NORMANDO MORAES
+02/10/25 Entrada SILVA R$ 12,90 R$ 28,36
+Pix | Maquininha
+02/10/25 Saída Tarifa - R$ 0,10 R$ 15,55
+IZABEL CRISTINA LOPES PARENTE
+02/10/25 Entrada CARDOSO R$ 13,40 R$ 15,55
+Pix | Maquininha
+Naiara Ingrid Brum de Paiva
+02/10/25 Saída - R$ 59,30 R$ 2,25
+Transferência | Pix
+AR CAR CENTRO AUTOMOTIVO LTDA
+02/10/25 Saída - R$ 120,00 R$ 61,55
+Transferência | Pix
+AUTO PECAS INTENDENTE LTDA
+02/10/25 Saída - R$ 33,00 R$ 181,55
+Transferência | Pix
+Caroline Eduardo Dos Santos
+02/10/25 Saída - R$ 7,00 R$ 214,55
+Transferência | Pix
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 32 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+Crissiane Lima da Silva Castro
+02/10/25 Saída - R$ 13,00 R$ 221,55
+Transferência | Pix
+PERICLES CINELLI
+02/10/25 Saída - R$ 5,00 R$ 234,55
+Transferência | Pix
+VANILDO EVANGELISTA PEREIRA
+02/10/25 Saída 02137811740 - R$ 50,00 R$ 239,55
+Transferência | Pix
+MIXPET COMERCIO E DISTRIBUICAO MIXPET COMERCIO E
+02/10/25 Saída DE ALIMENTOS E ARTI - R$ 1.433,14 R$ 289,55 DISTRIBUICAO DE ALIMENTOS E
+Pagamento ARTI
+Recebimento vendas
+02/10/25 Entrada R$ 54,36 R$ 1.722,69
+Elo | Débito
+Recebimento vendas
+02/10/25 Entrada R$ 394,19 R$ 1.668,33
+Maestro | Débito
+Recebimento vendas
+02/10/25 Entrada R$ 348,05 R$ 1.274,14
+Visa Electron | Débito
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+02/10/25 Entrada R$ 337,90 R$ 926,09 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+02/10/25 Entrada R$ 217,63 R$ 588,19 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+02/10/25 Entrada R$ 19,01 R$ 370,56 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+01/10/25 Saída Tarifa - R$ 0,04 R$ 351,55
+Renato Pereira de Menezes
+01/10/25 Entrada R$ 6,40 R$ 351,55
+Pix | Maquininha
+MARCIA ELISA COELHO DA CRUZ
+01/10/25 Entrada R$ 95,00 R$ 345,19
+Transferência | Pix
+SUPRIMAX VET
+01/10/25 Saída - R$ 303,71 R$ 250,19 SUPRIMAX VET
+Pagamento
+01/10/25 Saída Tarifa - R$ 1,32 R$ 553,90
+LUCIANO DE LIMA CASAGRANDE
+01/10/25 Entrada R$ 177,30 R$ 553,90
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 33 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+01/10/25 Saída Tarifa - R$ 0,41 R$ 377,92
+NATALIA RIBEIRO GOMES DE ARAUJO
+01/10/25 Entrada R$ 55,50 R$ 377,92
+Pix | Maquininha
+CAROLINE CARREIRO SOARES LIMA
+01/10/25 Entrada PEREIRA R$ 102,00 R$ 322,83
+Transferência | Pix
+01/10/25 Saída Tarifa - R$ 0,70 R$ 220,83
+Emanuelle Freire Bezerra
+01/10/25 Entrada R$ 94,50 R$ 220,83
+Pix | Maquininha
+01/10/25 Saída Tarifa - R$ 0,27 R$ 127,03
+Maíta Carvalho de Almeida
+01/10/25 Entrada R$ 37,00 R$ 127,03
+Pix | Maquininha
+01/10/25 Saída Tarifa - R$ 0,61 R$ 90,30
+GILBERTO NORMANDO MORAES DA
+01/10/25 Entrada SILVA R$ 82,00 R$ 90,30
+Pix | Maquininha
+SERRA VIP COMERCIO ATACADISTA SERRA VIP COMERCIO
+01/10/25 Saída - R$ 257,21 R$ 8,91
+Pagamento ATACADISTA
+01/10/25 Saída Tarifa - R$ 0,89 R$ 266,12
+JOSIANE F DE ABREU
+01/10/25 Entrada R$ 119,10 R$ 266,12
+Pix | Maquininha
+GREAT PETS INDUSTRIA E
+GREAT PETS INDUSTRIA E
+01/10/25 Saída COMERCIO LTDA - R$ 328,43 R$ 147,91
+COMERCIO LTDA
+Pagamento
+AGROLIFE ESPIRITO SANTO PRODUT AGROLIFE ESPIRITO SANTO
+01/10/25 Saída - R$ 339,90 R$ 476,34
+Pagamento PRODUT
+Recebimento vendas
+01/10/25 Entrada R$ 19,66 R$ 816,24
+Visa Electron | Débito
+Recebimento vendas
+01/10/25 Entrada R$ 177,13 R$ 796,58
+Maestro | Débito
+Extrato de conta corrente
+Emitido em 10 novembro 2025 às 175059
+Página 34 de 34
+Período: de 01/10/2025 a 31/10/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+01/10/25 Entrada R$ 261,33 R$ 619,45 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+01/10/25 Entrada R$ 295,27 R$ 358,12 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+Informações do Comprovante
+Código de Autenticação
+7018a62f-7b6046f8-a40506bf2e2637a6
+Ouvidoria
+Se nosso atendimento não atendeu às suas expectativas, ligue para 08009422174 em dias úteis,
+das 9h às 18h, horário de Brasília. Você também pode enviar um e-mail para ouvidoria@stone.com.br
+CNPJ 16.501.555/000157
+Dúvidas? Fale com a gente!
+Regiões Metropolitanas Envie um WhatsApp Outras regiões Envie um e-mail
+30049680 30049680 0800 326 0506 meajuda@stone.com.br

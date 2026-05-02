@@ -1,0 +1,1606 @@
+Extrato de conta corrente
+Emitido no dia 17 de Setembro de 2025 às 18:57:00
+Titular ARTIGOS E PRODUTOS VETERINARIOS BICHO Instituição Stone Instituição de
+BAO LTDA Pagamento S.A.
+Documento 08.808.682/0001-75 Agência 0001
+Período 01/06/2025 até 30/06/2025 Conta 311515-1
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+30/06/2025 Crédito 29,66 1.992,85
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+30/06/2025 Crédito 159,36 1.963,19
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+30/06/2025 Crédito 596,70 1.803,83
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+30/06/2025 Crédito 101,41 1.207,13
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+30/06/2025 Crédito 195,45 1.105,72
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+30/06/2025 Crédito 79,08 910,27
+Antecipação Agência 0001
+Conta 30772-8
+30/06/2025 Débito Pagamento 312,38 831,19
+30/06/2025 Débito Pagamento 342,30 1.143,57
+30/06/2025 Débito Pagamento 628,04 1.485,87
+DAS - SIMPLES
+DAS - SIMPLES
+30/06/2025 Débito NACIONAL 408,89 2.113,91
+NACIONAL
+Pagamento
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+28/06/2025 Crédito 74,14 2.522,80
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+28/06/2025 Crédito 299,39 2.448,66
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+28/06/2025 Crédito 207,59 2.149,27
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+28/06/2025 Crédito 29,66 1.941,68
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+28/06/2025 Crédito 59,31 1.912,02
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+28/06/2025 Crédito 529,74 1.852,71
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+28/06/2025 Crédito 96,58 1.322,97
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+28/06/2025 Crédito 54,37 1.226,39
+Antecipação Agência 0001
+Conta 30772-8
+Nayara Aline de Oliveira
+28/06/2025 Débito Gomes 170,00 1.172,02
+Transferência | Pix
+BUSCA CLIENTES T
+BUSCA CLIENTES T
+27/06/2025 Débito DIGITAL LTDA 1.182,00 1.342,02
+DIGITAL LTDA
+Pagamento
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+27/06/2025 Crédito 93,91 2.524,02
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+27/06/2025 Crédito 72,40 2.430,11
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+27/06/2025 Crédito 64,58 2.357,71
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+27/06/2025 Crédito 64,25 2.293,13
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+27/06/2025 Crédito 84,02 2.228,88
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+27/06/2025 Crédito 118,62 2.144,86
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+27/06/2025 Crédito 38,52 2.026,24
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+27/06/2025 Crédito 523,91 1.987,72
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+27/06/2025 Crédito 125,49 1.463,81
+Antecipação Agência 0001
+Conta 30772-8
+27/06/2025 Débito Tarifa -0,40 1.338,32
+AMANDA FELIPPE DE
+27/06/2025 Crédito SOUZA MENENGUCI 80,00 1.338,32
+Pix | Maquininha
+AGROLIFE ESPIRITO
+AGROLIFE ESPIRITO
+27/06/2025 Débito SANTO PRODUT 304,58 1.258,72
+SANTO PRODUT
+Pagamento
+PET MED INDUSTRIA E
+PET MED INDUSTRIA
+27/06/2025 Débito COMERCIO LTDA 297,73 1.563,30
+E COMERCIO LTDA
+Pagamento
+MOURAGRO -
+MOURAGRO -
+COMERCIO DE
+COMERCIO DE
+PRODUTOS
+27/06/2025 Débito 376,28 1.861,03 PRODUTOS
+AGROPECUARIOS
+AGROPECUARIOS
+LTDA
+LTDA
+Pagamento
+Nayara Aline de Oliveira
+27/06/2025 Débito Gomes 260,00 2.237,31
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+26/06/2025 Crédito 64,25 2.497,31
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+26/06/2025 Crédito 135,08 2.433,06
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+26/06/2025 Crédito 54,37 2.297,98
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+26/06/2025 Crédito 93,91 2.243,61
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+26/06/2025 Crédito 182,87 2.149,70
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+26/06/2025 Crédito 53,07 1.966,83
+Antecipação Agência 0001
+Conta 30772-8
+SUPRIMAX VET
+26/06/2025 Débito 451,51 1.913,76 SUPRIMAX VET
+Pagamento
+BANCO VOTORANTIM
+BANCO
+26/06/2025 Débito S/A 1.618,57 2.365,27
+VOTORANTIM S/A
+Pagamento
+SUPRIMAX VET
+26/06/2025 Débito 495,01 3.983,84 SUPRIMAX VET
+Pagamento
+PICPAY INSTITUICAO
+PICPAY INSTITUICAO
+26/06/2025 Débito DE PAGAMENTO S.A. 1.550,15 4.478,85
+DE PAGAMENTO S.A.
+Pagamento
+Nayara Aline de Oliveira
+26/06/2025 Débito Gomes 130,00 6.029,00
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+25/06/2025 Crédito 359,20 6.159,00
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+25/06/2025 Crédito 91,75 5.799,80
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+25/06/2025 Crédito 558,50 5.708,05
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+25/06/2025 Crédito 118,62 5.149,55
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+25/06/2025 Crédito 275,25 5.030,93
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+25/06/2025 Crédito 247,13 4.755,68
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+25/06/2025 Crédito 39,54 4.508,55
+Antecipação Agência 0001
+Conta 30772-8
+BRUNO CARDOSO
+25/06/2025 Débito PIMENTA 240,00 4.469,01
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+25/06/2025 Crédito 6,82 4.709,01
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+25/06/2025 Crédito 1.102,29 4.702,19
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+25/06/2025 Crédito 84,02 3.599,90
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+25/06/2025 Crédito 64,25 3.515,88
+Antecipação Agência 0001
+Conta 30772-8
+MARIA CLARA
+25/06/2025 Débito MORSCH SCHMID 105,00 3.451,63
+Transferência | Pix
+VETTEC PRODUTOS A
+VETTEC PRODUTOS A
+25/06/2025 Débito LTDA 527,42 3.556,63
+LTDA
+Pagamento
+SEROPEC SHOPPING
+SEROPEC SHOPPING
+25/06/2025 Débito RURAL LTDA 281,93 4.084,05
+RURAL LTDA
+Pagamento
+VITAVET
+VITAVET
+DISTRIBUIDORA
+25/06/2025 Débito 439,75 4.365,98 DISTRIBUIDORA
+LIMITADA
+LIMITADA
+Pagamento
+AGROLIFE ESPIRITO
+AGROLIFE ESPIRITO
+25/06/2025 Débito SANTO PRODUT 461,79 4.805,73
+SANTO PRODUT
+Pagamento
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+24/06/2025 Crédito 237,24 5.267,52
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+24/06/2025 Crédito 57,95 5.030,28
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+24/06/2025 Crédito 248,02 4.972,33
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+24/06/2025 Crédito 57,95 4.724,31
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+24/06/2025 Crédito 62,78 4.666,36
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+24/06/2025 Crédito 209,86 4.603,58
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+24/06/2025 Crédito 82,09 4.393,72
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+24/06/2025 Crédito 166,82 4.311,63
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+24/06/2025 Crédito 749,30 4.144,81
+Antecipação Agência 0001
+Conta 30772-8
+24/06/2025 Débito Tarifa -0,15 3.395,51
+KAYLAN ROSA DOS
+SANTOS VIEIRA
+24/06/2025 Crédito 30,00 3.395,51
+SOARES
+Pix | Maquininha
+SUPRIMAX VET
+24/06/2025 Débito 728,16 3.365,66 SUPRIMAX VET
+Pagamento
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+23/06/2025 Crédito 241,45 4.093,82
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+23/06/2025 Crédito 125,36 3.852,37
+Antecipação Agência 0001
+Conta 30772-8
+23/06/2025 Débito Tarifa -0,62 3.727,01
+MICHELE DE SOUZA
+23/06/2025 Crédito LIMA 125,00 3.727,01
+Pix | Maquininha
+23/06/2025 Débito Tarifa -0,04 3.602,63
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+Erick Messias da Silva
+23/06/2025 Crédito 9,00 3.602,63
+Pix | Maquininha
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+23/06/2025 Crédito 28,97 3.593,67
+Antecipação Agência 0001
+Conta 30772-8
+23/06/2025 Débito Tarifa -0,05 3.564,70
+ANA LUIZA
+QUARESMA BATISTA
+23/06/2025 Crédito 10,00 3.564,70
+DA SILVA
+Pix | Maquininha
+23/06/2025 Débito Tarifa -4,43 3.554,75
+REOFICINA
+23/06/2025 Crédito 886,90 3.554,75
+Pix | Maquininha
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+23/06/2025 Crédito 678,16 2.672,28
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+23/06/2025 Crédito 489,31 1.994,12
+Antecipação Agência 0001
+Conta 30772-8
+MOURAGRO
+MOURAGRO
+COMERCIO DE
+COMERCIO DE
+PRODUTOS
+23/06/2025 Débito 369,04 1.504,81 PRODUTOS
+AGROPECUARIOS
+AGROPECUARIOS
+LTDA
+LTDA
+Pagamento
+MOURAGRO -
+MOURAGRO -
+COMERCIO DE
+COMERCIO DE
+PRODUTOS
+23/06/2025 Débito 377,31 1.873,85 PRODUTOS
+AGROPECUARIOS
+AGROPECUARIOS
+LTDA
+LTDA
+Pagamento
+Nayara Aline de Oliveira
+23/06/2025 Débito Gomes 920,00 2.251,16
+Transferência | Pix
+SUPRIMAX VET
+22/06/2025 Débito 531,82 3.171,16 SUPRIMAX VET
+Pagamento
+MAICIA VELLEDA E
+21/06/2025 Débito PAIVA DE TELLO 2.000,00 3.702,98
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+21/06/2025 Crédito 925,03 5.702,98
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+21/06/2025 Crédito 232,30 4.777,95
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+21/06/2025 Crédito 114,24 4.545,65
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+21/06/2025 Crédito 276,78 4.431,41
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+21/06/2025 Crédito 93,48 4.154,63
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+21/06/2025 Crédito 217,30 4.061,15
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+21/06/2025 Crédito 246,28 3.843,85
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+21/06/2025 Crédito 182,87 3.597,57
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+21/06/2025 Crédito 91,75 3.414,70
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+20/06/2025 Crédito 118,62 3.322,95
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+20/06/2025 Crédito 100,97 3.204,33
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+20/06/2025 Crédito 28,96 3.103,36
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+20/06/2025 Crédito 320,93 3.074,40
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+20/06/2025 Crédito 572,82 2.753,47
+Antecipação Agência 0001
+Conta 30772-8
+RIOPAR
+20/06/2025 Débito PARTICIPACOES S A 300,00 2.180,65
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+20/06/2025 Crédito 794,08 2.480,65
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+20/06/2025 Crédito 1.204,22 1.686,57
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+20/06/2025 Crédito 118,62 482,35
+Antecipação Agência 0001
+Conta 30772-8
+MAICIA VELLEDA E
+20/06/2025 Débito PAIVA DE TELLO 2.000,00 363,73
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+20/06/2025 Crédito 612,35 2.363,73
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+20/06/2025 Crédito 88,97 1.751,38
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+20/06/2025 Crédito 115,84 1.662,41
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+20/06/2025 Crédito 67,57 1.546,57
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+20/06/2025 Crédito 135,42 1.479,00
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+20/06/2025 Crédito 77,23 1.343,58
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+20/06/2025 Crédito 28,96 1.266,35
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+DARF/DARF-SIMPLES
+DARF/DARF-SIMPLES
+20/06/2025 Débito 0385 955,82 1.237,39
+0385
+Pagamento
+MAICIA VELLEDA E
+19/06/2025 Débito PAIVA DE TELLO 2.000,00 2.193,21
+Transferência | Pix
+SUPRIMAX VET
+19/06/2025 Débito 452,59 4.193,21 SUPRIMAX VET
+Pagamento
+SUPRIMAX VET
+19/06/2025 Débito 495,01 4.645,80 SUPRIMAX VET
+Pagamento
+CAIXA ECONOMICA
+19/06/2025 Débito FEDERAL 445,42 5.140,81
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+18/06/2025 Crédito 77,26 5.586,23
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+18/06/2025 Crédito 84,02 5.508,97
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+18/06/2025 Crédito 82,09 5.424,95
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+18/06/2025 Crédito 64,25 5.342,86
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+18/06/2025 Crédito 550,50 5.278,61
+Antecipação Agência 0001
+Conta 30772-8
+18/06/2025 Débito Tarifa -1,07 4.728,11
+MICHELE DE SOUZA
+18/06/2025 Crédito LIMA 214,90 4.728,11
+Pix | Maquininha
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+18/06/2025 Crédito 173,84 4.514,28
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+18/06/2025 Crédito 144,87 4.340,44
+Antecipação Agência 0001
+Conta 30772-8
+18/06/2025 Débito Tarifa -0,87 4.195,57
+CLARA LIMA DA SILVA
+18/06/2025 Crédito 175,00 4.195,57
+Pix | Maquininha
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+18/06/2025 Crédito 736,43 4.021,44
+Antecipação Agência 0001
+Conta 30772-8
+18/06/2025 Débito Tarifa -1,75 3.285,01
+ANA LUIZA
+QUARESMA BATISTA
+18/06/2025 Crédito 350,00 3.285,01
+DA SILVA
+Pix | Maquininha
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+18/06/2025 Crédito 96,58 2.936,76
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+18/06/2025 Crédito 115,89 2.840,18
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+18/06/2025 Crédito 28,97 2.724,29
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+18/06/2025 Crédito 123,56 2.695,32
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+18/06/2025 Crédito 173,84 2.571,76
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+18/06/2025 Crédito 500,28 2.397,92
+Antecipação Agência 0001
+Conta 30772-8
+BRUNO CARDOSO
+18/06/2025 Débito PIMENTA 200,00 1.897,64
+Transferência | Pix
+AGROLIFE ESPIRITO
+AGROLIFE ESPIRITO
+18/06/2025 Débito SANTO PRODUT 461,80 2.097,64
+SANTO PRODUT
+Pagamento
+VETTEC PRODUTOS A
+VETTEC PRODUTOS A
+18/06/2025 Débito LTDA 527,42 2.559,44
+LTDA
+Pagamento
+DUQUE RIO
+DUQUE RIO
+18/06/2025 Débito AMBIENTAL LTDA 95,00 3.086,86
+AMBIENTAL LTDA
+Pagamento
+SEROPEC SHOPPING
+SEROPEC SHOPPING
+18/06/2025 Débito RURAL LTDA 281,93 3.181,86
+RURAL LTDA
+Pagamento
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+17/06/2025 Crédito 640,07 3.463,79
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+17/06/2025 Crédito 227,36 2.823,72
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+17/06/2025 Crédito 178,67 2.596,36
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+17/06/2025 Crédito 91,75 2.417,69
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+17/06/2025 Crédito 19,77 2.325,94
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+17/06/2025 Crédito 347,68 2.306,17
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+17/06/2025 Crédito 375,63 1.958,49
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+17/06/2025 Crédito 434,94 1.582,86
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+17/06/2025 Crédito 59,31 1.147,92
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+17/06/2025 Crédito 53,12 1.088,61
+Antecipação Agência 0001
+Conta 30772-8
+17/06/2025 Débito Tarifa -0,35 1.035,49
+RENATA DOS SANTOS
+17/06/2025 Crédito SANTANA 70,00 1.035,49
+Pix | Maquininha
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+16/06/2025 Crédito 887,60 965,84
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+MAICIA VELLEDA E
+16/06/2025 Débito PAIVA DE TELLO 1.200,00 78,24
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+16/06/2025 Crédito 39,54 1.278,24
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+16/06/2025 Crédito 28,97 1.238,70
+Antecipação Agência 0001
+Conta 30772-8
+16/06/2025 Débito Tarifa -0,46 1.209,73
+BRUNO CARDOSO
+16/06/2025 Crédito PIMENTA 92,90 1.209,73
+Pix | Maquininha
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+16/06/2025 Crédito 48,29 1.117,29
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+16/06/2025 Crédito 19,32 1.069,00
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+16/06/2025 Crédito 96,58 1.049,68
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+16/06/2025 Crédito 582,50 953,10
+Antecipação Agência 0001
+Conta 30772-8
+SAFE2PAY
+SAFE2PAY
+INSTITUICAO DE
+16/06/2025 Débito 152,29 370,60 INSTITUICAO DE
+PAGAMENTO LTDA
+PAGAMENTO LTDA
+Pagamento
+MERCADO PAGO
+INSTITUICAO DE
+15/06/2025 Débito 491,47 522,89
+PAGAMENTO LTDA
+Transferência | Pix
+Carlos Henrique Gomes
+15/06/2025 Débito da Silva 2.287,50 1.014,36
+Transferência | Pix
+CEG-CIA
+CEG-CIA
+15/06/2025 Débito DISTRIBUIDORA GAS 159,85 3.301,86
+DISTRIBUIDORA GAS
+Pagamento
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+14/06/2025 Crédito 29,66 3.461,71
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+14/06/2025 Crédito 29,66 3.432,05
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+14/06/2025 Crédito 445,73 3.402,39
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+14/06/2025 Crédito 67,61 2.956,66
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+14/06/2025 Crédito 163,10 2.889,05
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+14/06/2025 Crédito 28,97 2.725,95
+Antecipação Agência 0001
+Conta 30772-8
+14/06/2025 Débito Tarifa -0,37 2.696,98
+MAR
+INTERMEDIACOES
+14/06/2025 Crédito 75,00 2.696,98
+FINANCEIRAS LTDA
+Pix | Maquininha
+14/06/2025 Débito Tarifa -0,75 2.622,35
+MARIA CLARA
+14/06/2025 Crédito 150,00 2.622,35
+Pix | Maquininha
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+14/06/2025 Crédito 57,95 2.473,10
+Antecipação Agência 0001
+Conta 30772-8
+GENESI C A C D
+GENESI C A C D
+14/06/2025 Débito VETERINARIO 115,75 2.415,15
+VETERINARIO
+Pagamento
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+13/06/2025 Crédito 454,63 2.530,90
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+13/06/2025 Crédito 59,31 2.076,27
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+13/06/2025 Crédito 93,91 2.016,96
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+BRUNO CARDOSO
+13/06/2025 Débito PIMENTA 450,00 1.923,05
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+13/06/2025 Crédito 54,37 2.373,05
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+13/06/2025 Crédito 64,25 2.318,68
+Antecipação Agência 0001
+Conta 30772-8
+Mariana Innocencio J de
+13/06/2025 Débito Aguiar 150,00 2.254,43
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+13/06/2025 Crédito 385,52 2.404,43
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+13/06/2025 Crédito 333,03 2.018,91
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+13/06/2025 Crédito 265,46 1.685,88
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+13/06/2025 Crédito 118,62 1.420,42
+Antecipação Agência 0001
+Conta 30772-8
+13/06/2025 Débito Tarifa -0,15 1.301,80
+MILENA MARLI P
+13/06/2025 Crédito FERNANDES 30,00 1.301,80
+Pix | Maquininha
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+13/06/2025 Crédito 106,18 1.271,95
+Antecipação Agência 0001
+Conta 30772-8
+13/06/2025 Débito Tarifa -0,30 1.165,77
+BRUNA ALEXANDRA
+PINHEIRO FERNANDES
+13/06/2025 Crédito 60,00 1.165,77
+MESQUITA
+Pix | Maquininha
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+13/06/2025 Crédito 132,11 1.106,07
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+13/06/2025 Crédito 77,23 973,96
+Antecipação Agência 0001
+Conta 30772-8
+13/06/2025 Débito Tarifa -1,18 896,73
+Priscila Yuri Kajikawa
+13/06/2025 Crédito 236,58 896,73
+Pix | Maquininha
+AMIL ASSISTENCIA ME AMIL ASSISTENCIA
+13/06/2025 Débito 1.948,36 661,33
+Pagamento ME
+SL ADMINISTRADORA
+SL ADMINISTRADORA
+13/06/2025 Débito PATRIMONIAL S.A 1.413,06 2.609,69
+PATRIMONIAL S.A
+Pagamento
+CLARO SP DDD 11
+13/06/2025 Débito 177,35 4.022,75 CLARO SP DDD 11
+Pagamento
+MAICIA VELLEDA E
+12/06/2025 Débito PAIVA DE TELLO 200,00 4.200,10
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+12/06/2025 Crédito 118,62 4.400,10
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+12/06/2025 Crédito 77,19 4.281,48
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+12/06/2025 Crédito 420,11 4.204,29
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+12/06/2025 Crédito 148,28 3.784,18
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+12/06/2025 Crédito 207,59 3.635,90
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+12/06/2025 Crédito 178,50 3.428,31
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+12/06/2025 Crédito 183,32 3.249,81
+Antecipação Agência 0001
+Conta 30772-8
+12/06/2025 Débito Tarifa -0,60 3.066,49
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+Soraya Climaco Moreira
+12/06/2025 Crédito de Oliveira 120,00 3.066,49
+Pix | Maquininha
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+12/06/2025 Crédito 29,66 2.947,09
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+12/06/2025 Crédito 110,96 2.917,43
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+12/06/2025 Crédito 625,14 2.806,47
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+12/06/2025 Crédito 64,25 2.181,33
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+12/06/2025 Crédito 140,40 2.117,08
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+12/06/2025 Crédito 53,07 1.976,68
+Antecipação Agência 0001
+Conta 30772-8
+SUPRIMAX VET
+12/06/2025 Débito 495,01 1.923,61 SUPRIMAX VET
+Pagamento
+JULIANA DA SILVA
+11/06/2025 Débito MELO 430,00 2.418,62
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+11/06/2025 Crédito 306,44 2.848,62
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+11/06/2025 Crédito 236,62 2.542,18
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+11/06/2025 Crédito 48,29 2.305,56
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+11/06/2025 Crédito 29,66 2.257,27
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+11/06/2025 Crédito 96,58 2.227,61
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+11/06/2025 Crédito 28,86 2.131,03
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+11/06/2025 Crédito 115,89 2.102,17
+Antecipação Agência 0001
+Conta 30772-8
+11/06/2025 Débito Tarifa -1,62 1.986,28
+MARIA LUIZA
+11/06/2025 Crédito BELMIRO GOMES 325,00 1.986,28
+Pix | Maquininha
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+11/06/2025 Crédito 79,10 1.662,90
+Antecipação Agência 0001
+Conta 30772-8
+ANESTESIA
+PEQUENOS ANIMAIS
+11/06/2025 Débito 741,68 1.583,80
+LTDA
+Transferência | Pix
+11/06/2025 Débito Tarifa -0,52 2.325,48
+Isadora de Araujo
+11/06/2025 Crédito Schettino 105,00 2.325,48
+Pix | Maquininha
+SEROPEC SHOPPING
+SEROPEC SHOPPING
+11/06/2025 Débito RURAL LTDA 281,93 2.221,00
+RURAL LTDA
+Pagamento
+SUPRIMAX VET
+11/06/2025 Débito 467,83 2.502,93 SUPRIMAX VET
+Pagamento
+VETTEC PRODUTOS A
+VETTEC PRODUTOS A
+11/06/2025 Débito LTDA 527,42 2.970,76
+LTDA
+Pagamento
+SUPRIMAX VET
+11/06/2025 Débito 545,56 3.498,18 SUPRIMAX VET
+Pagamento
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+10/06/2025 Crédito 82,09 4.043,74
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+10/06/2025 Crédito 563,45 3.961,65
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+10/06/2025 Crédito 207,59 3.398,20
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+10/06/2025 Crédito 1.142,52 3.190,61
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+10/06/2025 Crédito 93,91 2.048,09
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+10/06/2025 Crédito 1.235,20 1.954,18
+Antecipação Agência 0001
+Conta 30772-8
+10/06/2025 Débito Tarifa -0,05 718,98
+ANA PAULA MENDES
+10/06/2025 Crédito MARTINS DA SILVA 10,00 718,98
+Pix | Maquininha
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+10/06/2025 Crédito 103,79 709,03
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+10/06/2025 Crédito 95,39 605,24
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+10/06/2025 Crédito 338,03 509,85
+Antecipação Agência 0001
+Conta 30772-8
+10/06/2025 Débito Tarifa -0,50 171,82
+JANIA ELIAS NOVAES
+10/06/2025 Crédito 100,00 171,82
+Pix | Maquininha
+MOURAGRO COM
+MOURAGRO COM
+10/06/2025 Débito PROD AGROP EIRELI 312,39 72,32
+PROD AGROP EIRELI
+Pagamento
+SUPRIMAX VET
+10/06/2025 Débito 728,16 384,71 SUPRIMAX VET
+Pagamento
+CONTROLLO BPO A E
+CONTROLLO BPO A E
+10/06/2025 Débito CONTABIL 315,18 1.112,87
+CONTABIL
+Pagamento
+AGUAS DO RIO
+10/06/2025 Débito 933,53 1.428,05 AGUAS DO RIO
+Pagamento
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+09/06/2025 Crédito 185,91 2.361,58
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+09/06/2025 Crédito 207,59 2.175,67
+Antecipação Agência 0001
+Conta 30772-8
+VANTUIR DE SOUZA
+09/06/2025 Débito ALVES 1.000,00 1.968,08
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+09/06/2025 Crédito 28,97 2.968,08
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+09/06/2025 Crédito 301,49 2.939,11
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+09/06/2025 Crédito 628,69 2.637,62
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+09/06/2025 Crédito 28,97 2.008,93
+Antecipação Agência 0001
+Conta 30772-8
+09/06/2025 Débito Tarifa -1,07 1.979,96
+AGATHA APARECIDA
+09/06/2025 Crédito SILVA SANTOS 215,00 1.979,96
+Pix | Maquininha
+MOURAGRO COM DE
+MOURAGRO COM DE
+PRODUTOS
+09/06/2025 Débito 538,85 1.766,03 PRODUTOS
+AGROPECUARIOS E
+AGROPECUARIOS E
+Pagamento
+MOURAGRO
+MOURAGRO
+COMERCIO DE
+COMERCIO DE
+PRODUTOS
+09/06/2025 Débito 369,04 2.304,88 PRODUTOS
+AGROPECUARIOS
+AGROPECUARIOS
+LTDA
+LTDA
+Pagamento
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+07/06/2025 Crédito 91,75 2.673,92
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+07/06/2025 Crédito 615,58 2.582,17
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+07/06/2025 Crédito 169,01 1.966,59
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+07/06/2025 Crédito 291,61 1.797,58
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+07/06/2025 Crédito 241,45 1.505,97
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+07/06/2025 Crédito 236,62 1.264,52
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+07/06/2025 Crédito 29,66 1.027,90
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+07/06/2025 Crédito 77,26 998,24
+Antecipação Agência 0001
+Conta 30772-8
+07/06/2025 Débito Tarifa -0,30 920,98
+49544164 FABIANA
+TEIXEIRA GONCALVES
+07/06/2025 Crédito 60,00 920,98
+LOPES PINTO
+Pix | Maquininha
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+07/06/2025 Crédito 108,74 861,28
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+07/06/2025 Crédito 192,96 752,54
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+07/06/2025 Crédito 39,39 559,58
+Antecipação Agência 0001
+Conta 30772-8
+Nayara Aline de Oliveira
+06/06/2025 Débito Gomes 300,00 520,19
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+06/06/2025 Crédito 207,59 820,19
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+06/06/2025 Crédito 313,73 612,60
+Antecipação Agência 0001
+Conta 30772-8
+MAICIA VELLEDA
+06/06/2025 Débito PAIVA DE TELLO 2.000,00 298,87
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+06/06/2025 Crédito 247,13 2.298,87
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+06/06/2025 Crédito 324,95 2.051,74
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+06/06/2025 Crédito 749,47 1.726,79
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+06/06/2025 Crédito 54,37 977,32
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+06/06/2025 Crédito 183,41 922,95
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+06/06/2025 Crédito 49,43 739,54
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+06/06/2025 Crédito 77,23 690,11
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+06/06/2025 Crédito 88,97 612,88
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+06/06/2025 Crédito 135,14 523,91
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+06/06/2025 Crédito 118,62 388,77
+Antecipação Agência 0001
+Conta 30772-8
+MAICIA VELLEDA
+06/06/2025 Débito PAIVA DE TELLO 2.500,00 270,15
+Transferência | Pix
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+PM Rio de Janeiro
+06/06/2025 Débito 1.396,10 2.770,15 PM Rio de Janeiro
+Pagamento
+Vitoria de Jesus Araujo
+06/06/2025 Débito 1.745,43 4.166,25
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+05/06/2025 Crédito 297,94 5.911,68
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+05/06/2025 Crédito 49,33 5.613,74
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+05/06/2025 Crédito 207,59 5.564,41
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+05/06/2025 Crédito 82,01 5.356,82
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+05/06/2025 Crédito 1.583,72 5.274,81
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+05/06/2025 Crédito 110,80 3.691,09
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+05/06/2025 Crédito 123,56 3.580,29
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+05/06/2025 Crédito 479,42 3.456,73
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+05/06/2025 Crédito 53,07 2.977,31
+Antecipação Agência 0001
+Conta 30772-8
+05/06/2025 Débito Tarifa -0,45 2.924,24
+Renata de Fatima Pinto
+05/06/2025 Crédito 90,00 2.924,24
+Pix | Maquininha
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+05/06/2025 Crédito 345,98 2.834,69
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+05/06/2025 Crédito 85,63 2.488,71
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+05/06/2025 Crédito 168,56 2.403,08
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+05/06/2025 Crédito 53,07 2.234,52
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+04/06/2025 Crédito 173,84 2.181,45
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+04/06/2025 Crédito 44,48 2.007,61
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+04/06/2025 Crédito 828,31 1.963,13
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+04/06/2025 Crédito 54,37 1.134,82
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+04/06/2025 Crédito 337,93 1.080,45
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+04/06/2025 Crédito 19,77 742,52
+Antecipação Agência 0001
+Conta 30772-8
+MAICIA VELLEDA
+04/06/2025 Débito PAIVA DE TELLO 2.000,00 722,75
+Transferência | Pix
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+04/06/2025 Crédito 115,89 2.722,75
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+04/06/2025 Crédito 1.113,61 2.606,86
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+04/06/2025 Crédito 266,90 1.493,25
+Antecipação Agência 0001
+Conta 30772-8
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+04/06/2025 Crédito 212,53 1.226,35
+Antecipação Agência 0001
+Conta 30772-8
+VETTEC PRODUTOS A
+VETTEC PRODUTOS A
+04/06/2025 Débito LTDA 527,42 1.013,82
+LTDA
+Pagamento
+SUPRIMAX VET
+04/06/2025 Débito 467,83 1.541,24 SUPRIMAX VET
+Pagamento
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+03/06/2025 Crédito 784,34 2.009,07
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+03/06/2025 Crédito 543,68 1.224,73
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+03/06/2025 Crédito 28,97 681,05
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+03/06/2025 Crédito 118,62 652,08
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+03/06/2025 Crédito 84,02 533,46
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+03/06/2025 Crédito 33,80 449,44
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+03/06/2025 Crédito 54,37 415,64
+Antecipação Agência 0001
+Conta 30772-8
+SUPRIMAX VET
+03/06/2025 Débito 543,74 361,27 SUPRIMAX VET
+Pagamento
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+02/06/2025 Crédito 77,59 905,01
+Antecipação Agência 0001
+Conta 30772-8
+MAICIA VELLEDA
+02/06/2025 Débito PAIVA DE TELLO 200,00 827,42
+Transferência | Pix
+Carlos Henrique Gomes
+02/06/2025 Débito da Silva 1.985,00 1.027,42
+Transferência | Pix
+DATA TIPO LANÇAMENTO VALOR (R$) SALDO (R$) CONTRAPARTE
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+02/06/2025 Crédito 19,77 3.012,42
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+02/06/2025 Crédito 397,80 2.992,65
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+02/06/2025 Crédito 88,97 2.594,85
+Antecipação Agência 0001
+Conta 30772-8
+02/06/2025 Débito Tarifa -0,90 2.505,88
+RAMON DA SILVA
+02/06/2025 Crédito TORRES 180,00 2.505,88
+Pix | Maquininha
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+02/06/2025 Crédito 101,41 2.326,78
+Antecipação Agência 0001
+Conta 30772-8
+STONE INSTITUIÇÃO
+Recebimento vendas DE PAGAMENTO S.A.
+02/06/2025 Crédito 336,72 2.225,37
+Antecipação Agência 0001
+Conta 30772-8
+MOURAGRO
+MOURAGRO
+COMERCIO DE
+COMERCIO DE
+PRODUTOS
+02/06/2025 Débito 628,05 1.888,65 PRODUTOS
+AGROPECUARIOS
+AGROPECUARIOS
+LTDA
+LTDA
+Pagamento
+Herbert Rocha Correia
+01/06/2025 Débito Lima 4.000,00 2.516,70
+Transferência | Pix
+ITAU UNIBANCO
+ITAU UNIBANCO
+01/06/2025 Débito HOLDING S.A. 774,73 6.516,70
+HOLDING S.A.
+Pagamento
+Seguro de Loja
+01/06/2025 Débito 88,37 7.291,43
+Mensalidade | Seguros
+Informações do Comprovante
+Código de Autenticação Stone Instituição de Pagamento S.A.
+1b4891d6-4c92-4420-9ac0-17c5065f241a 16.501.555/0001-57
+Ouvidoria
+Se nosso atendimento não atendeu às suas expectativas, ligue para 0800-
+942-2174 em dias úteis, das 9h às 18h, horário de Brasília. Você também
+pode enviar um e-mail para ouvidoria@stone.com.br
+CNPJ: 16.501.555/0001-57
+Dúvidas? Fale com a gente!
+Regiões Metropolitanas Envie um WhatsApp Outras regiões Envie um e-mail
+3004-9680 +55 11 3004-9680 0800 326 0506 meajuda@stone.com.br

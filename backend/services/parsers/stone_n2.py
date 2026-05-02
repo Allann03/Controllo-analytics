@@ -30,6 +30,14 @@ _RE_LINHA_COMPLETA = re.compile(
     re.IGNORECASE,
 )
 
+# Captura permissiva data + saldo final, usada apenas em
+# _extrair_saldos_intermediarios() quando a transação não tem descrição
+# inline (ex: "01/05/2025 Débito 83,80 2.505,35"). Não usar em extrair().
+_RE_DATA_SALDO_TAIL_N2 = re.compile(
+    r'^(\d{2}/\d{2}/\d{2,4})\s+(?:Cr[eé]dito|D[eé]bito).*?([\d.]+,\d{2})\s*$',
+    re.IGNORECASE,
+)
+
 _IGNORAR = [
     'data', 'tipo', 'lançamento', 'lancamento', 'valor', 'saldo',
     'contraparte', 'histórico', 'historico', 'emitido em', 'página',
@@ -205,3 +213,72 @@ class ParserStoneN2(ParserBase):
         if 'débito' in t or 'debito' in t or 'saída' in t or 'saida' in t:
             return 'saida'
         return 'saida'
+
+    # ------------------------------------------------------------------ #
+    # Saldos intermediários (Layout A — Crédito/Débito sem prefixo R$)    #
+    # ------------------------------------------------------------------ #
+
+    def _extrair_saldos_intermediarios(self) -> list[dict]:
+        """
+        Extrai saldo de fechamento por dia para Layout A (Crédito/Débito).
+
+        Stone não tem label "Saldo do dia" — a coluna SALDO acompanha cada
+        transação (saldo pós-tx). Como o extrato vem em ordem cronológica
+        reversa, a primeira ocorrência de uma data ao ler de cima para
+        baixo é o saldo de fechamento daquele dia.
+
+        Retorna lista [{'data': 'DD/MM/YYYY', 'saldo': float}] em ordem
+        cronológica crescente. Se nada for capturado, retorna [].
+        """
+        saldos_por_data: dict[str, float] = {}
+        try:
+            with pdfplumber.open(self.pdf_path, password=self.password or '') as pdf:
+                for pagina in pdf.pages:
+                    texto = pagina.extract_text() or ''
+                    linhas = texto.splitlines()
+                    i = 0
+                    while i < len(linhas):
+                        linha = linhas[i].strip()
+                        if not linha:
+                            i += 1
+                            continue
+                        if _RE_DATA_INICIO.match(linha):
+                            m = _RE_LINHA_COMPLETA.match(linha)
+                            if not m:
+                                partes = [linha]
+                                j = i + 1
+                                while j < len(linhas) and j < i + 4:
+                                    prox = linhas[j].strip()
+                                    if not prox or _RE_DATA_INICIO.match(prox):
+                                        break
+                                    partes.append(prox)
+                                    j += 1
+                                linha_juntada = ' '.join(partes)
+                                m = _RE_LINHA_COMPLETA.match(linha_juntada)
+                                if m:
+                                    i = j - 1
+                            if m:
+                                data = self._normalizar_data(m.group(1))
+                                saldo_raw = m.group(5)
+                                # Primeira ocorrência por data = última cronológica = fechamento
+                                if data and data not in saldos_por_data:
+                                    saldos_por_data[data] = float(self._normalizar_valor(saldo_raw))
+                            else:
+                                # Fallback: linha sem descrição inline (descrição vem nas linhas anteriores).
+                                # Captura apenas data + último número monetário da linha como saldo.
+                                m2 = _RE_DATA_SALDO_TAIL_N2.match(linha)
+                                if m2:
+                                    data = self._normalizar_data(m2.group(1))
+                                    if data and data not in saldos_por_data:
+                                        saldos_por_data[data] = float(self._normalizar_valor(m2.group(2)))
+                        i += 1
+        except (FileNotFoundError, OSError):
+            return []
+
+        if not saldos_por_data:
+            return []
+        ordenadas = sorted(
+            saldos_por_data.items(),
+            key=lambda kv: (int(kv[0][6:10]), int(kv[0][3:5]), int(kv[0][0:2])),
+        )
+        return [{'data': d, 'saldo': s} for d, s in ordenadas]

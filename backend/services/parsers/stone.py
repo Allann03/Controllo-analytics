@@ -52,6 +52,12 @@ _RE_LINHA_SIMPLES = re.compile(
     re.IGNORECASE,
 )
 
+# Captura saldo (último R$ X,XX da linha) para extração de saldos intermediários.
+_RE_SALDO_TAIL_N1 = re.compile(
+    r'^(\d{2}/\d{2}/\d{2,4})\s+(?:Entrada|Sa[ií]da).*?R\$\s*[\d.,]+\s+R\$\s*([\d.,]+)',
+    re.IGNORECASE,
+)
+
 # Detecta se uma linha é uma linha de data (início de nova transação)
 _RE_E_DATA = re.compile(r'^\d{2}/\d{2}/\d{2,4}\s+(?:Entrada|Sa[ií]da)', re.IGNORECASE)
 
@@ -278,6 +284,70 @@ class ParserStone(ParserBase):
     def _processar_linha_texto(self, linha: str) -> dict | None:
         """Mantido para compatibilidade (legado)."""
         return self._processar_linha_data(linha, [])
+
+    # ------------------------------------------------------------------ #
+    # Saldos intermediários — espelha o roteamento de extrair()           #
+    # ------------------------------------------------------------------ #
+
+    def _extrair_saldos_intermediarios(self) -> list[dict]:
+        """
+        Extrai saldo de fechamento por dia para alimentar a verificação
+        progressiva do orquestrador. Stone não tem label "Saldo do dia":
+        a coluna SALDO mostra saldo pós-tx e o extrato vem em ordem
+        cronológica reversa, então a primeira ocorrência por data é o
+        saldo de fechamento daquele dia.
+
+        Roteia entre N1 (Layout B, "Entrada/Saída") e N2 (Layout A,
+        "Crédito/Débito") espelhando o que extrair() faz.
+
+        Retorna [{'data': 'DD/MM/YYYY', 'saldo': float}] em ordem
+        cronológica crescente, ou [] se nada capturado.
+        """
+        from .stone_n2 import ParserStoneN2
+
+        fmt = self._detectar_formato()
+
+        if fmt == 'n2':
+            return ParserStoneN2(self.pdf_path, password=self.password)._extrair_saldos_intermediarios()
+
+        saldos_n1 = self._extrair_saldos_intermediarios_n1()
+
+        if fmt == 'n1':
+            return saldos_n1
+
+        # Ambíguo: roda os dois e fica com o de maior cobertura, igual extrair()
+        saldos_n2 = ParserStoneN2(self.pdf_path, password=self.password)._extrair_saldos_intermediarios()
+        if not saldos_n1 and saldos_n2:
+            return saldos_n2
+        if saldos_n1 and saldos_n2 and len(saldos_n2) > len(saldos_n1):
+            return saldos_n2
+        return saldos_n1
+
+    def _extrair_saldos_intermediarios_n1(self) -> list[dict]:
+        """Layout B (Entrada/Saída, valores com prefixo R$)."""
+        saldos_por_data: dict[str, float] = {}
+        try:
+            with pdfplumber.open(self.pdf_path, password=self.password or '') as pdf:
+                for pagina in pdf.pages:
+                    texto = pagina.extract_text() or ''
+                    for linha in texto.splitlines():
+                        m = _RE_SALDO_TAIL_N1.match(linha.strip())
+                        if not m:
+                            continue
+                        data = self._normalizar_data(m.group(1))
+                        # Primeira ocorrência por data = fechamento (extrato é reverso)
+                        if data and data not in saldos_por_data:
+                            saldos_por_data[data] = float(self._normalizar_valor(m.group(2)))
+        except (FileNotFoundError, OSError):
+            return []
+
+        if not saldos_por_data:
+            return []
+        ordenadas = sorted(
+            saldos_por_data.items(),
+            key=lambda kv: (int(kv[0][6:10]), int(kv[0][3:5]), int(kv[0][0:2])),
+        )
+        return [{'data': d, 'saldo': s} for d, s in ordenadas]
 
     def _processar_linha_tabela(self, linha: list) -> dict | None:
         if not linha or len(linha) < 3:

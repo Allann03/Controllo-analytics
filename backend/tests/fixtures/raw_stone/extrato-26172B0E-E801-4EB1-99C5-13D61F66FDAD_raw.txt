@@ -1,0 +1,2597 @@
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 1 de 48
+Dados da conta
+Nome Documento
+ARTIGOS E PRODUTOS VETERINARIOS BICHO BAO LTDA 08.808.682/000175
+Instituição Agência Conta
+Stone Instituição de Pagamento S.A. 0001 3115151
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE PAGAMENTO
+31/12/25 Saída S.A. - R$ 1,97 R$ 13.575,99
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+31/12/25 Entrada R$ 98,85 R$ 13.577,96 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+31/12/25 Saída S.A. - R$ 1,29 R$ 13.479,11
+Parcela | Empréstimo
+31/12/25 Saída Tarifa - R$ 0,32 R$ 13.480,40
+Keliane Santos de Araujo
+31/12/25 Entrada R$ 65,00 R$ 13.480,40
+Pix | Maquininha
+STONE INSTITUIÇÃO DE PAGAMENTO
+31/12/25 Saída S.A. - R$ 2,51 R$ 13.415,72
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE PAGAMENTO
+31/12/25 Saída S.A. - R$ 2,76 R$ 13.418,23
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+31/12/25 Entrada R$ 125,55 R$ 13.420,99 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+31/12/25 Entrada R$ 138,39 R$ 13.295,44 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+31/12/25 Saída S.A. - R$ 2,58 R$ 13.157,05
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+31/12/25 Entrada R$ 129,42 R$ 13.159,63 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+31/12/25 Saída S.A. - R$ 790,88 R$ 13.030,21
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 2 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+31/12/25 Saída PAGAMENTO S.A. - R$ 180,00 R$ 13.821,09
+Parcela | Empréstimo
+ARTIGOS E PRODUTOS
+31/12/25 Entrada VETERINARIOS BICHO BAO LTDA R$ 9.000,00 R$ 14.001,09
+Transferência | Pix
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 6,92 R$ 5.001,09
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 1,38 R$ 5.008,01
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+30/12/25 Entrada R$ 69,20 R$ 5.009,39 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 3,16 R$ 4.940,19
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 15,81 R$ 4.943,35
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+30/12/25 Entrada R$ 158,16 R$ 4.959,16 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 11,39 R$ 4.801,00
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 56,99 R$ 4.812,39
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+30/12/25 Entrada R$ 569,98 R$ 4.869,38 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 2,89 R$ 4.299,40
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 0,57 R$ 4.302,29
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 3 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+30/12/25 Entrada R$ 28,97 R$ 4.302,86 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 5,28 R$ 4.273,89
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 1,05 R$ 4.279,17
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+30/12/25 Entrada R$ 52,81 R$ 4.280,22 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 4,94 R$ 4.227,41
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 0,98 R$ 4.232,35
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 5,14 R$ 4.233,33
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 25,70 R$ 4.238,47
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+30/12/25 Entrada R$ 49,43 R$ 4.264,17 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+30/12/25 Entrada R$ 257,01 R$ 4.214,74 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+62.235.159 REGINA RODRIGUES
+30/12/25 Saída FERREIRA - R$ 380,00 R$ 3.957,73
+Transferência | Pix
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 1,38 R$ 4.337,73
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 6,92 R$ 4.339,11
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 4 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+30/12/25 Entrada R$ 69,20 R$ 4.346,03 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 10,08 R$ 4.276,83
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 2,01 R$ 4.286,91
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+30/12/25 Entrada R$ 100,82 R$ 4.288,92 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 4,73 R$ 4.188,10
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 23,66 R$ 4.192,83
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+30/12/25 Entrada R$ 236,62 R$ 4.216,49 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 5,17 R$ 3.979,87
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 25,87 R$ 3.985,04
+Parcela | Empréstimo
+30/12/25 Saída Tarifa - R$ 1,30 R$ 4.010,91
+Soraya Climaco Moreira de Oliveira
+30/12/25 Entrada R$ 260,00 R$ 4.010,91
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 0,59 R$ 3.752,21
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+30/12/25 Saída PAGAMENTO S.A. - R$ 2,98 R$ 3.752,80
+Parcela | Empréstimo
+30/12/25 Saída Tarifa - R$ 0,15 R$ 3.755,78
+FERNANDA EDA PAZ LEITE
+30/12/25 Entrada R$ 30,00 R$ 3.755,78
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 5 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+KLINI PLANOS DE SAUDE LTDA
+30/12/25 Saída - R$ 1.456,31 R$ 3.725,93 KLINI PLANOS DE SAUDE LTDA
+Pagamento
+DAS  SIMPLES NACIONAL
+30/12/25 Saída - R$ 430,16 R$ 5.182,24 DAS  SIMPLES NACIONAL
+Pagamento
+STONE INSTITUIÇÃO DE
+29/12/25 Saída PAGAMENTO S.A. - R$ 2,07 R$ 5.612,40
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+29/12/25 Saída PAGAMENTO S.A. - R$ 10,37 R$ 5.614,47
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+29/12/25 Entrada R$ 103,79 R$ 5.624,84 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+29/12/25 Saída PAGAMENTO S.A. - R$ 4,24 R$ 5.521,05
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+29/12/25 Saída PAGAMENTO S.A. - R$ 21,24 R$ 5.525,29
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+29/12/25 Entrada R$ 212,47 R$ 5.546,53 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+29/12/25 Saída PAGAMENTO S.A. - R$ 3,75 R$ 5.334,06
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+29/12/25 Saída PAGAMENTO S.A. - R$ 18,78 R$ 5.337,81
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+29/12/25 Entrada R$ 187,82 R$ 5.356,59 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+29/12/25 Saída PAGAMENTO S.A. - R$ 5,89 R$ 5.168,77
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+29/12/25 Saída PAGAMENTO S.A. - R$ 29,45 R$ 5.174,66
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+29/12/25 Entrada R$ 294,57 R$ 5.204,11 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 6 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+29/12/25 Saída PAGAMENTO S.A. - R$ 1,18 R$ 4.909,54
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+29/12/25 Saída PAGAMENTO S.A. - R$ 5,93 R$ 4.910,72
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+29/12/25 Entrada R$ 59,31 R$ 4.916,65 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+29/12/25 Saída PAGAMENTO S.A. - R$ 10,14 R$ 4.857,34
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+29/12/25 Saída PAGAMENTO S.A. - R$ 2,02 R$ 4.867,48
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+29/12/25 Entrada R$ 101,41 R$ 4.869,50 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+29/12/25 Saída PAGAMENTO S.A. - R$ 2,59 R$ 4.768,09
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+29/12/25 Saída PAGAMENTO S.A. - R$ 12,96 R$ 4.770,68
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+29/12/25 Entrada R$ 129,62 R$ 4.783,64 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Nayara Aline de Oliveira Gomes
+29/12/25 Saída - R$ 570,00 R$ 4.654,02
+Transferência | Pix
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 7,41 R$ 5.224,02
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 37,06 R$ 5.231,43
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+27/12/25 Entrada R$ 370,69 R$ 5.268,49 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 7 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 5,41 R$ 4.897,80
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 1,08 R$ 4.903,21
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 2,57 R$ 4.904,29
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 12,85 R$ 4.906,86
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+27/12/25 Entrada R$ 54,16 R$ 4.919,71 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+27/12/25 Entrada R$ 128,51 R$ 4.865,55 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 2,31 R$ 4.737,04
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 11,58 R$ 4.739,35
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 3,09 R$ 4.750,93
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 15,45 R$ 4.754,02
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+27/12/25 Entrada R$ 115,89 R$ 4.769,47 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+27/12/25 Entrada R$ 154,53 R$ 4.653,58 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 0,59 R$ 4.499,05
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 8 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 2,95 R$ 4.499,64
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+27/12/25 Entrada R$ 29,54 R$ 4.502,59 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 16,37 R$ 4.473,05
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 81,85 R$ 4.489,42
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+27/12/25 Entrada R$ 818,50 R$ 4.571,27 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 0,98 R$ 3.752,77
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 0,19 R$ 3.753,75
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+27/12/25 Entrada R$ 9,89 R$ 3.753,94 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 2,37 R$ 3.744,05
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+27/12/25 Saída PAGAMENTO S.A. - R$ 11,86 R$ 3.746,42
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+27/12/25 Entrada R$ 118,62 R$ 3.758,28 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+JULIANA DA SILVA MELO
+27/12/25 Saída - R$ 890,00 R$ 3.639,66
+Transferência | Pix
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 1,44 R$ 4.529,66
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 7,24 R$ 4.531,10
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 9 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 11,81 R$ 4.538,34
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 2,36 R$ 4.550,15
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/12/25 Entrada R$ 72,40 R$ 4.552,51 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/12/25 Entrada R$ 118,16 R$ 4.480,11 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 4,04 R$ 4.361,95
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 0,80 R$ 4.365,99
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/12/25 Entrada R$ 40,41 R$ 4.366,79 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 1,38 R$ 4.326,38
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 6,92 R$ 4.327,76
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/12/25 Entrada R$ 69,20 R$ 4.334,68 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 1,15 R$ 4.265,48
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 5,79 R$ 4.266,63
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/12/25 Entrada R$ 57,92 R$ 4.272,42 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 10 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 1,58 R$ 4.214,50
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 7,90 R$ 4.216,08
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 2,46 R$ 4.223,98
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 12,30 R$ 4.226,44
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/12/25 Entrada R$ 79,08 R$ 4.238,74 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/12/25 Entrada R$ 123,09 R$ 4.159,66 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 12,27 R$ 4.036,57
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 61,37 R$ 4.048,84
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/12/25 Entrada R$ 613,74 R$ 4.110,21 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 4,53 R$ 3.496,47
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 22,68 R$ 3.501,00
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/12/25 Entrada R$ 226,85 R$ 3.523,68 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 4,37 R$ 3.296,83
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 11 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 21,89 R$ 3.301,20
+Parcela | Empréstimo
+26/12/25 Saída Tarifa - R$ 1,10 R$ 3.323,09
+Rodrigo Targino Bastos
+26/12/25 Entrada R$ 220,00 R$ 3.323,09
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 6,92 R$ 3.104,19
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 1,38 R$ 3.111,11
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/12/25 Entrada R$ 69,20 R$ 3.112,49 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 39,57 R$ 3.043,29
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+26/12/25 Saída PAGAMENTO S.A. - R$ 7,91 R$ 3.082,86
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+26/12/25 Entrada R$ 395,78 R$ 3.090,77 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Carlos Henrique Moreira
+26/12/25 Saída - R$ 40,00 R$ 2.694,99
+Transferência | Pix
+CAIXA ECONOMICA FEDERAL
+26/12/25 Saída - R$ 1.414,36 R$ 2.734,99
+Transferência | Pix
+Carlos Henrique Moreira
+26/12/25 Saída - R$ 4.730,90 R$ 4.149,35
+Transferência | Pix
+SUPRIMAX VET
+26/12/25 Saída - R$ 475,36 R$ 8.880,25 SUPRIMAX VET
+Pagamento
+26/12/25 Entrada Estorno | Pagamento R$ 120,96 R$ 9.355,61
+SUPRIMAX VET
+26/12/25 Saída - R$ 317,19 R$ 9.234,65 SUPRIMAX VET
+Pagamento
+MOURAGRO COMERCIO DE
+MOURAGRO COMERCIO DE
+26/12/25 Saída PRODUTOS AGROPECUAR - R$ 496,91 R$ 9.551,84
+PRODUTOS AGROPECUAR
+Pagamento
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 12 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+BANCO VOTORANTIM S/A
+26/12/25 Saída - R$ 1.618,57 R$ 10.048,75 BANCO VOTORANTIM S/A
+Pagamento
+26/12/25 Saída Pagamento - R$ 120,96 R$ 11.667,32
+Nayara Aline de Oliveira Gomes
+26/12/25 Saída - R$ 130,00 R$ 11.788,28
+Transferência | Pix
+AGROLIFE ESPIRITO SANTO PRODUT AGROLIFE ESPIRITO SANTO
+25/12/25 Saída - R$ 551,08 R$ 11.918,28
+Pagamento PRODUT
+VITAVET DISTRIBUIDORA LIMITADA VITAVET DISTRIBUIDORA
+25/12/25 Saída - R$ 671,70 R$ 12.469,36
+Pagamento LIMITADA
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 19,31 R$ 13.141,06
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 3,86 R$ 13.160,37
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+24/12/25 Entrada R$ 193,16 R$ 13.164,23 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 1,38 R$ 12.971,07
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 6,92 R$ 12.972,45
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+24/12/25 Entrada R$ 69,20 R$ 12.979,37 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 5,50 R$ 12.910,17
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 27,52 R$ 12.915,67
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+24/12/25 Entrada R$ 275,25 R$ 12.943,19 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 13 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 21,73 R$ 12.667,94
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 4,34 R$ 12.689,67
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+24/12/25 Entrada R$ 217,30 R$ 12.694,01 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 4,24 R$ 12.476,71
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 21,24 R$ 12.480,95
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+24/12/25 Entrada R$ 212,47 R$ 12.502,19 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 1,05 R$ 12.289,72
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 5,29 R$ 12.290,77
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+24/12/25 Entrada R$ 52,91 R$ 12.296,06 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Carlos Henrique Gomes da Silva
+24/12/25 Saída - R$ 700,00 R$ 12.243,15
+Transferência | Pix
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 0,49 R$ 12.943,15
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 2,48 R$ 12.943,64
+Parcela | Empréstimo
+24/12/25 Saída Tarifa - R$ 0,12 R$ 12.946,12
+ROBERTA GOES VIANA
+24/12/25 Entrada R$ 25,00 R$ 12.946,12
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 14 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 5,97 R$ 12.921,24
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 1,19 R$ 12.927,21
+Parcela | Empréstimo
+24/12/25 Saída Tarifa - R$ 0,30 R$ 12.928,40
+EMILY KATARINE FERREIRA VALE
+24/12/25 Entrada R$ 60,00 R$ 12.928,40
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 12,85 R$ 12.868,70
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 2,57 R$ 12.881,55
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+24/12/25 Entrada R$ 128,51 R$ 12.884,12 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 0,67 R$ 12.755,61
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 3,36 R$ 12.756,28
+Parcela | Empréstimo
+24/12/25 Saída Tarifa - R$ 0,16 R$ 12.759,64
+Luiz Filipe da Costa Rodrigues de
+24/12/25 Entrada Mello R$ 33,80 R$ 12.759,64
+Pix | Maquininha
+MAICIA VELLEDA E PAIVA DE TELLO
+24/12/25 Saída - R$ 1.500,00 R$ 12.726,00
+Transferência | Pix
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 26,69 R$ 14.226,00
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 5,33 R$ 14.252,69
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 15 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+24/12/25 Entrada R$ 266,90 R$ 14.258,02 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 26,19 R$ 13.991,12
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 5,23 R$ 14.017,31
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+24/12/25 Entrada R$ 261,96 R$ 14.022,54 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 15,16 R$ 13.760,58
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+24/12/25 Saída PAGAMENTO S.A. - R$ 3,03 R$ 13.775,74
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+24/12/25 Entrada R$ 151,63 R$ 13.778,77 PAGAMENTO S.A.
+Antecipação | Crédito
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 41,36 R$ 13.627,14
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 8,27 R$ 13.668,50
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+23/12/25 Entrada R$ 413,60 R$ 13.676,77 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 55,05 R$ 13.263,17
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 11,01 R$ 13.318,22
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+23/12/25 Entrada R$ 550,50 R$ 13.329,23 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 16 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 1,58 R$ 12.778,73
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 7,90 R$ 12.780,31
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+23/12/25 Entrada R$ 79,08 R$ 12.788,21 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 4,20 R$ 12.709,13
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 0,84 R$ 12.713,33
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+23/12/25 Entrada R$ 42,01 R$ 12.714,17 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 12,43 R$ 12.672,16
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 2,48 R$ 12.684,59
+Parcela | Empréstimo
+23/12/25 Saída Tarifa - R$ 0,62 R$ 12.687,07
+CLAUDIA VIEIRA F SANTANNA
+23/12/25 Entrada R$ 125,00 R$ 12.687,07
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 16,90 R$ 12.562,69
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 3,38 R$ 12.579,59
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 6,92 R$ 12.582,97
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 1,38 R$ 12.589,89
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 17 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+23/12/25 Entrada R$ 169,01 R$ 12.591,27 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+23/12/25 Entrada R$ 69,20 R$ 12.422,26 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 2,99 R$ 12.353,06
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 14,97 R$ 12.356,05
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+23/12/25 Entrada R$ 149,70 R$ 12.371,02 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 1,09 R$ 12.221,32
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 5,47 R$ 12.222,41
+Parcela | Empréstimo
+23/12/25 Saída Tarifa - R$ 0,27 R$ 12.227,88
+IAN NICOLAU ROSADAS F VARELLA
+23/12/25 Entrada R$ 55,00 R$ 12.227,88
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 1,59 R$ 12.173,15
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 7,96 R$ 12.174,74
+Parcela | Empréstimo
+23/12/25 Saída Tarifa - R$ 0,40 R$ 12.182,70
+JEFERSON DA SILVA SOUSA
+23/12/25 Entrada R$ 80,00 R$ 12.182,70
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 1,09 R$ 12.103,10
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+23/12/25 Saída PAGAMENTO S.A. - R$ 5,47 R$ 12.104,19
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 18 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+23/12/25 Saída Tarifa - R$ 0,27 R$ 12.109,66
+Geovana Vitoria Theodoro Sobral
+23/12/25 Entrada R$ 55,00 R$ 12.109,66
+Pix | Maquininha
+SUPRIMAX VET
+23/12/25 Saída - R$ 646,60 R$ 12.054,93 SUPRIMAX VET
+Pagamento
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 1,64 R$ 12.701,53
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 8,20 R$ 12.703,17
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+22/12/25 Entrada R$ 82,09 R$ 12.711,37 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 0,59 R$ 12.629,28
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 2,96 R$ 12.629,87
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+22/12/25 Entrada R$ 29,66 R$ 12.632,83 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 96,20 R$ 12.603,17
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 481,03 R$ 12.699,37
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+22/12/25 Entrada R$ 4.810,32 R$ 13.180,40 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 1,15 R$ 8.370,08
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 5,79 R$ 8.371,23
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 19 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+22/12/25 Entrada R$ 57,95 R$ 8.377,02 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 8,69 R$ 8.319,07
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 1,73 R$ 8.327,76
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+22/12/25 Entrada R$ 86,92 R$ 8.329,49 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 54,16 R$ 8.242,57
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 10,83 R$ 8.296,73
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+22/12/25 Entrada R$ 541,61 R$ 8.307,56 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 12,39 R$ 7.765,95
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 61,96 R$ 7.778,34
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+22/12/25 Entrada R$ 619,64 R$ 7.840,30 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 68,75 R$ 7.220,66
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 13,75 R$ 7.289,41
+Parcela | Empréstimo
+22/12/25 Saída Tarifa - R$ 3,45 R$ 7.303,16
+JENNIFER CHRIS SILVA HOLLANDA
+22/12/25 Entrada R$ 691,00 R$ 7.303,16
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 20 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 1,18 R$ 6.615,61
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 5,93 R$ 6.616,79
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+22/12/25 Entrada R$ 59,31 R$ 6.622,72 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 1,93 R$ 6.563,41
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 9,65 R$ 6.565,34
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+22/12/25 Entrada R$ 96,58 R$ 6.574,99 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 19,40 R$ 6.478,41
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 3,88 R$ 6.497,81
+Parcela | Empréstimo
+22/12/25 Saída Tarifa - R$ 0,97 R$ 6.501,69
+FREDERICO DE LEMOS NEVES
+22/12/25 Entrada R$ 195,00 R$ 6.501,69
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 56,71 R$ 6.307,66
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 11,34 R$ 6.364,37
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+22/12/25 Entrada R$ 567,16 R$ 6.375,71 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 14,60 R$ 5.808,55
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 21 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 73,01 R$ 5.823,15
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 6,92 R$ 5.896,16
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 1,38 R$ 5.903,08
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+22/12/25 Entrada R$ 730,14 R$ 5.904,46 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+22/12/25 Entrada R$ 69,20 R$ 5.174,32 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 12,55 R$ 5.105,12
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+22/12/25 Saída PAGAMENTO S.A. - R$ 2,51 R$ 5.117,67
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+22/12/25 Entrada R$ 125,55 R$ 5.120,18 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+SUPRIMAX VET
+22/12/25 Saída - R$ 760,58 R$ 4.994,63 SUPRIMAX VET
+Pagamento
+RIO CITAVET PRODUTOS
+RIO CITAVET PRODUTOS
+22/12/25 Saída VETERINAR - R$ 389,11 R$ 5.755,21
+VETERINAR
+Pagamento
+SUPRIMAX VET
+22/12/25 Saída - R$ 548,35 R$ 6.144,32 SUPRIMAX VET
+Pagamento
+DAS  SIMPLES NACIONAL
+22/12/25 Saída - R$ 10.538,92 R$ 6.692,67 DAS  SIMPLES NACIONAL
+Pagamento
+Fatura cartão Stone
+22/12/25 Saída - R$ 7,50 R$ 17.231,59
+Pagamento
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 56,68 R$ 17.239,09
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 22 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 11,33 R$ 17.295,77
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+20/12/25 Entrada R$ 566,89 R$ 17.307,10 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 5,93 R$ 16.740,21
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 29,65 R$ 16.746,14
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+20/12/25 Entrada R$ 296,55 R$ 16.775,79 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 12,55 R$ 16.479,24
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 2,51 R$ 16.491,79
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+20/12/25 Entrada R$ 125,55 R$ 16.494,30 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 10,62 R$ 16.368,75
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 2,12 R$ 16.379,37
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+20/12/25 Entrada R$ 106,24 R$ 16.381,49 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 8,45 R$ 16.275,25
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 1,69 R$ 16.283,70
+Parcela | Empréstimo
+20/12/25 Saída Tarifa - R$ 0,42 R$ 16.285,39
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 23 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+Keliane Santos de Araujo
+20/12/25 Entrada R$ 85,00 R$ 16.285,39
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 15,45 R$ 16.200,81
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 3,09 R$ 16.216,26
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+20/12/25 Entrada R$ 154,53 R$ 16.219,35 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 0,59 R$ 16.064,82
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 2,98 R$ 16.065,41
+Parcela | Empréstimo
+20/12/25 Saída Tarifa - R$ 0,15 R$ 16.068,39
+JANAINA TAINA LOBATO RAFAEL
+20/12/25 Entrada R$ 30,00 R$ 16.068,39
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 5,97 R$ 16.038,54
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 1,19 R$ 16.044,51
+Parcela | Empréstimo
+20/12/25 Saída Tarifa - R$ 0,30 R$ 16.045,70
+JANAINA TAINA LOBATO RAFAEL
+20/12/25 Entrada R$ 60,00 R$ 16.045,70
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 2,96 R$ 15.986,00
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 14,82 R$ 15.988,96
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+20/12/25 Entrada R$ 148,28 R$ 16.003,78 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 24 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 8,59 R$ 15.855,50
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 42,97 R$ 15.864,09
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+20/12/25 Entrada R$ 429,78 R$ 15.907,06 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 15,17 R$ 15.477,28
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 75,87 R$ 15.492,45
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+20/12/25 Entrada R$ 758,73 R$ 15.568,32 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 24,17 R$ 14.809,59
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 4,83 R$ 14.833,76
+Parcela | Empréstimo
+20/12/25 Saída Tarifa - R$ 1,21 R$ 14.838,59
+LUIZA DE CASTILHO MONSORES
+20/12/25 Entrada R$ 243,00 R$ 14.838,59
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 4,37 R$ 14.596,80
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 21,89 R$ 14.601,17
+Parcela | Empréstimo
+20/12/25 Saída Tarifa - R$ 1,10 R$ 14.623,06
+Gabriela Canellas de Moura
+20/12/25 Entrada R$ 220,00 R$ 14.623,06
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 6,27 R$ 14.404,16
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 25 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 1,25 R$ 14.410,43
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 1,58 R$ 14.411,68
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 7,90 R$ 14.413,26
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+20/12/25 Entrada R$ 62,78 R$ 14.421,16 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+20/12/25 Entrada R$ 79,08 R$ 14.358,38 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 1,49 R$ 14.279,30
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 7,46 R$ 14.280,79
+Parcela | Empréstimo
+20/12/25 Saída Tarifa - R$ 0,37 R$ 14.288,25
+CAROLAINE ESTEFANI S FREITAS
+20/12/25 Entrada R$ 75,00 R$ 14.288,25
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 16,00 R$ 14.213,62
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+20/12/25 Saída PAGAMENTO S.A. - R$ 80,00 R$ 14.229,62
+Parcela | Empréstimo
+ARTIGOS E PRODUTOS
+20/12/25 Entrada VETERINARIOS BICHO BAO LTDA R$ 800,00 R$ 14.309,62
+Transferência | Pix
+STONE INSTITUIÇÃO DE
+19/12/25 Saída PAGAMENTO S.A. - R$ 72,15 R$ 13.509,62
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/12/25 Entrada R$ 721,59 R$ 13.581,77 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 26 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE PAGAMENTO
+19/12/25 Saída S.A. - R$ 4,94 R$ 12.860,18
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/12/25 Entrada R$ 49,43 R$ 12.865,12 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+19/12/25 Saída S.A. - R$ 58,71 R$ 12.815,69
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/12/25 Entrada R$ 587,14 R$ 12.874,40 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+19/12/25 Saída S.A. - R$ 9,65 R$ 12.287,26
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/12/25 Entrada R$ 96,53 R$ 12.296,91 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+19/12/25 Saída S.A. - R$ 5,93 R$ 12.200,38
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/12/25 Entrada R$ 59,31 R$ 12.206,31 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+19/12/25 Saída S.A. - R$ 13,51 R$ 12.147,00
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/12/25 Entrada R$ 135,14 R$ 12.160,51 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+19/12/25 Saída S.A. - R$ 39,28 R$ 12.025,37
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/12/25 Entrada R$ 392,88 R$ 12.064,65 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+19/12/25 Saída S.A. - R$ 12,54 R$ 11.671,77
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 27 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/12/25 Entrada R$ 125,49 R$ 11.684,31 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+19/12/25 Saída S.A. - R$ 3,86 R$ 11.558,82
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/12/25 Entrada R$ 38,61 R$ 11.562,68 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+19/12/25 Saída S.A. - R$ 72,42 R$ 11.524,07
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/12/25 Entrada R$ 724,29 R$ 11.596,49 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+19/12/25 Saída S.A. - R$ 12,35 R$ 10.872,20
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/12/25 Entrada R$ 123,56 R$ 10.884,55 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+19/12/25 Saída S.A. - R$ 6,42 R$ 10.760,99
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/12/25 Entrada R$ 64,25 R$ 10.767,41 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+19/12/25 Saída S.A. - R$ 20,89 R$ 10.703,16
+Parcela | Empréstimo
+19/12/25 Saída Tarifa - R$ 1,05 R$ 10.724,05
+NATHALIA DA SILVA VIEIRA MATTOS
+19/12/25 Entrada R$ 210,00 R$ 10.724,05
+Pix | Maquininha
+STONE INSTITUIÇÃO DE PAGAMENTO
+19/12/25 Saída S.A. - R$ 18,82 R$ 10.515,10
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/12/25 Entrada R$ 188,24 R$ 10.533,92 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 28 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE PAGAMENTO
+19/12/25 Saída S.A. - R$ 5,79 R$ 10.345,68
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+19/12/25 Entrada R$ 57,92 R$ 10.351,47 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+19/12/25 Entrada Estorno | Pagamento R$ 120,96 R$ 10.293,55
+MOURAGRO COMERCIO DE MOURAGRO COMERCIO DE
+19/12/25 Saída PRODUTOS AGROPECUARIOS LTDA - R$ 549,69 R$ 10.172,59 PRODUTOS AGROPECUARIOS
+Pagamento LTDA
+19/12/25 Saída Pagamento - R$ 120,96 R$ 10.722,28
+CAIXA ECONOMICA FEDERAL
+19/12/25 Saída - R$ 575,90 R$ 10.843,24
+Transferência | Pix
+STONE INSTITUIÇÃO DE PAGAMENTO
+18/12/25 Saída S.A. - R$ 25,08 R$ 11.419,14
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+18/12/25 Entrada R$ 250,86 R$ 11.444,22 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+18/12/25 Saída S.A. - R$ 25,56 R$ 11.193,36
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+18/12/25 Entrada R$ 255,68 R$ 11.218,92 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+18/12/25 Saída S.A. - R$ 6,92 R$ 10.963,24
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+18/12/25 Entrada R$ 69,20 R$ 10.970,16 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+18/12/25 Saída S.A. - R$ 11,94 R$ 10.900,96
+Parcela | Empréstimo
+18/12/25 Saída Tarifa - R$ 0,60 R$ 10.912,90
+Carmem Moulin de Magalhães
+18/12/25 Entrada R$ 120,00 R$ 10.912,90
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 29 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+18/12/25 Saída PAGAMENTO S.A. - R$ 50,00 R$ 10.793,50
+Parcela | Empréstimo
+ARTIGOS E PRODUTOS
+18/12/25 Entrada VETERINARIOS BICHO BAO LTDA R$ 500,00 R$ 10.843,50
+Transferência | Pix
+ITAU UNIBANCO HOLDING S.A.
+18/12/25 Saída - R$ 19,71 R$ 10.343,50 ITAU UNIBANCO HOLDING S.A.
+Pagamento
+STONE INSTITUIÇÃO DE
+18/12/25 Saída PAGAMENTO S.A. - R$ 19,77 R$ 10.363,21
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+18/12/25 Entrada R$ 197,70 R$ 10.382,98 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+MAICIA VELLEDA E PAIVA DE TELLO
+18/12/25 Saída - R$ 2.500,00 R$ 10.185,28
+Transferência | Pix
+STONE INSTITUIÇÃO DE
+18/12/25 Saída PAGAMENTO S.A. - R$ 75,25 R$ 12.685,28
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+18/12/25 Entrada R$ 752,58 R$ 12.760,53 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+18/12/25 Saída PAGAMENTO S.A. - R$ 10,37 R$ 12.007,95
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+18/12/25 Entrada R$ 103,79 R$ 12.018,32 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+18/12/25 Saída PAGAMENTO S.A. - R$ 4,17 R$ 11.914,53
+Parcela | Empréstimo
+18/12/25 Saída Tarifa - R$ 0,21 R$ 11.918,70
+FERNANDA EDA PAZ LEITE
+18/12/25 Entrada R$ 42,00 R$ 11.918,70
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+18/12/25 Saída PAGAMENTO S.A. - R$ 14,47 R$ 11.876,91
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 30 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+18/12/25 Entrada R$ 144,73 R$ 11.891,38 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+18/12/25 Saída S.A. - R$ 4,21 R$ 11.746,65
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+18/12/25 Entrada R$ 42,18 R$ 11.750,86 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Ajuste de Saldo
+18/12/25 Entrada R$ 1.182,00 R$ 11.708,68
+Movimentação operacional
+Ajuste de Saldo
+18/12/25 Entrada R$ 737,46 R$ 10.526,68
+Movimentação operacional
+Ajuste de Saldo
+18/12/25 Entrada R$ 100,00 R$ 9.789,22
+Movimentação operacional
+Ajuste de Saldo
+18/12/25 Entrada R$ 376,44 R$ 9.689,22
+Movimentação operacional
+Ajuste de Saldo
+18/12/25 Entrada R$ 737,46 R$ 9.312,78
+Movimentação operacional
+STONE INSTITUIÇÃO DE PAGAMENTO
+18/12/25 Saída S.A. - R$ 12,54 R$ 8.575,32
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+18/12/25 Entrada R$ 125,43 R$ 8.587,86 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+VITAVET DISTRIBUIDORA LIMITADA VITAVET DISTRIBUIDORA
+18/12/25 Saída - R$ 671,70 R$ 8.462,43
+Pagamento LIMITADA
+AGROLIFE ESPIRITO SANTO PRODUT AGROLIFE ESPIRITO SANTO
+18/12/25 Saída - R$ 551,08 R$ 9.134,13
+Pagamento PRODUT
+SAFE2PAY INSTITUICAO DE
+SAFE2PAY INSTITUICAO DE
+18/12/25 Saída PAGAMENTO LTDA - R$ 159,02 R$ 9.685,21
+PAGAMENTO LTDA
+Pagamento
+STONE INSTITUIÇÃO DE PAGAMENTO
+17/12/25 Saída S.A. - R$ 42,30 R$ 9.844,23
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 31 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+17/12/25 Entrada R$ 423,02 R$ 9.886,53 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+17/12/25 Saída S.A. - R$ 19,77 R$ 9.463,51
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+17/12/25 Entrada R$ 197,70 R$ 9.483,28 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+17/12/25 Saída S.A. - R$ 8,40 R$ 9.285,58
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+17/12/25 Entrada R$ 84,02 R$ 9.293,98 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+17/12/25 Saída S.A. - R$ 20,76 R$ 9.209,96
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+17/12/25 Entrada R$ 207,64 R$ 9.230,72 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+17/12/25 Saída S.A. - R$ 22,88 R$ 9.023,08
+Parcela | Empréstimo
+17/12/25 Saída Tarifa - R$ 1,15 R$ 9.045,96
+AMILTON BENEDITO DE SOUZA
+17/12/25 Entrada R$ 230,00 R$ 9.045,96
+Pix | Maquininha
+STONE INSTITUIÇÃO DE PAGAMENTO
+17/12/25 Saída S.A. - R$ 6,27 R$ 8.817,11
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+17/12/25 Entrada R$ 62,78 R$ 8.823,38 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+17/12/25 Saída S.A. - R$ 32,18 R$ 8.760,60
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+17/12/25 Entrada R$ 321,83 R$ 8.792,78 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 32 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE PAGAMENTO
+17/12/25 Saída S.A. - R$ 33,22 R$ 8.470,95
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+17/12/25 Entrada R$ 332,23 R$ 8.504,17 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+17/12/25 Saída S.A. - R$ 15,45 R$ 8.171,94
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+17/12/25 Entrada R$ 154,53 R$ 8.187,39 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+17/12/25 Saída S.A. - R$ 8,45 R$ 8.032,86
+Parcela | Empréstimo
+17/12/25 Saída Tarifa - R$ 0,42 R$ 8.041,31
+ANA CLARA DE SOUZA GONCALVES
+17/12/25 Entrada R$ 85,00 R$ 8.041,31
+Pix | Maquininha
+MOURAGRO COM PROD AGROP
+MOURAGRO COM PROD AGROP
+17/12/25 Saída EIRELI - R$ 344,44 R$ 7.956,73
+EIRELI
+Pagamento
+DUQUE RIO AMBIENTAL LTDA
+17/12/25 Saída - R$ 95,00 R$ 8.301,17 DUQUE RIO AMBIENTAL LTDA
+Pagamento
+STONE INSTITUIÇÃO DE PAGAMENTO
+16/12/25 Saída S.A. - R$ 32,33 R$ 8.396,17
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/12/25 Entrada R$ 323,35 R$ 8.428,50 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+16/12/25 Saída S.A. - R$ 36,87 R$ 8.105,15
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/12/25 Entrada R$ 368,71 R$ 8.142,02 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+16/12/25 Saída S.A. - R$ 13,34 R$ 7.773,31
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 33 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE PAGAMENTO
+16/12/25 Saída S.A. - R$ 68,57 R$ 7.786,65
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/12/25 Entrada R$ 133,45 R$ 7.855,22 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/12/25 Entrada R$ 685,71 R$ 7.721,77 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+16/12/25 Saída S.A. - R$ 112,31 R$ 7.036,06
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/12/25 Entrada R$ 1.123,13 R$ 7.148,37 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+16/12/25 Saída S.A. - R$ 16,31 R$ 6.025,24
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/12/25 Entrada R$ 163,10 R$ 6.041,55 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+16/12/25 Saída S.A. - R$ 21,25 R$ 5.878,45
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/12/25 Entrada R$ 212,53 R$ 5.899,70 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+16/12/25 Saída S.A. - R$ 6,27 R$ 5.687,17
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/12/25 Entrada R$ 62,78 R$ 5.693,44 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+16/12/25 Saída S.A. - R$ 7,90 R$ 5.630,66
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/12/25 Entrada R$ 79,08 R$ 5.638,56 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 34 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/12/25 Entrada R$ 0,01 R$ 5.559,48 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/12/25 Entrada R$ 0,01 R$ 5.559,47 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+16/12/25 Saída S.A. - R$ 7,58 R$ 5.559,46
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/12/25 Entrada R$ 75,87 R$ 5.567,04 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+16/12/25 Saída S.A. - R$ 6,42 R$ 5.491,17
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/12/25 Entrada R$ 64,25 R$ 5.497,59 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+16/12/25 Saída S.A. - R$ 12,55 R$ 5.433,34
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+16/12/25 Entrada R$ 125,55 R$ 5.445,89 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+16/12/25 Entrada Estorno | Pagamento R$ 120,96 R$ 5.320,34
+VET RIO COMERCIO EIRELI ME
+16/12/25 Saída - R$ 301,07 R$ 5.199,38 VET RIO COMERCIO EIRELI ME
+Pagamento
+16/12/25 Saída Pagamento - R$ 120,96 R$ 5.500,45
+VETTEC PRODUTOS A LTDA
+16/12/25 Saída - R$ 1.023,61 R$ 5.621,41 VETTEC PRODUTOS A LTDA
+Pagamento
+STONE INSTITUIÇÃO DE PAGAMENTO
+16/12/25 Saída S.A. - R$ 30,00 R$ 6.645,02
+Parcela | Empréstimo
+RICARDO MARTINS NERY
+16/12/25 Entrada R$ 300,00 R$ 6.675,02
+Transferência | Pix
+STONE INSTITUIÇÃO DE PAGAMENTO
+15/12/25 Saída S.A. - R$ 2,89 R$ 6.375,02
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 35 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+15/12/25 Entrada R$ 28,97 R$ 6.377,91 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+15/12/25 Saída S.A. - R$ 46,74 R$ 6.348,94
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+15/12/25 Entrada R$ 467,44 R$ 6.395,68 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+15/12/25 Saída S.A. - R$ 49,60 R$ 5.928,24
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE PAGAMENTO
+15/12/25 Saída S.A. - R$ 10,14 R$ 5.977,84
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+15/12/25 Entrada R$ 496,00 R$ 5.987,98 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+15/12/25 Entrada R$ 101,41 R$ 5.491,98 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+15/12/25 Saída S.A. - R$ 6,96 R$ 5.390,57
+Parcela | Empréstimo
+15/12/25 Saída Tarifa - R$ 0,35 R$ 5.397,53
+ANA EDUARDA RIGONATO DIEHL
+15/12/25 Entrada R$ 70,00 R$ 5.397,53
+Pix | Maquininha
+STONE INSTITUIÇÃO DE PAGAMENTO
+15/12/25 Saída S.A. - R$ 61,51 R$ 5.327,88
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+15/12/25 Entrada R$ 615,19 R$ 5.389,39 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+15/12/25 Saída S.A. - R$ 106,27 R$ 4.774,20
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+15/12/25 Entrada R$ 1.062,70 R$ 4.880,47 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 36 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE PAGAMENTO
+15/12/25 Saída S.A. - R$ 17,20 R$ 3.817,77
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+15/12/25 Entrada R$ 172,00 R$ 3.834,97 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+15/12/25 Saída S.A. - R$ 13,03 R$ 3.662,97
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+15/12/25 Entrada R$ 130,38 R$ 3.676,00 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+SUPRIMAX VET
+15/12/25 Saída - R$ 548,35 R$ 3.545,62 SUPRIMAX VET
+Pagamento
+RIO CITAVET PRODUTOS VETERINAR RIO CITAVET PRODUTOS
+15/12/25 Saída - R$ 389,11 R$ 4.093,97
+Pagamento VETERINAR
+MOURAGRO COMERCIO DE
+MOURAGRO COMERCIO DE
+15/12/25 Saída PRODUTOS AGROPECUAR - R$ 496,91 R$ 4.483,08
+PRODUTOS AGROPECUAR
+Pagamento
+SUPRIMAX VET
+15/12/25 Saída - R$ 317,29 R$ 4.979,99 SUPRIMAX VET
+Pagamento
+SUPRIMAX VET
+15/12/25 Saída - R$ 760,58 R$ 5.297,28 SUPRIMAX VET
+Pagamento
+ANESTESIA PEQUENOS ANIMAIS
+13/12/25 Saída LTDA - R$ 250,00 R$ 6.057,86
+Transferência | Pix
+ANESTESIA PEQUENOS ANIMAIS
+13/12/25 Saída LTDA - R$ 350,00 R$ 6.307,86
+Transferência | Pix
+STONE INSTITUIÇÃO DE PAGAMENTO
+13/12/25 Saída S.A. - R$ 9,88 R$ 6.657,86
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+13/12/25 Entrada R$ 98,85 R$ 6.667,74 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+13/12/25 Saída S.A. - R$ 14,48 R$ 6.568,89
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 37 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+13/12/25 Saída PAGAMENTO S.A. - R$ 32,35 R$ 6.583,37
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+13/12/25 Entrada R$ 144,87 R$ 6.615,72 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+13/12/25 Entrada R$ 323,54 R$ 6.470,85 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+13/12/25 Saída PAGAMENTO S.A. - R$ 19,69 R$ 6.147,31
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+13/12/25 Entrada R$ 196,94 R$ 6.167,00 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Carlos Henrique Gomes da Silva
+13/12/25 Saída - R$ 2.760,50 R$ 5.970,06
+Transferência | Pix
+STONE INSTITUIÇÃO DE
+13/12/25 Saída PAGAMENTO S.A. - R$ 20,89 R$ 8.730,56
+Parcela | Empréstimo
+13/12/25 Saída Tarifa - R$ 1,05 R$ 8.751,45
+CARLA DANIELA LENZI BERRI
+13/12/25 Entrada R$ 210,00 R$ 8.751,45
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+13/12/25 Saída PAGAMENTO S.A. - R$ 1,15 R$ 8.542,50
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+13/12/25 Entrada R$ 11,59 R$ 8.543,65 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+13/12/25 Saída PAGAMENTO S.A. - R$ 50,41 R$ 8.532,06
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+13/12/25 Entrada R$ 504,14 R$ 8.582,47 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+13/12/25 Saída PAGAMENTO S.A. - R$ 17,79 R$ 8.078,33
+Parcela | Empréstimo
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 38 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+13/12/25 Entrada R$ 177,93 R$ 8.096,12 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+13/12/25 Saída S.A. - R$ 5,79 R$ 7.918,19
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+13/12/25 Entrada R$ 57,95 R$ 7.923,98 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+13/12/25 Saída S.A. - R$ 11,86 R$ 7.866,03
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+13/12/25 Entrada R$ 118,62 R$ 7.877,89 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE PAGAMENTO
+13/12/25 Saída S.A. - R$ 13,83 R$ 7.759,27
+Parcela | Empréstimo
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+13/12/25 Entrada R$ 138,39 R$ 7.773,10 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+ANESTESIA PEQUENOS ANIMAIS
+12/12/25 Saída LTDA - R$ 320,00 R$ 7.634,71
+Transferência | Pix
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+12/12/25 Entrada R$ 1.634,98 R$ 7.954,71 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+12/12/25 Saída Tarifa - R$ 0,37 R$ 6.319,73
+FRANCISCO DENILSON RODRIGUES
+12/12/25 Entrada DE SOUSA R$ 75,00 R$ 6.319,73
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+12/12/25 Entrada R$ 654,83 R$ 6.245,10 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+12/12/25 Entrada R$ 29,66 R$ 5.590,27 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+12/12/25 Entrada R$ 115,84 R$ 5.560,61 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 39 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+12/12/25 Entrada R$ 321,26 R$ 5.444,77 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+12/12/25 Saída Tarifa - R$ 0,65 R$ 5.123,51
+RAYSSA VIEIRA GONCALVES
+12/12/25 Entrada R$ 130,00 R$ 5.123,51
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+12/12/25 Entrada R$ 69,20 R$ 4.994,16 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+12/12/25 Entrada R$ 313,73 R$ 4.924,96 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+12/12/25 Entrada R$ 86,88 R$ 4.611,23 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+12/12/25 Saída Tarifa - R$ 1,32 R$ 4.524,35
+Camilla Pinheiro da Silva
+12/12/25 Entrada R$ 265,00 R$ 4.524,35
+Pix | Maquininha
+SL ADMINISTRADORA PATRIMONIAL
+SL ADMINISTRADORA
+12/12/25 Saída S.A - R$ 1.478,74 R$ 4.260,67
+PATRIMONIAL S.A
+Pagamento
+12/12/25 Entrada Estorno | Pagamento R$ 120,96 R$ 5.739,41
+12/12/25 Saída Pagamento - R$ 120,96 R$ 5.618,45
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+11/12/25 Entrada R$ 96,48 R$ 5.739,41 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+11/12/25 Entrada R$ 207,59 R$ 5.642,93 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+11/12/25 Entrada R$ 69,20 R$ 5.435,34 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+11/12/25 Entrada R$ 83,46 R$ 5.366,14 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+11/12/25 Saída Tarifa - R$ 0,15 R$ 5.282,68
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 40 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+Tatiana Revesz da Silva Gomes
+11/12/25 Entrada R$ 30,00 R$ 5.282,68
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+11/12/25 Entrada R$ 53,07 R$ 5.252,83 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+11/12/25 Entrada R$ 103,79 R$ 5.199,76 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+MAICIA VELLEDA PAIVA DE TELLO
+11/12/25 Entrada R$ 2.000,00 R$ 5.095,97
+Transferência | Pix
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+11/12/25 Entrada R$ 266,90 R$ 3.095,97 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+11/12/25 Entrada R$ 103,39 R$ 2.829,07 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+11/12/25 Entrada R$ 133,45 R$ 2.725,68 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+11/12/25 Entrada R$ 57,89 R$ 2.592,23 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Vitoria de Jesus Araujo
+11/12/25 Saída - R$ 607,20 R$ 2.534,34
+Transferência | Pix
+ROGERIO FIGUEIREDO SOARES
+11/12/25 Saída - R$ 566,72 R$ 3.141,54
+Transferência | Pix
+Raiane Galvao Pereira
+11/12/25 Saída - R$ 575,60 R$ 3.708,26
+Transferência | Pix
+VETTEC PRODUTOS A LTDA
+11/12/25 Saída - R$ 581,64 R$ 4.283,86 VETTEC PRODUTOS A LTDA
+Pagamento
+AGROLIFE ESPIRITO SANTO PRODUT AGROLIFE ESPIRITO SANTO
+11/12/25 Saída - R$ 551,08 R$ 4.865,50
+Pagamento PRODUT
+VITAVET DISTRIBUIDORA LIMITADA VITAVET DISTRIBUIDORA
+11/12/25 Saída - R$ 671,70 R$ 5.416,58
+Pagamento LIMITADA
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+10/12/25 Entrada R$ 82,09 R$ 6.088,28 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 41 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+DARF/DARFSIMPLES 0385
+10/12/25 Saída - R$ 907,46 R$ 6.006,19 DARF/DARFSIMPLES 0385
+Pagamento
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+10/12/25 Entrada R$ 29,66 R$ 6.913,65 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+10/12/25 Entrada R$ 57,95 R$ 6.883,99 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+10/12/25 Saída Tarifa - R$ 0,55 R$ 6.826,04
+JOAQUIM RODRIGUES TOMAZ
+10/12/25 Entrada R$ 110,00 R$ 6.826,04
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+10/12/25 Entrada R$ 163,10 R$ 6.716,59 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+10/12/25 Entrada R$ 757,73 R$ 6.553,49 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+10/12/25 Entrada R$ 692,09 R$ 5.795,76 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+10/12/25 Entrada R$ 6,82 R$ 5.103,67 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+10/12/25 Entrada R$ 357,34 R$ 5.096,85 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+10/12/25 Entrada R$ 101,41 R$ 4.739,51 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+AGUAS DO RIO
+10/12/25 Saída - R$ 933,53 R$ 4.638,10 AGUAS DO RIO
+Pagamento
+SUPRIMAX VET
+10/12/25 Saída - R$ 447,25 R$ 5.571,63 SUPRIMAX VET
+Pagamento
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+09/12/25 Entrada R$ 77,26 R$ 6.018,88 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+09/12/25 Entrada R$ 257,01 R$ 5.941,62 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 42 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+09/12/25 Entrada R$ 125,55 R$ 5.684,61 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+09/12/25 Entrada R$ 661,08 R$ 5.559,06 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+ANESTESIA PEQUENOS ANIMAIS
+09/12/25 Saída LTDA - R$ 300,00 R$ 4.897,98
+Transferência | Pix
+ANESTESIA PEQUENOS ANIMAIS
+09/12/25 Saída LTDA - R$ 300,00 R$ 5.197,98
+Transferência | Pix
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+09/12/25 Entrada R$ 333,39 R$ 5.497,98 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+09/12/25 Saída Tarifa - R$ 5,94 R$ 5.164,59
+IGNACIO MARIO M ECHARD INIGUEZ
+09/12/25 Entrada R$ 1.188,00 R$ 5.164,59
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+09/12/25 Entrada R$ 182,87 R$ 3.982,53 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+VET RIO COMERCIO EIRELI ME
+09/12/25 Saída - R$ 301,08 R$ 3.799,66 VET RIO COMERCIO EIRELI ME
+Pagamento
+SUPRIMAX VET
+09/12/25 Saída - R$ 646,60 R$ 4.100,74 SUPRIMAX VET
+Pagamento
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+08/12/25 Entrada R$ 202,82 R$ 4.747,34 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+VITAVETES DISTRIBUIDORA LTDA
+08/12/25 Saída - R$ 120,96 R$ 4.544,52 VITAVETES DISTRIBUIDORA LTDA
+Pagamento
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+08/12/25 Entrada R$ 28,81 R$ 4.665,48 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+08/12/25 Entrada R$ 79,08 R$ 4.636,67 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 43 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+08/12/25 Entrada R$ 589,31 R$ 4.557,59 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+08/12/25 Entrada R$ 582,87 R$ 3.968,28 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+08/12/25 Entrada R$ 241,45 R$ 3.385,41 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+08/12/25 Entrada R$ 33,80 R$ 3.143,96 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+08/12/25 Entrada R$ 324,49 R$ 3.110,16 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+08/12/25 Entrada R$ 53,12 R$ 2.785,67 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+08/12/25 Saída Tarifa - R$ 0,15 R$ 2.732,55
+MARIA LUZIA DOS SANTOS SALES
+08/12/25 Entrada R$ 30,00 R$ 2.732,55
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+08/12/25 Entrada R$ 381,75 R$ 2.702,70 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+MOURAGRO COMERCIO DE MOURAGRO COMERCIO DE
+08/12/25 Saída PRODUTOS AGROPECUARIOS LTDA - R$ 315,23 R$ 2.320,95 PRODUTOS AGROPECUARIOS
+Pagamento LTDA
+SUPRIMAX VET
+08/12/25 Saída - R$ 548,35 R$ 2.636,18 SUPRIMAX VET
+Pagamento
+Vitoria de Jesus Araujo
+08/12/25 Saída - R$ 1.469,15 R$ 3.184,53
+Transferência | Pix
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+06/12/25 Entrada R$ 113,19 R$ 4.653,68 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+06/12/25 Entrada R$ 451,65 R$ 4.540,49 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 44 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+06/12/25 Entrada R$ 734,00 R$ 4.088,84 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+06/12/25 Entrada R$ 54,37 R$ 3.354,84 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+06/12/25 Entrada R$ 388,48 R$ 3.300,47 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+06/12/25 Entrada R$ 247,17 R$ 2.911,99 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+06/12/25 Entrada R$ 64,25 R$ 2.664,82 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+06/12/25 Saída Tarifa - R$ 0,06 R$ 2.600,57
+THAYNA AYRES DA CRUZ
+06/12/25 Entrada MAGALHAES R$ 12,00 R$ 2.600,57
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+05/12/25 Saída PAGAMENTO S.A. - R$ 257,86 R$ 2.588,63
+Parcela | Empréstimo
+ARTIGOS E PRODUTOS
+05/12/25 Entrada VETERINARIOS BICHO BAO LTDA R$ 2.845,13 R$ 2.846,49
+Transferência | Pix
+GLA COM DE PROD VETER LTDA
+05/12/25 Saída - R$ 100,00 R$ 1,36 GLA COM DE PROD VETER LTDA
+Pagamento
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/12/25 Entrada R$ 101,36 R$ 101,36 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+MOURAGRO COMERCIO DE MOURAGRO COMERCIO DE
+05/12/25 Saída PRODUTOS AGROPECUARIOS LTDA - R$ 737,46 R$ 0,00 PRODUTOS AGROPECUARIOS
+Pagamento LTDA
+STONE SOCIEDADE DE CREDITO
+05/12/25 Entrada DIRETO S.A. R$ 256,88 R$ 737,46
+Transferência | Pix
+GLA COM DE PROD VETER LTDA
+05/12/25 Saída - R$ 376,44 R$ 480,58 GLA COM DE PROD VETER LTDA
+Pagamento
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 45 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+MOURAGRO COMERCIO DE MOURAGRO COMERCIO DE
+05/12/25 Saída PRODUTOS AGROPECUARIOS LTDA - R$ 737,46 R$ 857,02 PRODUTOS AGROPECUARIOS
+Pagamento LTDA
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/12/25 Entrada R$ 202,64 R$ 1.594,48 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+BUSCA CLIENTES T DIGITAL LTDA BUSCA CLIENTES T DIGITAL
+05/12/25 Saída - R$ 1.182,00 R$ 1.391,84
+Pagamento LTDA
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/12/25 Entrada R$ 88,97 R$ 2.573,84 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/12/25 Entrada R$ 149,62 R$ 2.484,87 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/12/25 Entrada R$ 125,00 R$ 2.335,25 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/12/25 Entrada R$ 137,07 R$ 2.210,25 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/12/25 Entrada R$ 64,25 R$ 2.073,18 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+05/12/25 Saída Tarifa - R$ 0,27 R$ 2.008,93
+ROBERTA GOES VIANA
+05/12/25 Entrada R$ 55,00 R$ 2.008,93
+Pix | Maquininha
+05/12/25 Saída Tarifa - R$ 0,65 R$ 1.954,20
+EMILY KATARINE FERREIRA VALE
+05/12/25 Entrada R$ 130,00 R$ 1.954,20
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/12/25 Entrada R$ 368,75 R$ 1.824,85 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/12/25 Entrada R$ 54,37 R$ 1.456,10 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+05/12/25 Saída Tarifa - R$ 0,65 R$ 1.401,73
+MATEUS PEREIRA ARTEMENKO
+05/12/25 Entrada R$ 130,00 R$ 1.401,73
+Pix | Maquininha
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 46 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/12/25 Entrada R$ 242,18 R$ 1.272,38 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/12/25 Entrada R$ 177,37 R$ 1.030,20 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+05/12/25 Entrada R$ 261,95 R$ 852,83 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+MOURAGRO COMERCIO DE
+MOURAGRO COMERCIO DE
+05/12/25 Saída PRODUTOS AGROPECUAR - R$ 496,91 R$ 590,88
+PRODUTOS AGROPECUAR
+Pagamento
+IRENE MARIA GOMES BARANDAS
+05/12/25 Saída - R$ 3.000,00 R$ 1.087,79
+Transferência | Pix
+SEROPEC SHOPPING RURAL LTDA SEROPEC SHOPPING RURAL
+04/12/25 Saída - R$ 310,42 R$ 4.087,79
+Pagamento LTDA
+MOURAGRO COMERCIO DE MOURAGRO COMERCIO DE
+04/12/25 Saída PRODUTOS AGROPECUARIOS LTDA - R$ 396,49 R$ 4.398,21 PRODUTOS AGROPECUARIOS
+Pagamento LTDA
+TALIMPO MAT CONDOMINIOS LTDA TALIMPO MAT CONDOMINIOS
+04/12/25 Saída - R$ 281,36 R$ 4.794,70
+Pagamento LTDA
+SEROPEC SHOPPING RURAL LTDA SEROPEC SHOPPING RURAL
+04/12/25 Saída - R$ 310,41 R$ 5.076,06
+Pagamento LTDA
+MAICIA VELLEDA PAIVA DE TELLO
+04/12/25 Entrada R$ 2.000,00 R$ 5.386,47
+Transferência | Pix
+TECSA  LABORATORIOS LTDA
+04/12/25 Saída - R$ 978,80 R$ 3.386,47 TECSA  LABORATORIOS LTDA
+Pagamento
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/12/25 Entrada R$ 69,20 R$ 4.365,27 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/12/25 Entrada R$ 69,20 R$ 4.296,07 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/12/25 Entrada R$ 53,07 R$ 4.226,87 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/12/25 Entrada R$ 420,21 R$ 4.173,80 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 47 de 48
+Período: de 04/12/2025 a 31/12/2025
+DATA TIPO DESCRIÇÃO VALOR SALDO CONTRAPARTE
+04/12/25 Saída Tarifa - R$ 1,20 R$ 3.753,59
+FREDERICO DE LEMOS NEVES
+04/12/25 Entrada R$ 240,00 R$ 3.753,59
+Pix | Maquininha
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/12/25 Entrada R$ 186,21 R$ 3.514,79 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/12/25 Entrada R$ 54,37 R$ 3.328,58 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/12/25 Entrada R$ 255,68 R$ 3.274,21 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/12/25 Entrada R$ 74,04 R$ 3.018,53 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/12/25 Entrada R$ 296,55 R$ 2.944,49 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/12/25 Entrada R$ 281,40 R$ 2.647,94 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/12/25 Entrada R$ 75,26 R$ 2.366,54 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+STONE INSTITUIÇÃO DE
+Recebimento vendas
+04/12/25 Entrada R$ 57,89 R$ 2.291,28 PAGAMENTO S.A.
+Antecipação
+Ag:0001•Cc:307728
+Tatiana Revesz Da Silva Gomes
+04/12/25 Saída - R$ 915,46 R$ 2.233,39
+Transferência | Pix
+MOURAGRO COMERCIO DE MOURAGRO COMERCIO DE
+04/12/25 Saída PRODUTOS AGROPECUARIOS LTDA - R$ 549,69 R$ 3.148,85 PRODUTOS AGROPECUARIOS
+Pagamento LTDA
+AGROLIFE ESPIRITO SANTO PRODUT AGROLIFE ESPIRITO SANTO
+04/12/25 Saída - R$ 551,07 R$ 3.698,54
+Pagamento PRODUT
+Raiane Galvao Pereira
+04/12/25 Saída - R$ 1.589,35 R$ 4.249,61
+Transferência | Pix
+Extrato de conta corrente
+Emitido em 04 março 2026 às 175241
+Página 48 de 48
+Informações do Comprovante
+Código da autenticação
+11a0a13404d042909d86-af11a085c963
+Ouvidoria
+Se nosso atendimento não atendeu às suas expectativas, ligue para 08009422174 em dias úteis,
+das 9h às 18h, horário de Brasília. Você também pode enviar um e-mail para ouvidoria@stone.com.br
+CNPJ 16.501.555/000157
+Dúvidas? Fale com a gente!
+Regiões Metropolitanas Envie um WhatsApp Outras regiões Envie um e-mail
+30049680 30049680 0800 326 0506 meajuda@stone.com.br
