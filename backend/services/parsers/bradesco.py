@@ -25,12 +25,10 @@ Regras de tipo:
 
 import re
 import pdfplumber
-from .base import ParserBase
+from .base import ParserBase, _RE_ANO
 
 
 BANCO = 'Bradesco'
-
-_RE_ANO = re.compile(r'\b(20\d{2})\b')
 
 # Formato A: DD/MM/YYYY [doc] valores
 _RE_LINHA_DATA = re.compile(

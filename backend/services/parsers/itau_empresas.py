@@ -15,7 +15,7 @@ que diferem no formato PJ.
 
 import re
 import pdfplumber
-from .base import ParserBase
+from .base import ParserBase, _RE_ANO
 
 
 BANCO = 'Itaú Empresas'
@@ -31,8 +31,6 @@ _RE_LINHA = re.compile(
     r'^(?:(\d{2}/\d{2}(?:/\d{2,4})?)\s+)?(.+?)\s+(-?\d{1,3}(?:\.\d{3})*,\d{2}-?)'
     r'(?:\s+\d{1,3}(?:\.\d{3})*,\d{2})?\s*$'
 )
-_RE_ANO = re.compile(r'\b(20\d{2})\b')
-
 # Linhas a ignorar — inclui todos os do PF mais específicos do PJ
 _IGNORAR = [
     'saldo aplic aut mais',

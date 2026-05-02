@@ -21,7 +21,7 @@ Filtros:
 import re
 from decimal import Decimal, InvalidOperation
 import pdfplumber
-from .base import ParserBase
+from .base import ParserBase, _RE_ANO
 
 
 BANCO = 'Nubank'
@@ -61,8 +61,6 @@ _RE_VALOR_INLINE = re.compile(
 _RE_TABELA = re.compile(
     r'^(\d{2}/\d{2}/\d{4})\s+(.+?)\s+([+\-\u2212\u2013]?\s*(?:R\$\s*)?(?:\d{1,3}\.)*\d{1,3},\d{2})\s*$'
 )
-
-_RE_ANO = re.compile(r'\b(20\d{2})\b')
 
 # Marcadores de detalhe bancário que aparecem fundidos com a linha de transação
 # Ex: "Transfer...6,00(0237) Agência: 2458 Conta: 503643-7"

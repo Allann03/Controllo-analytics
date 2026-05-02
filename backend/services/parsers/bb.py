@@ -35,12 +35,10 @@ Formato "Extrato de Conta Corrente" do BB (pdfplumber):
 
 import re
 import pdfplumber
-from .base import ParserBase
+from .base import ParserBase, _RE_ANO
 
 
 BANCO = 'Banco do Brasil'
-
-_RE_ANO = re.compile(r'\b(20\d{2})\b')
 
 # Linha apenas com data DD/MM/YYYY
 _RE_DATA_SOZINHA = re.compile(r'^(\d{2}/\d{2}/\d{4})\s*$')

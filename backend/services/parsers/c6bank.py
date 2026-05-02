@@ -17,12 +17,11 @@ Classificação de tipo:
 
 import re
 import pdfplumber
-from .base import ParserBase
+from .base import ParserBase, _RE_ANO
 
 
 BANCO = 'C6Bank'
 
-_RE_ANO = re.compile(r'\b(20\d{2})\b')
 _RE_ANO_PERIODO = re.compile(r'per[ií]odo.*?(\d{4})', re.IGNORECASE)
 
 # Linha de transação: DD/MM DD/MM <desc> [-]R$ valor

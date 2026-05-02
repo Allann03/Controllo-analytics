@@ -34,6 +34,8 @@ _PADROES_SALDO = [
 _RE_VALOR_BR_GLOB = re.compile(r'((?:\d{1,3}\.)*\d{1,3},\d{2})')
 # Data válida: DD/MM/YYYY
 _RE_DATA_VALIDA = re.compile(r'^\d{2}/\d{2}/\d{4}$')
+# Captura ano (20XX). Extraido de 7 parsers em S27.
+_RE_ANO = re.compile(r'\b(20\d{2})\b')
 
 
 class ParserBase(ABC):

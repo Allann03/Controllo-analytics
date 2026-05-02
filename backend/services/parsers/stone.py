@@ -37,8 +37,6 @@ from .base import ParserBase
 
 BANCO = 'Stone'
 
-_RE_ANO = re.compile(r'\b(20\d{2})\b')
-
 # Caso (a) e (c): DD/MM/YY Tipo <desc> -? R$ valor R$ saldo
 _RE_LINHA_TEXTO = re.compile(
     r'^(\d{2}/\d{2}/\d{2,4})\s+(Entrada|Sa[ií]da)\s+(.+?)\s+-?\s*R\$\s*([\d.,]+)\s+R\$',
