@@ -20,7 +20,6 @@ import pytest
 from services.parsers.bradesco_empresas.bradesco_net_empresas import (
     ParserBradescoNetEmpresas,
     _MARCADORES_FIM_PERIODO,
-    _e_linha_skip,
 )
 
 PDFS_REAIS = os.path.join(os.path.dirname(__file__), 'fixtures', 'pdfs_reais')
@@ -46,11 +45,12 @@ def test_marcadores_fim_periodo_cobrem_variantes_de_encoding():
 def test_e_linha_skip_pula_titulos_pos_periodo():
     """`_e_linha_skip` continua pulando títulos individuais (linha de
     cabeçalho de tabela e similares)."""
-    assert _e_linha_skip('Últimos Lançamentos')
-    assert _e_linha_skip('Saldos Invest Fácil / Plus')
-    assert _e_linha_skip('Saldo Anterior 100,00')
+    parser = ParserBradescoNetEmpresas('')
+    assert parser._e_linha_skip('Últimos Lançamentos')
+    assert parser._e_linha_skip('Saldos Invest Fácil / Plus')
+    assert parser._e_linha_skip('Saldo Anterior 100,00')
     # Linha de transação real NÃO deve ser pulada
-    assert not _e_linha_skip('05/01/2026 TRANSFERENCIA PIX')
+    assert not parser._e_linha_skip('05/01/2026 TRANSFERENCIA PIX')
 
 
 # ─────────────────────────────────────────────────────────────────────────────

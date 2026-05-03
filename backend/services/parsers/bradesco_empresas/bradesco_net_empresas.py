@@ -14,35 +14,15 @@ Exemplos de linhas:
 """
 
 import re
-from decimal import Decimal, InvalidOperation
-from ..base import ParserBase
+from .._empresa_base import ParserEmpresaBase, _RE_VALOR, _RE_TRAILING_INTS
 
 try:
     import pdfplumber
 except ImportError:
     pdfplumber = None
 
-# Regex para valor monetário BR (com sinal opcional)
-_RE_VALOR = re.compile(r'-?\d{1,3}(?:\.\d{3})*,\d{2}')
-
 # Data no início da linha: DD/MM/YYYY
 _RE_DATA_LINHA = re.compile(r'^(\d{2}/\d{2}/\d{4})\s+(.*)')
-
-# Linhas a ignorar (cabeçalhos, rodapés, saldos)
-_SKIP_LOWER = [
-    'saldo anterior', 'saldo do dia', 'saldo final', 'saldo em',
-    'total disponível', 'total disponivel',
-    'lançamento', 'lancamento', 'dcto',
-    'banco bradesco', 'extrato', 'período', 'periodo',
-    'cpf', 'cnpj',
-    'os dados acima', 'nome do usuário', 'nome do usuario',
-    'data da operação', 'data da operacao',
-    '|',
-    'saldos invest fácil', 'saldos invest facil', 'saldo invest fácil', 'saldo invest facil',
-    'crédito (r$)', 'credito (r$)', 'débito (r$)', 'debito (r$)',
-    'saldo (r$)',
-    'últimos lançamentos', 'ultimos lancamentos',
-]
 
 # Sessão 18 — Marcadores que indicam INÍCIO de seção pós-período pedido.
 # A partir dessas linhas, todas as transações pertencem a um momento posterior
@@ -58,21 +38,6 @@ _MARCADORES_FIM_PERIODO = [
     'saldos invest facil',
 ]
 
-# Sequência de inteiros no final da descrição (números de documento)
-_RE_TRAILING_INTS = re.compile(r'(\s+\d+)+\s*$')
-
-
-def _e_linha_skip(linha: str) -> bool:
-    """Retorna True se a linha deve ser ignorada."""
-    ll = linha.lower().strip()
-    if not ll:
-        return True
-    for token in _SKIP_LOWER:
-        if token in ll:
-            return True
-    return False
-
-
 def _extrair_valores(linha: str):
     """
     Retorna lista de todos os valores monetários encontrados na linha.
@@ -81,24 +46,13 @@ def _extrair_valores(linha: str):
     return _RE_VALOR.findall(linha)
 
 
-def _normalizar_float(texto: str) -> Decimal:
-    """Converte string monetária BR (com possível sinal) em Decimal com sinal."""
-    negativo = texto.strip().startswith('-')
-    limpo = texto.replace('-', '').replace('.', '').replace(',', '.').strip()
-    try:
-        v = Decimal(limpo)
-        return -v if negativo else v
-    except (InvalidOperation, ValueError):
-        return Decimal('0')
-
-
 def _limpar_descricao(texto: str) -> str:
     """Remove sequências de inteiros no final e espaços extras."""
     texto = _RE_TRAILING_INTS.sub('', texto)
     return texto.strip()
 
 
-class ParserBradescoNetEmpresas(ParserBase):
+class ParserBradescoNetEmpresas(ParserEmpresaBase):
     """
     Parser para extratos Bradesco Net Empresas.
 
@@ -111,6 +65,22 @@ class ParserBradescoNetEmpresas(ParserBase):
     """
 
     BANCO = 'bradesco_net_empresas'
+
+    # Linhas a ignorar (cabeçalhos, rodapés, saldos)
+    _SKIP_LOWER = [
+        'saldo anterior', 'saldo do dia', 'saldo final', 'saldo em',
+        'total disponível', 'total disponivel',
+        'lançamento', 'lancamento', 'dcto',
+        'banco bradesco', 'extrato', 'período', 'periodo',
+        'cpf', 'cnpj',
+        'os dados acima', 'nome do usuário', 'nome do usuario',
+        'data da operação', 'data da operacao',
+        '|',
+        'saldos invest fácil', 'saldos invest facil', 'saldo invest fácil', 'saldo invest facil',
+        'crédito (r$)', 'credito (r$)', 'débito (r$)', 'debito (r$)',
+        'saldo (r$)',
+        'últimos lançamentos', 'ultimos lancamentos',
+    ]
 
     def extrair(self) -> list[dict]:
         if pdfplumber is None:
@@ -137,7 +107,7 @@ class ParserBradescoNetEmpresas(ParserBase):
             descricao = _limpar_descricao(descricao)
             if not descricao:
                 return
-            valor_f = _normalizar_float(valor_str)
+            valor_f = self._normalizar_float(valor_str)
             if valor_f == 0.0:
                 return
             tipo = 'entrada' if valor_f > 0 else 'saida'
@@ -189,7 +159,7 @@ class ParserBradescoNetEmpresas(ParserBase):
                 desc_buffer = []
                 continue
 
-            if _e_linha_skip(linha):
+            if self._e_linha_skip(linha):
                 continue
 
             # Verifica se a linha comeca com uma data
@@ -212,7 +182,7 @@ class ParserBradescoNetEmpresas(ParserBase):
                     desc_depois = ''
                     if i < len(linhas_raw):
                         prox = linhas_raw[i].strip()
-                        if prox and not _e_linha_skip(prox) and not _RE_DATA_LINHA.match(prox) and len(_extrair_valores(prox)) < 2:
+                        if prox and not self._e_linha_skip(prox) and not _RE_DATA_LINHA.match(prox) and len(_extrair_valores(prox)) < 2:
                             desc_depois = prox
                             i += 1
 
@@ -239,7 +209,7 @@ class ParserBradescoNetEmpresas(ParserBase):
                     desc_depois = ''
                     if i < len(linhas_raw):
                         prox = linhas_raw[i].strip()
-                        if prox and not _e_linha_skip(prox) and not _RE_DATA_LINHA.match(prox) and len(_extrair_valores(prox)) < 2:
+                        if prox and not self._e_linha_skip(prox) and not _RE_DATA_LINHA.match(prox) and len(_extrair_valores(prox)) < 2:
                             desc_depois = prox
                             i += 1
 

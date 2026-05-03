@@ -13,8 +13,7 @@ Exemplos:
 """
 
 import re
-from decimal import Decimal, InvalidOperation
-from ..base import ParserBase
+from .._empresa_base import ParserEmpresaBase, _RE_VALOR, _RE_TRAILING_INTS
 
 try:
     import pdfplumber
@@ -24,46 +23,10 @@ except ImportError:
 # Data no início da linha: DD/MM/YYYY
 _RE_DATA_INICIO = re.compile(r'^(\d{2}/\d{2}/\d{4})\s+(.*)', re.DOTALL)
 
-# Valor monetário BR com sinal opcional (último na linha = valor da transação)
-_RE_VALOR = re.compile(r'-?\d{1,3}(?:\.\d{3})*,\d{2}')
-
 # CNPJ: XX.XXX.XXX/XXXX-XX
 _RE_CNPJ = re.compile(r'\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}')
 # CPF: XXX.XXX.XXX-XX
 _RE_CPF = re.compile(r'\d{3}\.\d{3}\.\d{3}-\d{2}')
-
-# Trailing numbers (doc/sequência)
-_RE_TRAILING_NUMS = re.compile(r'(\s+\d+)+\s*$')
-
-_SKIP_LOWER = [
-    'saldo anterior',
-    'saldo total disponível',
-    'saldo total disponivel',
-    'rendimento aplicação automática',
-    'rendimento aplicacao automatica',
-    'data lançamentos',
-    'data lancamentos',
-]
-
-
-def _e_linha_skip(linha: str) -> bool:
-    ll = linha.lower().strip()
-    if not ll:
-        return True
-    for token in _SKIP_LOWER:
-        if token in ll:
-            return True
-    return False
-
-
-def _normalizar_float(texto: str) -> Decimal:
-    negativo = texto.strip().startswith('-')
-    limpo = texto.replace('-', '').replace('.', '').replace(',', '.').strip()
-    try:
-        v = Decimal(limpo)
-        return -v if negativo else v
-    except (InvalidOperation, ValueError):
-        return Decimal('0')
 
 
 def _limpar_descricao(texto: str) -> str:
@@ -71,11 +34,11 @@ def _limpar_descricao(texto: str) -> str:
     texto = _RE_CNPJ.sub('', texto)
     texto = _RE_CPF.sub('', texto)
     # Remove trailing numbers
-    texto = _RE_TRAILING_NUMS.sub('', texto)
+    texto = _RE_TRAILING_INTS.sub('', texto)
     return texto.strip()
 
 
-class ParserItauN2(ParserBase):
+class ParserItauN2(ParserEmpresaBase):
     """
     Parser para extratos Itaú no formato N2 (ANTARTI.CO).
 
@@ -85,6 +48,16 @@ class ParserItauN2(ParserBase):
     """
 
     BANCO = 'itau_n2'
+
+    _SKIP_LOWER = [
+        'saldo anterior',
+        'saldo total disponível',
+        'saldo total disponivel',
+        'rendimento aplicação automática',
+        'rendimento aplicacao automatica',
+        'data lançamentos',
+        'data lancamentos',
+    ]
 
     def extrair(self) -> list[dict]:
         if pdfplumber is None:
@@ -104,7 +77,7 @@ class ParserItauN2(ParserBase):
         transacoes: list[dict] = []
 
         for linha in linhas_raw:
-            if _e_linha_skip(linha):
+            if self._e_linha_skip(linha):
                 continue
 
             m = _RE_DATA_INICIO.match(linha)
@@ -120,7 +93,7 @@ class ParserItauN2(ParserBase):
                 continue
 
             valor_str = valores[-1]
-            valor_f = _normalizar_float(valor_str)
+            valor_f = self._normalizar_float(valor_str)
             if valor_f == 0.0:
                 continue
 

@@ -18,8 +18,7 @@ BLOCO 8.
 """
 
 import re
-from decimal import Decimal, InvalidOperation
-from .base import ParserBase
+from ._empresa_base import ParserEmpresaBase, _RE_VALOR
 
 try:
     import pdfplumber
@@ -28,9 +27,6 @@ except ImportError:
 
 # Data no inicio da linha: DD/MM/YYYY
 _RE_DATA = re.compile(r'^(\d{2}/\d{2}/\d{4})\s+(.*)')
-
-# Valor monetario BR com sinal
-_RE_VALOR = re.compile(r'-?\d{1,3}(?:\.\d{3})*,\d{2}')
 
 # Linha de detalhe bancario (nao e transacao)
 _RE_DETALHE_BANCO = re.compile(r'^\s*Banco\s+\d+\s*\|', re.IGNORECASE)
@@ -61,17 +57,7 @@ _STOP_LOWER = [
 ]
 
 
-def _normalizar_valor(texto: str) -> Decimal:
-    negativo = texto.strip().startswith('-')
-    limpo = texto.replace('-', '').replace('.', '').replace(',', '.').strip()
-    try:
-        v = Decimal(limpo)
-        return -v if negativo else v
-    except (InvalidOperation, ValueError):
-        return Decimal('0')
-
-
-class ParserBTG(ParserBase):
+class ParserBTG(ParserEmpresaBase):
     """Parser para extratos BTG Pactual (Conta corrente PJ)."""
 
     BANCO = 'btg'
@@ -151,7 +137,7 @@ class ParserBTG(ParserBase):
                         valores = _RE_VALOR.findall(resto_prox)
                         if valores:
                             valor_str = valores[0]
-                            valor = _normalizar_valor(valor_str)
+                            valor = self._normalizar_float(valor_str)
                             if valor == 0:
                                 continue
                             desc_lower = desc_combinada.lower()
@@ -178,7 +164,7 @@ class ParserBTG(ParserBase):
 
             # Primeiro valor = transacao, segundo = saldo
             valor_str = valores[0]
-            valor = _normalizar_valor(valor_str)
+            valor = self._normalizar_float(valor_str)
             if valor == 0:
                 continue
 
