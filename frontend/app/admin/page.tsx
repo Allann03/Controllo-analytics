@@ -591,9 +591,9 @@ export default function AdminPage() {
                             </button>
                             <ConfirmButton
                               onConfirm={() => excluir(u.id)}
-                              label="Recusar e remover"
-                              confirmLabel="Recusar"
-                              icon={<X size={16} strokeWidth={2.25} />}
+                              label="Excluir usuário"
+                              confirmLabel="Excluir"
+                              icon={<Trash2 size={16} strokeWidth={2} />}
                               className="p-2 rounded-lg transition-all admin-action-danger"
                             />
                           </>

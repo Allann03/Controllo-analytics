@@ -42,6 +42,7 @@ from data.database import models
 
 # Utilitários
 from sqlalchemy import or_, text
+from sqlalchemy.exc import IntegrityError
 from services.cnpj_validator import validar_cnpj, formatar_cnpj
 
 # Routers
@@ -1308,8 +1309,18 @@ def excluir_usuario(
     if user.is_aprovado:
         raise HTTPException(status_code=400, detail="Nao e possivel excluir um usuario ativo. Bloqueie-o primeiro.")
     nome_alvo = user.nome
-    db.delete(user)
-    db.commit()
+    try:
+        db.delete(user)
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                "Usuario possui registros associados (lembretes, tarefas, auditoria, etc.). "
+                "Nao e possivel excluir. Contate o suporte para limpeza dos registros associados."
+            ),
+        )
     registrar_auditoria(db, "excluir_usuario", usuario_id=_admin.id, usuario_nome=_admin.nome,
                         recurso="usuario", recurso_id=usuario_id, detalhes={"alvo": nome_alvo},
                         escritorio_id=_admin.escritorio_id)
