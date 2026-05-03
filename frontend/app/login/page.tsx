@@ -447,7 +447,7 @@ export default function LoginPage() {
                 return (
                   <ul className="mt-2 space-y-1 text-xs" aria-live="polite" aria-label="Requisitos de senha">
                     {(Object.keys(REGRAS_LABELS) as (keyof RegrasSenha)[]).map((key) => (
-                      <li key={key} className={`flex items-center gap-1.5 ${regras[key] ? "text-emerald-600" : "text-slate-400"}`}>
+                      <li key={key} className={`flex items-center gap-1.5 ${regras[key] ? "text-emerald-600" : "text-rose-600"}`}>
                         <span className="flex-shrink-0">{regras[key] ? "\u2713" : "\u2717"}</span>
                         {REGRAS_LABELS[key]}
                       </li>
