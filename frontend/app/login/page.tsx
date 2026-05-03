@@ -319,7 +319,7 @@ export default function LoginPage() {
             {!modoLogin && (
               <div>
                 <label className="block text-sm font-semibold text-slate-800 mb-1.5">
-                  Código do escritório
+                  Escritório
                 </label>
                 <div className="relative">
                   <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500">
@@ -339,7 +339,7 @@ export default function LoginPage() {
                     onBlur={e => { e.target.style.boxShadow = ""; e.target.style.borderColor = ""; }}
                   />
                 </div>
-                <p className="text-[11px] text-slate-400 mt-1">Peça o código ao administrador do seu escritório</p>
+                <p className="text-[11px] text-slate-400 mt-1">Peça o nome do escritório ao administrador</p>
                 {!modoLogin && escritorio.trim() && (
                   <div className="mt-1.5">
                     {validandoSlug ? (
