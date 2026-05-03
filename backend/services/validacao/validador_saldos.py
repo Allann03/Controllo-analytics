@@ -47,7 +47,7 @@ class DataProblematica(TypedDict, total=False):
 
 class ResultadoValidacao(TypedDict):
     saldo_total_ok: bool
-    saldo_total_gap: float
+    saldo_total_gap: Optional[float]
     saldos_diarios_ok: bool
     dias_suspeitos: list
     continuidade_ok: bool
@@ -132,7 +132,7 @@ def validar_extracao(
     # ─── Check 1 — Saldo total ─────────────────────────────────────────────
     if saldo_inicial is None or saldo_final is None:
         saldo_total_ok = False
-        saldo_total_gap = float('inf')
+        saldo_total_gap = None
     else:
         soma = sum(_valor_assinado(t) for t in transacoes or [])
         sf_calc = saldo_inicial + soma
@@ -277,7 +277,7 @@ def _diagnostico_curto(
     # Caso especial Sessão 19 — santander_empresas (formato App): layout do PDF
     # nunca expõe SI/SF, requer extrato Consolidado para reconciliação.
     if (
-        not saldo_total_ok and saldo_total_gap == float('inf')
+        not saldo_total_ok and saldo_total_gap is None
         and banco == 'santander_empresas'
     ):
         return (
@@ -288,7 +288,7 @@ def _diagnostico_curto(
         )
     partes = []
     if not saldo_total_ok:
-        if saldo_total_gap == float('inf'):
+        if saldo_total_gap is None:
             partes.append('saldo inicial ou final ausente')
         else:
             partes.append(f'saldo total diverge em R$ {saldo_total_gap:+.2f}')
