@@ -19,7 +19,7 @@ colados (`-R$3.411,26`) e tx que quebram entre páginas — tratamos abaixo.
 import re
 import pdfplumber
 from .base import ParserBase
-from ..ocr_fallback import extrair_texto_via_ocr, normalizar_texto_ocr
+from services.ocr_fallback import extrair_texto_via_ocr, normalizar_texto_ocr
 
 
 BANCO = 'Inter'
