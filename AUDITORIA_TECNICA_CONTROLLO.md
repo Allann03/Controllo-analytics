@@ -204,6 +204,12 @@ backend/
 
 11. **Antipattern de nomes de cliente em parsers** (descoberto S21). Auditoria na S35 para confirmar zero residuais.
 
+### 5.5 Descobertos na auditoria diagnóstica pré-S28
+
+12. **Armadilha de profundidade resolvida em `inter.py`.** O import `from ..ocr_fallback` resolvia corretamente apenas porque `parsers/` está 1 nível abaixo de `services/`. Qualquer movimentação que mudasse profundidade (ex: `parsers/inter/pf.py`) quebraria silenciosamente. **Resolvido na S27.6** trocando para `from services.ocr_fallback` (import absoluto, independente de profundidade).
+
+13. **Cascade defensivo divergente em `santander.py`.** O parser ContaMax tem cascade N1→N2→N3 que tenta `ParserSantanderEmpresas` e `ParserSantanderConsolidado` quando formato primário devolve vazio. Esta lógica é redundante com o detector signature-based em `extrator_pdf.detectar_banco()` (defesa em profundidade). Se um formato Santander N4 for adicionado ao detector e esquecido no cascade, comportamento divergirá silenciosamente — cliente recebe `[]` em vez de transações N4. Mitigação futura possível: remover cascade e confiar no detector, OU sincronizar cascade com detector via lista compartilhada. Não-bloqueante.
+
 ## 6. Política de deploy
 
 - **Última deploy em produção:** S14, 30/04/2026 ~12h
@@ -257,3 +263,4 @@ Toda sessão de modificação segue estrutura cirúrgica:
 - **S28** próxima sessão. Reorganizar parsers/ em subpastas por banco. Risco alto, ~60-90 min.
 - **Bug localhost OCR** sem investigação dedicada.
 - **Decisão produto S35.5** pendente.
+- Auditoria diagnóstica pré-S28 concluída em 02/05/2026: 4 dos 5 pontos hipotéticos derrubados, S28 desnecessária no escopo original. Débitos #12 (resolvido) e #13 (não-bloqueante) registrados.
