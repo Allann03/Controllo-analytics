@@ -1,0 +1,41 @@
+# fly.toml — Controllo BPO Backend
+# Gerado para deploy no Fly.io com PostgreSQL
+
+app = "controllo-bpo"
+primary_region = "gru"   # São Paulo
+
+[build]
+  dockerfile = "backend/Dockerfile"
+
+[env]
+  CONTROLLO_ENV = "production"
+  # Variáveis sensíveis devem ser definidas como secrets, NÃO aqui:
+  #   fly secrets set CONTROLLO_SECRET_KEY="<chave-aleatória-256-bits>"
+  #   fly secrets set CONTROLLO_MASTER_USER="<usuario-admin>"
+  #   fly secrets set CONTROLLO_MASTER_PASSWORD="<senha-forte>"
+  #   fly secrets set DATABASE_URL="postgresql://..."
+  #   fly secrets set CORS_ORIGINS="https://meu-frontend-preview.vercel.app"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [[http_service.checks]]
+    grace_period = "10s"
+    interval = "30s"
+    method = "GET"
+    path = "/api/health"
+    timeout = "5s"
+
+  [http_service.concurrency]
+    type = "requests"
+    hard_limit = 200
+    soft_limit = 150
+
+[[vm]]
+  memory = "1gb"
+  cpu_kind = "shared"
+  cpus = 1

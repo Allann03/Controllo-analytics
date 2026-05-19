@@ -1,0 +1,19 @@
+-- BLOCO 0 ROLLBACK SNAPSHOT
+-- Gerado em: 20260410T175610Z
+-- Banco: backend/data/data/controllo.db
+-- Propósito: restaurar estado do usuário mestre caso BLOCO 0 cause regressão
+
+-- PASSO 1: Verificar estado atual (idempotente):
+SELECT id, nome, escritorio_id, is_master, is_admin, is_dono, is_ceo, is_gestor, is_aprovado, nome_exibicao, cargo, SUBSTR(senha_hash,1,20) AS senha_prefix FROM usuarios WHERE is_master=1;
+
+-- SNAPSHOT COLETADO EM 20260410T175610Z:
+-- {"id": 1, "nome": "allan", "escritorio_id": 1, "is_master": 1, "is_admin": 1, "is_dono": 1, "is_ceo": 1, "is_gestor": 1, "is_aprovado": 1, "nome_exibicao": "Allan", "cargo": "Administrador Master", "senha_hash": "$pbkdf2-sha256$29000...[HASH]"}
+
+-- PASSO 2A: Restaurar senha_hash (usar somente se hash foi alterado):
+UPDATE usuarios SET senha_hash = '$pbkdf2-sha256$29000$3pszZowRIuR8b611zrmX0g$Z.A0m3rlUM0gMojFP/BpdF1RaY8.G6FGiiYDxNn9OUw' WHERE id = 1 AND is_master = 1;
+
+-- PASSO 2B: Restaurar flags de permissão:
+UPDATE usuarios SET is_master=1, is_admin=1, is_dono=1, is_ceo=1, is_gestor=1, is_aprovado=1 WHERE id = 1;
+
+-- PASSO 2C: Restaurar escritorio_id:
+UPDATE usuarios SET escritorio_id = 1 WHERE id = 1 AND is_master = 1;
